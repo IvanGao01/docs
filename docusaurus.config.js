@@ -12,7 +12,7 @@ const url =
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'CnosDB',
-  tagline: 'Dinosaurs are cool',
+  tagline: 'CnosDB is an open-source, distributed, time series database',
   favicon: 'img/favicon.png',
 
   // Set the production url of your site here
@@ -26,29 +26,23 @@ const config = {
   organizationName: 'cnosdb', // Usually your GitHub org/user name.
   projectName: 'docs.cnosdb.com', // Usually your repo name.
 
-  onBrokenLinks: 'ignore',
-  onBrokenMarkdownLinks: 'warn',
+  onBrokenLinks: 'throw',
+  onBrokenMarkdownLinks: 'throw',
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
-    locales: ['en', 'zh-Hans'],
+    locales: ['en', 'zh'],
     localeConfigs: {
       en: {
-        htmlLang: 'en-US',
       },
-      // 如果你不需要覆盖默认值，你可以忽略这个语言（比如 zh-Hans）
+      zh: {
+        label: "简体中文"
+      },
     },
   },
-  scripts: [
-    // community 页面引入
-    {
-      src: 'https://apps.elfsight.com/p/platform.js',
-      defer: true,
-    },
-  ],
 
   presets: [
     [
@@ -56,30 +50,16 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
-          lastVersion: 'current',
-          versions: {
-            current: {
-              label: 'latest',
-            },
-          },
+   
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: ({ locale, version, versionDocsDirPath, docPath }) => {
-            version = version === 'latest' ? version : `version-${version}`;
-
-            const urls = {
-              'en-US': `https://github.com/cnosdb/docs/edit/master/${versionDocsDirPath}/${docPath}`,
-              'zh-CN': `https://github.com/cnosdb/docs/edit/master/i18n/${locale}/docusaurus-plugin-content-docs/${version}/${docPath}`,
-            };
-
-            return urls[locale];
-          },
+          editUrl: 'https://github.com/cnosdb/cnosdb/tree/main/docs',
+          editLocalizedFiles: true,
         },
-        blog: false,
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
+          
         },
       }),
     ],
@@ -92,16 +72,17 @@ const config = {
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
         logo: {
-          alt: 'Cnosdb',
+          alt: 'CnosDB',
           src: 'img/logo.png',
           srcDark: 'img/logo_dark.png',
         },
         items: [
           // left
           {
-            label: 'Docs',
-            to: 'current',
+            type: 'docSidebar',
+            sidebarId: 'docsSidebar',
             position: 'left',
+            label: 'Docs',
           },
           // TODO: 国际化
           {
@@ -110,11 +91,11 @@ const config = {
             position: 'left',
             items: [
               {
-                label: '快速入门',
+                label: 'Quick Start',
                 href: 'https://cnosdb.com',
               },
               {
-                label: '生态集成',
+                label: 'Eco-integration',
                 href: 'https://cnosdb.com',
               },
               {
@@ -122,19 +103,10 @@ const config = {
                 href: 'https://cnosdb.com',
               },
               {
-                label: '常见问题',
+                label: 'FAQs',
                 href: 'https://cnosdb.com',
               },
-              {
-                label: 'Community',
-                to: 'community',
-              },
             ],
-          },
-          {
-            label: 'Blog',
-            to: 'blog',
-            position: 'left',
           },
           // right
           {
@@ -147,8 +119,8 @@ const config = {
           },
           {
             href: 'https://github.com/cnosdb/docs',
-            label: 'GitHub',
             position: 'right',
+            className: 'header-github-link',
           },
           {
             type: 'search',
@@ -157,46 +129,6 @@ const config = {
         ],
       },
       footer: {
-        style: 'dark',
-        links: [
-          {
-            title: 'Docs',
-            items: [
-              {
-                label: 'Style Guide',
-                to: 'docs/',
-              },
-              {
-                label: 'Second Doc',
-                to: 'docs/doc2/',
-              },
-            ],
-          },
-          {
-            title: 'Community',
-            items: [
-              {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
-              },
-              {
-                html: `
-                    <a href="https://www.netlify.com" target="_blank" rel="noreferrer noopener" aria-label="Deploys by Netlify">
-                      <img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" alt="Deploys by Netlify" width="114" height="51" />
-                    </a>
-                  `,
-              },
-            ],
-          },
-        ],
         copyright: `CnosDB ©  ${new Date().getFullYear()}`,
       },
       algolia: {
@@ -204,7 +136,7 @@ const config = {
         apiKey: 'b02a6bb324334323de977f71e73d06d0',
         indexName: 'cnosdb',
         locales: {
-          '/zh-CN/': {
+          '/zh': {
             placeholder: '搜索文档',
             translations: {
               button: {
