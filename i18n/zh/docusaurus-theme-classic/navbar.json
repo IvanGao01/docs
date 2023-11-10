@@ -1,8 +1,4 @@
 {
-  "title": {
-    "message": "Docs",
-    "description": "The title in the navbar"
-  },
   "logo.alt": {
     "message": "Cnosdb",
     "description": "The alt text of navbar logo"

@@ -24,7 +24,7 @@ const config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'cnosdb', // Usually your GitHub org/user name.
-  projectName: 'docs.cnosdb.com', // Usually your repo name.
+  projectName: 'docs', // Usually your repo name.
 
   onBrokenLinks: 'ignore',
   onBrokenMarkdownLinks: 'warn',
@@ -62,28 +62,27 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
+          breadcrumbs: false,
           lastVersion: 'current',
           versions: {
             current: {
               label: 'latest',
             },
+            // '2.4': {
+            //   label: '2.4',
+            //   banner: 'none'
+            // },
+            // '2.3':{
+            //     label: '2.3',
+            //     banner:'none',
+            // }
           },
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: ({ locale, version, versionDocsDirPath, docPath }) => {
-            version = version === 'latest' ? version : `version-${version}`;
-
-            const urls = {
-              'en-US': `https://github.com/cnosdb/docs/edit/master/${versionDocsDirPath}/${docPath}`,
-              'zh-CN': `https://github.com/cnosdb/docs/edit/master/i18n/${locale}/docusaurus-plugin-content-docs/${version}/${docPath}`,
-            };
-
-            return urls[locale];
-          },
+          editUrl: "https://github.com/cnosdb/docs/edit/main",
+          editLocalizedFiles: true,
         },
-        blog: false,
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
@@ -105,9 +104,10 @@ const config = {
         items: [
           // left
           {
-            label: 'Docs',
-            to: 'current',
+            type: 'docSidebar',
+            sidebarId: 'docsSidebar',
             position: 'left',
+            label: 'Docs',
           },
           // TODO: 国际化
           {
@@ -137,11 +137,6 @@ const config = {
               },
             ],
           },
-          {
-            label: 'Blog',
-            to: 'blog',
-            position: 'left',
-          },
           // right
           {
             type: 'docsVersionDropdown',
@@ -163,46 +158,6 @@ const config = {
         ],
       },
       footer: {
-        style: 'dark',
-        links: [
-          {
-            title: 'Docs',
-            items: [
-              {
-                label: 'Style Guide',
-                to: 'docs/',
-              },
-              {
-                label: 'Second Doc',
-                to: 'docs/doc2/',
-              },
-            ],
-          },
-          {
-            title: 'Community',
-            items: [
-              {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
-              },
-              {
-                html: `
-                    <a href="https://www.netlify.com" target="_blank" rel="noreferrer noopener" aria-label="Deploys by Netlify">
-                      <img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" alt="Deploys by Netlify" width="114" height="51" />
-                    </a>
-                  `,
-              },
-            ],
-          },
-        ],
         copyright: `CnosDB ©  ${new Date().getFullYear()}`,
       },
       algolia: {

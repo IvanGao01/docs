@@ -1,6 +1,6 @@
 ---
 title: Quick start
-order: 3
+order: 2
 ---
 
 # Quick Start
