@@ -3,8 +3,32 @@
     "message": "Cnosdb",
     "description": "The alt text of navbar logo"
   },
+  "item.label.Docs": {
+    "message": "文档",
+    "description": "Navbar item with label Docs"
+  },
+  "item.label.Resources": {
+    "message": "资源",
+    "description": "Navbar item with label Resources"
+  },
   "item.label.GitHub": {
     "message": "GitHub",
     "description": "Navbar item with label GitHub"
+  },
+  "item.label.Quick start": {
+    "message": "快速开始",
+    "description": "Navbar item with label Quick start"
+  },
+  "item.label.Eoo-integration": {
+    "message": "生态集成",
+    "description": "Navbar item with label Eoo-integration"
+  },
+  "item.label.Release notes": {
+    "message": "发行说明",
+    "description": "Navbar item with label Release notes"
+  },
+  "item.label.FAQ": {
+    "message": "常见问题",
+    "description": "Navbar item with label FAQ"
   }
 }

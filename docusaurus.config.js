@@ -109,18 +109,18 @@ const config = {
             position: 'left',
             label: 'Docs',
           },
-          // TODO: 国际化
+          
           {
             type: 'dropdown',
             label: 'Resources',
             position: 'left',
             items: [
               {
-                label: '快速入门',
+                label: 'Quick start',
                 href: 'https://cnosdb.com',
               },
               {
-                label: '生态集成',
+                label: 'Eoo-integration',
                 href: 'https://cnosdb.com',
               },
               {
@@ -128,13 +128,9 @@ const config = {
                 href: 'https://cnosdb.com',
               },
               {
-                label: '常见问题',
+                label: 'FAQ',
                 href: 'https://cnosdb.com',
-              },
-              {
-                label: 'Community',
-                to: 'community',
-              },
+              }
             ],
           },
           // right
