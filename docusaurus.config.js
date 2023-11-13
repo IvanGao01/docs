@@ -144,8 +144,8 @@ const config = {
             position: 'right',
           },
           {
-            href: 'https://github.com/cnosdb/docs',
-            label: 'GitHub',
+            href: 'https://github.com/cnosdb/cnosdb',
+            className: "header-github-link",
             position: 'right',
           },
           {
