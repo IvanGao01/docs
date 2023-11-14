@@ -12,7 +12,7 @@ const url =
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'CnosDB',
-  tagline: 'Dinosaurs are cool',
+  tagline: 'CnosDB are cool',
   favicon: 'img/favicon.png',
 
   // Set the production url of your site here
@@ -48,13 +48,6 @@ const config = {
             // 如果你不需要覆盖默认值，你可以忽略这个语言（比如 zh-Hans）
     },
   },
-  scripts: [
-    // community 页面引入
-    {
-      src: 'https://apps.elfsight.com/p/platform.js',
-      defer: true,
-    },
-  ],
 
   presets: [
     [
@@ -62,6 +55,8 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          path: 'docs',
+          routeBasePath: 'docs',
           sidebarPath: require.resolve('./sidebars.js'),
           breadcrumbs: false,
           lastVersion: 'current',
@@ -89,6 +84,22 @@ const config = {
       }),
     ],
   ],
+  plugins: [
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'resource',
+        path: 'resource',
+        routeBasePath: 'resource',
+        breadcrumbs: false,
+        sidebarPath: require.resolve('./sidebarsResource.js'),
+        editCurrentVersion: true,
+        showLastUpdateAuthor: true, 
+        showLastUpdateTime: true,
+        // ... other options
+      },
+    ],
+  ],
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -110,30 +121,13 @@ const config = {
             position: 'left',
             label: 'Docs',
           },
-          
           {
-            type: 'dropdown',
-            label: 'Resources',
+            to: 'resource/start',
+            label: 'Resource',
+            sidebarId: "resourceSidebar",
             position: 'left',
-            items: [
-              {
-                label: 'Quick start',
-                href: 'https://cnosdb.com',
-              },
-              {
-                label: 'Eoo-integration',
-                href: 'https://cnosdb.com',
-              },
-              {
-                label: 'Release notes',
-                href: 'https://cnosdb.com',
-              },
-              {
-                label: 'FAQ',
-                href: 'https://cnosdb.com',
-              }
-            ],
           },
+          
           // right
           {
             type: 'docsVersionDropdown',
