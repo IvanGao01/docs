@@ -2,12 +2,12 @@
 sidebar_position: 3
 ---
 
-import Tabs from '@theme/Tabs';
+Import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # Wirte Data
 
-CnosDB supports a variety of write modes, and some examples are provided below. Contains common programming languages such as Java, Python, Rust, Golang, C++.包含 Java，Python，Rust，Golang，C++ 等常用的编程语言。
+CnosDB supports a variety of write modes, and some examples are provided below. Contains common programming languages such as Java, Python, Rust, Golang, C++.Contains common programming languages such as Java,Python,Rust,Golang, C++
 
 ### Insert One Record
 
@@ -44,9 +44,9 @@ CnosDB supports a variety of write modes, and some examples are provided below. 
 - **use api `/api/v1/write`**
 
   ```shell
-  curl -i -u "cnosdb:" -H "Accept: application/json" \
+  curl -i -u "cnosdb:" -H "Acept: application/json" \\
   -XPOST "http://127.0.0.1:8902/api/v1/write?db=oceanic_station" \
-  -d "air,station=XiaoMaiDao visibility=50,temperature=63,pressure=52 1642176000000000000"
+  -d "air,station=XiaoMaiDao visibility=50,temperature=63,pressure=52 164217600000000000000"
   ```
 
 ### Insert Multiple Records
@@ -64,8 +64,8 @@ CnosDB supports a variety of write modes, and some examples are provided below. 
 - **use api `/api/v1/write`**
 
   ```shell
-  curl -i -u "<username>:<password>" -H "Accept: application/json" \
-  -XPOST "http://<cnosdb_url>:<cnosdb_port>/api/v1/write?db=<database_name>&pretty=true" \
+  curl -i -u "<username>:<password>" -H "Acept: application/json" \
+  -XPOST "http://<cnosdb_url>:<cnosdb_port>/api/v1/write? b=<database_name>&pretty=true" \
   -d "<your data>
       <your data>"
   ```
@@ -78,8 +78,8 @@ CnosDB supports a variety of write modes, and some examples are provided below. 
 
   ```shell
   curl -i -u "cnosdb:" -H "Accept: application/json" \
-  -XPOST "http://127.0.0.1:8902/api/v1/sql?db=oceanic_station" \
-  -d "INSERT INTO air (TIME, station, visibility, temperature, pressure)
+  -XPOST "http://127.0.0. :8902/api/v1/sql? b=oceanic_station" \
+  -d "INSERT INTO air (TIME, station, visibility, temperature, Pressure)
   VALUES ('2022-10-19 05:40:00', 'XiaoMaiDao', 55, 68, 76), ('2022-10-19 04:40:00', 'XiaoMaiDao', 55, 68, 76);"
   ```
 - **use api `/api/v1/write`**
@@ -96,8 +96,8 @@ CnosDB supports a variety of write modes, and some examples are provided below. 
 #### Syntax
 
 ```shell
-curl -i -u "<username>:<password>" -H "Accept: application/json" \
--XPOST "http://<cnosdb_url>:<cnosdb_port>/api/v1/write?db=<database_name>&pretty=true" \
+curl -i -u "<username>:<password>" -H "Acept: application/json" \
+-XPOST "http://<cnosdb_url>:<cnosdb_port>/api/v1/write? b=<database_name>&pretty=true" \
 --data-binary @<data_file_path>
 ```
 
