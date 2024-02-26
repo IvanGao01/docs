@@ -11,12 +11,12 @@ order: 9
 
 | `UNION` will de-duplicate the merged result set.&#xA;`UNION ALL` will retain the same data in the merged result set.&#xA;`EXCEPT` will make the difference between the two result sets, return all non-duplicate values not found in the right query from the left query.&#xA;`INTERSECT` returns the intersection of the two result sets (that means, all non-duplicate values are returned by both queries). | Calculate the skewness value of the specified dimension after the two-dimensional statistical aggregation, and the method is `population`.                  | This schema is only visible to the Owner of the current tenant. |
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| BIGINT                                                                                                                                                                                                                                                                                                                                                                                                                            | COUNT(field) Returns the number of non-null values.                                                                                      | 8字节                                                             |
-| BIGINT UNSIGNED                                                                                                                                                                                                                                                                                                                                                                                                                   | This schema displays information about the role of the current user under the current tenant.                                                               | 8字节                                                             |
-| BOOLEAN                                                                                                                                                                                                                                                                                                                                                                                                                           | Stream QUERY statements are persisted and are cancelled by [KILL QUERY](#kill-query).                                                                       | 1字节                                                             |
-| TIMESTAMP                                                                                                                                                                                                                                                                                                                                                                                                                         | Status of SQL, including: ACCEPTING,DISPATCHING,ANALYZING,OPTMIZING,SCHEDULING                                                                              | 8字节                                                             |
+| BIGINT                                                                                                                                                                                                                                                                                                                                                                                                                            | COUNT(field) Returns the number of non-null values.                                                                                      | 8 Bytes                                                         |
+| BIGINT UNCIGNED                                                                                                                                                                                                                                                                                                                                                                                                                   | This schema displays information about the role of the current user under the current tenant.                                                               | 8 Bytes                                                         |
+| BOOLEN                                                                                                                                                                                                                                                                                                                                                                                                                            | Stream QUERY statements are persisted and are cancelled by [KILL QUERY](#kill-query).                                                                       | 1byte                                                           |
+| TIMESTAMP                                                                                                                                                                                                                                                                                                                                                                                                                         | Status of SQL, including: ACCEPTING,DISPATCHING,ANALYZING,OPTMIZING,SCHEDULING                                                                              | 8 Bytes                                                         |
 | STRING                                                                                                                                                                                                                                                                                                                                                                                                                            | This schema allows you to query information about all users in the cluster.                                                                                 | ***                                                             |
-| DOUBLE                                                                                                                                                                                                                                                                                                                                                                                                                            | WHERE sets conditions on the selected column before the GROUP BY clause, while HAVING clause sets conditions on the group generated by the GROUP BY clause. | 8字节                                                             |
+| DOUBLE                                                                                                                                                                                                                                                                                                                                                                                                                            | WHERE sets conditions on the selected column before the GROUP BY clause, while HAVING clause sets conditions on the group generated by the GROUP BY clause. | 8 Bytes                                                         |
 
 #### ROLLUP generates all grouping sets that are meaningful in this hierarchy. Whenever the value of column_1 changes, it will generate a subtotal line;
 
@@ -33,11 +33,11 @@ Calculate the ratio of Gauge change and time change.
 | Get Gauge changes over a period of time. This is simply increment, calculated by subtracting the last value seen from the first value. | SHARD: represents the number of data partitions, defaults to 1.                            | Calculate the number of data rows after two-dimensional statistical aggregation                                                                |
 | -------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------- |
 | BIGINT                                                                                                                                 | [{+-}]123                              | For regular users, only the part of the table in USAGE_SCHEMA that belongs to the current user tenant will be visible.    |
-| BIGINT UNSIGNED                                                                                                                        | [+]123                                 | All records of this schema are visible to all members of the current tenant.                                                                   |
+| BIGINT UNCIGNED                                                                                                                        | [+]123                                 | All records of this schema are visible to all members of the current tenant.                                                                   |
 | DOUBLE                                                                                                                                 | 123.45                                                                                     | The database belongs to a tenant. When a tenant is created, the database is automatically created and visible to all members under the tenant. |
-| BOOLEAN                                                                                                                                | {true \| false \| t \| f}                                                                  |                                                                                                                                                |
+| BOOLEN                                                                                                                                 | {true \| false \| t \| f}                                                                  |                                                                                                                                                |
 | STRING                                                                                                                                 | 'abc'                                                                                      | The CLUSTER_SCHEMA database belongs to the cluster, only the administrator users have the access to the database.         |
-| TIMESTAMP                                                                                                                              | TIMESTAMP '1900-01-01T12:00:00Z'                                                           | Join Operation                                                                                                                                 |
+| TIMESTAMP                                                                                                                              | TIMESTAMP '1900-01-01T12:00Z'                                                              | Join Operation                                                                                                                                 |
 | Geometry                                                                                                                               | Name of the system role that the custom role inherits from, or NULL if it is a system role | candlestick_agg gets the open and close price of the stock and the high price.                                            |
 | --                                                                                                                                     | NULL                                                                                       | At present, we support altering common tables.                                                                                                 |
 
@@ -112,30 +112,30 @@ Tenant ID
 Precedence
 ```
 
-| begin_time: This is optional and specifies the start time of the period.                                                                                                                                                                                                                                                              | Get the duration, the time of the last Gauge minus the time of the first Gauge.      |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
-| CUBE creates a grouping set for each possible combination of the specified expression set. First, GROUP BY (A, B, C), then (A, B), (A, C), (A), (B, C), (B), (C), and finally GROUP BY the entire table.              | `POINT (<x1> <y1>)`                                                                  |
-| When with AFTER, it is delayed deletion, which will be deleted after the specified time. The time supports days (d), hours (h), and minutes (m), such as 10d, 50h, 100m. When there is no unit, the default is day. The tenant is not visible and unavailable during the delayed deletion period. | `LINESTRING (<x1> <y1>, <x2> <y2>, ...)`                                             |
-| begin_time: This is optional and specifies the start time of the period.                                                                                                                                                                                                                                                              | `POLYGON ((<x1> <y1>, <x2> <y2>, ...))`                                              |
-| 多点                                                                                                                                                                                                                                                                                                                                                         | `MULTIPOINT (<x1> <y1>, <x2> <y2>, ...)`                                             |
-| Common users can access only the tenant information of the current session.                                                                                                                                                                                                                                                                                | `MULTILINESTRING ((<x1> <y1>, <x2> <y2>, ...), (<x1> <y1>, <x2> <y2>, ...))`         |
-| Note that the INSERT statement is recorded in (#ht).                                                                                                                                                                                                                                                                                    | `MULTIPOLYGON (((<x1> <y1>, <x2> <y2>, ...)), ((<x1> <y1>, <x2> <y2>, ...)))`        |
-| When data is written to the source table, the streaming query is triggered.                                                                                                                                                                                                                                                                                | `GEOMETRYCOLLECTION (<geometry tag1> <wkt data1>, <geometry tag2> <wkt data2>, ...)` |
+| begin_time: This is optional and specifies the start time of the period.                                                                                                                                                                                                                                                              | Get the duration, the time of the last Gauge minus the time of the first Gauge.    |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| CUBE creates a grouping set for each possible combination of the specified expression set. First, GROUP BY (A, B, C), then (A, B), (A, C), (A), (B, C), (B), (C), and finally GROUP BY the entire table.              | `POINT (<x1> <y1>)`                                                                |
+| When with AFTER, it is delayed deletion, which will be deleted after the specified time. The time supports days (d), hours (h), and minutes (m), such as 10d, 50h, 100m. When there is no unit, the default is day. The tenant is not visible and unavailable during the delayed deletion period. | `LINESTRING (<x1> <y1> <x2> <y2>, ..)`                                             |
+| begin_time: This is optional and specifies the start time of the period.                                                                                                                                                                                                                                                              | `POLYGON (<x1> <y1> <x2> <y2>, ...)`                                               |
+| Multipoint                                                                                                                                                                                                                                                                                                                                                 | `MULTIPINT (<x1> <y1> <x2> <y2>, ...)`                                             |
+| Common users can access only the tenant information of the current session.                                                                                                                                                                                                                                                                                | `MULTILINESTRING ((<x1> <y1> <x2> <y2>, ...), (<x1> <y1>, <x2> <y2>, ..)`          |
+| Note that the INSERT statement is recorded in (#ht).                                                                                                                                                                                                                                                                                    | `MULTIPOLYGON ((<x1> <y1> <x2> <y2>, ...),((<x1> <y1>, <x2> <y2>, ..)))`           |
+| When data is written to the source table, the streaming query is triggered.                                                                                                                                                                                                                                                                                | `GEOMETRYCOLLETION (<geometry tag1> <wkt data1> <geometry tag2> <wkt data2>, ...)` |
 
 #### -- Column definitions can not be specified for PARQUET filesCREATE EXTERNAL TABLE [ IF NOT EXISTS ] tb_name&#xA;( field_definition [, field_definition] ... ) tb_option;field_definition:&#xA;column_name data_type [ NULL ]tb_option: {&#xA;STORED AS { PARQUET | JSON | CSV | AVRO }&#xA;| [ WITH HEADER ROW ]&#xA;| [ DELIMITER 'a_single_char' ]&#xA;| [ PARTITIONED BY ( column_name, [, ... ] ) ]&#xA;| LOCATION '/path/to/file'&#xA;}
 
-| Record the number of times the output data passes through the Coordinator.                                                                       | **Function**: Return the number of rows retrieved in the selected element. | ROLLUP assumes a hierarchy between input columns.                                                                                                                                                                                          |
-| ------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| This view records the Body size of the HTTP request.                                                                                             | ![](/img/sql/SFA_Point.svg.png)                                            | POINT (30 10)                                                                                                                                                                                                           |
-| **Notice**: Only resources that are delayed deletion and during the delayed deletion period can be recovered by executing the RECOVER statement. | ![](/img/sql/102px-SFA_LineString.svg.png)                                 | LINESTRING (30 10, 10 30, 40 40)                                                                                                                                                                                        |
-| CnosDB supports updating the tag column value to NULL.                                                                                           | ![](/img/sql/SFA_Polygon.svg.png)                                          | POLYGON ((30 10, 40 40, 20 40, 10 20, 30 10))                                                                                                                                                        |
-|                                                                                                                                                  | ![](/img/sql/SFA_Polygon_with_hole.svg.png)                                | POLYGON ((35 10, 45 45, 15 40, 10 20, 35 10), (20 30, 35 35, 30 20, 20 30))                                                                                                       |
-| 多点                                                                                                                                               | ![](/img/sql/SFA_MultiPoint.svg.png)                                       | MULTIPOINT ((10 40), (40 30), (20 20), (30 10))                                                                                             |
-|                                                                                                                                                  |                                                                            | MULTIPOINT (10 40, 40 30, 20 20, 30 10)                                                                                                                                                                                 |
-| Common users can access only the tenant information of the current session.                                                                      | ![](/img/sql/102px-SFA_MultiLineString.svg.png)                            | MULTILINESTRING ((10 10, 20 20, 10 40), (40 40, 30 30, 40 20, 30 10))                                                                                                             |
-| A stream query statement is triggered when data is written.                                                                                      | ![](/img/sql/SFA_MultiPolygon.svg.png)                                     | MULTIPOLYGON (((30 20, 45 40, 10 40, 30 20)), ((15 5, 40 10, 10 20, 5 10, 15 5)))                                                           |
-|                                                                                                                                                  | ![](/img/sql/SFA_MultiPolygon_with_hole.svg.png)                           | MULTIPOLYGON (((40 40, 20 45, 45 30, 40 40)), ((20 35, 10 30, 10 10, 30 5, 45 20, 20 35), (30 20, 20 15, 20 25, 30 20))) |
-| For system administrators, the entire table in USAGE_SCHEMA is visible.                                                     | ![](/img/sql/SFA_GeometryCollection.svg.png)                               | GEOMETRYCOLLECTION (POINT (40 10), LINESTRING (10 10, 20 20, 10 40), POLYGON ((40 40, 20 45, 45 30, 40 40)))                                |
+| Record the number of times the output data passes through the Coordinator.                                                                       | **Function**: Return the number of rows retrieved in the selected element. | ROLLUP assumes a hierarchy between input columns.                                                                                                                                      |
+| ------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| This view records the Body size of the HTTP request.                                                                                             | ![](/img/sql/SFA_Point.svg.png)                                            | POINT (30 10)                                                                                                                                                       |
+| **Notice**: Only resources that are delayed deletion and during the delayed deletion period can be recovered by executing the RECOVER statement. | ![](/img/sql/102px-SFA_LineString.svg.png)                                 | LINESTRING (30 10, 10 30, 40 40)                                                                                                                                    |
+| CnosDB supports updating the tag column value to NULL.                                                                                           | ![](/img/sql/SFA_Polygon.svg.png)                                          | POLYGON (3010, 40 40, 20 40, 10 20, 30 10))                                                                                                                         |
+|                                                                                                                                                  | ![](/img/sql/SFA_Polygon_with_hole.svg.png)                                | POLYGON (35 10, 45 45, 15 40, 10 20, 35 10), (2030, 35 35, 30 20, 20 30)                                                                         |
+| Multipoint                                                                                                                                       | ![](/img/sql/SFA_MultiPoint.svg.png)                                       | MULTIPINT (10 40), (40 30), (20 20), (30 10))                                                              |
+|                                                                                                                                                  |                                                                            | MULTIPINT (10 40, 40 30, 20 20, 30 10)                                                                                                                              |
+| Common users can access only the tenant information of the current session.                                                                      | ![](/img/sql/102px-SFA_MultiLineString.svg.png)                            | MULTILINESTING (10 10, 20 20, 10 40), (40 40, 30 30, 40 20, 30 10))                                                                              |
+| A stream query statement is triggered when data is written.                                                                                      | ![](/img/sql/SFA_MultiPolygon.svg.png)                                     | MULTIPOLYGON ((3020, 45 40, 10 40, 30 20)), (155, 40 10, 10 20, 5 10, 15 5))                                                  |
+|                                                                                                                                                  | ![](/img/sql/SFA_MultiPolygon_with_hole.svg.png)                           | MULTIPOLYGON (40 40, 20 45, 45 30, 40 40)), (2035, 10 30, 10 , 30 5, 45 20, 20 35), (30 20, 20, 15, 20 25, 30 20))            |
+| For system administrators, the entire table in USAGE_SCHEMA is visible.                                                     | ![](/img/sql/SFA_GeometryCollection.svg.png)                               | GEOMETRYCOLLECTION (POINT (40 10), LINESTRING (10 10, 20 20, 10 40), POLYGON (40 40, 20 45, 45 30, 40 40)) |
 
 ### Interval type is STRING, which will be resolved to time interval.
 
@@ -145,9 +145,9 @@ Precedence
 CREATE DATABASE [IF NOT EXISTS] db_name [WITH db_options];
 
 db_options:
-    db_option ...
+    db_option...
 
-db_option: {
+db_option: LO
       TTL value
     | SHARD value
     | VNODE_DURATION value
@@ -182,12 +182,12 @@ SHOW DATABASES;
 #### CnosDB store the shema information in two specific databases:
 
 ```
-+-----------------+
-| database_name   |
-+-----------------+
-| oceanic_station |
-| public          |
-+-----------------+
++-------- +
+| database_name |
++-------+
+| oceanic_station|
+| public |
++---+ +
 ```
 
 ### The next offset line of the current line in the `offset FOLLOWING` ROWS mode. The next offset value of the current value in the RANGE mode.
@@ -201,8 +201,8 @@ Count the duration of a state, or count the duration of a state in a certain per
 ```
 
 ```
-public ❯ \c oceanic_station
-oceanic_station ❯
+Public employee \c oceanic_station
+oceanic_stage leader
 ```
 
 ### interval_time: This is optional and specifies the duration of the time interval or infinity if not specified.
@@ -217,7 +217,7 @@ The expression of time interval:
 
 **Function**: x returns the approximate percentage (TDigest) of the weighted input value, where w is the weight column expression and p is a floating point 64 between 0 and 1 inclusive.
 
-Common users can access only the tenant information of the current session.延迟删除期间数据库不可见且不可用。
+Common users can access only the tenant information of the current session.The database is not visible and unavailable during the delay deletion.
 
 #### This schema records the amount of disk space, in bytes, occupied by each vnode in the cluster.
 
@@ -225,7 +225,7 @@ Common users can access only the tenant information of the current session.延�
 RECOVER DATABASE [IF EXISTS] db_name;
 ```
 
-取消延迟删除，数据库恢复正常状态。
+Cancel Delay Deletion and Database Revert
 
 Distance between two points.
 
@@ -245,7 +245,7 @@ ALTER DATABASE db_name [alter_db_options]
 alter_db_options:
     SET db_option
 
-db_option: {
+db_option: LO
       TTL value
     | SHARD value
     | VNODE_DURATION value
@@ -295,7 +295,7 @@ If a complex expression has more than one operator, operator precedence determin
 
 ```sql
 CREATE TABLE [IF NOT EXISTS] tb_name
-(field_definition [, field_definition ] ... [, TAGS(tg_name [, tg_name] ...)]);
+(field_definition [, field_definition]... [, TAGS(tg_name [, tg_name]... ]);
 
 field_definition:
     column_name data_type [field_codec_type]
@@ -313,7 +313,7 @@ field_codec_type:
 
 - BIGINT/BIGINT UNSIGNED: DELTA, QUANTILE, SDT, DEADBAND, NULL
 - DOUBLE: GORILLA, QUANTILE, SDT, DEADBAND, NULL
-- STRING: SNAPPY, ZSTD, GZIP, BZIP, ZLIB, NULL
+- STRING: SNPY, ZSTD, GZIP, BZIP, ZLIB, NULL
 - BOOLEAN: BITPACK, NULL
 
 Role name
@@ -321,11 +321,11 @@ Role name
 #### The core idea of linear interpolation is to assume that the relationship between the known data points is linear, and then estimate the value of the unknown data points according to the linear relationship between the known data points. Specifically, linear interpolation deduces the ordinates of unknown data points by using the linear rate of change between the ordinates of known data points.
 
 ```sql
-CREATE TABLE air (
-   visibility DOUBLE,
+CREATE TABair (
+   vision DOUBLE,
    temperature DOUBLE,
    pressure DOUBLE,
-   TAGS(station)
+   TAGS (station)
 );
 ```
 
@@ -358,15 +358,15 @@ Time Stamp
 
 ```sql
 CREATE EXTERNAL TABLE cpu (
-     cpu_hz  DECIMAL(10,6) NOT NULL,
-     temp  DOUBLE NOT NULL,
-     version_num  BIGINT NOT NULL,
-     is_old  BOOLEAN NOT NULL,
-     weight  DECIMAL(12,7) NOT NULL
-)
+     cpu_hz DECIMAL (10,6) NOT NULL,
+     temp DOUBLE NOT NULL,
+     version_num BIGINT NOT NULL,
+     is_old BOOLEN NOT NULL,
+     Weight DECIMAL (12), ) NOT NULL
+
 STORED AS CSV
 WITH HEADER ROW
-LOCATION 'tests/data/csv/cpu.csv';
+LOCATON 'tests/data/csv/cpu. sv';
 ```
 
 ```
@@ -406,18 +406,18 @@ SHOW TABLES;
 ```
 
 ```
-+------------+
++---+
 | table_name |
-+------------+
-| air        |
-| sea        |
-| wind       |
-+------------+
++---------
+| air |
+| sea |
+| wind |
++---+ +
 ```
 
 ### The CTE defined in the WITH clause can only be used for other CTEs in the same WITH clause defined later.&#xA;Suppose A is the first CTE in the clause and B is the second CTE in the clause:
 
-外部表和普通表的模式都可以使用该语句查看。
+Both external and normal tables can be viewed using this statement.
 
 #### Current row in `CURRENT ROW` ROWS  mode.Current value in RANGE mode.
 
@@ -428,7 +428,7 @@ DESCRIBE DATABASE table_name;
 #### ALTER TABLE tb_name alter_table_option;alter_table_option: {&#xA;ADD TAG col_name&#xA;| ADD FIELD col_name [CODEC(code_type)]&#xA;| ALTER col_name SET CODEC(code_type)&#xA;| DROP col_name&#xA;| RENAME COLUMN col_name TO new_col_name&#xA;}
 
 ```sql
-DESCRIBE TABLE air;
+DESCREIBE TABLE air;
 ```
 
 ```
@@ -459,7 +459,7 @@ The correlation after aggregation of two-dimensional statistics is calculated.
 Show the result
 ```
 
-> 不支持修改 `time` 列名。
+> Modifying the `time` column name is not supported.
 > Description
 
 #### resolution: Bigint, the approximate number of points to return ((Timestamp, value) pair), determines the horizontal resolution of the resulting plot.
@@ -483,7 +483,7 @@ Calculate the average of the specified dimensions after the aggregation of 2-D s
 #### Analyze Gauge data. Unlike Counter, Gauge can be decreased or increased.
 
 ```sql
-INSERT [INTO] tb_name [ ( column_name [, ...] ) ] VALUES (  const [, ...] ) [, ...] | query; 
+INSERT [INTO] tb_name [ ( column_name [, ...]) ] VALUES ( const [, ...]) [, ...] | query; 
 ```
 
 This is equivalent to inserting the following k-v pairs into the database.
@@ -506,11 +506,11 @@ Name of the role granted
 #### **Function**: Returns the rank (consecutive rank) of a value relative to all values in the partition.
 
 ```sql
-CREATE TABLE air (
-    visibility DOUBLE,
+CREATE TABair (
+    vision DOUBLE,
     temperature DOUBLE,
     pressure DOUBLE,
-    TAGS(station)
+    TAGS (station)
 );
 ```
 
@@ -524,11 +524,11 @@ INSERT INTO air (TIME, station, visibility, temperature, pressure) VALUES
 ```
 
 ```
-+------+
++---+
 | rows |
-+------+
-| 1    |
-+------+
++---+
+| 1|
++---+
 Query took 0.044 seconds.
 ```
 
@@ -538,11 +538,11 @@ INSERT INTO air (TIME, station, visibility, temperature, pressure) VALUES
 ```
 
 ```
-+------+
++---+
 | rows |
-+------+
-| 1    |
-+------+
++---+
+| 1|
++---+
 Query took 0.032 seconds.
 ```
 
@@ -576,11 +576,11 @@ INSERT INTO air (TIME, station, visibility, temperature, pressure) VALUES
 ```
 
 ```
-+------+
++---+
 | rows |
-+------+
-| 2    |
-+------+
++---+
+| 2 |
++---+
 Query took 0.037 seconds.
 ```
 
@@ -618,11 +618,11 @@ Multi-polygon
 ```
 
 ```
-+------+
++---+
 | rows |
-+------+
-| 4    |
-+------+
++---+
+| 4 |
++---+
 Query took 0.045 seconds.
 ```
 
@@ -648,22 +648,22 @@ SELECT * FROM air_visibility;
 Instructions
 
 ```
-CREATE TABLE air (
-    visibility DOUBLE,
+CREATE TABair (
+    vision DOUBLE,
     temperature DOUBLE,
     pressure DOUBLE,
     TAGS(station)
-);
+;
 INSERT INTO air (TIME, station, visibility, temperature) VALUES
-(1666165200290401000, 'XiaoMaiDao', 56, 69);
+(166616520029040000, 'XiaoMaiDao', 56, 69);
 ```
 
 Geometry-collection
 
-| key                                                    | visibility-value | temperature-value | pressure-value |
-| ------------------------------------------------------ | ---------------- | ----------------- | -------------- |
-| (1666165200290401000, 'XiaoMaiDao') | 56               |                   |                |
-| (1666165200290401000, 'XiaoMaiDao') |                  | 69                |                |
+| Key                                                   | visibility-value | Temperature-value | Pressure-value |
+| ----------------------------------------------------- | ---------------- | ----------------- | -------------- |
+| (166616520029040100, 'XiaoMaiDao') | 56               |                   |                |
+| (166616520029040100, 'XiaoMaiDao') |                  | 69                |                |
 
 CnosDB supports updating single or multiple field column values separately. It does not support updating tag column and field column at the same time.
 
@@ -681,14 +681,14 @@ Instructions
 
 ```sql
 INSERT INTO air (TIME, station, visibility) VALUES
-(1666165200290401000, 'XiaoMaiDao', 66);
+(166616520029040100, 'XiaoMaiDao', 66);
 ```
 
-相当于插入
+Equivalent to insert
 
-| key                                                    | visibility-value | temperature-value | pressure-value |
-| ------------------------------------------------------ | ---------------- | ----------------- | -------------- |
-| (1666165200290401000, 'XiaoMaiDao') | 66               |                   |                |
+| Key                                                   | visibility-value | Temperature-value | Pressure-value |
+| ----------------------------------------------------- | ---------------- | ----------------- | -------------- |
+| (166616520029040100, 'XiaoMaiDao') | 66               |                   |                |
 
 Tenant name
 
@@ -704,14 +704,14 @@ select * from air;
 
 ```sql
 INSERT INTO air (TIME, station, pressure) VALUES
-(1666165200290401000, 'XiaoMaiDao', 77);
+(166616520029040000, 'XiaoMaiDao', 77);
 ```
 
-相当于插入
+Equivalent to insert
 
-| key                                                    | visibility-value | temperature-value | pressure-value |
-| ------------------------------------------------------ | ---------------- | ----------------- | -------------- |
-| (1666165200290401000, 'XiaoMaiDao') |                  |                   | 77             |
+| Key                                                   | visibility-value | Temperature-value | Pressure-value |
+| ----------------------------------------------------- | ---------------- | ----------------- | -------------- |
+| (166616520029040100, 'XiaoMaiDao') |                  |                   | 77             |
 
 ```
 select * from air;
@@ -745,7 +745,7 @@ Size
 #### Add Column: add field and tag columns.
 
 ```sql
-update air set station = 'ShangHai' where station = 'LianYunGang';
+Update air set station = 'ShangHai' where station = 'LianYunGang';
 ```
 
 ### This view records the number of times the user writes to the DB over HTTP.
@@ -753,9 +753,9 @@ update air set station = 'ShangHai' where station = 'LianYunGang';
 #### -- station is a Tag column&#xA;SELECT station FROM air;
 
 ```sql
-UPDATE table_name SET ( assignment_clause [, ...] ) where_clause
+UPDATE table_name SET ( assignment_clause [, ...]) where_clause
 
-assignment clause :
+assignment clause:
     field_name = value_expression
 ```
 
@@ -766,7 +766,7 @@ assignment clause :
 #### CnosDB supports updating single or multiple tag column values separately. It does not support updating tag column and field column at the same time.
 
 ```sql
-update air set pressure = pressure + 100 where pressure = 68 and time < '2023-01-14T16:03:00';
+Update air set pressure = pressure + 100 where pressure = 68 and time < '2023-01-14T16:03:00';
 ```
 
 ## The `CASE WHEN` expression is used when the expression needs different values depending on the situation.
@@ -799,7 +799,7 @@ Get the time of the opening price.
 
 ### `1997-01-31 09:26:56.123` # Close to RCF3339, replace T by space, and no time zone is specified
 
-Count the time of 'running' status.后面章节中引用的数据源都来自此示例数据。
+Count the time of 'running' status.The data sources cited in the subsequent sections are derived from this sample data.
 
 ### HAVING enables you to specify filter conditions after the GROUP BY clause, so as to control which groups in the query results can appear in the final results.
 
@@ -819,7 +819,7 @@ curl -o oceanic_station.txt https://dl.cnosdb.com/sample/oceanic_station.txt
   ```
 - Comparing expressions to see if they are less than or equal to
   ```shell
-  create database oceanic_station;
+  Create database oceanic_station;
   ```
 - STORED AS: represents the format in which the file is stored. Currently, PARQUET, JSON, CSV and AVRO formats are supported.
   ```shell
@@ -838,33 +838,33 @@ curl -o oceanic_station.txt https://dl.cnosdb.com/sample/oceanic_station.txt
 #### **Function**: Create a STRUCT with the specified field value.
 
 ```sql
-[ WITH with_query [, ...] ]
-SELECT [ ALL | DISTINCT ] select_expression [, ...]
-    [ FROM from_item [, ...] ]
+[ WITH with_query [, ...]
+SELECT [ ALL | DISTINCT ] select_expression [, . .]
+    [ FROM from_item[, . ]
     [ WHERE condition ]
-    [ GROUP BY [ ALL | DISTINCT ] grouping_element [, ...] ]
+    [ GROUP BY [ ALL | DISTINCT ] grouping_element[, ... ]
     [ HAVING condition ]
-    [ { UNION | INTERSECT | EXCEPT } [ ALL | DISTINCT ] select ]
-    [ ORDER BY expression [ ASC | DESC ] [, ...] ]
+    [ { UNION | INTERSECT | EXCEPT } [ ALL | DISTINCT] select]
+    [ ORDER BY expression [ ASC | DESC ] [, , . ]
     [ OFFSET count ]
     [ LIMIT { count | ALL } ];
 
 -- from_item
 -- 1.
-    tb_name [ [ AS ] alias [ ( column_alias [, ...] ) ] ]
--- 2.
-    from_item join_type from_item
-    { ON join_condition | USING ( join_column [, ...] ) }
+    tb_name [ AS ] alias [ ( column_alias [, ...]] ]
+-2.
+    from_item_join_type from_item_item_
+    ) }
 
 -- join_type
     [ INNER ] JOIN
-    LEFT [ OUTER ] JOIN
-    RIGHT [ OUTER ] JOIN
-    FULL [ OUTER ] JOIN
+    LEFT [ OUTE] JOIN
+    RIGHT [ OUTE] JOIN
+    FULL [ OUTE] JOIN
     CROSS JOIN
 
 -- grouping_element
-    ()
+()
 ```
 
 ### **Functions**: Convert WKB binary to Geometry type.
@@ -908,7 +908,7 @@ SELECT [ ALL | DISTINCT ] select_expression [, ...];
 ```
 
 Count the duration of the 'running' state for four days starting on 2020-01-01 11:00:00.
-Schema Definition不指定此选项时，默认值为`ALL`。
+Schema DefinitionWhen this option is not specified, the default value is `ALL`.
 
 #### `where_clause` can only contain tag and time columns, not field columns.
 
@@ -936,7 +936,7 @@ SELECT DISTINCT station, visibility FROM air;
 ```
 
 ```sql
-SELECT station, visibility FROM air;
+SELECT, visibility FROM air;
 ```
 
 ```
@@ -963,18 +963,18 @@ SELECT station, visibility FROM air;
 
 Calculate the sum of the specified dimensions after the two-dimensional statistical aggregation, and the method is `population`.
 
-### 为列表达式取别名
+### Pick alias for column expression
 
 #### PARTITIONED BY: use the column specified when creating the table to partition.
 
 ```sql
-expression [ [ AS ] column_alias ]
+Express [ AS ] column_alias ]
 ```
 
 #### In databases, interpolation is a technique used to deal with missing values in data. When there are missing values in the data, these techniques can help us estimate or speculate on those missing values, thus filling in the gaps in the data.
 
 ```sql
-SELECT station s, visibility AS v FROM air;
+SELECT stations, visibility AS v FROM air;
 ```
 
 ```
@@ -1011,7 +1011,7 @@ FROM tb_name [AS] alias_name
 
 ```sql
 SELECT a.visibility, s.temperature
-FROM air AS a JOIN sea s ON a.temperature = s.temperature limit 10;
+FROM air AS a JOIN sea ON a.temperature = s.temperature limit 10;
 ```
 
 ```
@@ -1060,12 +1060,12 @@ FROM air AS a JOIN sea s ON a.temperature = s.temperature limit 10;
   ```
 
   ```
-  +-------------+
-  | station     |
-  +-------------+
-  | XiaoMaiDao  |
+  +---+
+  | Station |
+  +------
+  | XiaoMaiDao |
   | LianYunGang |
-  +-------------+ 
+  +---+ 
   ```
 
 ### External tables do not exist in the database, but an operating system file is accessed as a common database table.
@@ -1131,7 +1131,7 @@ FROM air OFFSET 10;
 
 The tenant to which the vnode belongs
 Role name under the tenant
-OFFSET 0与省略OFFSET子句效果相同。
+OFFSET 0 has the same effect as omitting OFFSET sentences.
 
 #### The keyword `VALUES` can be followed by multiple lists separated by `,`.
 
@@ -1155,48 +1155,48 @@ FROM air LIMIT 3 OFFSET 3;
 #### **Function**: Return a value truncated to the unit specified in field.
 
 ```sql
-WITH cte AS cte_query_definiton [, ...] query
+WITH cte AS cte_query_definiton [, ..] query
 ```
 
-可选。`slide_duration` is an interval, and specifies the sliding size of the time window. If this parameter is not specified, `slide_duration` is the sliding size of the time window and becomes a rolling window.
-geometry objectCTE使用规则如下：
+Optional.`slide_duration` is an interval, and specifies the sliding size of the time window. If this parameter is not specified, `slide_duration` is the sliding size of the time window and becomes a rolling window.
+geometry objectThe following rules for use by CTE are：
 
 - Aggregate function array_agg's return type .
 - Note
-  假设A是子句中的第一个CTE，B是子句中的第二个CTE：
+  Assume A is the first CTE, B is the second CTE：
 
 #### **Function**: Return a concatenated string separated by sep.
 
 ```sql
-SELECT station, avg 
-FROM (  SELECT station, AVG(visibility) AS avg 
+SELECT, avg 
+FROM ( SELECT station, AVG(visibility) AS avg 
         FROM air 
-        GROUP BY station) AS x;
+        GROUP station) AS x;
 ```
 
 ```
-+-------------+--------------------+
-| station     | avg                |
-+-------------+--------------------+
-| XiaoMaiDao  | 62.285714285714285 |
-| LianYunGang | 70.33333333333333  |
-+-------------+--------------------+
++-----+-------------------- +
+| station | avg |
++---------------------------
+| XiaoMaiDao | 62.2857142857147142872872885 |
+| LianYunGang | 70.33333333333333333 |
++------+ ---+
 ```
 
 ```sql
 WITH x AS 
-    (SELECT station, AVG(visibility) AS avg FROM air GROUP BY station)
-SELECT station, avg
+    (SLECT, AVG(visibility) AS avg FROM air GROUP BY station)
+SELECT, avg
 FROM x;
 ```
 
 ```
-+-------------+--------------------+
-| station     | avg                |
-+-------------+--------------------+
-| XiaoMaiDao  | 62.285714285714285 |
-| LianYunGang | 70.33333333333333  |
-+-------------+--------------------+
++-----+-------------------- +
+| station | avg |
++---------------------------
+| XiaoMaiDao | 62.2857142857147142872872885 |
+| LianYunGang | 70.33333333333333333 |
++------+ ---+
 ```
 
 ### Calculate the intercept of x after two-dimensional statistical aggregation.
@@ -1212,7 +1212,7 @@ select_clause_set_right
 [sort_list_columns] [limit_clause]
 ```
 
-`UNION` 会对合并的结果集去重。
+`UNION` weights the merged resultset.
 Type
 User name under tenant
 Role name
@@ -1232,45 +1232,45 @@ Time range of data in shard
   ```
 
   ```
-  +------------+
-  | visibility |
-  +------------+
-  | 53         |
-  | 56         |
-  | 50         |
-  | 67         |
-  | 65         |
-  | 53         |
-  | 74         |
-  | 71         |
-  | 78         |
-  | 79         |
-  +------------+
+  +---+
+  | visible |
+  +--------
+  | 53 |
+  | 56 |
+  | 50 |
+  | 67 |
+  | 65 |
+  | 53 |
+  74 |
+  | 71 |
+  | 78 |
+  | 79 |
+  +--+
   ```
 
 - **UNION**
 
   ```sql
-  SELECT visibility FROM air WHERE temperature < 60
+  SELECT vision FROM air WHERE temperature < 60
   UNION
   SELECT visibility FROM air WHERE temperature > 50 LIMIT 10;
   ```
 
   ```
-  +------------+
+  +---+
   | visibility |
-  +------------+
-  | 53         |
-  | 56         |
-  | 50         |
-  | 67         |
-  | 65         |
-  | 74         |
-  | 71         |
-  | 78         |
-  | 79         |
-  | 59         |
-  +------------+
+  +--------
+  | 53 |
+  | 56 |
+  | 50 |
+  | 67 |
+  | 65 |
+  | 74 |
+  | 71 |
+  | 78 |
+  | 79 |
+  | 59 |
+  +-+
   ```
 
 - **EXCEPT**
@@ -1282,20 +1282,20 @@ Time range of data in shard
   ```
 
   ```
-  +------------+
-  | visibility |
-  +------------+
-  | 56         |
-  | 50         |
-  | 67         |
-  | 65         |
-  | 53         |
-  | 74         |
-  | 71         |
-  | 78         |
-  | 79         |
-  | 59         |
-  +------------+
+  +---+
+  | visitity |
+  +---+
+  | 56 |
+  | 50 |
+  | 67 |
+  | 65 |
+  | 53 |
+  | 74 |
+  | 71 |
+  | 78 |
+  | 79 |
+  | 59 |
+  +--+
   ```
 
 - **INTERSECT**
@@ -1303,29 +1303,29 @@ Time range of data in shard
   ```sql
   SELECT visibility FROM air
   INTERSECT
-  SELECT visibility FROM air WHERE temperature > 50 LIMIT 10;
+  SELECT visibility ROM ROM air WHERE temperature > 50 LIMIT 10;
   ```
 
   ```
-  +------------+
-  | visibility |
-  +------------+
-  | 56         |
-  | 50         |
-  | 67         |
-  | 65         |
-  | 53         |
-  | 74         |
-  | 71         |
-  | 78         |
-  | 79         |
-  | 59         |
-  +------------+
+  +---+
+  | visitity |
+  +---+
+  | 56 |
+  | 50 |
+  | 67 |
+  | 65 |
+  | 53 |
+  | 74 |
+  | 71 |
+  | 78 |
+  | 79 |
+  | 59 |
+  +--+
   ```
 
 ### This schema shows a real-time snapshot of SQL statements, which is used to monitor SQL jobs in real time.
 
-按引用的表达式对结果进行排序。默认情况使用升序 (ASC)。Measurement value
+Sort results by referenced expression.Default usage ascending (ASC).Measurement value
 
 #### Window functions and aggregate functions cannot be nested in window functions.
 
@@ -1404,8 +1404,8 @@ SELECT * FROM air ORDER BY station, temperature;
 ## Drop Column: drop the field column. When dropping a column results in dropping the last field value of a row, we think that this row has no value, and this row will not be showed in SELECT.
 
 Get the smallest timestamp in the gauge
-简单表达式可以是一个常量、变量、列或标量函数。
-可以用运算符将两个或更多的简单表达式联接起来组成复杂表达式。
+Simple expression can be a constant, variable, column or number function.
+Two or more simple expressions can be connected to complex expressions with an operator.
 
 #### `1997-01-31T09:26:56.123+08:00` # Standard RCF3339, East 8th District
 
@@ -1424,20 +1424,20 @@ Get the smallest timestamp in the gauge
 #### `CROSS JOIN` is not supported currently.
 
 The time_window_gapfill must be used as a top-level expression in a query or subquery. For example, you cannot nest time_window_gapfill in another function, such as sum(time_window_gapfill(xxx)).
-详细内容请阅览[常量](#常量)。
+See[常量](#constants) for details.
 
 #### In CnosDB-Cli, you can use the following command to switch to the specified database.
 
 ```sql
-select 1;
+Select 1;
 ```
 
 ```
-+----------+
++---+
 | Int64(1) |
-+----------+
-| 1        |
-+----------+
++---+
+| 1 |
++---+ +
 ```
 
 #### CnosDB supports two data inserting methods:&#xA;one is to use the `INSERT INTO` statement,&#xA;and the other is to use the HTTP API [write](./rest_api.md) interface to insert Line Protocol format data.
@@ -1467,13 +1467,13 @@ Describe the parameters of the database and the pattern of the table.
 | %                                                                           | CnosDB provides the system to check the status and information of CnosDB clusters. The system schema is a read-only schema. You can query the system schema using the SQL statement.                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | \|\&#124                                                                    | Calculates the earliest instantaneous change in Gauge. This is equal to the second value minus the first.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | =                                                                           | **Function**: Randomly select N records from the given column_key.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| !=、 <\&gt                                                                   | `event_time_column` Specifies the event time column. The data type of this column must be TIMESTAMP.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| !=, <\&gt                                                                   | `event_time_column` Specifies the event time column. The data type of this column must be TIMESTAMP.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | <                                                                           | There is no need to create a timestamp column when creating a table. The system automatically adds a timestamp column named "time".                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | <=                                                                          | CnosDB provides geometry functions in the ST_Geometry SQL family. For the Geometry type, see the [Geometry](#geometry) data types section.                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | &gt;                                                                   | The database contains metadata information about the cluster, such as tenant information and user information.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | > =                                                                         | Column type, unique to the tskv table, supports TIME, TAG, FIELD, and usually Field                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| AND                                                                         | CnosDB provides `ROLLUP`, `CUBE` and other complex grouping operations, enabling you to operate query results in different ways.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| OR                                                                          | Time of record                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| ND                                                                          | CnosDB provides `ROLLUP`, `CUBE` and other complex grouping operations, enabling you to operate query results in different ways.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| Other business                                                              | Time of record                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | LIKE                                                                        | INFORMATION_SCHEMA : The information of the tenant.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 
 ### candlestick_agg generates intermediate aggregate data CandleStackData from raw quote data,
@@ -1481,31 +1481,31 @@ Describe the parameters of the database and the pattern of the table.
 #### DELIMITER: only effective in csv format, representing the delimiter of column data.
 
 ```sql
-expr BETWEEN expr AND expr
+expr BEETWEEN expr and expr
 ```
 
 #### Tenant name of the database to which the permission is granted
 
 ```sql
-SELECT DISTINCT PRESSURE FROM AIR WHERE PRESSURE BETWEEN 50 AND 60;
+SELECT DISTINCT PRESSURE FROM FROM AIR WHERE PRESSURE BETWEEN 50 and 60;
 ```
 
 ```
-+----------+
++---+
 | pressure |
-+----------+
-| 52       |
-| 54       |
-| 57       |
-| 50       |
-| 60       |
-| 51       |
-| 56       |
-| 58       |
-| 59       |
-| 53       |
-| 55       |
-+----------+
++------+
+| 52 |
+| 54 |
+| 57 |
+| 50 |
+| 6 |
+| 51 |
+| 56
+| 58 |
+| 59 |
+| 53 |
+| 55 |
++---+
 ```
 
 **Drop Database**
@@ -1517,7 +1517,7 @@ as follows:
 #### **Function**: Calculate sha224 hash value of the string str.
 
 ```sql
-SELECT station, temperature, visibility FROM air WHERE temperature  IN (68, 69);
+SELECT position, temperature, vision FROM air WHERE temperature IN (68, 69);
 ```
 
 ```
@@ -1541,7 +1541,7 @@ Total write traffic size
 
 ```sql
 CASE
-    ( WHEN expression THEN result1 [, ...] )
+    ( WHEN expression THEN result1 [, ...])
     ELSE result
 END;
 ```
@@ -1575,18 +1575,18 @@ FROM AIR;
 
 ### You can also use `INSERT SELECT` to insert query data into the table.
 
-The distance between the plane and the plane. 执行顺序可能对结果值有明显的影响。
+The distance between the plane and the plane. The order of implementation may have a clear impact on the value of results.
 
-运算符的优先级别如下表中所示。 在较低级别的运算符之前先对较高级别的运算符进行求值。 Query took 0.030 seconds.
+The priority level of the operator is shown in the table below. The higher level operator is valued before the lower level operator. Query took 0.030 seconds.
 
-| 级别 | WITH HEADER ROW: Effective only in csv file format, representing with csv header.                                                        |
-| -- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| 2  | Stream queries support only `INSERT SELECT` statements, where the FROM clause is the stream table and is inserted into the target table. |
-| 3  | If the SELECT clause contains only the Tag column, it is equivalent to the SELECT DISTINCT Tag column.                                  |
-| 4  | The tenant of the database                                                                                                               |
-| 10 | NOT                                                                                                                                      |
-| 9  | AND                                                                                                                                      |
-| 5  | BETWEEN、IN、LIKE、OR                                                                                                                       |
+| Level | WITH HEADER ROW: Effective only in csv file format, representing with csv header.                                                        |
+| ----- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| 2     | Stream queries support only `INSERT SELECT` statements, where the FROM clause is the stream table and is inserted into the target table. |
+| 3     | If the SELECT clause contains only the Tag column, it is equivalent to the SELECT DISTINCT Tag column.                                  |
+| 4     | The tenant of the database                                                                                                               |
+| 10    | NOT                                                                                                                                      |
+| 9     | ND                                                                                                                                       |
+| 5     | BETWEEN, IN, LIKE, OR                                                                                                                    |
 
 ### **SHOW**
 
@@ -1605,11 +1605,11 @@ SHOW DATABASES;
 ```
 
 ```
-+---------------+
++------+
 | database_name |
-+---------------+
-| public        |
-+---------------+
++--+
+| public |
++-----+ +
 ```
 
 ```sql
@@ -1617,13 +1617,13 @@ SHOW TABLES;
 ```
 
 ```
-+------------+
++---+
 | table_name |
-+------------+
-| air        |
-| sea        |
-| wind       |
-+------------+
++---------
+| air |
+| sea |
+| wind |
++---+ +
 ```
 
 ```sql
@@ -1657,11 +1657,11 @@ SHOW SERIES FROM air WHERE station = 'XiaoMaiDao' ORDER BY key LIMIT 1;
 ```
 
 ```
-+------------------------+
-| key                    |
-+------------------------+
++-------- +
+| key |
++--------------------
 | air,station=XiaoMaiDao |
-+------------------------+
++--+ + +
 ```
 
 CnosDBSQL is inspired by [DataFusion](https://arrow.apache.org/datafusion/user-guide/introduction), We support most of the SQL syntax of DataFusion.
@@ -1673,7 +1673,7 @@ x: double
 #### To create a stream table, a source table is required. The stream table does not support `ALTER` now.
 
 ```sql
-SHOW TAG VALUES [ON database_name] FROM table_name WITH KEY [<operator> "<tag_key>" | [[NOT] IN ("<tag_key1>", ..)]] [WHERE expr] [order_by_clause] [limit_clause];
+SHOW TAG VALUES [ON database_name] FROM table_name WITH KEY [<operator> "<tag_key>| [[NOT] IN ("<tag_key1>", . )]] [WHERE expr] [order_by_clause] [limit_clause];
 ```
 
 Time of record
@@ -1693,7 +1693,7 @@ SHOW TAG VALUES FROM air WITH KEY = "station" WHERE station = 'XiaoMaiDao' ORDER
 ```
 
 ```sql
-SHOW TAG VALUES FROM air WITH KEY NOT IN ("station1");
+SHOW TAG VALUES FROM FROM air WITH KEY NOT IN ("station1");
 ```
 
 ```
@@ -1710,7 +1710,7 @@ SHOW TAG VALUES FROM air WITH KEY NOT IN ("station1");
 #### If there are still missing values at the end of the data series, the last non-missing value is copied until all missing values are filled in.
 
 ```sql
-EXPLAIN [ ANALYZE ] [ VERBOSE ] <statement>;
+EXPLIN [ ANALYZE ] [ VERBOSE ] <statement>;
 ```
 
 Binary operators supported now:
@@ -1724,7 +1724,7 @@ Constant
 #### The names of the columns need to be different.
 
 ```sql
-EXPLAIN SELECT station, temperature, visibility FROM air;
+EXPLIN SELECT station, temperature, vision FROM air;
 ```
 
 ```
@@ -1740,7 +1740,7 @@ EXPLAIN SELECT station, temperature, visibility FROM air;
 ```
 
 ```sql
-EXPLAIN ANALYZE SELECT station, temperature, visibility FROM air;
+EXPLIN ANALYZE SELECT station, temperature, vision FROM air;
 ```
 
 ```
@@ -1754,7 +1754,7 @@ EXPLAIN ANALYZE SELECT station, temperature, visibility FROM air;
 ```
 
 ```sql
-EXPLAIN ANALYZE SELECT station, temperature, visibility FROM air;
+EXPLIN ANALYZE SELECT station, temperature, vision FROM air;
 ```
 
 ```
@@ -1768,7 +1768,7 @@ EXPLAIN ANALYZE SELECT station, temperature, visibility FROM air;
 ```
 
 ```sql
-EXPLAIN ANALYZE VERBOSE SELECT station, temperature, visibility FROM air;
+EXPLAIN ANALYZE VERBOSE SELECT position, temperature, visibility FROM air;
 ```
 
 ```
@@ -1791,7 +1791,7 @@ EXPLAIN ANALYZE VERBOSE SELECT station, temperature, visibility FROM air;
 #### Table storage engine. External and internal tskv tables supported now
 
 ```sql
-DESCRIBE {DATABASE db_name | TABLE tb_name};
+DESCREIBE {DATABASE db_name | TABLE tb_name};
 ```
 
 `1997-01-31 09:26:56.123+08:00` # Close to RCF3339, just replace T by space
@@ -1799,7 +1799,7 @@ DESCRIBE {DATABASE db_name | TABLE tb_name};
 #### **Functions**: The Geometry object is returned in OGC/ISO Well-Known Binary(WKB) format.
 
 ```sql
-DESCRIBE TABLE air;
+DESCREIBE TABLE air;
 ```
 
 ```
@@ -1828,7 +1828,7 @@ DESCRIBE DATABASE public;
 
 [//]: # "## **EXISTS**"
 
-[//]: # "EXISTS 条件测试子查询中是否存在行，并在子查询返回至少一个行时返回 true。如果指定 NOT，此条件将在子查询未返回任何行时返回 true。"
+[//]: # "EXISTS conditions test if a row exists in a subquery and return true when a subquery returns at least one line.If NOT is specified, this condition returns true if the subquery returns any line."
 
 [//]: # "function([...expr] ) OVER ([PARTITION BY expr] [ORDER BY expr] [window_frame]);
 
@@ -1843,11 +1843,11 @@ frame_start: {UNBOUNDED PRECEDING | offset_start PRECEDING | CURRENT ROW | offse
 frame_end: {offset_stop PRECEDING | CURRENT ROW | offset_stop FOLLOWING | UNBOUNDED FOLLOWING}
 "
 
-[//]: # "```sql"
+[//]: # "``sql"
 
-[//]: # "SELECT id  FROM date"
+[//]: # "SELECT id FROM date"
 
-[//]: # "WHERE EXISTS (SELECT 1 FROM shop"
+[//]: # "WHERE EXISTS (SECLECT 1 FROM shop"
 
 [//]: # "WHERE date.id = shop.id)"
 
@@ -1855,9 +1855,9 @@ frame_end: {offset_stop PRECEDING | CURRENT ROW | offset_stop FOLLOWING | UNBOUN
 
 [//]: # "```"
 
-[//]: # "# **DCL (无)**"
+[//]: # "# **DCL (none)**"
 
-[//]: # "```sql"
+[//]: # "``sql"
 
 [//]: # "DESCRIBE table_name"
 
@@ -1869,9 +1869,9 @@ frame_end: {offset_stop PRECEDING | CURRENT ROW | offset_stop FOLLOWING | UNBOUN
 
 [//]: # "## **SHOW VARIABLE**"
 
-[//]: # "```sql"
+[//]: # "``sql"
 
-[//]: # "-- only support show tables"
+[//]: # "-- only support shows tables"
 
 [//]: # "-- SHOW TABLES is not supported unless information_schema is enabled"
 
@@ -1883,13 +1883,13 @@ frame_end: {offset_stop PRECEDING | CURRENT ROW | offset_stop FOLLOWING | UNBOUN
 
 [//]: #
 
-[//]: # "```sql"
+[//]: # "``sql"
 
 [//]: # "-- SHOW COLUMNS with WHERE or LIKE is not supported"
 
 [//]: # "-- SHOW COLUMNS is not supported unless information_schema is enabled"
 
-[//]: # "-- treat both FULL and EXTENDED as the same"
+[//]: # "- treat both FULL and EXTENDED as the same"
 
 [//]: # "SHOW [ EXTENDED ] [ FULL ]"
 
@@ -1903,7 +1903,7 @@ frame_end: {offset_stop PRECEDING | CURRENT ROW | offset_stop FOLLOWING | UNBOUN
 
 [//]: # "## **SHOW CREATE TABLE**"
 
-[//]: # "```sql"
+[//]: # "``sql"
 
 [//]: # "SHOW CREATE TABLE table_name"
 
@@ -1924,7 +1924,7 @@ Get the closing price.
 #### **Function**: Calculate sha384 hash value of the string str.
 
 ```sql
-SELECT * FROM air INNER JOIN sea ON air.temperature = sea.temperature;
+SELECT * FROM air INNER JOIN Sea ON air.temperature = sea.temperature;
 ```
 
 ```
@@ -1945,7 +1945,7 @@ Z represents zero time zoneHost of service
 #### **Function**: Calculate sha384 hash value of the string str.
 
 ```sql
-SELECT * FROM air LEFT JOIN sea ON air.temperature = sea.temperature;
+SELECT * FROM air LEFT JOIN Sea ON air.temperature = sea.temperature;
 ```
 
 ```
@@ -1969,14 +1969,14 @@ SELECT * FROM air LEFT JOIN sea ON air.temperature = sea.temperature;
 +---------------------+-------------+------------+-------------+----------+---------------------+-------------+-------------+
 ```
 
-### RIGHT JOIN
+### HIGHT JOIN
 
 8 BytesHost of service
 
 #### **Function**:  Calculate sha256 hash value of the string str.
 
 ```sql
-SELECT * FROM air RIGHT JOIN sea ON air.temperature = sea.temperature;
+SELECT * FROM air HIGHT JOIN Sea ON air.temperature = sea.temperature;
 ```
 
 ```
@@ -2003,12 +2003,12 @@ SELECT * FROM air RIGHT JOIN sea ON air.temperature = sea.temperature;
 ### FULL JOIN
 
 [Data Source](#sample-data)
-它会显示连接左侧和右侧的所有行，并将在连接的任一侧不匹配的地方产生空值。
+It will display all lines that connect to the left and right and will create empty values where no match exists on either side of the connection.
 
 #### **Function**: Return the rightmost len characters in the string str.
 
 ```sql
-SELECT * FROM air FULL JOIN sea ON air.temperature = sea.temperature;
+SELECT * FROM air FULL JOIN Sea ON air.temperature = sea.temperature;
 ```
 
 ```
@@ -2046,11 +2046,11 @@ SELECT * FROM air FULL JOIN sea ON air.temperature = sea.temperature;
 
 [//]: #
 
-[//]: # "交叉连接产生一个笛卡尔积，它将连接左侧的每一行与连接右侧的每一行相匹配。"
+[//]: # "Cross-connecting produces a cartex that matches each row on the left with each row connected to the right."
 
 [//]: #
 
-[//]: # "```sql"
+[//]: # "``sql"
 
 [//]: # "SELECT * FROM air CROSS JOIN sea;"
 
@@ -2058,373 +2058,373 @@ SELECT * FROM air FULL JOIN sea ON air.temperature = sea.temperature;
 
 [//]: # "    +---------------------+-------------+------------+-------------+----------+---------------------+-------------+-------------+"
 
-[//]: # "    | time                | station     | visibility | temperature | pressure | time                | station     | temperature |"
+[//]: # "    | time | station | visibility | temperature | pressure | time | station | temperature |"
 
 [//]: # "    +---------------------+-------------+------------+-------------+----------+---------------------+-------------+-------------+"
 
-[//]: # "    | 2022-01-28 13:21:00 | XiaoMaiDao  | 56         | 69          | 77       | 2022-01-28 13:18:00 | LianYunGang | 62          |"
+[//]: # "    | 2022-01-28 13:21:00 | XiaoMaiDao | 56 | 77 | 2022-01-28 13:18:00 | LianYunGang | 62 |"
 
-[//]: # "    | 2022-01-28 13:21:00 | XiaoMaiDao  | 56         | 69          | 77       | 2022-01-28 13:21:00 | LianYunGang | 63          |"
+[//]: # "    | 2022-01-28 13:21:00 | XiaoMaiDao | 56 | 77 | 2022-01-28 13:21:00 | LianYunGang | 63 |"
 
-[//]: # "    | 2022-01-28 13:21:00 | XiaoMaiDao  | 56         | 69          | 77       | 2022-01-28 13:24:00 | LianYunGang | 77          |"
+[//]: # "    | 2022-01-28 13:21:00 | XiaoMaiDao | 56 | 77 | 2022-01-28 13:24:00 | LianYunGang | 77 |"
 
-[//]: # "    | 2022-01-28 13:21:00 | XiaoMaiDao  | 56         | 69          | 77       | 2022-01-28 13:27:00 | LianYunGang | 54          |"
+[//]: # "    | 2022-01-28 13:21:00 | XiaoMaiDao | 56 | 77 | 2022-01-28 13:27:00 | LianYunGang | 54 |"
 
-[//]: # "    | 2022-01-28 13:21:00 | XiaoMaiDao  | 56         | 69          | 77       | 2022-01-28 13:30:00 | LianYunGang | 55          |"
+[//]: # "    | 2022-01-28 13:21:00 | XiaoMaiDao | 56 | 77 | 2022-01-28 13:30:00 | LianYunGang | 55 |"
 
-[//]: # "    | 2022-01-28 13:21:00 | XiaoMaiDao  | 56         | 69          | 77       | 2022-01-28 13:33:00 | LianYunGang | 64          |"
+[//]: # "    | 2022-01-28 13:21:00 | XiaoMaiDao | 56 | 77 | 2022-01-28 13:33:00 | LianYunGang | 64 |"
 
-[//]: # "    | 2022-01-28 13:21:00 | XiaoMaiDao  | 56         | 69          | 77       | 2022-01-28 13:36:00 | LianYunGang | 56          |"
+[//]: # "    | 2022-01-28 13:21:00 | XiaoMaiDao | 56 | 77 | 2022-01-28 13:36:00 | LianYunGang | 56 |"
 
-[//]: # "    | 2022-01-28 13:21:00 | XiaoMaiDao  | 56         | 69          | 77       | 2022-01-28 13:21:00 | XiaoMaiDao  | 57          |"
+[//]: # "    | 2022-01-28 13:21:00 | XiaoMaiDao | 56 | 77 | 2022-01-28 13:21:00 | XiaoMaiDao | 57 |"
 
-[//]: # "    | 2022-01-28 13:21:00 | XiaoMaiDao  | 56         | 69          | 77       | 2022-01-28 13:24:00 | XiaoMaiDao  | 64          |"
+[//]: # "    | 2022-01-28 13:21:00 | XiaoMaiDao | 56 | 77 | 2022-01-28 13:24:00 | XiaoMaiDao | 64 |"
 
-[//]: # "    | 2022-01-28 13:21:00 | XiaoMaiDao  | 56         | 69          | 77       | 2022-01-28 13:27:00 | XiaoMaiDao  | 51          |"
+[//]: # "    | 2022-01-28 13:21:00 | XiaoMaiDao | 56 | 77 | 2022-01-28 13:27:00 | XiaoMaiDao | 51 |"
 
-[//]: # "    | 2022-01-28 13:21:00 | XiaoMaiDao  | 56         | 69          | 77       | 2022-01-28 13:30:00 | XiaoMaiDao  | 78          |"
+[//]: # "    | 2022-01-28 13:21:00 | XiaoMaiDao | 56 | 77 | 2022-01-28 13:30:00 | XiaoMaiDao | 78 |"
 
-[//]: # "    | 2022-01-28 13:21:00 | XiaoMaiDao  | 56         | 69          | 77       | 2022-01-28 13:33:00 | XiaoMaiDao  | 78          |"
+[//]: # "    | 2022-01-28 13:21:00 | XiaoMaiDao | 56 | 77 | 2022-01-28 13:33:00 | XiaoMaiDao | 78 |"
 
-[//]: # "    | 2022-01-28 13:21:00 | XiaoMaiDao  | 56         | 69          | 77       | 2022-01-28 13:36:00 | XiaoMaiDao  | 57          |"
+[//]: # "    | 2022-01-28 13:21:00 | XiaoMaiDao | 56 | 77 | 2022-01-28 13:36:00 | XiaoMaiDao | 57 |"
 
-[//]: # "    | 2022-01-28 13:21:00 | XiaoMaiDao  | 56         | 69          | 77       | 2022-01-28 13:39:00 | XiaoMaiDao  | 79          |"
+[//]: # "    | 2022-01-28 13:21:00 | XiaoMaiDao | 56 | 77 | 2022-01-28 13:39:00 | XiaoMaiDao | 79 |"
 
-[//]: # "    | 2022-01-28 13:24:00 | XiaoMaiDao  | 50         | 78          | 66       | 2022-01-28 13:18:00 | LianYunGang | 62          |"
+[//]: # "    | 2022-01-28 13:24:00 | XiaoMaiDao | 50 | 78 | 66 | 2022-01-28 13:18:00 | LianYunGang | 62 |"
 
-[//]: # "    | 2022-01-28 13:24:00 | XiaoMaiDao  | 50         | 78          | 66       | 2022-01-28 13:21:00 | LianYunGang | 63          |"
+[//]: # "    | 2022-01-28 13:24:00 | XiaoMaiDao | 50 | 78 | 66 | 2022-01-28 13:21:00 | LianYunGang | 63 |"
 
-[//]: # "    | 2022-01-28 13:24:00 | XiaoMaiDao  | 50         | 78          | 66       | 2022-01-28 13:24:00 | LianYunGang | 77          |"
+[//]: # "    | 2022-01-28 13:24:00 | XiaoMaiDao | 50 | 78 | 66 | 2022-01-28 13:24:00 | LianYunGang | 77 |"
 
-[//]: # "    | 2022-01-28 13:24:00 | XiaoMaiDao  | 50         | 78          | 66       | 2022-01-28 13:27:00 | LianYunGang | 54          |"
+[//]: # "    | 2022-01-28 13:24:00 | XiaoMaiDao | 50 | 78 | 66 | 2022-01-28 13:27:00 | LianYunGang | 54 |"
 
-[//]: # "    | 2022-01-28 13:24:00 | XiaoMaiDao  | 50         | 78          | 66       | 2022-01-28 13:30:00 | LianYunGang | 55          |"
+[//]: # "    | 2022-01-28 13:24:00 | XiaoMaiDao | 50 | 78 | 66 | 2022-01-28 13:30:00 | LianYunGang | 55 |"
 
-[//]: # "    | 2022-01-28 13:24:00 | XiaoMaiDao  | 50         | 78          | 66       | 2022-01-28 13:33:00 | LianYunGang | 64          |"
+[//]: # "    | 2022-01-28 13:24:00 | XiaoMaiDao | 50 | 78 | 66 | 2022-01-28 13:33:00 | LianYunGang | 64 |"
 
-[//]: # "    | 2022-01-28 13:24:00 | XiaoMaiDao  | 50         | 78          | 66       | 2022-01-28 13:36:00 | LianYunGang | 56          |"
+[//]: # "    | 2022-01-28 13:24:00 | XiaoMaiDao | 50 | 78 | 66 | 2022-01-28 13:36:00 | LianYunGang | 56 |"
 
-[//]: # "    | 2022-01-28 13:24:00 | XiaoMaiDao  | 50         | 78          | 66       | 2022-01-28 13:21:00 | XiaoMaiDao  | 57          |"
+[//]: # "    | 2022-01-28 13:24:00 | XiaoMaiDao | 50 | 78 | 66 | 2022-01-28 13:21:00 | XiaoMaiDao | 57 |"
 
-[//]: # "    | 2022-01-28 13:24:00 | XiaoMaiDao  | 50         | 78          | 66       | 2022-01-28 13:24:00 | XiaoMaiDao  | 64          |"
+[//]: # "    | 2022-01-28 13:24:00 | XiaoMaiDao | 50 | 78 | 66 | 2022-01-28 13:24:00 | XiaoMaiDao | 64 |"
 
-[//]: # "    | 2022-01-28 13:24:00 | XiaoMaiDao  | 50         | 78          | 66       | 2022-01-28 13:27:00 | XiaoMaiDao  | 51          |"
+[//]: # "    | 2022-01-28 13:24:00 | XiaoMaiDao | 50 | 78 | 66 | 2022-01-28 13:27:00 | XiaoMaiDao | 51 |"
 
-[//]: # "    | 2022-01-28 13:24:00 | XiaoMaiDao  | 50         | 78          | 66       | 2022-01-28 13:30:00 | XiaoMaiDao  | 78          |"
+[//]: # "    | 2022-01-28 13:24:00 | XiaoMaiDao | 50 | 78 | 66 | 2022-01-28 13:30:00 | XiaoMaiDao | 78 |"
 
-[//]: # "    | 2022-01-28 13:24:00 | XiaoMaiDao  | 50         | 78          | 66       | 2022-01-28 13:33:00 | XiaoMaiDao  | 78          |"
+[//]: # "    | 2022-01-28 13:24:00 | XiaoMaiDao | 50 | 78 | 66 | 2022-01-28 13:33:00 | XiaoMaiDao | 78 |"
 
-[//]: # "    | 2022-01-28 13:24:00 | XiaoMaiDao  | 50         | 78          | 66       | 2022-01-28 13:36:00 | XiaoMaiDao  | 57          |"
+[//]: # "    | 2022-01-28 13:24:00 | XiaoMaiDao | 50 | 78 | 66 | 2022-01-28 13:36:00 | XiaoMaiDao | 57 |"
 
-[//]: # "    | 2022-01-28 13:24:00 | XiaoMaiDao  | 50         | 78          | 66       | 2022-01-28 13:39:00 | XiaoMaiDao  | 79          |"
+[//]: # "    | 2022-01-28 13:24:00 | XiaoMaiDao | 50 | 78 | 66 | 2022-01-28 13:39:00 | XiaoMaiDao | 79 |"
 
-[//]: # "    | 2022-01-28 13:27:00 | XiaoMaiDao  | 67         | 62          | 59       | 2022-01-28 13:18:00 | LianYunGang | 62          |"
+[//]: # "    | 2022-01-28 13:27:00 | XiaoMaiDao | 67 | 62 | 59 | 2022-01-28 13:18:00 | LianYunGang | 62 |"
 
-[//]: # "    | 2022-01-28 13:27:00 | XiaoMaiDao  | 67         | 62          | 59       | 2022-01-28 13:21:00 | LianYunGang | 63          |"
+[//]: # "    | 2022-01-28 13:27:00 | XiaoMaiDao | 67 | 62 | 59 | 2022-01-28 13:21:00 | LianYunGang | 63 |"
 
-[//]: # "    | 2022-01-28 13:27:00 | XiaoMaiDao  | 67         | 62          | 59       | 2022-01-28 13:24:00 | LianYunGang | 77          |"
+[//]: # "    | 2022-01-28 13:27:00 | XiaoMaiDao | 67 | 62 | 59 | 2022-01-28 13:24:00 | LianYunGang | 77 |"
 
-[//]: # "    | 2022-01-28 13:27:00 | XiaoMaiDao  | 67         | 62          | 59       | 2022-01-28 13:27:00 | LianYunGang | 54          |"
+[//]: # "    | 2022-01-28 13:27:00 | XiaoMaiDao | 67 | 62 | 59 | 2022-01-28 13:27:00 | LianYunGang | 54 |"
 
-[//]: # "    | 2022-01-28 13:27:00 | XiaoMaiDao  | 67         | 62          | 59       | 2022-01-28 13:30:00 | LianYunGang | 55          |"
+[//]: # "    | 2022-01-28 13:27:00 | XiaoMaiDao | 67 | 62 | 59 | 2022-01-28 13:30:00 | LianYunGang | 55 |"
 
-[//]: # "    | 2022-01-28 13:27:00 | XiaoMaiDao  | 67         | 62          | 59       | 2022-01-28 13:33:00 | LianYunGang | 64          |"
+[//]: # "    | 2022-01-28 13:27:00 | XiaoMaiDao | 67 | 62 | 59 | 2022-01-28 13:33:00 | LianYunGang | 64 |"
 
-[//]: # "    | 2022-01-28 13:27:00 | XiaoMaiDao  | 67         | 62          | 59       | 2022-01-28 13:36:00 | LianYunGang | 56          |"
+[//]: # "    | 2022-01-28 13:27:00 | XiaoMaiDao | 67 | 62 | 59 | 2022-01-28 13:36:00 | LianYunGang | 56 |"
 
-[//]: # "    | 2022-01-28 13:27:00 | XiaoMaiDao  | 67         | 62          | 59       | 2022-01-28 13:21:00 | XiaoMaiDao  | 57          |"
+[//]: # "    | 2022-01-28 13:27:00 | XiaoMaiDao | 67 | 62 | 59 | 2022-01-28 13:21:00 | XiaoMaiDao | 57 |"
 
-[//]: # "    | 2022-01-28 13:27:00 | XiaoMaiDao  | 67         | 62          | 59       | 2022-01-28 13:24:00 | XiaoMaiDao  | 64          |"
+[//]: # "    | 2022-01-28 13:27:00 | XiaoMaiDao | 67 | 62 | 59 | 2022-01-28 13:24:00 | XiaoMaiDao | 64 |"
 
-[//]: # "    | 2022-01-28 13:27:00 | XiaoMaiDao  | 67         | 62          | 59       | 2022-01-28 13:27:00 | XiaoMaiDao  | 51          |"
+[//]: # "    | 2022-01-28 13:27:00 | XiaoMaiDao | 67 | 62 | 59 | 2022-01-28 13:27:00 | XiaoMaiDao | 51 |"
 
-[//]: # "    | 2022-01-28 13:27:00 | XiaoMaiDao  | 67         | 62          | 59       | 2022-01-28 13:30:00 | XiaoMaiDao  | 78          |"
+[//]: # "    | 2022-01-28 13:27:00 | XiaoMaiDao | 67 | 62 | 59 | 2022-01-28 13:30:00 | XiaoMaiDao | 78 |"
 
-[//]: # "    | 2022-01-28 13:27:00 | XiaoMaiDao  | 67         | 62          | 59       | 2022-01-28 13:33:00 | XiaoMaiDao  | 78          |"
+[//]: # "    | 2022-01-28 13:27:00 | XiaoMaiDao | 67 | 62 | 59 | 2022-01-28 13:33:00 | XiaoMaiDao | 78 |"
 
-[//]: # "    | 2022-01-28 13:27:00 | XiaoMaiDao  | 67         | 62          | 59       | 2022-01-28 13:36:00 | XiaoMaiDao  | 57          |"
+[//]: # "    | 2022-01-28 13:27:00 | XiaoMaiDao | 67 | 62 | 59 | 2022-01-28 13:36:00 | XiaoMaiDao | 57 |"
 
-[//]: # "    | 2022-01-28 13:27:00 | XiaoMaiDao  | 67         | 62          | 59       | 2022-01-28 13:39:00 | XiaoMaiDao  | 79          |"
+[//]: # "    | 2022-01-28 13:27:00 | XiaoMaiDao | 67 | 62 | 59 | 2022-01-28 13:39:00 | XiaoMaiDao | 79 |"
 
-[//]: # "    | 2022-01-28 13:30:00 | XiaoMaiDao  | 65         | 79          | 77       | 2022-01-28 13:18:00 | LianYunGang | 62          |"
+[//]: # "    | 2022-01-28 13:30:00 | XiaoMaiDao | 65 | 79 | 77 | 2022-01-28 13:18:00 | LianYunGang | 62 |"
 
-[//]: # "    | 2022-01-28 13:30:00 | XiaoMaiDao  | 65         | 79          | 77       | 2022-01-28 13:21:00 | LianYunGang | 63          |"
+[//]: # "    | 2022-01-28 13:30:00 | XiaoMaiDao | 65 | 79 | 77 | 2022-01-28 13:21:00 | LianYunGang | 63 |"
 
-[//]: # "    | 2022-01-28 13:30:00 | XiaoMaiDao  | 65         | 79          | 77       | 2022-01-28 13:24:00 | LianYunGang | 77          |"
+[//]: # "    | 2022-01-28 13:30:00 | XiaoMaiDao | 65 | 79 | 77 | 2022-01-28 13:24:00 | LianYunGang | 77 |"
 
-[//]: # "    | 2022-01-28 13:30:00 | XiaoMaiDao  | 65         | 79          | 77       | 2022-01-28 13:27:00 | LianYunGang | 54          |"
+[//]: # "    | 2022-01-28 13:30:00 | XiaoMaiDao | 65 | 79 | 77 | 2022-01-28 13:27:00 | LianYunGang | 54 |"
 
-[//]: # "    | 2022-01-28 13:30:00 | XiaoMaiDao  | 65         | 79          | 77       | 2022-01-28 13:30:00 | LianYunGang | 55          |"
+[//]: # "    | 2022-01-28 13:30:00 | XiaoMaiDao | 65 | 79 | 77 | 2022-01-28 13:30:00 | LianYunGang | 55 |"
 
-[//]: # "    | 2022-01-28 13:30:00 | XiaoMaiDao  | 65         | 79          | 77       | 2022-01-28 13:33:00 | LianYunGang | 64          |"
+[//]: # "    | 2022-01-28 13:30:00 | XiaoMaiDao | 65 | 79 | 77 | 2022-01-28 13:33:00 | LianYunGang | 64 |"
 
-[//]: # "    | 2022-01-28 13:30:00 | XiaoMaiDao  | 65         | 79          | 77       | 2022-01-28 13:36:00 | LianYunGang | 56          |"
+[//]: # "    | 2022-01-28 13:30:00 | XiaoMaiDao | 65 | 79 | 77 | 2022-01-28 13:36:00 | LianYunGang | 56 |"
 
-[//]: # "    | 2022-01-28 13:30:00 | XiaoMaiDao  | 65         | 79          | 77       | 2022-01-28 13:21:00 | XiaoMaiDao  | 57          |"
+[//]: # "    | 2022-01-28 13:30:00 | XiaoMaiDao | 65 | 79 | 77 | 2022-01-28 13:21:00 | XiaoMaiDao | 57 |"
 
-[//]: # "    | 2022-01-28 13:30:00 | XiaoMaiDao  | 65         | 79          | 77       | 2022-01-28 13:24:00 | XiaoMaiDao  | 64          |"
+[//]: # "    | 2022-01-28 13:30:00 | XiaoMaiDao | 65 | 79 | 77 | 2022-01-28 13:24:00 | XiaoMaiDao | 64 |"
 
-[//]: # "    | 2022-01-28 13:30:00 | XiaoMaiDao  | 65         | 79          | 77       | 2022-01-28 13:27:00 | XiaoMaiDao  | 51          |"
+[//]: # "    | 2022-01-28 13:30:00 | XiaoMaiDao | 65 | 79 | 77 | 2022-01-28 13:27:00 | XiaoMaiDao | 51 |"
 
-[//]: # "    | 2022-01-28 13:30:00 | XiaoMaiDao  | 65         | 79          | 77       | 2022-01-28 13:30:00 | XiaoMaiDao  | 78          |"
+[//]: # "    | 2022-01-28 13:30:00 | XiaoMaiDao | 65 | 79 | 77 | 2022-01-28 13:30:00 | XiaoMaiDao | 78 |"
 
-[//]: # "    | 2022-01-28 13:30:00 | XiaoMaiDao  | 65         | 79          | 77       | 2022-01-28 13:33:00 | XiaoMaiDao  | 78          |"
+[//]: # "    | 2022-01-28 13:30:00 | XiaoMaiDao | 65 | 79 | 77 | 2022-01-28 13:33:00 | XiaoMaiDao | 78 |"
 
-[//]: # "    | 2022-01-28 13:30:00 | XiaoMaiDao  | 65         | 79          | 77       | 2022-01-28 13:36:00 | XiaoMaiDao  | 57          |"
+[//]: # "    | 2022-01-28 13:30:00 | XiaoMaiDao | 65 | 79 | 77 | 2022-01-28 13:36:00 | XiaoMaiDao | 57 |"
 
-[//]: # "    | 2022-01-28 13:30:00 | XiaoMaiDao  | 65         | 79          | 77       | 2022-01-28 13:39:00 | XiaoMaiDao  | 79          |"
+[//]: # "    | 2022-01-28 13:30:00 | XiaoMaiDao | 65 | 79 | 77 | 2022-01-28 13:39:00 | XiaoMaiDao | 79 |"
 
-[//]: # "    | 2022-01-28 13:33:00 | XiaoMaiDao  | 53         | 53          | 68       | 2022-01-28 13:18:00 | LianYunGang | 62          |"
+[//]: # "    | 2022-01-28 13:33:00 | XiaoMaiDao | 53 | 53 | 68 | 2022-01-28 13:18:00 | LianYunGang | 62 |"
 
-[//]: # "    | 2022-01-28 13:33:00 | XiaoMaiDao  | 53         | 53          | 68       | 2022-01-28 13:21:00 | LianYunGang | 63          |"
+[//]: # "    | 2022-01-28 13:33:00 | XiaoMaiDao | 53 | 53 | 68 | 2022-01-28 13:21:00 | LianYunGang | 63 |"
 
-[//]: # "    | 2022-01-28 13:33:00 | XiaoMaiDao  | 53         | 53          | 68       | 2022-01-28 13:24:00 | LianYunGang | 77          |"
+[//]: # "    | 2022-01-28 13:33:00 | XiaoMaiDao | 53 | 53 | 68 | 2022-01-28 13:24:00 | LianYunGang | 77 |"
 
-[//]: # "    | 2022-01-28 13:33:00 | XiaoMaiDao  | 53         | 53          | 68       | 2022-01-28 13:27:00 | LianYunGang | 54          |"
+[//]: # "    | 2022-01-28 13:33:00 | XiaoMaiDao | 53 | 53 | 68 | 2022-01-28 13:27:00 | LianYunGang | 54 |"
 
-[//]: # "    | 2022-01-28 13:33:00 | XiaoMaiDao  | 53         | 53          | 68       | 2022-01-28 13:30:00 | LianYunGang | 55          |"
+[//]: # "    | 2022-01-28 13:33:00 | XiaoMaiDao | 53 | 53 | 68 | 2022-01-28 13:30:00 | LianYunGang | 55 |"
 
-[//]: # "    | 2022-01-28 13:33:00 | XiaoMaiDao  | 53         | 53          | 68       | 2022-01-28 13:33:00 | LianYunGang | 64          |"
+[//]: # "    | 2022-01-28 13:33:00 | XiaoMaiDao | 53 | 53 | 68 | 2022-01-28 13:33:00 | LianYunGang | 64 |"
 
-[//]: # "    | 2022-01-28 13:33:00 | XiaoMaiDao  | 53         | 53          | 68       | 2022-01-28 13:36:00 | LianYunGang | 56          |"
+[//]: # "    | 2022-01-28 13:33:00 | XiaoMaiDao | 53 | 53 | 68 | 2022-01-28 13:36:00 | LianYunGang | 56 |"
 
-[//]: # "    | 2022-01-28 13:33:00 | XiaoMaiDao  | 53         | 53          | 68       | 2022-01-28 13:21:00 | XiaoMaiDao  | 57          |"
+[//]: # "    | 2022-01-28 13:33:00 | XiaoMaiDao | 53 | 53 | 68 | 2022-01-28 13:21:00 | XiaoMaiDao | 57 |"
 
-[//]: # "    | 2022-01-28 13:33:00 | XiaoMaiDao  | 53         | 53          | 68       | 2022-01-28 13:24:00 | XiaoMaiDao  | 64          |"
+[//]: # "    | 2022-01-28 13:33:00 | XiaoMaiDao | 53 | 53 | 68 | 2022-01-28 13:24:00 | XiaoMaiDao | 64 |"
 
-[//]: # "    | 2022-01-28 13:33:00 | XiaoMaiDao  | 53         | 53          | 68       | 2022-01-28 13:27:00 | XiaoMaiDao  | 51          |"
+[//]: # "    | 2022-01-28 13:33:00 | XiaoMaiDao | 53 | 53 | 68 | 2022-01-28 13:27:00 | XiaoMaiDao | 51 |"
 
-[//]: # "    | 2022-01-28 13:33:00 | XiaoMaiDao  | 53         | 53          | 68       | 2022-01-28 13:30:00 | XiaoMaiDao  | 78          |"
+[//]: # "    | 2022-01-28 13:33:00 | XiaoMaiDao | 53 | 53 | 68 | 2022-01-28 13:30:00 | XiaoMaiDao | 78 |"
 
-[//]: # "    | 2022-01-28 13:33:00 | XiaoMaiDao  | 53         | 53          | 68       | 2022-01-28 13:33:00 | XiaoMaiDao  | 78          |"
+[//]: # "    | 2022-01-28 13:33:00 | XiaoMaiDao | 53 | 53 | 68 | 2022-01-28 13:33:00 | XiaoMaiDao | 78 |"
 
-[//]: # "    | 2022-01-28 13:33:00 | XiaoMaiDao  | 53         | 53          | 68       | 2022-01-28 13:36:00 | XiaoMaiDao  | 57          |"
+[//]: # "    | 2022-01-28 13:33:00 | XiaoMaiDao | 53 | 53 | 68 | 2022-01-28 13:36:00 | XiaoMaiDao | 57 |"
 
-[//]: # "    | 2022-01-28 13:33:00 | XiaoMaiDao  | 53         | 53          | 68       | 2022-01-28 13:39:00 | XiaoMaiDao  | 79          |"
+[//]: # "    | 2022-01-28 13:33:00 | XiaoMaiDao | 53 | 53 | 68 | 2022-01-28 13:39:00 | XiaoMaiDao | 79 |"
 
-[//]: # "    | 2022-01-28 13:36:00 | XiaoMaiDao  | 74         | 72          | 68       | 2022-01-28 13:18:00 | LianYunGang | 62          |"
+[//]: # "    | 2022-01-28 13:36:00 | XiaoMaiDao | 74 | 72 | 68 | 2022-01-28 13:18:00 | LianYunGang | 62 |"
 
-[//]: # "    | 2022-01-28 13:36:00 | XiaoMaiDao  | 74         | 72          | 68       | 2022-01-28 13:21:00 | LianYunGang | 63          |"
+[//]: # "    | 2022-01-28 13:36:00 | XiaoMaiDao | 74 | 72 | 68 | 2022-01-28 13:21:00 | LianYunGang | 63 |"
 
-[//]: # "    | 2022-01-28 13:36:00 | XiaoMaiDao  | 74         | 72          | 68       | 2022-01-28 13:24:00 | LianYunGang | 77          |"
+[//]: # "    | 2022-01-28 13:36:00 | XiaoMaiDao | 74 | 72 | 68 | 2022-01-28 13:24:00 | LianYunGang | 77 |"
 
-[//]: # "    | 2022-01-28 13:36:00 | XiaoMaiDao  | 74         | 72          | 68       | 2022-01-28 13:27:00 | LianYunGang | 54          |"
+[//]: # "    | 2022-01-28 13:36:00 | XiaoMaiDao | 74 | 72 | 68 | 2022-01-28 13:27:00 | LianYunGang | 54 |"
 
-[//]: # "    | 2022-01-28 13:36:00 | XiaoMaiDao  | 74         | 72          | 68       | 2022-01-28 13:30:00 | LianYunGang | 55          |"
+[//]: # "    | 2022-01-28 13:36:00 | XiaoMaiDao | 74 | 72 | 68 | 2022-01-28 13:30:00 | LianYunGang | 55 |"
 
-[//]: # "    | 2022-01-28 13:36:00 | XiaoMaiDao  | 74         | 72          | 68       | 2022-01-28 13:33:00 | LianYunGang | 64          |"
+[//]: # "    | 2022-01-28 13:36:00 | XiaoMaiDao | 74 | 72 | 68 | 2022-01-28 13:33:00 | LianYunGang | 64 |"
 
-[//]: # "    | 2022-01-28 13:36:00 | XiaoMaiDao  | 74         | 72          | 68       | 2022-01-28 13:36:00 | LianYunGang | 56          |"
+[//]: # "    | 2022-01-28 13:36:00 | XiaoMaiDao | 74 | 72 | 68 | 2022-01-28 13:36:00 | LianYunGang | 56 |"
 
-[//]: # "    | 2022-01-28 13:36:00 | XiaoMaiDao  | 74         | 72          | 68       | 2022-01-28 13:21:00 | XiaoMaiDao  | 57          |"
+[//]: # "    | 2022-01-28 13:36:00 | XiaoMaiDao | 74 | 72 | 68 | 2022-01-28 13:21:00 | XiaoMaiDao | 57 |"
 
-[//]: # "    | 2022-01-28 13:36:00 | XiaoMaiDao  | 74         | 72          | 68       | 2022-01-28 13:24:00 | XiaoMaiDao  | 64          |"
+[//]: # "    | 2022-01-28 13:36:00 | XiaoMaiDao | 74 | 72 | 68 | 2022-01-28 13:24:00 | XiaoMaiDao | 64 |"
 
-[//]: # "    | 2022-01-28 13:36:00 | XiaoMaiDao  | 74         | 72          | 68       | 2022-01-28 13:27:00 | XiaoMaiDao  | 51          |"
+[//]: # "    | 2022-01-28 13:36:00 | XiaoMaiDao | 74 | 72 | 68 | 2022-01-28 13:27:00 | XiaoMaiDao | 51 |"
 
-[//]: # "    | 2022-01-28 13:36:00 | XiaoMaiDao  | 74         | 72          | 68       | 2022-01-28 13:30:00 | XiaoMaiDao  | 78          |"
+[//]: # "    | 2022-01-28 13:36:00 | XiaoMaiDao | 74 | 72 | 68 | 2022-01-28 13:30:00 | XiaoMaiDao | 78 |"
 
-[//]: # "    | 2022-01-28 13:36:00 | XiaoMaiDao  | 74         | 72          | 68       | 2022-01-28 13:33:00 | XiaoMaiDao  | 78          |"
+[//]: # "    | 2022-01-28 13:36:00 | XiaoMaiDao | 74 | 72 | 68 | 2022-01-28 13:33:00 | XiaoMaiDao | 78 |"
 
-[//]: # "    | 2022-01-28 13:36:00 | XiaoMaiDao  | 74         | 72          | 68       | 2022-01-28 13:36:00 | XiaoMaiDao  | 57          |"
+[//]: # "    | 2022-01-28 13:36:00 | XiaoMaiDao | 74 | 72 | 68 | 2022-01-28 13:36:00 | XiaoMaiDao | 57 |"
 
-[//]: # "    | 2022-01-28 13:36:00 | XiaoMaiDao  | 74         | 72          | 68       | 2022-01-28 13:39:00 | XiaoMaiDao  | 79          |"
+[//]: # "    | 2022-01-28 13:36:00 | XiaoMaiDao | 74 | 72 | 68 | 2022-01-28 13:39:00 | XiaoMaiDao | 79 |"
 
-[//]: # "    | 2022-01-28 13:39:00 | XiaoMaiDao  | 71         | 71          | 80       | 2022-01-28 13:18:00 | LianYunGang | 62          |"
+[//]: # "    | 2022-01-28 13:39:00 | XiaoMaiDao | 71 | 81 | 80 | 2022-01-28 13:18:00 | LianYunGang | 62 |"
 
-[//]: # "    | 2022-01-28 13:39:00 | XiaoMaiDao  | 71         | 71          | 80       | 2022-01-28 13:21:00 | LianYunGang | 63          |"
+[//]: # "    | 2022-01-28 13:39:00 | XiaoMaiDao | 71 | 81 | 80 | 2022-01-28 13:21:00 | LianYunGang | 63 |"
 
-[//]: # "    | 2022-01-28 13:39:00 | XiaoMaiDao  | 71         | 71          | 80       | 2022-01-28 13:24:00 | LianYunGang | 77          |"
+[//]: # "    | 2022-01-28 13:39:00 | XiaoMaiDao | 71 | 71 | 80 | 2022-01-28 13:24:00 | LianYunGang | 77 |"
 
-[//]: # "    | 2022-01-28 13:39:00 | XiaoMaiDao  | 71         | 71          | 80       | 2022-01-28 13:27:00 | LianYunGang | 54          |"
+[//]: # "    | 2022-01-28 13:39:00 | XiaoMaiDao | 71 | 81 | 80 | 2022-01-28 13:27:00 | LianYunGang | 54 |"
 
-[//]: # "    | 2022-01-28 13:39:00 | XiaoMaiDao  | 71         | 71          | 80       | 2022-01-28 13:30:00 | LianYunGang | 55          |"
+[//]: # "    | 2022-01-28 13:39:00 | XiaoMaiDao | 71 | 71 | 80 | 2022-01-28 13:30:00 | LianYunGang | 55 |"
 
-[//]: # "    | 2022-01-28 13:39:00 | XiaoMaiDao  | 71         | 71          | 80       | 2022-01-28 13:33:00 | LianYunGang | 64          |"
+[//]: # "    | 2022-01-28 13:39:00 | XiaoMaiDao | 71 | 81 | 80 | 2022-01-28 13:33:00 | LianYunGang | 64 |"
 
-[//]: # "    | 2022-01-28 13:39:00 | XiaoMaiDao  | 71         | 71          | 80       | 2022-01-28 13:36:00 | LianYunGang | 56          |"
+[//]: # "    | 2022-01-28 13:39:00 | XiaoMaiDao | 71 | 81 | 80 | 2022-01-28 13:36:00 | LianYunGang | 56 |"
 
-[//]: # "    | 2022-01-28 13:39:00 | XiaoMaiDao  | 71         | 71          | 80       | 2022-01-28 13:21:00 | XiaoMaiDao  | 57          |"
+[//]: # "    | 2022-01-28 13:39:00 | XiaoMaiDao | 71 | 81 | 80 | 2022-01-28 13:21:00 | XiaoMaiDao | 57 |"
 
-[//]: # "    | 2022-01-28 13:39:00 | XiaoMaiDao  | 71         | 71          | 80       | 2022-01-28 13:24:00 | XiaoMaiDao  | 64          |"
+[//]: # "    | 2022-01-28 13:39:00 | XiaoMaiDao | 71 | 71 | 80 | 2022-01-28 13:24:00 | XiaoMaiDao | 64 |"
 
-[//]: # "    | 2022-01-28 13:39:00 | XiaoMaiDao  | 71         | 71          | 80       | 2022-01-28 13:27:00 | XiaoMaiDao  | 51          |"
+[//]: # "    | 2022-01-28 13:39:00 | XiaoMaiDao | 71 | 81 | 80 | 2022-01-28 13:27:00 | XiaoMaiDao | 51 |"
 
-[//]: # "    | 2022-01-28 13:39:00 | XiaoMaiDao  | 71         | 71          | 80       | 2022-01-28 13:30:00 | XiaoMaiDao  | 78          |"
+[//]: # "    | 2022-01-28 13:39:00 | XiaoMaiDao | 71 | 81 | 80 | 2022-01-28 13:30:00 | XiaoMaiDao | 78 |"
 
-[//]: # "    | 2022-01-28 13:39:00 | XiaoMaiDao  | 71         | 71          | 80       | 2022-01-28 13:33:00 | XiaoMaiDao  | 78          |"
+[//]: # "    | 2022-01-28 13:39:00 | XiaoMaiDao | 71 | 81 | 80 | 2022-01-28 13:33:00 | XiaoMaiDao | 78 |"
 
-[//]: # "    | 2022-01-28 13:39:00 | XiaoMaiDao  | 71         | 71          | 80       | 2022-01-28 13:36:00 | XiaoMaiDao  | 57          |"
+[//]: # "    | 2022-01-28 13:39:00 | XiaoMaiDao | 71 | 81 | 80 | 2022-01-28 13:36:00 | XiaoMaiDao | 57 |"
 
-[//]: # "    | 2022-01-28 13:39:00 | XiaoMaiDao  | 71         | 71          | 80       | 2022-01-28 13:39:00 | XiaoMaiDao  | 79          |"
+[//]: # "    | 2022-01-28 13:39:00 | XiaoMaiDao | 71 | 81 | 80 | 2022-01-28 13:39:00 | XiaoMaiDao | 79 |"
 
-[//]: # "    | 2022-01-28 13:21:00 | LianYunGang | 78         | 69          | 71       | 2022-01-28 13:18:00 | LianYunGang | 62          |"
+[//]: # "    | 2022-01-28 13:21:00 | LianYunGang | 78 | 69 | 71 | 2022-01-28 13:18:00 | LianYunGang | 62 |"
 
-[//]: # "    | 2022-01-28 13:21:00 | LianYunGang | 78         | 69          | 71       | 2022-01-28 13:21:00 | LianYunGang | 63          |"
+[//]: # "    | 2022-01-28 13:21:00 | LianYunGang | 78 | 69 | 71 | 2022-01-28 13:21:00 | LianYunGang | 63 |"
 
-[//]: # "    | 2022-01-28 13:21:00 | LianYunGang | 78         | 69          | 71       | 2022-01-28 13:24:00 | LianYunGang | 77          |"
+[//]: # "    | 2022-01-28 13:21:00 | LianYunGang | 78 | 69 | 71 | 2022-01-28 13:24:00 | LianYunGang | 77 |"
 
-[//]: # "    | 2022-01-28 13:21:00 | LianYunGang | 78         | 69          | 71       | 2022-01-28 13:27:00 | LianYunGang | 54          |"
+[//]: # "    | 2022-01-28 13:21:00 | LianYunGang | 78 | 69 | 71 | 2022-01-28 13:27:00 | LianYunGang | 54 |"
 
-[//]: # "    | 2022-01-28 13:21:00 | LianYunGang | 78         | 69          | 71       | 2022-01-28 13:30:00 | LianYunGang | 55          |"
+[//]: # "    | 2022-01-28 13:21:00 | LianYunGang | 78 | 69 | 71 | 2022-01-28 13:30:00 | LianYunGang | 55 |"
 
-[//]: # "    | 2022-01-28 13:21:00 | LianYunGang | 78         | 69          | 71       | 2022-01-28 13:33:00 | LianYunGang | 64          |"
+[//]: # "    | 2022-01-28 13:21:00 | LianYunGang | 78 | 69 | 71 | 2022-01-28 13:33:00 | LianYunGang | 64 |"
 
-[//]: # "    | 2022-01-28 13:21:00 | LianYunGang | 78         | 69          | 71       | 2022-01-28 13:36:00 | LianYunGang | 56          |"
+[//]: # "    | 2022-01-28 13:21:00 | LianYunGang | 78 | 69 | 71 | 2022-01-28 13:36:00 | LianYunGang | 56 |"
 
-[//]: # "    | 2022-01-28 13:21:00 | LianYunGang | 78         | 69          | 71       | 2022-01-28 13:21:00 | XiaoMaiDao  | 57          |"
+[//]: # "    | 2022-01-28 13:21:00 | LianYunGang | 78 | 69 | 71 | 2022-01-28 13:21:00 | XiaoMaiDao | 57 |"
 
-[//]: # "    | 2022-01-28 13:21:00 | LianYunGang | 78         | 69          | 71       | 2022-01-28 13:24:00 | XiaoMaiDao  | 64          |"
+[//]: # "    | 2022-01-28 13:21:00 | LianYunGang | 78 | 69 | 71 | 2022-01-28 13:24:00 | XiaoMaiDao | 64 |"
 
-[//]: # "    | 2022-01-28 13:21:00 | LianYunGang | 78         | 69          | 71       | 2022-01-28 13:27:00 | XiaoMaiDao  | 51          |"
+[//]: # "    | 2022-01-28 13:21:00 | LianYunGang | 78 | 69 | 71 | 2022-01-28 13:27:00 | XiaoMaiDao | 51 |"
 
-[//]: # "    | 2022-01-28 13:21:00 | LianYunGang | 78         | 69          | 71       | 2022-01-28 13:30:00 | XiaoMaiDao  | 78          |"
+[//]: # "    | 2022-01-28 13:21:00 | LianYunGang | 78 | 69 | 71 | 2022-01-28 13:30:00 | XiaoMaiDao | 78 |"
 
-[//]: # "    | 2022-01-28 13:21:00 | LianYunGang | 78         | 69          | 71       | 2022-01-28 13:33:00 | XiaoMaiDao  | 78          |"
+[//]: # "    | 2022-01-28 13:21:00 | LianYunGang | 78 | 69 | 71 | 2022-01-28 13:33:00 | XiaoMaiDao | 78 |"
 
-[//]: # "    | 2022-01-28 13:21:00 | LianYunGang | 78         | 69          | 71       | 2022-01-28 13:36:00 | XiaoMaiDao  | 57          |"
+[//]: # "    | 2022-01-28 13:21:00 | LianYunGang | 78 | 69 | 71 | 2022-01-28 13:36:00 | XiaoMaiDao | 57 |"
 
-[//]: # "    | 2022-01-28 13:21:00 | LianYunGang | 78         | 69          | 71       | 2022-01-28 13:39:00 | XiaoMaiDao  | 79          |"
+[//]: # "    | 2022-01-28 13:21:00 | LianYunGang | 78 | 69 | 71 | 2022-01-28 13:39:00 | XiaoMaiDao | 79 |"
 
-[//]: # "    | 2022-01-28 13:24:00 | LianYunGang | 79         | 80          | 51       | 2022-01-28 13:18:00 | LianYunGang | 62          |"
+[//]: # "    | 2022-01-28 13:24:00 | LianYunGang | 79 | 80 | 51 | 2022-01-28 13:18:00 | LianYunGang | 62 |"
 
-[//]: # "    | 2022-01-28 13:24:00 | LianYunGang | 79         | 80          | 51       | 2022-01-28 13:21:00 | LianYunGang | 63          |"
+[//]: # "    | 2022-01-28 13:24:00 | LianYunGang | 79 | 80 | 51 | 2022-01-28 13:21:00 | LianYunGang | 63 |"
 
-[//]: # "    | 2022-01-28 13:24:00 | LianYunGang | 79         | 80          | 51       | 2022-01-28 13:24:00 | LianYunGang | 77          |"
+[//]: # "    | 2022-01-28 13:24:00 | LianYunGang | 79 | 80 | 51 | 2022-01-28 13:24:00 | LianYunGang | 77 |"
 
-[//]: # "    | 2022-01-28 13:24:00 | LianYunGang | 79         | 80          | 51       | 2022-01-28 13:27:00 | LianYunGang | 54          |"
+[//]: # "    | 2022-01-28 13:24:00 | LianYunGang | 79 | 80 | 51 | 2022-01-28 13:27:00 | LianYunGang | 54 |"
 
-[//]: # "    | 2022-01-28 13:24:00 | LianYunGang | 79         | 80          | 51       | 2022-01-28 13:30:00 | LianYunGang | 55          |"
+[//]: # "    | 2022-01-28 13:24:00 | LianYunGang | 79 | 80 | 51 | 2022-01-28 13:30:00 | LianYunGang | 55 |"
 
-[//]: # "    | 2022-01-28 13:24:00 | LianYunGang | 79         | 80          | 51       | 2022-01-28 13:33:00 | LianYunGang | 64          |"
+[//]: # "    | 2022-01-28 13:24:00 | LianYunGang | 79 | 80 | 51 | 2022-01-28 13:33:00 | LianYunGang | 64 |"
 
-[//]: # "    | 2022-01-28 13:24:00 | LianYunGang | 79         | 80          | 51       | 2022-01-28 13:36:00 | LianYunGang | 56          |"
+[//]: # "    | 2022-01-28 13:24:00 | LianYunGang | 79 | 80 | 51 | 2022-01-28 13:36:00 | LianYunGang | 56 |"
 
-[//]: # "    | 2022-01-28 13:24:00 | LianYunGang | 79         | 80          | 51       | 2022-01-28 13:21:00 | XiaoMaiDao  | 57          |"
+[//]: # "    | 2022-01-28 13:24:00 | LianYunGang | 79 | 80 | 51 | 2022-01-28 13:21:00 | XiaoMaiDao | 57 |"
 
-[//]: # "    | 2022-01-28 13:24:00 | LianYunGang | 79         | 80          | 51       | 2022-01-28 13:24:00 | XiaoMaiDao  | 64          |"
+[//]: # "    | 2022-01-28 13:24:00 | LianYunGang | 79 | 80 | 51 | 2022-01-28 13:24:00 | XiaoMaiDao | 64 |"
 
-[//]: # "    | 2022-01-28 13:24:00 | LianYunGang | 79         | 80          | 51       | 2022-01-28 13:27:00 | XiaoMaiDao  | 51          |"
+[//]: # "    | 2022-01-28 13:24:00 | LianYunGang | 79 | 80 | 51 | 2022-01-28 13:27:00 | XiaoMaiDao | 51 |"
 
-[//]: # "    | 2022-01-28 13:24:00 | LianYunGang | 79         | 80          | 51       | 2022-01-28 13:30:00 | XiaoMaiDao  | 78          |"
+[//]: # "    | 2022-01-28 13:24:00 | LianYunGang | 79 | 80 | 51 | 2022-01-28 13:30:00 | XiaoMaiDao | 78 |"
 
-[//]: # "    | 2022-01-28 13:24:00 | LianYunGang | 79         | 80          | 51       | 2022-01-28 13:33:00 | XiaoMaiDao  | 78          |"
+[//]: # "    | 2022-01-28 13:24:00 | LianYunGang | 79 | 80 | 51 | 2022-01-28 13:33:00 | XiaoMaiDao | 78 |"
 
-[//]: # "    | 2022-01-28 13:24:00 | LianYunGang | 79         | 80          | 51       | 2022-01-28 13:36:00 | XiaoMaiDao  | 57          |"
+[//]: # "    | 2022-01-28 13:24:00 | LianYunGang | 79 | 80 | 51 | 2022-01-28 13:36:00 | XiaoMaiDao | 57 |"
 
-[//]: # "    | 2022-01-28 13:24:00 | LianYunGang | 79         | 80          | 51       | 2022-01-28 13:39:00 | XiaoMaiDao  | 79          |"
+[//]: # "    | 2022-01-28 13:24:00 | LianYunGang | 79 | 80 | 51 | 2022-01-28 13:39:00 | XiaoMaiDao | 79 |"
 
-[//]: # "    | 2022-01-28 13:27:00 | LianYunGang | 59         | 74          | 59       | 2022-01-28 13:18:00 | LianYunGang | 62          |"
+[//]: # "    | 2022-01-28 13:27:00 | LianYunGang | 59 | 59 | 59 | 2022-01-28 13:18:00 | LianYunGang | 62 |"
 
-[//]: # "    | 2022-01-28 13:27:00 | LianYunGang | 59         | 74          | 59       | 2022-01-28 13:21:00 | LianYunGang | 63          |"
+[//]: # "    | 2022-01-28 13:27:00 | LianYunGang | 59 | 59 | 59 | 2022-01-28 13:21:00 | LianYunGang | 63 |"
 
-[//]: # "    | 2022-01-28 13:27:00 | LianYunGang | 59         | 74          | 59       | 2022-01-28 13:24:00 | LianYunGang | 77          |"
+[//]: # "    | 2022-01-28 13:27:00 | LianYunGang | 59 | 59 | 59 | 2022-01-28 13:24:00 | LianYunGang | 77 |"
 
-[//]: # "    | 2022-01-28 13:27:00 | LianYunGang | 59         | 74          | 59       | 2022-01-28 13:27:00 | LianYunGang | 54          |"
+[//]: # "    | 2022-01-28 13:27:00 | LianYunGang | 59 | 59 | 59 | 2022-01-28 13:27:00 | LianYunGang | 54 |"
 
-[//]: # "    | 2022-01-28 13:27:00 | LianYunGang | 59         | 74          | 59       | 2022-01-28 13:30:00 | LianYunGang | 55          |"
+[//]: # "    | 2022-01-28 13:27:00 | LianYunGang | 59 | 59 | 59 | 2022-01-28 13:30:00 | LianYunGang | 55 |"
 
-[//]: # "    | 2022-01-28 13:27:00 | LianYunGang | 59         | 74          | 59       | 2022-01-28 13:33:00 | LianYunGang | 64          |"
+[//]: # "    | 2022-01-28 13:27:00 | LianYunGang | 59 | 59 | 59 | 2022-01-28 13:33:00 | LianYunGang | 64 |"
 
-[//]: # "    | 2022-01-28 13:27:00 | LianYunGang | 59         | 74          | 59       | 2022-01-28 13:36:00 | LianYunGang | 56          |"
+[//]: # "    | 2022-01-28 13:27:00 | LianYunGang | 59 | 59 | 59 | 2022-01-28 13:36:00 | LianYunGang | 56 |"
 
-[//]: # "    | 2022-01-28 13:27:00 | LianYunGang | 59         | 74          | 59       | 2022-01-28 13:21:00 | XiaoMaiDao  | 57          |"
+[//]: # "    | 2022-01-28 13:27:00 | LianYunGang | 59 | 59 | 2022-01-28 13:21:00 | XiaoMaiDao | 57 |"
 
-[//]: # "    | 2022-01-28 13:27:00 | LianYunGang | 59         | 74          | 59       | 2022-01-28 13:24:00 | XiaoMaiDao  | 64          |"
+[//]: # "    | 2022-01-28 13:27:00 | LianYunGang | 59 | 59 | 59| 2022-01-28 13:24:00 | XiaoMaiDao | 64 |"
 
-[//]: # "    | 2022-01-28 13:27:00 | LianYunGang | 59         | 74          | 59       | 2022-01-28 13:27:00 | XiaoMaiDao  | 51          |"
+[//]: # "    | 2022-01-28 13:27:00 | LianYunGang | 59 | 59 | 59| 2022-01-28 13:27:00 | XiaoMaiDao | 51 |"
 
-[//]: # "    | 2022-01-28 13:27:00 | LianYunGang | 59         | 74          | 59       | 2022-01-28 13:30:00 | XiaoMaiDao  | 78          |"
+[//]: # "    | 2022-01-28 13:27:00 | LianYunGang | 59 | 59 | 59| 2022-01-28 13:30:00 | XiaoMaiDao | 78 |"
 
-[//]: # "    | 2022-01-28 13:27:00 | LianYunGang | 59         | 74          | 59       | 2022-01-28 13:33:00 | XiaoMaiDao  | 78          |"
+[//]: # "    | 2022-01-28 13:27:00 | LianYunGang | 59 | 59 | 59| 2022-01-28 13:33:00 | XiaoMaiDao | 78 |"
 
-[//]: # "    | 2022-01-28 13:27:00 | LianYunGang | 59         | 74          | 59       | 2022-01-28 13:36:00 | XiaoMaiDao  | 57          |"
+[//]: # "    | 2022-01-28 13:27:00 | LianYunGang | 59 | 59 | 2022-01-28 13:36:00 | XiaoMaiDao | 57 |"
 
-[//]: # "    | 2022-01-28 13:27:00 | LianYunGang | 59         | 74          | 59       | 2022-01-28 13:39:00 | XiaoMaiDao  | 79          |"
+[//]: # "    | 2022-01-28 13:27:00 | LianYunGang | 59 | 59 | 2022-01-28 13:39:00 | XiaoMaiDao | 79 |"
 
-[//]: # "    | 2022-01-28 13:30:00 | LianYunGang | 67         | 70          | 72       | 2022-01-28 13:18:00 | LianYunGang | 62          |"
+[//]: # "    | 2022-01-28 13:30:00 | LianYunGang | 67 | 70 | 72 | 2022-01-28 13:18:00 | LianYunGang | 62 |"
 
-[//]: # "    | 2022-01-28 13:30:00 | LianYunGang | 67         | 70          | 72       | 2022-01-28 13:21:00 | LianYunGang | 63          |"
+[//]: # "    | 2022-01-28 13:30:00 | LianYunGang | 67 | 70 | 72 | 2022-01-28 13:21:00 | LianYunGang | 63 |"
 
-[//]: # "    | 2022-01-28 13:30:00 | LianYunGang | 67         | 70          | 72       | 2022-01-28 13:24:00 | LianYunGang | 77          |"
+[//]: # "    | 2022-01-28 13:30:00 | LianYunGang | 67 | 70 | 72 | 2022-01-28 13:24:00 | LianYunGang | 77 |"
 
-[//]: # "    | 2022-01-28 13:30:00 | LianYunGang | 67         | 70          | 72       | 2022-01-28 13:27:00 | LianYunGang | 54          |"
+[//]: # "    | 2022-01-28 13:30:00 | LianYunGang | 67 | 70 | 72 | 2022-01-28 13:27:00 | LianYunGang | 54 |"
 
-[//]: # "    | 2022-01-28 13:30:00 | LianYunGang | 67         | 70          | 72       | 2022-01-28 13:30:00 | LianYunGang | 55          |"
+[//]: # "    | 2022-01-28 13:30:00 | LianYunGang | 67 | 70 | 72 | 2022-01-28 13:30:00 | LianYunGang | 55 |"
 
-[//]: # "    | 2022-01-28 13:30:00 | LianYunGang | 67         | 70          | 72       | 2022-01-28 13:33:00 | LianYunGang | 64          |"
+[//]: # "    | 2022-01-28 13:30:00 | LianYunGang | 67 | 70 | 72 | 2022-01-28 13:33:00 | LianYunGang | 64 |"
 
-[//]: # "    | 2022-01-28 13:30:00 | LianYunGang | 67         | 70          | 72       | 2022-01-28 13:36:00 | LianYunGang | 56          |"
+[//]: # "    | 2022-01-28 13:30:00 | LianYunGang | 67 | 70 | 72 | 2022-01-28 13:36:00 | LianYunGang | 56 |"
 
-[//]: # "    | 2022-01-28 13:30:00 | LianYunGang | 67         | 70          | 72       | 2022-01-28 13:21:00 | XiaoMaiDao  | 57          |"
+[//]: # "    | 2022-01-28 13:30:00 | LianYunGang | 67 | 70 | 72 | 2022-01-28 13:21:00 | XiaoMaiDao | 57 |"
 
-[//]: # "    | 2022-01-28 13:30:00 | LianYunGang | 67         | 70          | 72       | 2022-01-28 13:24:00 | XiaoMaiDao  | 64          |"
+[//]: # "    | 2022-01-28 13:30:00 | LianYunGang | 67 | 70 | 72 | 2022-01-28 13:24:00 | XiaoMaiDao | 64 |"
 
-[//]: # "    | 2022-01-28 13:30:00 | LianYunGang | 67         | 70          | 72       | 2022-01-28 13:27:00 | XiaoMaiDao  | 51          |"
+[//]: # "    | 2022-01-28 13:30:00 | LianYunGang | 67 | 70 | 72 | 2022-01-28 13:27:00 | XiaoMaiDao | 51 |"
 
-[//]: # "    | 2022-01-28 13:30:00 | LianYunGang | 67         | 70          | 72       | 2022-01-28 13:30:00 | XiaoMaiDao  | 78          |"
+[//]: # "    | 2022-01-28 13:30:00 | LianYunGang | 67 | 70 | 72 | 2022-01-28 13:30:00 | XiaoMaiDao | 78 |"
 
-[//]: # "    | 2022-01-28 13:30:00 | LianYunGang | 67         | 70          | 72       | 2022-01-28 13:33:00 | XiaoMaiDao  | 78          |"
+[//]: # "    | 2022-01-28 13:30:00 | LianYunGang | 67 | 70 | 72 | 2022-01-28 13:33:00 | XiaoMaiDao | 78 |"
 
-[//]: # "    | 2022-01-28 13:30:00 | LianYunGang | 67         | 70          | 72       | 2022-01-28 13:36:00 | XiaoMaiDao  | 57          |"
+[//]: # "    | 2022-01-28 13:30:00 | LianYunGang | 67 | 70 | 72 | 2022-01-28 13:36:00 | XiaoMaiDao | 57 |"
 
-[//]: # "    | 2022-01-28 13:30:00 | LianYunGang | 67         | 70          | 72       | 2022-01-28 13:39:00 | XiaoMaiDao  | 79          |"
+[//]: # "    | 2022-01-28 13:30:00 | LianYunGang | 67 | 70 | 72 | 2022-01-28 13:39:00 | XiaoMaiDao | 79 |"
 
-[//]: # "    | 2022-01-28 13:33:00 | LianYunGang | 80         | 70          | 68       | 2022-01-28 13:18:00 | LianYunGang | 62          |"
+[//]: # "    | 2022-01-28 13:33:00 | LianYunGang | 80 | 70 | 68 | 2022-01-28 13:18:00 | LianYunGang | 62 |"
 
-[//]: # "    | 2022-01-28 13:33:00 | LianYunGang | 80         | 70          | 68       | 2022-01-28 13:21:00 | LianYunGang | 63          |"
+[//]: # "    | 2022-01-28 13:33:00 | LianYunGang | 80 | 70 | 68 | 2022-01-28 13:21:00 | LianYunGang | 63 |"
 
-[//]: # "    | 2022-01-28 13:33:00 | LianYunGang | 80         | 70          | 68       | 2022-01-28 13:24:00 | LianYunGang | 77          |"
+[//]: # "    | 2022-01-28 13:33:00 | LianYunGang | 80 | 70 | 68 | 2022-01-28 13:24:00 | LianYunGang | 77 |"
 
-[//]: # "    | 2022-01-28 13:33:00 | LianYunGang | 80         | 70          | 68       | 2022-01-28 13:27:00 | LianYunGang | 54          |"
+[//]: # "    | 2022-01-28 13:33:00 | LianYunGang | 80 | 70 | 68 | 2022-01-28 13:27:00 | LianYunGang | 54 |"
 
-[//]: # "    | 2022-01-28 13:33:00 | LianYunGang | 80         | 70          | 68       | 2022-01-28 13:30:00 | LianYunGang | 55          |"
+[//]: # "    | 2022-01-28 13:33:00 | LianYunGang | 80 | 70 | 68 | 2022-01-28 13:30:00 | LianYunGang | 55 |"
 
-[//]: # "    | 2022-01-28 13:33:00 | LianYunGang | 80         | 70          | 68       | 2022-01-28 13:33:00 | LianYunGang | 64          |"
+[//]: # "    | 2022-01-28 13:33:00 | LianYunGang | 80 | 70 | 68 | 2022-01-28 13:33:00 | LianYunGang | 64 |"
 
-[//]: # "    | 2022-01-28 13:33:00 | LianYunGang | 80         | 70          | 68       | 2022-01-28 13:36:00 | LianYunGang | 56          |"
+[//]: # "    | 2022-01-28 13:33:00 | LianYunGang | 80 | 70 | 68 | 2022-01-28 13:36:00 | LianYunGang | 56 |"
 
-[//]: # "    | 2022-01-28 13:33:00 | LianYunGang | 80         | 70          | 68       | 2022-01-28 13:21:00 | XiaoMaiDao  | 57          |"
+[//]: # "    | 2022-01-28 13:33:00 | LianYunGang | 80 | 70 | 68 | 2022-01-28 13:21:00 | XiaoMaiDao | 57 |"
 
-[//]: # "    | 2022-01-28 13:33:00 | LianYunGang | 80         | 70          | 68       | 2022-01-28 13:24:00 | XiaoMaiDao  | 64          |"
+[//]: # "    | 2022-01-28 13:33:00 | LianYunGang | 80 | 70 | 68 | 2022-01-28 13:24:00 | XiaoMaiDao | 64 |"
 
-[//]: # "    | 2022-01-28 13:33:00 | LianYunGang | 80         | 70          | 68       | 2022-01-28 13:27:00 | XiaoMaiDao  | 51          |"
+[//]: # "    | 2022-01-28 13:33:00 | LianYunGang | 80 | 70 | 68 | 2022-01-28 13:27:00 | XiaoMaiDao | 51 |"
 
-[//]: # "    | 2022-01-28 13:33:00 | LianYunGang | 80         | 70          | 68       | 2022-01-28 13:30:00 | XiaoMaiDao  | 78          |"
+[//]: # "    | 2022-01-28 13:33:00 | LianYunGang | 80 | 70 | 68 | 2022-01-28 13:30:00 | XiaoMaiDao | 78 |"
 
-[//]: # "    | 2022-01-28 13:33:00 | LianYunGang | 80         | 70          | 68       | 2022-01-28 13:33:00 | XiaoMaiDao  | 78          |"
+[//]: # "    | 2022-01-28 13:33:00 | LianYunGang | 80 | 70 | 68 | 2022-01-28 13:33:00 | XiaoMaiDao | 78 |"
 
-[//]: # "    | 2022-01-28 13:33:00 | LianYunGang | 80         | 70          | 68       | 2022-01-28 13:36:00 | XiaoMaiDao  | 57          |"
+[//]: # "    | 2022-01-28 13:33:00 | LianYunGang | 80 | 70 | 68 | 2022-01-28 13:36:00 | XiaoMaiDao | 57 |"
 
-[//]: # "    | 2022-01-28 13:33:00 | LianYunGang | 80         | 70          | 68       | 2022-01-28 13:39:00 | XiaoMaiDao  | 79          |"
+[//]: # "    | 2022-01-28 13:33:00 | LianYunGang | 80 | 70 | 68 | 2022-01-28 13:39:00 | XiaoMaiDao | 79 |"
 
-[//]: # "    | 2022-01-28 13:36:00 | LianYunGang | 59         | 70          | 54       | 2022-01-28 13:18:00 | LianYunGang | 62          |"
+[//]: # "    | 2022-01-28 13:36:00 | LianYunGang | 59 | 70 | 54 | 2022-01-28 13:18:00 | LianYunGang | 62 |"
 
-[//]: # "    | 2022-01-28 13:36:00 | LianYunGang | 59         | 70          | 54       | 2022-01-28 13:21:00 | LianYunGang | 63          |"
+[//]: # "    | 2022-01-28 13:36:00 | LianYunGang | 59 | 70 | 54 | 2022-01-28 13:21:00 | LianYunGang | 63 |"
 
-[//]: # "    | 2022-01-28 13:36:00 | LianYunGang | 59         | 70          | 54       | 2022-01-28 13:24:00 | LianYunGang | 77          |"
+[//]: # "    | 2022-01-28 13:36:00 | LianYunGang | 59 | 70 | 54 | 2022-01-28 13:24:00 | LianYunGang | 77 |"
 
-[//]: # "    | 2022-01-28 13:36:00 | LianYunGang | 59         | 70          | 54       | 2022-01-28 13:27:00 | LianYunGang | 54          |"
+[//]: # "    | 2022-01-28 13:36:00 | LianYunGang | 59 | 70 | 54 | 2022-01-28 13:27:00 | LianYunGang | 54 |"
 
-[//]: # "    | 2022-01-28 13:36:00 | LianYunGang | 59         | 70          | 54       | 2022-01-28 13:30:00 | LianYunGang | 55          |"
+[//]: # "    | 2022-01-28 13:36:00 | LianYunGang | 59 | 70 | 54 | 2022-01-28 13:30:00 | LianYunGang | 55 |"
 
-[//]: # "    | 2022-01-28 13:36:00 | LianYunGang | 59         | 70          | 54       | 2022-01-28 13:33:00 | LianYunGang | 64          |"
+[//]: # "    | 2022-01-28 13:36:00 | LianYunGang | 59 | 70 | 54 | 2022-01-28 13:33:00 | LianYunGang | 64 |"
 
-[//]: # "    | 2022-01-28 13:36:00 | LianYunGang | 59         | 70          | 54       | 2022-01-28 13:36:00 | LianYunGang | 56          |"
+[//]: # "    | 2022-01-28 13:36:00 | LianYunGang | 59 | 70 | 54 | 2022-01-28 13:36:00 | LianYunGang | 56 |"
 
-[//]: # "    | 2022-01-28 13:36:00 | LianYunGang | 59         | 70          | 54       | 2022-01-28 13:21:00 | XiaoMaiDao  | 57          |"
+[//]: # "    | 2022-01-28 13:36:00 | LianYunGang | 59 | 70 | 54 | 2022-01-28 13:21:00 | XiaoMaiDao | 57 |"
 
-[//]: # "    | 2022-01-28 13:36:00 | LianYunGang | 59         | 70          | 54       | 2022-01-28 13:24:00 | XiaoMaiDao  | 64          |"
+[//]: # "    | 2022-01-28 13:36:00 | LianYunGang | 59 | 70 | 54 | 2022-01-28 13:24:00 | XiaoMaiDao | 64 |"
 
-[//]: # "    | 2022-01-28 13:36:00 | LianYunGang | 59         | 70          | 54       | 2022-01-28 13:27:00 | XiaoMaiDao  | 51          |"
+[//]: # "    | 2022-01-28 13:36:00 | LianYunGang | 59 | 70 | 54 | 2022-01-28 13:27:00 | XiaoMaiDao | 51 |"
 
-[//]: # "    | 2022-01-28 13:36:00 | LianYunGang | 59         | 70          | 54       | 2022-01-28 13:30:00 | XiaoMaiDao  | 78          |"
+[//]: # "    | 2022-01-28 13:36:00 | LianYunGang | 59| 70 | 2022-01-28 13:30:00 | XiaoMaiDao | 78 |"
 
-[//]: # "    | 2022-01-28 13:36:00 | LianYunGang | 59         | 70          | 54       | 2022-01-28 13:33:00 | XiaoMaiDao  | 78          |"
+[//]: # "    | 2022-01-28 13:36:00 | LianYunGang | 59 | 70 | 54 | 2022-01-28 13:33:00 | XiaoMaiDao | 78 |"
 
-[//]: # "    | 2022-01-28 13:36:00 | LianYunGang | 59         | 70          | 54       | 2022-01-28 13:36:00 | XiaoMaiDao  | 57          |"
+[//]: # "    | 2022-01-28 13:36:00 | LianYunGang | 59 | 70 | 54 | 2022-01-28 13:36:00 | XiaoMaiDao | 57 |"
 
-[//]: # "    | 2022-01-28 13:36:00 | LianYunGang | 59         | 70          | 54       | 2022-01-28 13:39:00 | XiaoMaiDao  | 79          |"
+[//]: # "    | 2022-01-28 13:36:00 | LianYunGang | 59| 70 | 2022-01-28 13:39:00 | XiaoMaiDao | 79 |"
 
 [//]: # "    +---------------------+-------------+------------+-------------+----------+---------------------+-------------+-------------+"
 
@@ -2435,18 +2435,18 @@ y: double
 #### **Function**: Return the rightmost len characters in the string str.
 
 ```sql
-SELECT station, AVG(temperature) 
+SELECT, AVG(temperature) 
 FROM air 
 GROUP BY station;
 ```
 
 ```
-+-------------+----------------------+
-| station     | AVG(air.temperature) |
-+-------------+----------------------+
-| XiaoMaiDao  | 69.14285714285714    |
-| LianYunGang | 72.16666666666667    |
-+-------------+----------------------+
++---+-------------------- ----- ----- -- -- -- -- -- -- -- +
+| AVG(air.temperature) |
++---+
+| XiaoMaiDao | 69.1428571428285714714 |
+| LianYunGang | 72.1666666667 |
++---+ + + +
 ```
 
 ### When the time unit is ns, the ratio unit is /ns,
@@ -2469,18 +2469,18 @@ Note
 #### **Function**: Return the leftmost len characters in str.
 
 ```sql
-SELECT station, AVG(temperature)  AS avg_t 
+SELECT position, AVG(temperature) AS avg_t 
 FROM air 
 GROUP BY station 
 HAVING avg_t > 70;
 ```
 
 ```
-+-------------+-------------------+
-| station     | avg_t             |
-+-------------+-------------------+
-| LianYunGang | 72.16666666666667 |
-+-------------+-------------------+
++-------------------------------- +
+| station | avg_t |
++--------------+
+| LianYunGang | 72.16666666666666666666667 |
++-------+ + +
 ```
 
 ### Please note that data in the TIME column can be represented by either a time string or a numeric timestamp.
@@ -2489,43 +2489,43 @@ Numerical type, scientific notation is not supported at present.
 
 [//]: # "### **GROUPING SETS**"
 
-[//]: # "GROUPING SETS 是可以将行分组在一起的一组或一组列。"
+[//]: # "GROUPING SETS is a group or group of columns that can be grouped together."
 
-[//]: # "您可以简单地使用 GROUPING SETS，而不是编写多个查询并将结果与 UNION 组合。"
+[//]: # "You can simply use GROUPING SETS, instead of writing multiple queries and combining results with UNION"
 
-[//]: # "CnosDB 中的 GROUPING SETS 可以被认为是 GROUP BY 子句的扩展。 它允许您在同一查询中定义多个分组集。"
+[//]: # "GROUPING SETS in CnosDB can be considered an extension of GROUP BY sentences. It allows you to define multiple groups in the same query."
 
-[//]: # "让我们看看如下用例，看它如何等同于具有多个 UNION ALL 子句的 GROUP BY。"
+[//]: # "Let's see the example below of how it equates to GROUP BY with multiple UNION ALL sentences."
 
-[//]: # "```sql"
+[//]: # "``sql"
 
 [//]: # "SELECT * FROM shipping;"
 
-[//]: # "--  origin_state | origin_zip | destination_state | destination_zip | package_weight"
+[//]: # "-- origin_state | origin_zip | destination_state | destination_zip | package_weight"
 
 [//]: # "-- --------------+------------+-------------------+-----------------+----------------"
 
-[//]: # "--  California   |      94131 | New Jersey        |            8648 |             13"
+[//]: # "-- California | 94131 | New Jersey | 8648 | 13"
 
-[//]: # "--  California   |      94131 | New Jersey        |            8540 |             42"
+[//]: # "-- California | 94131 | New Jersey | 8540 | 42"
 
-[//]: # "--  New Jersey   |       7081 | Connecticut       |            6708 |            225"
+[//]: # "-- New Jersey | 7081 | Connecticut | 6708 | 225"
 
-[//]: # "--  California   |      90210 | Connecticut       |            6927 |           1337"
+[//]: # "-- California | 90210 | Connecticut | 6927 | 1337"
 
-[//]: # "--  California   |      94131 | Colorado          |           80302 |              5"
+[//]: # "-- California | 94131 | Colorado | 80302 | 5"
 
-[//]: # "--  New York     |      10002 | New Jersey        |            8540 |              3"
+[//]: # "-- New York | 10002 | New Jersey | 8540 | 3"
 
 [//]: # "-- (6 rows)"
 
 [//]: # "```"
 
-[//]: # "如下查询演示了GROUPING SETS的语义"
+[//]: # "The following query demonstrates GROUPING SETS:"
 
-[//]: # "```sql"
+[//]: # "``sql"
 
-[//]: # "SELECT origin_state, origin_zip, destination_state, sum(package_weight)"
+[//]: # "SELECT origin_state, origin_zip, destination_state, sum (package_weight)"
 
 [//]: # "FROM shipping"
 
@@ -2533,53 +2533,53 @@ Numerical type, scientific notation is not supported at present.
 
 [//]: # "(origin_state, origin_zip),"
 
-[//]: # "(destination_state));"
+[//]: # "(destination_state);"
 
-[//]: # "--  origin_state | origin_zip | destination_state | _col0"
+[//]: # "-- origin_state | origin_zip | destination_state | _col0"
 
 [//]: # "--  --------------+------------+-------------------+-------"
 
-[//]: # "--   New Jersey   | NULL       | NULL              |   225"
+[//]: # "- New Jersey | NULL | NULL | 225"
 
-[//]: # "--   California   | NULL       | NULL              |  1397"
+[//]: # "- California | NULL | NULL | 1397"
 
-[//]: # "--   New York     | NULL       | NULL              |     3"
+[//]: # "--- New York | NULL | NULL | 3"
 
-[//]: # "--   California   |      90210 | NULL              |  1337"
+[//]: # "- California | 90210 | NULL | 1337"
 
-[//]: # "--   California   |      94131 | NULL              |    60"
+[//]: # "- California | 94131 | NULL | 60"
 
-[//]: # "--   New Jersey   |       7081 | NULL              |   225"
+[//]: # "-- New Jersey | 7081 | NULL | 225"
 
-[//]: # "--   New York     |      10002 | NULL              |     3"
+[//]: # "-- New York | 10002 | NULL | 3"
 
-[//]: # "--   NULL         | NULL       | Colorado          |     5"
+[//]: # "--- NULL | NULL | Colorado | 5"
 
-[//]: # "--   NULL         | NULL       | New Jersey        |    58"
+[//]: # "--- NULL | NULL | New Jersey | 58"
 
-[//]: # "--   NULL         | NULL       | Connecticut       |  1562"
+[//]: # "--- NULL | NULL | Connecticut | 1562"
 
-[//]: # "--  (10 rows)"
+[//]: # "-- (10 rows)"
 
 [//]: # "```"
 
-[//]: # "上述查询等价于"
+[//]: # "The above query is equal to the"
 
-[//]: # "```sql"
+[//]: # "``sql"
 
-[//]: # "SELECT origin_state, NULL, NULL, sum(package_weight)"
+[//]: # "SELECT origin_state, NULL, NULL, sum (package_weight)"
 
 [//]: # "FROM shipping GROUP BY origin_state"
 
 [//]: # "UNION ALL"
 
-[//]: # "SELECT origin_state, origin_zip, NULL, sum(package_weight)"
+[//]: # "SELECT origin_state, origin_zip, NULL, sum (package_weight)"
 
 [//]: # "FROM shipping GROUP BY origin_state, origin_zip"
 
 [//]: # "UNION ALL"
 
-[//]: # "SELECT NULL, NULL, destination_state, sum(package_weight)"
+[//]: # "SELECT NULL, NULL, destination_state, sum (package_weight)"
 
 [//]: # "FROM shipping GROUP BY destination_state;"
 
@@ -2587,20 +2587,20 @@ Numerical type, scientific notation is not supported at present.
 
 ### **ROLLUP**
 
-[//]: # "与 GROUPING SETS 类似，"
+[//]: # "Similar to GROUPING SETS ,"
 
 Description
 
 Note
 
-如果你的group by 子句是：
+If your group by child is：
 
 #### **Function**: Returns the approximate percentile (TDigest) of the input value x, where p is the percentile and is a 64 bit floating point number between 0 and 1 (including 1).
 
 ```sql
 SELECT ...
 FROM ...
-GROUP BY ROLLUP(column_1,column_2);
+GROUP BY ROLLUP (column_1,column_2);
 ```
 
 Avoid performing update tag operations while writing data, which may cause series conflicts.
@@ -2615,7 +2615,7 @@ FROM ...
 UNION ALL
 
 SELECT ...
-FROM ...
+FROM FROM ...
 GROUP BY
 column_1
 
@@ -2639,12 +2639,12 @@ column_1, column2;
 
 Other Data Types Type
 
-**Function**: Return the position of a substring in a specified string. ROLLUP 中列的顺序非常重要。
+**Function**: Return the position of a substring in a specified string. The sequence in ROLLUP is important.
 
 #### <geometry tag> <wkt data>&#xA;<geometry tag> ::= POINT | LINESTRING | POLYGON | MULTIPOINT |&#xA;MULTILINESTRING | MULTIPOLYGON | GEOMETRYCOLLECTION<wkt data> ::= <point> | <linestring> | <polygon> | <multipoint> |&#xA;<multilinestring> | <multipolygon> | <geometrycollection>
 
 ```sql
-SELECT station, visibility, avg(temperature) 
+SELECT, visibility, avg(temperature) 
 FROM air 
 GROUP BY ROLLUP (station, visibility);
 ```
@@ -2673,11 +2673,11 @@ GROUP BY ROLLUP (station, visibility);
 
 ### **CUBE**
 
-与 ROLLUP 类似，CUBE 是 GROUP BY 子句的扩展。 Time the data file saved
+Like ROLLUP, CUBE is an extension of GROUP BY sentences. Time the data file saved
 
-[//]: # "CUBE 就像结合了 GROUPING SETS 和 ROLLUP。"
+[//]: # "CUBE is like a combination of GROUPING SETS and ROLLUP."
 
-Measurement value首先会对(A、B、C)进行group by，
+Measurement valueThe group will start with (A, B, C)
 
 Point
 
@@ -2696,13 +2696,13 @@ GROUP BY column1
 
 UNION ALL
 
-SELECT ...
+SELECT.
 FROM ...
 GROUP BY column2
 
 UNION ALL
 
-SELECT ...
+SELECT.
 FROM ...
 GROUP BY column1, column2
 
@@ -2716,7 +2716,7 @@ FROM ...
 #### **Function**: Returns the expr values of the offset rows after the current row in the partition.
 
 ```sql
-SELECT station, visibility, avg(temperature) 
+SELECT, visibility, avg(temperature) 
 FROM air 
 GROUP BY CUBE (station, visibility);
 ```
@@ -2760,11 +2760,11 @@ GROUP BY CUBE (station, visibility);
 
 [//]: # "Time of record"
 
-[//]: # "当指定`GROUP BY`时，只能在 SELECT 列表、HAVING 和 ORDER BY 子句中使用 GROUPING。"
+[//]: # "When `GROUP BY` is specified, GROUPING can only be used in SELECT lists, HAVING and ORDER BY sentences."
 
 [//]: # "Time of record"
 
-[//]: # "```sql"
+[//]: # "``sql"
 
 [//]: # "SELECT origin_state,"
 
@@ -2792,25 +2792,25 @@ GROUP BY CUBE (station, visibility);
 
 [//]: # "-- --------------+------------+-------------------+-------+-------"
 
-[//]: # "-- California   | NULL       | NULL              |  1397 |     3"
+[//]: # "--- California | NULL | NULL | 1397 | 3"
 
-[//]: # "-- New Jersey   | NULL       | NULL              |   225 |     3"
+[//]: # "-- New Jersey | NULL | NULL | 225 | 3"
 
-[//]: # "-- New York     | NULL       | NULL              |     3 |     3"
+[//]: # "-- New York | NULL | NULL | 3 | 3 | 3"
 
-[//]: # "-- California   |      94131 | NULL              |    60 |     1"
+[//]: # "-- California | 94131 | NULL | 60 | 1"
 
-[//]: # "-- New Jersey   |       7081 | NULL              |   225 |     1"
+[//]: # "-- New Jersey | 7081 | NULL | 225 | 1"
 
-[//]: # "-- California   |      90210 | NULL              |  1337 |     1"
+[//]: # "-- California | 90210 | NULL | 1337 | 1"
 
-[//]: # "-- New York     |      10002 | NULL              |     3 |     1"
+[//]: # "-- New York | 10002 | NULL | 3 | 1"
 
-[//]: # "-- NULL         | NULL       | New Jersey        |    58 |     6"
+[//]: # "--- NULL | NULL | New Jersey | 58 | 6"
 
-[//]: # "-- NULL         | NULL       | Connecticut       |  1562 |     6"
+[//]: # "--- NULL | NULL | Connecticut | 1562 | 6"
 
-[//]: # "-- NULL         | NULL       | Colorado          |     5 |     6"
+[//]: # "-- NULL | NULL | Colorado | 5 | 6"
 
 [//]: # "-- (10 rows)"
 
@@ -2818,9 +2818,9 @@ GROUP BY CUBE (station, visibility);
 
 [//]: # "tenant name"
 
-[//]: # "作为 ROLLUP、CUBE 或 GROUPING SETS 操作的结果返回的 NULL 是 NULL 的一种特殊用途。"
+[//]: # "NULL returned as a result of ROLLUP, CUBE or GROUPING SETS operations is a special use of NULL."
 
-[//]: # "这充当结果集中的列占位符，表示全部。"
+[//]: # "This acts as the column holder of the concentration of results, indicating the total number of cases."
 
 ## You can also see the executing SQL statements using the `SHOW QUERIES` statement, which is a wrapper around the QUERIES schema.
 
@@ -2855,11 +2855,11 @@ SELECT COUNT(*) FROM air;
 ```
 
 ```
-+-----------------+
-| COUNT(UInt8(1)) |
-+-----------------+
-| 13              |
-+-----------------+
++-----+
+| COUNT (UInt8(1)) |
++---+
+| 13 |
++---------+ +
 ```
 
 ```sql
@@ -2875,15 +2875,15 @@ SELECT COUNT(temperature) FROM air;
 ```
 
 ```sql
-SELECT COUNT(DISTINCT temperature) FROM air;
+SELECT COUNT (DISTINCT temperature) FROM air;
 ```
 
 ```
-+---------------------------------+
-| COUNT(DISTINCT air.temperature) |
-+---------------------------------+
-| 10                              |
-+---------------------------------+
++-------- +
+| COUNT (DISTINCT air.temperature) |
++---, -+
+| 10 |
++------------- + A+ + + +
 ```
 
 ***
@@ -2893,7 +2893,7 @@ SELECT COUNT(DISTINCT temperature) FROM air;
 #### The time spent in each state is counted and aggregated into the StateAggData type.
 
 ```
-SUM(NUMERICS)
+SUM(NUERICS)
 ```
 
 Time of record
@@ -2909,11 +2909,11 @@ SELECT SUM(temperature) FROM air;
 ```
 
 ```
-+----------------------+
-| SUM(air.temperature) |
-+----------------------+
-| 917                  |
-+----------------------+
++------- +
+| SUM(air.temperature)|
++---------+
+| 917 |
++______
 ```
 
 ***
@@ -2923,7 +2923,7 @@ SELECT SUM(temperature) FROM air;
 #### The time spent in each state is counted, and aggregated into the StateAggData type.
 
 ```
-MIN(STRING | NUMERICS | TIMESTAMP)
+MIN(SSTRING | NUMERICS | TIMESTAMP)
 ```
 
 Time of record
@@ -2939,11 +2939,11 @@ Time of record
 ```
 
 ```
-+---------------------+------------------+----------------------+
-| MIN(air.time)       | MIN(air.station) | MIN(air.temperature) |
-+---------------------+------------------+----------------------+
-| 2022-01-28T13:21:00 | LianYunGang      | 53                   |
-+---------------------+------------------+----------------------+
++---+
+| MIN(Air.time) | MIN(Air.time) | MIN(Air.station) | MIN(Air.temperature) | MIN(Air.temperature) | MIN(air.temperature) |
++------------++-+
+| 2022-01-28T13:21:00 | LianYunGang | 53
++------------+++ + + +
 ```
 
 ***
@@ -2953,7 +2953,7 @@ Time of record
 #### **Function**: Return its first non null parameter. Null is returned only when all parameters are null. When retrieving data for display, it is often used to replace the default value with a null value.
 
 ```
-MAX(STRINGS | NUMERICS | TIMESTAMPS)
+MAX (STRINGS | NUMERICS | TIMESTAMP)
 ```
 
 Time of record
@@ -2983,7 +2983,7 @@ SELECT MAX(time), MAX(station), MAX(temperature) FROM air;
 #### In the streaming down-sampling scenario, the source table interval is one minute, and the down-sampling interval is one hour
 
 ```
-AVG(NUMERICS)
+AVG (NUMERICS)
 ```
 
 CTE in the same WITH clause must have a unique name.
@@ -2999,11 +2999,11 @@ SELECT AVG(temperature) FROM air;
 ```
 
 ```
-+----------------------+
-| AVG(air.temperature) |
-+----------------------+
-| 70.53846153846153    |
-+----------------------+
++----- +
+| AVG(air.temperature)|
++-----------+
+| 70.53846153846153 |
++----------+ +
 ```
 
 ***
@@ -3025,7 +3025,7 @@ The tenant of the database
 #### **Function**: Return the str with the trailing character trimstr deleted. trimstr is a blank character by default.
 
 ```sql
-SELECT ARRAY_AGG(temperature) from air;
+SELECT ARRAY_AGG (temperature) from air;
 ```
 
 ```
@@ -3041,7 +3041,7 @@ Description
 ### FIRST
 
 ```
-first(time,  value)
+first (time, value)
 ```
 
 Description
@@ -3057,7 +3057,7 @@ Time spent in the error, running, or start state.
 #### **Function**: 把有序的数据集合平均分配到n个桶中,将桶号分配给每一行。
 
 ```sql
-select first(time, pressure) from air;
+Select first (time, pressure) from air;
 ```
 
 ```
@@ -3071,7 +3071,7 @@ select first(time, pressure) from air;
 ### LAST
 
 ```
-last(time,  value)
+last(time, value)
 ```
 
 Description
@@ -3087,7 +3087,7 @@ The tenant of the database
 #### The time column cannot be `NULL`, and the Tag column and Field column can be `NULL`.
 
 ```sql
-select last(time, pressure) from air;
+Select last(time, pressure) from air;
 ```
 
 ```
@@ -3101,10 +3101,10 @@ select last(time, pressure) from air;
 ### MODE
 
 ```
-mode(value)
+Mode(value)
 ```
 
-计算一列的众数。
+Calculate the number of numbers in one column.
 
 Order of the column in table
 
@@ -3113,21 +3113,21 @@ The tenant of the database
 #### `RANK`, `DENSE_RANK`, `ROW_NUMBER` need ORDER BY Clause.
 
 ```sql
-select mode(pressure) from air;
+Select mode (pressure) from air;
 ```
 
 ```
-+--------------------+
++----- +
 | mode(air.pressure) |
-+--------------------+
-| 69.0               |
-+--------------------+
++---------------
+| 69.0 |
++-------+ + +
 ```
 
 ### INCREASE
 
 ```
-increase(time, value order by time)
+increase (time, value order by time)
 ```
 
 **Return Type**: any, the same type as the state of compact_state_agg.
@@ -3180,7 +3180,7 @@ FROM test_increase.test_increase GROUP BY t0 ORDER BY t0;
 #### CnosDB requires that the inserted data column must have a timestamp, and the VALUES list must be a [constant](#constant).&#xA;If a column is not selected, the value is `NULL`.
 
 ```
-VAR(NUMERICS)
+VAR (NUMERICS)
 ```
 
 Field Name
@@ -3210,7 +3210,7 @@ SELECT VAR(temperature) FROM air;
 #### **Function**: Return the minimum value of the selected element.
 
 ```
-VAR_POP(NUMERICS)
+VAR_POPUP(NUMERICS)
 ```
 
 We can get the `query_id` through [`SHOW QUERIES`](#show-queries).
@@ -3238,7 +3238,7 @@ SELECT VAR_POP(temperature) FROM air;
 ### Role type, custom role or system role
 
 ```
-STDDEV(NUMERICS)
+STDDEV (NUMERICS)
 ```
 
 Field Name
@@ -3268,7 +3268,7 @@ SELECT STDDEV(temperature) FROM air;
 #### **Function**: Convert to a microsecond-level timestamp.
 
 ```
-STDDEV_POP(NUMERICS)
+STDEN_POPUP_POPUP_TITLE
 ```
 
 Field Name
@@ -3298,7 +3298,7 @@ SELECT STDDEV_POP(temperature) FROM air;
 #### `1997-01-31T09:26:56.123Z` # Standard RCF3339, UTC time zone
 
 ```
-COVAR(NUMERICS, NUMERICS)
+COVAR (NUMERICS, NUMERICS)
 ```
 
 Field Name
@@ -3314,11 +3314,11 @@ SELECT COVAR(temperature, pressure) FROM air;
 ```
 
 ```
-+------------------------------------------+
-| COVARIANCE(air.temperature,air.pressure) |
-+------------------------------------------+
-| -5.121794871794841                       |
-+------------------------------------------+
++----- +
+| COVARIANCE (air.temperature,air.pressure) |
++----------+
+| 5.121794871794841 |
++---------+ + + +
 ```
 
 ***
@@ -3328,7 +3328,7 @@ SELECT COVAR(temperature, pressure) FROM air;
 #### INSERT air_visibility (TIME, station, visibility)&#xA;SELECT TIME, station, visibility FROM air;
 
 ```
-COVAR_POP(NUMERICS, NUMERICS)
+COVAR_POPUP_(NUMERICS, NUMERICS)
 ```
 
 Field Name
@@ -3358,7 +3358,7 @@ SELECT COVAR_POP(temperature, pressure) FROM air;
 #### You can use window functions (analysis functions) in CnosDB to flexibly analyze and process data of specified window columns. The command formats, parameter descriptions and examples of window functions supported by CnosDB are shown below to guide you to use window functions to complete development.
 
 ```
-CORR**(NUMERICS, NUMERICS)
+COR** (NUMERICS, NUMERICS)
 ```
 
 Percision of database
@@ -3370,20 +3370,20 @@ Time Functions
 #### **Function**: Return the length of the specified string in characters.
 
 ```sql
-SELECT CORR(temperature, pressure) FROM air;
+SELECT CORR (temperature, pressure) FROM air;
 ```
 
 ```
-+-------------------------------------------+
++----- +
 | CORRELATION(air.temperature,air.pressure) |
-+-------------------------------------------+
-| -0.07955796767766017                      |
-+-------------------------------------------+
++------------+
+| 0.075576766017 |
++---+ + +
 ```
 
 ### You can use `CREATE TABLE`  to create tables.
 
-### APPROX_DISTINCT
+### PLAYLIST_NOTIFICATION_TITLE
 
 #### You can then use access and summary functions for this intermediate aggregate data.
 
@@ -3404,11 +3404,11 @@ SELECT APPROX_DISTINCT(station) FROM air;
 ```
 
 ```
-+-----------------------------+
++---------- +
 | APPROXDISTINCT(air.station) |
-+-----------------------------+
-| 2                           |
-+-----------------------------+
++------------
+| 2 |
++-------------
 ```
 
 ***
@@ -3418,7 +3418,7 @@ SELECT APPROX_DISTINCT(station) FROM air;
 #### **Function**: Returns the bit length of string data or the bit size of binary data.
 
 ```
-APPROX_PERCENTILE_CONT(x, p)  
+APPROX_PERCENTILE_CONT(x, p.  
 ```
 
 Configure of users in json
@@ -3430,20 +3430,20 @@ Time Interval
 #### **Function**: Return e to the x power.
 
 ```sql
-SELECT APPROX_PERCENTILE_CONT(temperature, 0.1) FROM air;
+SELECT APPROX_PERCENTILE_CONT(temperature, 0.1) FROM ;
 ```
 
 ```
-+----------------------------------------------------+
-| APPROXPERCENTILECONT(air.temperature,Float64(0.1)) |
-+----------------------------------------------------+
-| 60.4                                               |
-+----------------------------------------------------+
++---------------------------+
+| APPROXPERCENTILECONTILET(air.temperature, Float64(0.1)) |
++----------+
+| 60.4 |
++-------------
 ```
 
 ***
 
-### APPROX_PERCENTILE_CONT_WITH_WEIGHT
+### APPROX_PERCENTILE_CONT_WITH_PLAYLIST
 
 #### Note: `CAST (BIGINT AS TIMESTAMP)` is a timestamp converted to nanosecond, as follows:
 
@@ -3462,7 +3462,7 @@ When len is a negative number, len represents 0. When len is too large, function
 #### **Function**: Remove blank characters at the begin and end of str.
 
 ```sql
-SELECT APPROX_PERCENTILE_CONT_WITH_WEIGHT(temperature,2, 0.1) FROM air;
+SELECT APPROX_PERCENTILE_CONT_WITH_WEIGHT (temperature,2, 0.1) FROM air;
 ```
 
 ```
@@ -3475,12 +3475,12 @@ SELECT APPROX_PERCENTILE_CONT_WITH_WEIGHT(temperature,2, 0.1) FROM air;
 
 ***
 
-### APPROX_MEDIAN(NUMERICS)
+### APPROX_MEDIAN (NUMERICS)
 
 #### **Function**: Returns the first value in a set of values, usually an ordered set.
 
 ```
-APPROX_MEDIAN(NUMERICS)
+APPROX_MEDIAN (NUMERICS)
 ```
 
 Database name of the table
@@ -3496,11 +3496,11 @@ SELECT APPROX_MEDIAN(temperature) FROM air;
 ```
 
 ```
-+-------------------------------+
++-------- +
 | APPROXMEDIAN(air.temperature) |
-+-------------------------------+
-| 70                            |
-+-------------------------------+
++------------
+| 70 |
++---------------------------------------------
 ```
 
 [//]: # "----------------"
@@ -3520,7 +3520,7 @@ SELECT APPROX_MEDIAN(temperature) FROM air;
 #### **Parameter Type**: Numeric type or STRING or TIMESTAMP.
 
 ```
-SAMPLE(<column_key>, <N>)
+SAMPLE(<column_key>, <N>
 ```
 
 It is equivalent to the following statement:
@@ -3539,7 +3539,7 @@ Import Data
 #### For more information about timezone, please refer to [Timestamp](#timestamp-constant-syntax).
 
 ```sql
-select sample(visibility, 5) from air;
+Select sample(visibility, 5) from air;
 ```
 
 ```
@@ -3550,7 +3550,7 @@ select sample(visibility, 5) from air;
 +--------------------------------------+
 ```
 
-### ASAP_SMOOTH
+### USA_SMOTH
 
 ```
 asap_smooth(time, value, resolution order by time)
@@ -3576,7 +3576,7 @@ Example
 #### **Function**: Return the Pearson coefficient representing the association between a set of number pairs.
 
 ```sql
-select asap_smooth(time, pressure, 10) from air group by date_trunc('month', time);
+Select asap_smooth(time, pressure, 10) from air group by date_trunc('month', time);
 ```
 
 ```
@@ -3593,8 +3593,8 @@ select asap_smooth(time, pressure, 10) from air group by date_trunc('month', tim
 
 ### stats_agg
 
-对二维数据执行线性回归分析，例如计算相关系数和协方差。
-并且还可以分别计算每个维度的常见统计数据，例如平均值和标准差。
+Implement linear regression analysis for two-dimensional data, such as calculation of relevant coefficients and composites.
+Common statistical data for each dimension can also be calculated separately, such as averages and standard deviations.
 `INTERVAL '1 MILLISECONDS'` One millisecond
 
 Operator
@@ -3615,15 +3615,15 @@ If the subexpression is null, the whole expression is false
 Constant
 
 ```
-{ 
-  n: bigint,   -- count 
-  sx: double,  -- sum(x)- sum(x)
-  sx2: double, -- sum((x-sx/n)^2) (sum of squares)
+LO 
+  n: bigt, --count 
+  sx: double, -- sum(x)- sum(x)
+  sx2: double, -sum((x-sx/n)^2) (sum of square)
   sx3: double, -- sum((x-sx/n)^3)
   sx4: double, -- sum((x-sx/n)^4)
-  sy: double,  -- sum(y)
-  sy2: double, -- sum((y-sy/n)^2) (sum of squares)
-  sy3: double, -- sum((y-sy/n)^3)
+  sy: double, -sum(y)
+  sy2: double, --sum((y-sy/n)^2) (sum of square)
+  sy3: double, --sum((y-sy/n)^3)
   sy4: double, -- sum((y-sy/n)^4)
   sxy: double, -- sum((x-sx/n)*(y-sy/n)) (sum of products) 
 }
@@ -3632,19 +3632,19 @@ Constant
 #### **Function**: Rounded to the nearest whole number.
 
 ```sql
-create table if not exists test_stats(x bigint, y bigint);
-alter database public set ttl '1000000d';
+create table if not exist test_stats(x bigt, y bigint);
+alter database public set '100000d';
 insert into test_stats(time, x, y) values
-(1, 1, 1),
-(2, 1, 2),
+(1),
+(2),
 (3, 1, 3),
-(4, 1, 4),
+(4, 1, 1), 4),
 (5, 1, 5),
 (6, 2, 1),
 (7, 2, 2),
 (8, 2, 3),
 (9, 2, 4),
-(10, 2, 5);
+(10,2, 5);
 ```
 
 ```sql
@@ -3666,7 +3666,7 @@ select stats_agg(y, x) from test_stats;
 Rank Functions
 
 ```sql
-select num_vals(stats_agg(y, x)) from test_stats;
+Select num_vals(stats_agg(y, x)) from test_stats;
 ```
 
 ```
@@ -3684,15 +3684,15 @@ Description
 Functions
 
 ```sql
-select average_x(stats_agg(y, x)) from test_stats;
+Select average_x (stats_agg(y, x)) from test_stats;
 ```
 
 ```
-+-------------------------------------------------+
-| average_x(stats_agg(test_stats.y,test_stats.x)) |
-+-------------------------------------------------+
-| 1.5                                             |
-+-------------------------------------------------+
++----- -------- +
+| average_x (stats_agg(test_stats.y,test_stats.x)) |
++------------- +
+| 1.5 |
++-------------
 ```
 
 #### sum_y, sum_x
@@ -3702,15 +3702,15 @@ This page only shows `INSERT` related syntax.
 Functions
 
 ```sql
-select sum_x(stats_agg(y, x)) from test_stats;
+select sum_x (stats_agg(y, x)) from test_stats;
 ```
 
 ```
-+---------------------------------------------+
-| sum_x(stats_agg(test_stats.y,test_stats.x)) |
-+---------------------------------------------+
-| 15.0                                        |
-+---------------------------------------------+
++-------- +
+| sum_x (stats_agg(test_stats.y,test_stats.x)) |
++------------- +
+| 15.0 |
++------+ + + + + +
 ```
 
 #### stddev_samp_y, stddev_samp_x
@@ -3720,15 +3720,16 @@ select sum_x(stats_agg(y, x)) from test_stats;
 If you need to track the time to enter and exit each state, use the state_agg function.
 
 ```sql
-select stddev_samp_x(stats_agg(y, x)) from test_stats;
+Select stddev_samp_x(stats_agg(y, x)) from test_stats;
 ```
 
 ```
-+-----------------------------------------------------+
-| stddev_samp_x(stats_agg(test_stats.y,test_stats.x)) |
-+-----------------------------------------------------+
-| 0.5270462766947299                                  |
-+-----------------------------------------------------+
++------------------------------------ +
+| stddev_sam_x (stats_agg(test_stats_stats.y,test_stats.x)) |
++------------------+
+| 0.5270462766947299 |
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+ 0.527627694729|
+ +--------------------------+
 ```
 
 #### stddev_pop_y, stddev_pop_x
@@ -3738,33 +3739,33 @@ select stddev_samp_x(stats_agg(y, x)) from test_stats;
 Operator
 
 ```sql
-select stddev_pop_x(stats_agg(y, x)) from test_stats;
+Select stddev_pop_x (stats_agg(y, x)) from test_stats;
 ```
 
 ```
-+----------------------------------------------------+
-| stddev_pop_x(stats_agg(test_stats.y,test_stats.x)) |
-+----------------------------------------------------+
-| 0.5                                                |
-+----------------------------------------------------+
++---------------------------- +
+| stddev_pop_x (stats_agg(test_stats_stats.y,test_stats.x)) |
++----------+
+| 0.5 |
++------------------------------------------------------------------------------------------------------------
 ```
 
-#### var_samp_y, var_samp_x
+#### var_sam_y, var_samp_x
 
 Description
 
 Disk size occupied by the vnode
 
 ```sql
-select var_samp_x(stats_agg(y, x)) from test_stats;
+Select var_samp_x(stats_agg(y, x)) from test_stats;
 ```
 
 ```
-+--------------------------------------------------+
-| var_samp_x(stats_agg(test_stats.y,test_stats.x)) |
-+--------------------------------------------------+
-| 0.2777777777777778                               |
-+--------------------------------------------------+
++----- ----- +
+| var_samp_x (stats_agg(test_stats.y,test_stats.x)) |
++------------- +
+| 0.2777777777777778 |
++---------, -----
 ```
 
 #### var_pop_y, var_pop_x
@@ -3774,115 +3775,115 @@ UTF-8 Encoded String
 Measurement value
 
 ```sql
-select var_pop_x(stats_agg(y, x)) from test_stats;
+Select var_pop_x (stats_agg(y, x)) from test_stats;
 ```
 
 ```
-+-------------------------------------------------+
-| var_pop_x(stats_agg(test_stats.y,test_stats.x)) |
-+-------------------------------------------------+
-| 0.25                                            |
-+-------------------------------------------------+
++----- -------- +
+| var_pop_x (stats_agg(test_stats.y,test_stats.x)) |
++------------- +
+| 0.25 |
++---------------------
 ```
 
-#### skewness_samp_y, skewness_samp_x
+#### Skewness_sam_y, kewness_sam_x
 
 Description
 
 Measurement value
 
 ```sql
-select skewness_samp_x(stats_agg(y, x)) from test_stats;
+Select stewness_samp_x(stats_agg(y, x)) from test_stats;
 ```
 
 ```
-+-------------------------------------------------------+
-| skewness_samp_x(stats_agg(test_stats.y,test_stats.x)) |
-+-------------------------------------------------------+
-| -2.1065000811460203e-16                               |
-+-------------------------------------------------------+
++----------------------------- +
+| kewness_samp_x (stats_agg(test_stats.y,test_stats.y)|
++--------------------------+
+| -2.106000811460203e-16 |
++---------------------------------------------------------------------------------------------------------------
 ```
 
-#### skewness_pop_y, skewness_pop_x
+#### Skewness_pop_y, kewness_pop_x
 
 Description
 
 The IN operator determines whether any value in the list is equal to the expression.
 
 ```sql
-select skewness_pop_x(stats_agg(y, x)) from test_stats;
+Select stewness_pop_x (stats_agg(y, x)) from test_stats;
 ```
 
 ```
-+------------------------------------------------------+
-| skewness_pop_x(stats_agg(test_stats.y,test_stats.x)) |
-+------------------------------------------------------+
-| -2.220446049250313e-16                               |
-+------------------------------------------------------+
++---------------------------- +
+| kewness_pop_x (stats_agg(test_stats.y,test_stats.x)) |
++----------+
+| -2.220446049250313e-16 |
++-----------------------------------------------------------------------------------------------------+
 ```
 
-#### kurtosis_samp_y, kurtosis_samp_x
+#### kurtosis_sam_y, kurtosis_samp_x
 
 **`IN` Expression**
 
 Comparing expressions for equality
 
 ```sql
-select kurtosis_samp_x(stats_agg(y, x)) from test_stats;
+Select kurtosis_samp_x(stats_agg(y, x)) from test_stats;
 ```
 
 ```
-+-------------------------------------------------------+
-| kurtosis_samp_x(stats_agg(test_stats.y,test_stats.x)) |
-+-------------------------------------------------------+
-| 0.8999999999999998                                    |
-+-------------------------------------------------------+
++----------------------------- +
+| kurtosis_samp_x (stats_agg(test_stats.y,test_stats.y)|
++----------+
+| 0.8999999999999999|
++-------------+ +
 ```
 
 #### kurtosis_pop_y, kurtosis_pop_x
 
-计算二维统计聚合后指定维度的峰度值，方式为 population。
+Calculate the peak of the two-dimensional aggregation and specify the dimension in a way that is population.
 
 Aggregate Function
 
 ```sql
-select kurtosis_pop_x(stats_agg(y, x)) from test_stats;
+Select kurtosis_pop_x (stats_agg(y, x)) from test_stats;
 ```
 
 ```
-+------------------------------------------------------+
-| kurtosis_pop_x(stats_agg(test_stats.y,test_stats.x)) |
-+------------------------------------------------------+
-| 0.9999999999999998                                   |
-+------------------------------------------------------+
++----------------------------- +
+| kurtosis_pop_x (stats_agg(test_stats.y,test_stats.x)) |
++------------------+
+| 0.999999999999999998|
++------------------------------------------------------------------------------------------------------------------+
 ```
 
-#### correlation
+#### Correlation
 
 `EXPLAIN` is only used to display the execution plan of a query, and does not execute the query.
 
 Linestring
 
 ```sql
-select correlation(stats_agg(y, x)) from test_stats;
+Select correlation(stats_agg(y, x)) from test_stats;
 ```
 
 ```
-+---------------------------------------------------+
++----------------------------- +
 | correlation(stats_agg(test_stats.y,test_stats.x)) |
-+---------------------------------------------------+
-| 0.0                                               |
-+---------------------------------------------------+
++----------------------------------------------------------------------------------+
+| 0.0 |
++-------------------------------------------+
 ```
 
 #### covariance_samp, covariance_pop
 
-计算二维统计聚合后的协方差。
+Calculate the syntax difference after the two-dimensional statistical aggregation.
 
 Linestring
 
 ```sql
-select covariance_samp(stats_agg(y, x)) from test_stats;
+Select covariance_Samp (stats_agg(y, x)) from test_stats;
 ```
 
 ```
@@ -3894,15 +3895,15 @@ select covariance_samp(stats_agg(y, x)) from test_stats;
 ```
 
 ```sql
-select covariance_pop(stats_agg(y, x)) from test_stats;
+Select covariance_pop(stats_agg(y, x)) from test_stats;
 ```
 
 ```
-+------------------------------------------------------+
++----------------------------- +
 | covariance_pop(stats_agg(test_stats.y,test_stats.x)) |
-+------------------------------------------------------+
-| 0.0                                                  |
-+------------------------------------------------------+
++--------------------------+
+| 0.0 |
++---------------------
 ```
 
 #### determination_coeff
@@ -3913,7 +3914,7 @@ select covariance_pop(stats_agg(y, x)) from test_stats;
 `window_duration` is an interval, specifying the window size of the time window.
 
 ```sql
-select determination_coeff(stats_agg(y, x)) from test_stats;
+Select determination_coeff(stats_agg(y, x)) from test_stats;
 ```
 
 ```
@@ -3932,7 +3933,7 @@ The ASAP smoothing algorithm aims to create human-readable graphs that preserve 
 Take the (Timestamp, value) pair, normalize them to the target time interval, and return the ASAP smooth value.
 
 ```sql
-select slope(stats_agg(y, x)) from test_stats;
+Select slope(stats_agg(y, x)) from test_stats;
 ```
 
 ```
@@ -3950,7 +3951,7 @@ select slope(stats_agg(y, x)) from test_stats;
 Geometry Functions
 
 ```sql
-select intercept(stats_agg(y, x)) from test_stats;
+Select intercept(stats_agg(y, x)) from test_stats;
 ```
 
 ```
@@ -3980,28 +3981,28 @@ select x_intercept(stats_agg(y, x)) from test_stats;
 +---------------------------------------------------+
 ```
 
-### gauge_agg
+### gage_agg
 
-分析Gauge数据。与Counter不同，Gauge可以减少也可以增加。
+Analyze Gauge data.Unlike the Counter, Gauge can be reduced or increased.
 
-#### gauge_agg
+#### gage_agg
 
 ```
-gauge_agg(time, value)
+gage_agg(time, value)
 ```
 
-这是分析 Gauge 数据的第一步。Description
+This is the first step in analysing the Gauge data.Description
 
 Role type, custom role or system role
 
 - time: Timestamp
 
-- value: DOUBLE
+- Value: DOUBLE
 
 `DENSE_RANK` | `RANK` | `PERCENT_RANK` need ORDER BY Clause.
 
 ```
-Struct {
+Struct LO
   first: Struct { 
     ts: Timestamp,
     value: Double
@@ -4018,14 +4019,14 @@ Struct {
     ts: Timestamp, 
     val: Double
   }, 
-  num_elements: Bigint Unsingned 
+  num_elements: Bigint Unsingled 
 }
 ```
 
 #### The double quotation mark format is not supported. Two consecutive '' in
 
 ```sql
-select gauge_agg(time, pressure) from air group by date_trunc('month', time);
+Select gauge_agg(time, pressure) from air group by date_trunc('month', time);
 ```
 
 ```
@@ -4040,12 +4041,12 @@ select gauge_agg(time, pressure) from air group by date_trunc('month', time);
 
 #### delta
 
-获取一段时间内Gauge的变化。column_key: Any type
+Get changes to Gauge over time.column_key: Any type
 
 source and origin type are TIMESTAMP.
 
 ```sql
-select delta(gauge_agg(time, pressure)) from air group by date_trunc('month', time);
+select delta (gauge_agg(time, pressure)) from air group by date_trunc('month', time);
 ```
 
 ```
@@ -4060,7 +4061,7 @@ select delta(gauge_agg(time, pressure)) from air group by date_trunc('month', ti
 
 #### time_delta
 
-获取持续时间，最后一个Gauge的时间减去第一个Gauge的时间。
+Get duration, the last Gauge time minus the first Gauge time.
 
 state: any is the same type as the state of compact_state_agg.
 
@@ -4078,7 +4079,7 @@ select time_delta(gauge_agg(time, pressure)) from air group by date_trunc('month
 +----------------------------------------------------------+
 ```
 
-#### rate
+#### Rate
 
 **Return Type**: BOOLEAN
 
@@ -4099,49 +4100,49 @@ select rate(gauge_agg(time, pressure)) from air group by date_trunc('month', tim
 ```
 
 ```
-+----------------------------------------+
-| rate(gauge_agg(air.time,air.pressure)) |
-+----------------------------------------+
-| 2.2018970189701897e-14                 |
-| 9.349414325974008e-15                  |
-| -4.133905465849807e-16                 |
-+----------------------------------------+
++-------- +
+| rate(gauge_agg(air.time,air.pressure)|
++------+
+| 2.2018970189701897e-14 |
+| 9.349414325974008e-15 |
+| 4.13905465848807e-16 |
++--------+ + + + + +
 ```
 
 #### first_time
 
 **Function**: Return an array consisting of all the values of the selected element. The element types must be the same.
 
-**返回类型**: TIMESTAMP
+**Return Type**: TIMESTAMP
 
 ```
-select first_time(gauge_agg(time, pressure)) from air;
+Select first_time (gauge_agg(time, pressure)) from air;
 ```
 
 ```
-+----------------------------------------------+
-| first_time(gauge_agg(air.time,air.pressure)) |
-+----------------------------------------------+
-| 2023-01-14T16:00:00                          |
-+----------------------------------------------+
++-------- +
+| first_time (gauge_agg(air.time,air.pressure)) |
++-----------+
+| 2023-01-14T16:00:00 |
++----------+ +
 ```
 
 #### last_time
 
-取得Gauge中最大的时间戳
+Get the largest timestamp on Gauge
 
-**返回类型**: TIMESTAMP
+**Return Type**: TIMESTAMP
 
 ```sql
-select last_time(gauge_agg(time, pressure)) from air;
+Select last_time (gauge_agg(time, pressure)) from air;
 ```
 
 ```
-+---------------------------------------------+
-| last_time(gauge_agg(air.time,air.pressure)) |
-+---------------------------------------------+
-| 2023-03-14T16:00:00                         |
-+---------------------------------------------+
++----- +
+| last_time (gauge_agg(air.time,air.pressure)) |
++-----------+
+| 2023-03-14T16:00:00 |
++----------+ +
 ```
 
 #### first_val
@@ -4151,7 +4152,7 @@ Table name
 Unary Operator
 
 ```sql
-select first_val(gauge_agg(time, pressure)) from air;
+Select first_val(gauge_agg(time, pressure)) from air;
 ```
 
 ```
@@ -4169,7 +4170,7 @@ Geometric type
 INTERVAL Constant
 
 ```sql
-select last_val(gauge_agg(time, pressure)) from air;
+Select last_val(gauge_agg(time, pressure)) from air;
 ```
 
 ```
@@ -4182,7 +4183,7 @@ select last_val(gauge_agg(time, pressure)) from air;
 
 #### idelta_left
 
-计算Gauge最早的瞬时变化。这等于第二个值减去第一个值。
+Calculate the earliest transient changes in Gauge.This is equal to the second value minus the first value.
 
 Multi-point
 
@@ -4191,31 +4192,31 @@ Multi-point
 ```
 
 ```
-+---------------------+------------+----------+
-| time                | station    | pressure |
-+---------------------+------------+----------+
-| 2023-01-14T16:00:00 | XiaoMaiDao | 63.0     |
-| 2023-01-14T16:03:00 | XiaoMaiDao | 58.0     |
-| 2023-01-14T16:06:00 | XiaoMaiDao | 65.0     |
-| 2023-01-14T16:09:00 | XiaoMaiDao | 52.0     |
-+---------------------+------------+----------+
++----- +
+| time | station | pressure |
++-----------+
+| 2023-01-14T16:00:00 | XiaoMaiDao | 63. |
+| 2023-01-14T16:03:00 | XiaoMaiDao | 58.0 |
+| 2023-01-14T16:06:00 | XiaoMaiDao | 65. |
+| 2023-01-14T16:09:00 | XiaoMaiiDao | 52.0 |
++---______
 ```
 
 ```sql
-select idelta_left(gauge_agg(time, pressure)) from air where station = 'XiaoMaiDao';
+Select idelta_left(gauge_agg(time, pressure)) from air where station = 'XiaoMaiDao';
 ```
 
 ```
-+-----------------------------------------------+
-| idelta_left(gauge_agg(air.time,air.pressure)) |
-+-----------------------------------------------+
-| -5.0                                          |
-+-----------------------------------------------+
++----- +
+| ideelta_left(gauge_agg(air.time,air.pressure)) |
++----------+
+| 5.0 |
++-----
 ```
 
 #### idelta_right
 
-计算Gauge最晚的瞬时变化。这等于最后一个值值减去倒数第二个值。
+Calculate the latest transient changes for Gauge.This is equal to the last value minus the second last value.
 
 Multi-point
 
@@ -4224,18 +4225,18 @@ select time, station, pressure from air where station = 'XiaoMaiDao' order by ti
 ```
 
 ```
-+---------------------+------------+----------+
-| time                | station    | pressure |
-+---------------------+------------+----------+
-| 2023-03-14T16:00:00 | XiaoMaiDao | 55.0     |
-| 2023-03-14T15:57:00 | XiaoMaiDao | 62.0     |
-| 2023-03-14T15:54:00 | XiaoMaiDao | 75.0     |
-| 2023-03-14T15:51:00 | XiaoMaiDao | 61.0     |
-+---------------------+------------+----------+
++----- +
+| time | station | pressure |
++-----------+
+| 2023-03-14T16:00:00 | XiaoMaiDao | 5. |
+| 2023-03-14T15:57:00 | XiaoMaiDao | 62.0 |
+| 2023-03-14T15:54:00 | XiaoMaiDao | 75. |
+| 2023-03-14T15:51:00 | XiaoMaiiDao | 61.0 |
++---______
 ```
 
 ```sql
-select idelta_right(gauge_agg(time, pressure)) from air where station = 'XiaoMaiDao';
+Select idelta_right (gauge_agg(time, pressure)) from air where station = 'XiaoMaiDao';
 ```
 
 ```
@@ -4256,7 +4257,7 @@ Database name
 
 **Return Type**: Struct as follows.
 
-`INTERVAL '1 DAY 1'` One day and one second它可能在行之间状态过多的数据集上表现不佳。
+`INTERVAL '1 DAY 1'` One day and one secondIt may not perform well on excessive data sets between them.
 
 Field Name
 
@@ -4281,16 +4282,16 @@ Example
 #### ---- Prepare data&#xA;DROP DATABASE IF EXISTS gapfill_db;&#xA;CREATE DATABASE gapfill_db WITH TTL '1000000d';&#xA;CREATE TABLE gapfill_db.m2(f0 BIGINT, f1 DOUBLE, TAGS(t0, t1, t2));INSERT gapfill_db.m2(TIME, f0, f1, t0, t1)&#xA;VALUES&#xA;('1999-12-31 00:00:00.000', 111, 444, 'tag11', 'tag21'),&#xA;('1999-12-31 00:00:00.005', 222, 333, 'tag12', 'tag22'),&#xA;('1999-12-31 00:00:00.010', 333, 222, 'tag13', 'tag23'),&#xA;('1999-12-31 00:00:00.015', 444, 111, 'tag14', 'tag24'),&#xA;('1999-12-31 00:00:00.020', 222, 555, 'tag11', 'tag21'),&#xA;('1999-12-31 00:00:00.025', 333, 444, 'tag12', 'tag22'),&#xA;('1999-12-31 00:00:00.030', 444, 333, 'tag13', 'tag23'),&#xA;('1999-12-31 00:00:00.035', 555, 222, 'tag14', 'tag24');
 
 ```sql
-alter database public set ttl '1000000d';
+alter database public set ttl '100000d';
 
-create table if not exists states(state STRING);
+create table if not exist states (state STRING);
 
 insert into states values
 ('2020-01-01 10:00:00', 'starting'),
-('2020-01-01 10:30:00', 'running'),
+('2020-01-01 10:30:', 'running'),
 ('2020-01-03 16:00:00', 'error'),
 ('2020-01-03 18:30:00', 'starting'),
-('2020-01-03 19:30:00', 'running'),
+('2020-01-03 19:30', 'running'),
 ('2020-01-05 12:00:00', 'stopping');
 ```
 
@@ -4309,7 +4310,7 @@ select compact_state_agg(time, state) from states;
 #### duration_in
 
 ```
-duration_in(state_agg_data, state [,begin_time, interval_time]) 
+duration_in (state_agg_data, state [,begin_time, interval_time]) 
 ```
 
 **Function**: Return the character at the provided UTF-16 code.
@@ -4329,15 +4330,15 @@ compact_state_agg is designed to handle a relatively small number of states. It 
 #### `INTERVAL '1 MONTH'` One month(30 days)
 
 ```sql
-select duration_in(compact_state_agg(time, state), 'running') from states;
+select duration_in (compact_state_agg(time, state), 'running') from states;
 ```
 
 ```
-+--------------------------------------------------------------------------+
-| duration_in(compact_state_agg(states.time,states.state),Utf8("running")) |
-+--------------------------------------------------------------------------+
-| 0 years 0 mons 3 days 22 hours 0 mins 0.000000000 secs                   |
-+--------------------------------------------------------------------------+
++----------------- +
+| duration_in(compact_state_agg(states.time,states.state), Utf8("running")) |
++---------------------------+
+| 0 years 3 days 3 days 22 hours 0 mins 0.00000000000secs |
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 0 years | 0 ms 3 days
 ```
 
 ### state_agg
@@ -4353,21 +4354,21 @@ state_agg(ts, state)
 **HAVING Clause**
 
 ```sql
-alter database public set ttl '1000000d';
+alter database public set ttl '100000d';
 
-create table if not exists states(state STRING);
+create table if not exist states (state STRING);
 
 insert into states values
 ('2020-01-01 10:00:00', 'starting'),
-('2020-01-01 10:30:00', 'running'),
+('2020-01-01 10:30:', 'running'),
 ('2020-01-03 16:00:00', 'error'),
 ('2020-01-03 18:30:00', 'starting'),
-('2020-01-03 19:30:00', 'running'),
+('2020-01-03 19:30', 'running'),
 ('2020-01-05 12:00:00', 'stopping');
 ```
 
 ```sql
-select state_agg(time, state) from states;
+Select state_agg(time, state) from states;
 ```
 
 ```
@@ -4381,7 +4382,7 @@ select state_agg(time, state) from states;
 #### duration_in
 
 ```
-duration_in(state_agg_data, state [,begin_time, interval_time]) 
+duration_in (state_agg_data, state [,begin_time, interval_time]) 
 ```
 
 Multi-linestring
@@ -4403,21 +4404,21 @@ Polygon
 **Parameter Type**: expr type is any type, ignore_ nulls type is BOOLEAN, defaults to false.
 
 ```sql
-select duration_in(state_agg(time, state), 'running') from states;
+select duration_in (state_agg(time, state), 'running') from states;
 ```
 
 ```
-+------------------------------------------------------------------+
-| duration_in(state_agg(states.time,states.state),Utf8("running")) |
-+------------------------------------------------------------------+
-| 0 years 0 mons 3 days 22 hours 0 mins 0.000000000 secs           |
-+------------------------------------------------------------------+
++----- +
+| duration_in (state_agg(states.time,states.state), Utf8("running")|
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 0 years 0 ms 3 day 22 hours 0 min s 0.00000000000secs |
++---------------------------+ +
 ```
 
 Polygon
 
 ```sql
-select duration_in(state_agg(time, state), 'running', Timestamp '2020-01-01 11:00:00') 
+Select duration_in (state_agg(time, state), 'running', Timestap '2020-01-01 11:00') 
 from states;
 ```
 
@@ -4432,7 +4433,7 @@ from states;
 **Return Type**: Double
 
 ```sql
-select duration_in(state_agg(time, state), 'running', Timestamp '2020-01-01 11:00:00', interval '4 day')
+select duration_in (state_agg(time, state), 'running', Timestap '2020-01-01 11:00', interval '4 day')
 from states;
 ```
 
@@ -4447,7 +4448,7 @@ from states;
 #### state_at
 
 ```
-state_at(state_agg_data, ts)
+state_at (state_agg_data, ts)
 ```
 
 **Function**: Convert the first character in str to its ASCII code and return it.
@@ -4461,7 +4462,7 @@ Type of permission granted, READ/WRITE/ALL
 Field Name
 
 ```sql
-select state_at(state_agg(time, state), Timestamp '2020-01-01 10:30:00') from states;
+Select state_at (state_agg(time, state), Timestap '2020-01-01 10:30:00) from states;
 ```
 
 ```
@@ -4472,9 +4473,9 @@ select state_at(state_agg(time, state), Timestamp '2020-01-01 10:30:00') from st
 +---------------------------------------------------------------------------+
 ```
 
-### candlestick_agg
+### andlestick_agg
 
-进行金融资产数据分析。Null Value
+Carry out analysis of financial asset data.Null Value
 
 Multi-linestring
 
@@ -4482,10 +4483,10 @@ Field Name
 
 **Notice:**
 
-#### candlestick_agg
+#### andlestick_agg
 
 ```
-candlestick_agg(time, price, volume)
+andlestick_agg(time, price, volume)
 ```
 
 Description
@@ -4532,22 +4533,22 @@ Struct {
 #### **Function**: Return the sum calculated from the selected element.
 
 ```sql
-alter database public set ttl '1000000d';
-create table if not exists tick(price bigint ,volume bigint);
+alter database public set ttl '100000d';
+create table if not existers tick (price bigt, volume bigint);
 insert tick(time, price, volume)
 values
-    ('1999-12-31 00:00:00.000', 111, 444),
+    ('1999-12-31 00:00:00. 00', 111, 444),
     ('1999-12-31 00:00:00.005', 222, 444),
-    ('1999-12-31 00:00:00.010', 333, 222),
+    ('1999-12-31 00:00:00. 10', 333, 222),
     ('1999-12-31 00:00:10.015', 444, 111),
-    ('1999-12-31 00:00:10.020', 222, 555),
-    ('1999-12-31 00:10:00.025', 333, 555),
-    ('1999-12-31 00:10:00.030', 444, 333),
-    ('1999-12-31 01:00:00.035', 555, 222);
+    ('1999-12-31 00:00:10. 20', 222, 555),
+    ('1999-12-31 00:10:00. 25', 333, 555),
+    ('1999-12-31 00:10.030', 444, 333),
+    ('1999-12-31 01:00.035', 555, 222);
 ```
 
 ```sql
-select candlestick_agg(time, price, volume) from tick;
+Select andlestick_agg(time, price, volume) from tick;
 ```
 
 ```
@@ -4558,58 +4559,60 @@ select candlestick_agg(time, price, volume) from tick;
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ```
 
-#### close
+#### Close
 
 ```
 close(candlestick_agg_data)
 ```
 
-获取收盘价。
+Get the price of the bill.
 
 Syntax
 
 #### **Function**: Return expr filled with pad on the right. After filling, the length of the whole string is len.
 
 ```sql
-select close(candlestick_agg(time, price, volume)) from tick;
+Select close(candlestick_agg(time, price, volume)) from tick;
 ```
 
 ```
-+----------------------------------------------------------+
-| close(candlestick_agg(tick.time,tick.price,tick.volume)) |
-+----------------------------------------------------------+
-| 555.0                                                    |
-+----------------------------------------------------------+
++--------------------------------------------- +
+| closing (candlestick_agg(tick.time,tick.price,tick.volume)) |
++------------------------------------------+
+| 55.0 |
++------------------------------------------------------------------------------------------------------------------------------------------------------------ + 
+ | 55.0 | 
+ +--------------------------------------------------------------------------------------------------------------------------------------------------+
 ```
 
 #### close_time
 
 ```
-close_time(candlestick_agg_data)
+close_time (candlestick_agg_data)
 ```
 
-获取收盘时间。
+Retrieving billing time.
 
 Field Name
 
 #### **Function**: Return the byte length of string data.
 
 ```sql
-select close_time(candlestick_agg(time, price, volume)) from tick;
+Select close_time (candlestick_agg(time, price, volume)) from tick;
 ```
 
 ```
-+---------------------------------------------------------------+
-| close_time(candlestick_agg(tick.time,tick.price,tick.volume)) |
-+---------------------------------------------------------------+
-| 1999-12-31T01:00:00.035                                       |
-+---------------------------------------------------------------+
++----------------- +
+| close_time (candlestick_agg(tick.time,tick.price,tick.volume)) |
++--------------------------+
+| 1999-12-31T01:00:00:0005 |
++-----------------+ +
 ```
 
-#### high
+#### High
 
 ```
-high(candlestick_agg_data)
+high (candlestick_agg_data)
 ```
 
 state: any The same type of state as in compact_state_agg.
@@ -4619,21 +4622,21 @@ Syntax
 #### **Function**: Return expr filled with pad on the left. After filling, the length of the whole string is len.
 
 ```
-select high(candlestick_agg(time, price, volume)) from tick;
+Select high (candlestick_agg(time, price, volume)) from tick;
 ```
 
 ```
-+---------------------------------------------------------+
-| high(candlestick_agg(tick.time,tick.price,tick.volume)) |
-+---------------------------------------------------------+
-| 555.0                                                   |
-+---------------------------------------------------------+
++----------------------------- +
+| high(andlestick_agg(tick.time,tick.price,tick.volume)) |
++------------------------------------------+
+| 555.0 |
++------------- format@@3 +----------+
 ```
 
-#### high_time
+#### High_time
 
 ```
-high_time(candlestick_agg_data)
+High_time (candlestick_agg_data)
 ```
 
 **Return Type**: Geometry
@@ -4643,15 +4646,15 @@ Syntax
 #### **Function**: Returns the expression value of the specified row of the window frame relative to the first row of the window.
 
 ```sql
-select high_time(candlestick_agg(time, price, volume)) from tick;
+Select high_time (candlestick_agg(time, price, price, volume)) from tick;
 ```
 
 ```
-+--------------------------------------------------------------+
-| high_time(candlestick_agg(tick.time,tick.price,tick.volume)) |
-+--------------------------------------------------------------+
-| 1999-12-31T01:00:00.035                                      |
-+--------------------------------------------------------------+
++-------------------------- +
+| high_time(andlestick_agg(tick.time,tick.price,tick.volume)) |
++------------- +
+| 1999-12-31T01:00:00:005 |
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | 1999-12-3T01:00
 ```
 
 #### low
@@ -4688,15 +4691,15 @@ Syntax
 #### **Function**: Return the arccosine of x.
 
 ```sql
-select low(candlestick_agg(time, price, volume)) from tick;
+Select low(candlestick_agg(time, price, volume)) from tick;
 ```
 
 ```
-+--------------------------------------------------------+
-| low(candlestick_agg(tick.time,tick.price,tick.volume)) |
-+--------------------------------------------------------+
-| 111.0                                                  |
-+--------------------------------------------------------+
++----------------------------- +
+| low(andlestick_agg(tick.time,tick.price,tick.volume)) |
++----------------------------------+
+| 11.0 |
++----------+ + +
 ```
 
 #### low_time
@@ -4712,7 +4715,7 @@ Field Name
 #### **Function**: Convert to a second-level timestamp.
 
 ```sql
-select low_time(candlestick_agg(time, price, volume)) from tick;
+Select low_time (candlestick_agg(time, price, volume)) from tick;
 ```
 
 ```
@@ -4726,7 +4729,7 @@ select low_time(candlestick_agg(time, price, volume)) from tick;
 #### open
 
 ```
-open(candlestick_agg_data)
+open(andlestick_agg_data)
 ```
 
 IN only supports a list of constants, not a list of expressions.
@@ -4736,15 +4739,15 @@ Syntax
 #### **Function**: Joins two or more expressions and returns the generated expression.
 
 ```sql
-select open(candlestick_agg(time, price, volume)) from tick;
+Select open (candlestick_agg(time, price, volume)) from tick;
 ```
 
 ```
-+---------------------------------------------------------+
-| open(candlestick_agg(tick.time,tick.price,tick.volume)) |
-+---------------------------------------------------------+
-| 111.0                                                   |
-+---------------------------------------------------------+
++----------------------------- +
+| open(andlestick_agg(tick.time,tick.price,tick.volume)) |
++----------+
+| 111.0 |
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ```
 
 #### open_time
@@ -4760,15 +4763,15 @@ Field Name
 #### The window satisfies that: start <= time < end
 
 ```sql
-select open_time(candlestick_agg(time, price, volume)) from tick;
+Select open_time (candlestick_agg(time, price, price, volume)) from tick;
 ```
 
 ```
-+--------------------------------------------------------------+
-| open_time(candlestick_agg(tick.time,tick.price,tick.volume)) |
-+--------------------------------------------------------------+
-| 1999-12-31T00:00:00                                          |
-+--------------------------------------------------------------+
++---------------------- +
+| open_time (candlestick_agg(tick.time,tick.price,tick.volume)) |
++------------- +
+| 1999-12-31T00:00:00 |
++-------------+ +
 ```
 
 #### volume
@@ -4777,22 +4780,22 @@ select open_time(candlestick_agg(time, price, volume)) from tick;
 volume(candlestick_agg_data)
 ```
 
-获取总共交易量。
+Get total transaction volume.
 
 Syntax
 
 #### **Function**: Return the substring of expr (starting from pos, length len).
 
 ```sql
-select volume(candlestick_agg(time, price, volume)) from tick;
+Select volume(candlestick_agg(time, price, volume)) from tick;
 ```
 
 ```
-+-----------------------------------------------------------+
-| volume(candlestick_agg(tick.time,tick.price,tick.volume)) |
-+-----------------------------------------------------------+
-| 2886.0                                                    |
-+-----------------------------------------------------------+
++-------------------------- -------- +
+| volume(andlestick_agg(tick.time,tick.price,tick.volume)) |
++------------------------------+
+| 2886.0 |
++--------------
 ```
 
 #### vwap
@@ -4808,15 +4811,15 @@ Syntax
 #### **Function**: If expr starts with startExpr, it returns true.
 
 ```sql
-select vwap(candlestick_agg(time, price, volume)) from tick;
+Select vwap(candlestick_agg(time, price, volume)) from tick;
 ```
 
 ```
-+---------------------------------------------------------+
-| vwap(candlestick_agg(tick.time,tick.price,tick.volume)) |
-+---------------------------------------------------------+
-| 294.5769230769231                                       |
-+---------------------------------------------------------+
++----------------------------- +
+| vwap(andlestick_agg(tick.time,tick.price,tick.volume)) |
++----------+
+| 294.5769230769231 |
++---------+
 ```
 
 ## **Return Type**: Microsecond-level TIMESTAMP
@@ -4838,11 +4841,11 @@ SELECT abs(-1);
 ```
 
 ```
-+----------------+
-| abs(Int64(-1)) |
-+----------------+
-| 1              |
-+----------------+
++-----+
+| abs (Int64(-1)) |
++---+
+| 1 |
++--------+ + +
 ```
 
 ***
@@ -4862,23 +4865,23 @@ SELECT acos(3);
 ```
 
 ```
-+----------------+
-| acos(Int64(3)) |
-+----------------+
-| NaN            |
-+----------------+
++----- +
+| acos (Int64(3)) |
++---+
+| NaN |
++----------+ + +
 ```
 
 ```sql
-SELECT acos(0.5);
+SELECT acos (0.5);
 ```
 
 ```
-+--------------------+
-| acos(Float64(0.5)) |
-+--------------------+
++----- +
+| acos (Float64(0.5)) |
++-----------+
 | 1.0471975511965976 |
-+--------------------+
++----------+ + +
 ```
 
 ***
@@ -4894,15 +4897,15 @@ Database name
 #### **Function**: Convert to a millisecond-level timestamp.
 
 ```sql
-SELECT asin(0.5);
+SELECT asin (0.5);
 ```
 
 ```
-+--------------------+
-| asin(Float64(0.5)) |
-+--------------------+
++----- +
+| asin (Float64(0.5)) |
++-----------+
 | 0.5235987755982988 |
-+--------------------+
++----------+ +
 ```
 
 ```sql
@@ -4910,11 +4913,11 @@ SELECT asin(5);
 ```
 
 ```
-+----------------+
-| asin(Int64(5)) |
-+----------------+
-| NaN            |
-+----------------+
++------+
+| asin (Int64(5)) |
++---+
+| NaN |
++----------+ + +
 ```
 
 ***
@@ -4934,11 +4937,11 @@ SELECT atan(5);
 ```
 
 ```
-+-------------------+
-| atan(Int64(5))    |
-+-------------------+
++----- +
+| atan (Int64(5)) |
++--------+
 | 1.373400766945016 |
-+-------------------+
++---+ + + +
 ```
 
 ***
@@ -4954,15 +4957,15 @@ ID of data node
 #### **Function**: Return the arcsine of x.
 
 ```sql
-SELECT atan2(10, 2);
+SELECT atan2(10,2);
 ```
 
 ```
-+---------------------------+
++-------------- +
 | atan2(Int64(10),Int64(2)) |
-+---------------------------+
-| 1.3734008                 |
-+---------------------------+
++--------------------+
+| 1.3340000 |
++------------------------------------------+ + +
 ```
 
 ***
@@ -4978,15 +4981,15 @@ ID of data node
 #### **Function**: Base 10 logarithm.
 
 ```sql
-SELECT ceil(1.6);
+SELECT ceil (1.6);
 ```
 
 ```
-+--------------------+
-| ceil(Float64(1.6)) |
-+--------------------+
-| 2                  |
-+--------------------+
++----- +
+| ceil (Float64(1.6)) |
++-----------
+| 2 |
++---+ -+ -+ + +
 ```
 
 ***
@@ -5002,7 +5005,7 @@ ID of data node
 #### Include [Aggregate functions](#aggregate-function).
 
 ```sql
-SELECT floor(-3.1);
+SELECT loor (-3.1);
 ```
 
 ```
@@ -5030,11 +5033,11 @@ SELECT cos(1);
 ```
 
 ```
-+--------------------+
-| cos(Int64(1))      |
-+--------------------+
++----- +
+| cos(Int64(1)) |
++---------------
 | 0.5403023058681398 |
-+--------------------+
++---+ + +
 ```
 
 ***
@@ -5054,11 +5057,11 @@ SELECT sin(5);
 ```
 
 ```
-+---------------------+
-| sin(Int64(5))       |
-+---------------------+
++------- +
+| sin(Int64(5)) |
++---------------
 | -0.9589242746631385 |
-+---------------------+
++-------- + +
 ```
 
 ***
@@ -5078,11 +5081,11 @@ SELECT exp(1);
 ```
 
 ```
-+-------------------+
-| exp(Int64(1))     |
-+-------------------+
-| 2.718281828459045 |
-+-------------------+
++---+
+| exp (Int64(1)) |
++--------------
+| 2.71828182845905 |
++---+ + +
 ```
 
 ***
@@ -5098,15 +5101,15 @@ ID of data node
 #### **Return Type**: TIMESTAMP. The precision depends on the parameter. If parameter type is BIGINT, it returns a nanosecond TIMESTAMP.
 
 ```sql
-SELECT ln(2.718281828459045);
+SELECT ln (2.718281828459045);
 ```
 
 ```
-+--------------------------------+
-| ln(Float64(2.718281828459045)) |
-+--------------------------------+
-| 1                              |
-+--------------------------------+
++---------+
+| ln (Float64 (2.7182818281828459045)) |
++--+
+| 1|
++---+ + + + + + + + + +
 ```
 
 ***
@@ -5126,11 +5129,11 @@ SELECT log(10);
 ```
 
 ```
-+----------------+
-| log(Int64(10)) |
-+----------------+
-| 1              |
-+----------------+
++------+
+| logo (Int64(10)) |
++---+
+| 1 |
++----------+ +
 ```
 
 ```sql
@@ -5138,11 +5141,11 @@ SELECT log10(10);
 ```
 
 ```
-+----------------+
-| log(Int64(10)) |
-+----------------+
-| 1              |
-+----------------+
++------+
+| logo (Int64(10)) |
++---+
+| 1 |
++----------+ +
 ```
 
 ***
@@ -5162,16 +5165,16 @@ SELECT log2(4);
 ```
 
 ```
-+----------------+
-| log2(Int64(4)) |
-+----------------+
-| 2              |
-+----------------+
++----- +
+| log2 (Int64(4)) |
++---+
+| 2 |
++----------+ + +
 ```
 
 ***
 
-### **power(x,y) | pow(x,y)**
+### **power(x,y) | power (x,y)**
 
 Example
 
@@ -5182,15 +5185,15 @@ syntax descriptions
 #### "YES" if the column may contain NULL, "NO" otherwise
 
 ```sql
-SELECT power(2, 3);
+SELECT power (2,3);
 ```
 
 ```
-+--------------------------+
-| power(Int64(2),Int64(3)) |
-+--------------------------+
-| 8                        |
-+--------------------------+
++----------- +
+| power (Int64(2), Int64(3)) |
++--------------------+
+| 8|
++-----------------------------------------------------------+ +
 ```
 
 ***
@@ -5206,20 +5209,20 @@ API of HTTP
 #### **Function**: Return expr cast to a timestamp in a optional format.
 
 ```sql
-SELECT round(3.5);
+SELECT round (3.5);
 ```
 
 ```
-+---------------------+
-| round(Float64(3.5)) |
-+---------------------+
-| 4                   |
-+---------------------+
++----- +
+| round (Float64(3.5)) |
++---, -+
+| 4 |
++----+ + -+ + -+ + +
 ```
 
 ***
 
-### **signum(x)**
+### **sign(x)**
 
 Example
 
@@ -5230,15 +5233,15 @@ API of HTTP
 #### **Function**: Round to zero.
 
 ```sql
-SELECT signum(-3);
+SELECT signum (-3);
 ```
 
 ```
-+-------------------+
-| signum(Int64(-3)) |
-+-------------------+
-| -1                |
-+-------------------+
++----- +
+| signum (Int64(-3)) |
++-------+
+| -1 |
++-----------+ -+ +
 ```
 
 ***
@@ -5258,11 +5261,11 @@ SELECT sqrt(4);
 ```
 
 ```
-+----------------+
-| sqrt(Int64(4)) |
-+----------------+
-| 2              |
-+----------------+
++------+
+| sqrt (Int64(4)) |
++------+
+| 2 |
++--------+ +
 ```
 
 ***
@@ -5278,15 +5281,15 @@ T represents interval, which can only be replaced by space
 #### **Function**:Return the absolute value of x.
 
 ```sql
-SELECT tan(1);
+SELECT tan(1) ;
 ```
 
 ```
-+-------------------+
-| tan(Int64(1))     |
-+-------------------+
-| 1.557407724654902 |
-+-------------------+
++----- +
+| tans (Int64(1))|
++--------------+
+| 1.55740772465400002 |
++--+ +
 ```
 
 ***
@@ -5320,7 +5323,7 @@ SELECT trunc(-3.9);
 #### `INTERVAL '0.5 MONTH'` Half a month(15 days)
 
 ```
-struct(expr1 [, ...] ) 
+struct(expr1 [, ...]) 
 ```
 
 Example
@@ -5338,10 +5341,10 @@ Example
 #### **Return Type**: Millisecond-level TIMESTAMP
 
 ```
-coalesce(expr[,...exp])
+coalesce (expr[,..exp])
 ```
 
-ExampleData Type当检索数据以进行显示时，它通常用于将默认值替换为空值。
+ExampleData TypeWhen retrieving data for display it is commonly used to replace default values with empty values.
 
 Example
 
@@ -5380,7 +5383,7 @@ SELECT coalesce(temperature, null, station) FROM air;
 #### **Function**: Return a random value between 0 and 1.
 
 ```
-nullif(expr1, expr2) 
+nullif (expr1, expr2) 
 ```
 
 Schema Definition
@@ -5421,7 +5424,7 @@ SELECT nullif(temperature, 70) FROM air;
 
 [//]: # "### **Array**"
 
-[//]: # "    创建数组"
+[//]: # "    Create array"
 
 ### **ascii**
 
@@ -5442,27 +5445,27 @@ Complex expressions can be formed by concatenating two or more simple expression
 #### **Function**: Perform statistical aggregation.
 
 ```sql
-SELECT ascii('abc');
+SELECT ascii ('abc');
 ```
 
 ```
-+------------------+
-| ascii(Utf8("a")) |
-+------------------+
-| 97               |
-+------------------+
++------+
+| ascii (Utf8("a") |
++---, --+
+| 97 |
++----------+ -+ +
 ```
 
 ```sql
-SELECT ascii('a');
+SELECT ascii ('a');
 ```
 
 ```
-+------------------+
-| ascii(Utf8("a")) |
-+------------------+
-| 97               |
-+------------------+
++------+
+| ascii (Utf8("a") |
++---, --+
+| 97 |
++----------+ -+ +
 ```
 
 ***
@@ -5502,7 +5505,7 @@ SELECT bit_length('abc');
 #### **Function**: Convert a decimal number to a hexadecimal representation.
 
 ```
-btrim(string [, matching_string ] ) 
+btrim (string [, matching_string]) 
 ```
 
 Example
@@ -5514,27 +5517,28 @@ Schema definition
 #### **Function**: Return uppercase string.
 
 ```sql
-SELECT btrim('     abc                  ');
+SELECT btrim('abc ');
 ```
 
 ```
-+-------------------------------------------+
-| btrim(Utf8("     abc                  ")) |
-+-------------------------------------------+
-| abc                                       |
-+-------------------------------------------+
++------------------------------------- +
+| btrim (Utf8(" abc') |
++-----------------+
+|
++-------------------------+
 ```
 
 ```sql
-SELECT btrim('111abc111','1');
+SELECT btrim ('111abc111', '1');
 ```
 
 ```
-+------------------------------------+
-| btrim(Utf8("111abc111"),Utf8("1")) |
-+------------------------------------+
-| abc                                |
-+------------------------------------+
++-------- ----- +
+| btrim (Utf8("111abc111"), Utf8("1")) |
++---+
+| abc |
++-----------------------+ 
+ | format@@3 +-------+ + + +
 ```
 
 ***
@@ -5555,12 +5559,12 @@ Schema definition
 
 ***
 
-### **char_length | character_length**
+### **char_length | charter_length**
 
 #### **Parammeter Type**: value: numeric type
 
 ```
-char_length(expr) 
+char@@_length(expr) 
 ```
 
 Example
@@ -5572,7 +5576,7 @@ Syntax
 #### **Function**: Return lowercase string.
 
 ```sql
-SELECT char_length('你好');
+SELECT char_length('hello');
 ```
 
 ```
@@ -5602,15 +5606,15 @@ Schema definition
 #### **Switch to the specified database**
 
 ```sql
-SELECT chr(20005);
+SELECT chr (20005);
 ```
 
 ```
-+-------------------+
-| chr(Int64(20005)) |
-+-------------------+
-| 严                |
-+-------------------+
++---+
+| chr (Int64(2000)) |
++-----------
+|
++-------+ -+ + + +
 ```
 
 ***
@@ -5620,7 +5624,7 @@ SELECT chr(20005);
 #### **Return Type**: Second-level TIMESTAMP
 
 ```
-concat(expr1, expr2 [, ...exp] ) 
+Contraat (expr1, expr2 [, ...exp]) 
 ```
 
 Schema definition
@@ -5632,7 +5636,7 @@ Schema definition
 #### **Return Type**: Consistent with function parameter type.
 
 ```sql
-SELECT concat('a', 'b', 'c');
+SELECT consent ('a', 'b', 'c');
 ```
 
 ```
@@ -5645,12 +5649,12 @@ SELECT concat('a', 'b', 'c');
 
 ***
 
-### **concat_ws**
+### **concili_ws**
 
 #### **Parameter Type**: str is STRING type, len is BIGINT type
 
 ```
-concat_ws(sep , expr1 [, ...] ) 
+Concat_ws(sep, expr1 [, ...]) 
 ```
 
 Example
@@ -5662,15 +5666,15 @@ Schema definition
 #### **Return Type**: Consistent with function parameter type.
 
 ```sql
-SELECT concat_ws(' ', 'a', 'b', 'c');
+SELECT Concat_ws('', 'a', 'b', 'c');
 ```
 
 ```
-+--------------------------------------------------------------+
-| concatwithseparator(Utf8(" "),Utf8("a"),Utf8("b"),Utf8("c")) |
-+--------------------------------------------------------------+
-| a b c                                                        |
-+--------------------------------------------------------------+
++-------- ----------- +
+| concrete parator (Utf8(" "), Utf8("a"), Utf8("b"), Utf8("c"), Utf8("),Utf8("c") |
++----------------------------------+
+| a b c |
++---, format@@3 +--------
 ```
 
 ***
@@ -5726,11 +5730,11 @@ SELECT left('abcde', 3);
 ```
 
 ```
-+------------------------------+
-| left(Utf8("abcde"),Int64(3)) |
-+------------------------------+
-| abc                          |
-+------------------------------+
++-------- +
+| left(Utf8("abcde"), Int64(3)) |
++---+
+| abc |
++______
 ```
 
 ***
@@ -5740,7 +5744,7 @@ SELECT left('abcde', 3);
 #### **Parameter Type**: x is numeric type, p is DOUBLE type
 
 ```
-lpad(expr, len [, pad] ) 
+lpad(expr, len [, pad] 
 ```
 
 Example
@@ -5758,11 +5762,11 @@ SELECT lpad('abc', 10, '1');
 ```
 
 ```
-+---------------------------------------+
-| lpad(Utf8("abc"),Int64(10),Utf8("1")) |
-+---------------------------------------+
-| 1111111abc                            |
-+---------------------------------------+
++-------- +
+| lpad (Utf8("abc"), Int64(10),Utf8("1"))|
++---+
+| 1111111abc |
++----+ + --+ + +
 ```
 
 ***
@@ -5772,7 +5776,7 @@ SELECT lpad('abc', 10, '1');
 #### **返回类型**: Type of column specified in gauge_agg
 
 ```
-rpad(expr, len [, pad] ) 
+rpad(expr, len [, pad] 
 ```
 
 Schema Definition
@@ -5784,15 +5788,15 @@ Syntax
 #### **Function**: Round down.
 
 ```sql
-SELECT rpad('aaa', 10, 'b');
+SELECT rpad ('aaaa', 10, 'b');
 ```
 
 ```
-+---------------------------------------+
-| rpad(Utf8("aaa"),Int64(10),Utf8("b")) |
-+---------------------------------------+
-| aaabbbbbbb                            |
-+---------------------------------------+
++---------- +
+| rpad (Utf8("aaa"), Int64(10),Utf8("b"))|
++----------+
+| aabbbbbbb |
++---+ + + + + +
 ```
 
 ***
@@ -5818,11 +5822,11 @@ SELECT lower('ABC');
 ```
 
 ```
-+--------------------+
-| lower(Utf8("ABC")) |
-+--------------------+
-| abc                |
-+--------------------+
++----- +
+| lower(Utf8("ABC") |
++---------+
+| abc |
++---------+ + -+ + +
 ```
 
 ***
@@ -5848,10 +5852,10 @@ Syntax
 #### **Return Type**: Same as value type.
 
 ```
-ltrim(str[, trimstr] ) 
+ltrim(str[, trimstr]) 
 ```
 
-Example默认trimestr为空白符
+ExampleDefault trimester is empty
 
 Example
 
@@ -5860,7 +5864,7 @@ Syntax
 #### **Parameter**: BIGINT or STRING
 
 ```sql
-SELECT ltrim('   abc');
+SELECT ltrim('abc');
 ```
 
 ```
@@ -5878,7 +5882,7 @@ SELECT ltrim('   abc');
 #### **Return Type**: Same as value type.
 
 ```
-md5(expr) 
+md5 (expr) 
 ```
 
 Example
@@ -5890,7 +5894,7 @@ Syntax
 #### **Function**: Return a string that repeats expr n times.
 
 ```sql
-SELECT md5('abc');
+SELECT md5 ('abc');
 ```
 
 ```
@@ -5920,15 +5924,15 @@ Syntax
 #### **Return Type**: Consistent with parameter type.
 
 ```sql
-SELECT octet_length('你好');
+SELECT octet_length('hello');
 ```
 
 ```
-+---------------------------+
-| octetlength(Utf8("你好")) |
-+---------------------------+
-| 6                         |
-+---------------------------+
++-------- +
+| octetlength (Utf8("hello") |
++------------+
+| 6 |
++---------------------------------------------------------------------------------------------------+ +
 ```
 
 ***
@@ -5938,7 +5942,7 @@ SELECT octet_length('你好');
 #### **Return Type**: Consistent with parameter type.
 
 ```
-random( [seed] ) 
+random ( [seed] 
 ```
 
 Example
@@ -5990,15 +5994,15 @@ Syntax
 #### **Parameter Type**: expr and algorithm are both STRING
 
 ```sql
-SELECT repeat('a', 5);
+SELECT recpeat('a', 5);
 ```
 
 ```
-+----------------------------+
-| repeat(Utf8("a"),Int64(5)) |
-+----------------------------+
-| aaaaa                      |
-+----------------------------+
++-------- +
+| repeat(Utf8("a"), Int64(5))|
++------------+
+| aaaaaaaa |
++-------------------------------------
 ```
 
 ***
@@ -6008,7 +6012,7 @@ SELECT repeat('a', 5);
 #### `INTERVAL '1 MINUTE'` One minute
 
 ```
-replace(str, search, replace ) 
+place(str, search, replace) 
 ```
 
 Example
@@ -6020,15 +6024,15 @@ Syntax
 #### **说明**:GROUPING函数只能用于有GROUP BY 子句的表达式
 
 ```sql
-SELECT replace('aaa', 'a', 'b');
+SELECT place ('aaa', 'a', 'b');
 ```
 
 ```
-+------------------------------------------+
-| replace(Utf8("aaa"),Utf8("a"),Utf8("b")) |
-+------------------------------------------+
-| bbb                                      |
-+------------------------------------------+
++-------- +
+| replacement (Utf8("aaa"), Utf8("a"), Utf8("a"), Utf8("a"), Utf8("b")) |
++------------+
+| bbb |
++----------+ + + +
 ```
 
 ***
@@ -6038,7 +6042,7 @@ SELECT replace('aaa', 'a', 'b');
 #### **Function**: Calculate the variance of a given sample
 
 ```
-reverse(expr) 
+reverse (expr) 
 ```
 
 Data Type
@@ -6050,7 +6054,7 @@ Syntax
 #### **Differences between HAVING and WHERE**
 
 ```sql
-SELECT reverse('你好');
+SELECT reverse('hello');
 ```
 
 ```
@@ -6068,7 +6072,7 @@ SELECT reverse('你好');
 #### **Parameter Type**: BIGINT or STRING
 
 ```
-right(str, len) 
+right (str, len) 
 ```
 
 Example
@@ -6080,15 +6084,15 @@ Syntax
 #### **Function**: Round up.
 
 ```sql
- SELECT right('aaabbb', 3);
+ SELECT rights ('aabbb', 3);
 ```
 
 ```
-+--------------------------------+
-| right(Utf8("aaabbb"),Int64(3)) |
-+--------------------------------+
-| bbb                            |
-+--------------------------------+
++-------- +
+| right (Utf8("aaabb"), Int64(3)) |
++---+
+| bbb |
++---+ + + + + + +
 ```
 
 ***
@@ -6112,15 +6116,15 @@ TIMESTAMP constant syntax
 #### **Parameter Type**: expr, pad type is STRING, len type is BIGINT
 
 ```sql
-SELECT digest('abc', 'md5');
+SELECT digest ('abc', 'md5');
 ```
 
 ```
-+----------------------------------+
-| digest(Utf8("abc"),Utf8("md5"))  |
-+----------------------------------+
++-------------------- -+
+| digest(Utf8("abc"), Utf8("m5")) |
++---+
 | 900150983cd24fb0d6963f7d28e17f72 |
-+----------------------------------+
++---+ +
 ```
 
 ***
@@ -6130,7 +6134,7 @@ SELECT digest('abc', 'md5');
 #### **Return Type**: CandleStackData
 
 ```
-rtrim( str [, trimstr] ) 
+rtrim ( str [, trimstr]) 
 ```
 
 Example
@@ -6142,15 +6146,15 @@ Syntax
 #### **Function**: Return unixTime.
 
 ```sql
-SELECT rtrim('aaabbb', 'b');
+SELECT rtrim ('aabbb', 'b');
 ```
 
 ```
-+---------------------------------+
-| rtrim(Utf8("aaabbb"),Utf8("b")) |
-+---------------------------------+
-| aaa                             |
-+---------------------------------+
++----------- +
+| rtrim (Utf8("aabb"),Utf8("b"))|
++---+
+| aaaa |
++---------+ + + + + +
 ```
 
 ***
@@ -6172,15 +6176,15 @@ Example
 #### **Parameter Type**: STRING or BIGINT
 
 ```sql
- SELECT sha224('abc');
+ SELECT sha224 ('abc');
 ```
 
 ```
-+----------------------------------------------------------+
-| sha224(Utf8("abc"))                                      |
-+----------------------------------------------------------+
-| 23097d223405d8228642a477bda255b32aadbce4bda0b3f7e36c9da7 |
-+----------------------------------------------------------+
++----- +
+| sha224 (Utf8("abc")) |
++-----------+
+| 23097d223405d82a477bda2a2aadbce4bda0b3f7e3f7e36c9da7 |
++------------------------------------------------------------
 ```
 
 ***
@@ -6232,7 +6236,7 @@ Example
 #### **Parameter Type**: expr type is STRING, pos, len type is BIGINT
 
 ```sql
-SELECT sha384('abc');
+SELECT sha384 ('abc');
 ```
 
 ```
@@ -6282,11 +6286,11 @@ SELECT split_part('abc|def|ghi', '|', 2);
 ```
 
 ```
-+---------------------------------------------------+
-| splitpart(Utf8("abc|def|ghi"),Utf8("|"),Int64(2)) |
-+---------------------------------------------------+
-| def                                               |
-+---------------------------------------------------+
++-------- +
+| splitpart(Utf8("abc|def|ghi"), Utf8("|"|"), Int64(2)) |
++------------- +
+| def |
++-------------
 ```
 
 ***
@@ -6326,7 +6330,7 @@ SELECT starts_with('abcdefg', 'abc');
 #### **Parameter Type**: value: any
 
 ```
-strpos(str, substr ) 
+strpos(str, subst) 
 ```
 
 Example
@@ -6342,11 +6346,11 @@ SELECT strpos('abcdef', 'def');
 ```
 
 ```
-+------------------------------------+
-| strpos(Utf8("abcdef"),Utf8("def")) |
-+------------------------------------+
-| 4                                  |
-+------------------------------------+
++----------------- +
+| strpos(Utf8("abcdef"), Utf8("def") |
++----+
+| 4 |
++-------------+ + +
 ```
 
 ***
@@ -6356,7 +6360,7 @@ SELECT strpos('abcdef', 'def');
 #### **Return Type**: Array of parameter type
 
 ```
-substr(expr, pos [, len] ) 
+substr(expr, pos [, len]) 
 ```
 
 Example
@@ -6372,11 +6376,11 @@ SELECT substr('abcdef', 4, 3);
 ```
 
 ```
-+------------------------------------------+
-| substr(Utf8("abcdef"),Int64(4),Int64(3)) |
-+------------------------------------------+
-| def                                      |
-+------------------------------------------+
++---------+
+| substr(Utf8("abcdef"), Int64(4), Int64(3)) |
++------+
+| de|
++----------+ +
 ```
 
 ***
@@ -6402,11 +6406,11 @@ SELECT to_hex(100);
 ```
 
 ```
-+-------------------+
-| tohex(Int64(100)) |
-+-------------------+
-| 64                |
-+-------------------+
++-------- +
+| tzm (Int64(100)) |
++-----------+
+| 64 |
++-------------+ + +
 ```
 
 ***
@@ -6416,7 +6420,7 @@ SELECT to_hex(100);
 #### **Return Type**: StateAggData type
 
 ```
-translate(expr, from, to) 
+translate(expr, from,to) 
 ```
 
 Example
@@ -6428,15 +6432,16 @@ Syntax
 #### **Return Type**: Consistent with expr.
 
 ```sql
-SELECT translate('aaabbb', 'bbb', 'ccc');
+SELECT translate('aabbb', 'bbb', 'cc');
 ```
 
 ```
-+---------------------------------------------------+
-| translate(Utf8("aaabbb"),Utf8("bbb"),Utf8("ccc")) |
-+---------------------------------------------------+
-| aaaccc                                            |
-+---------------------------------------------------+
++-------- +
+| translate(Utf8("aabb"), Utf8("bbb"), Utf8("bbb"), Utf8("cc")) |
++----------------------------------+
+| aaccc |
++----------------------------------------------------------------------------------------------------------------------------------+ 
+
 ```
 
 ***
@@ -6468,11 +6473,11 @@ SELECT date_part('hour', TIMESTAMP '2022-11-21T09:18:17');
 ```
 
 ```
-+----------------------------------------------------+
-| datepart(Utf8("hour"),Utf8("2022-11-21T09:18:17")) |
-+----------------------------------------------------+
-| 9                                                  |
-+----------------------------------------------------+
++-------------- +
+| datepart(Utf8("hour"), Utf8("2022-11-21T09:18:17") |
++----------------------------------------------------------+
+| 9 |
++---------------------------------------------------------------------
 ```
 
 ***
@@ -6498,11 +6503,11 @@ SELECT date_trunc('month', TIMESTAMP '2022-11-21T09:18:17');
 ```
 
 ```
-+------------------------------------------------------+
-| datetrunc(Utf8("month"),Utf8("2022-11-21T09:18:17")) |
-+------------------------------------------------------+
-| 2022-11-01T00:00:00                                  |
-+------------------------------------------------------+
++----------- +
+| datecrunc(Utf8("month"), Utf8("2022-11-21T09:18:17") |
++-------------+
+| 20-11-01T00:00:00 |
++-------------+
 ```
 
 ***
@@ -6528,7 +6533,7 @@ Syntax
 #### **Return Type**: Consistent with expr.
 
 ```sql
-SELECT date_bin(INTERVAL '1' DAY, TIMESTAMP '2022-11-21T09:10:24', TIMESTAMP '2022-11-01T00:00:00');
+SELECT date_bin (INTERVAL '1' DAY, TIMESTAMP '2022-11-21T09:10:24', TIMESTAMP '2022-11-01T00:00:00');
 ```
 
 ```
@@ -6562,11 +6567,12 @@ SELECT to_timestamp('1970-01-01T00:00:00');
 ```
 
 ```
-+------------------------------------------+
++---------+
 | totimestamp(Utf8("1970-01-01T00:00:00")) |
-+------------------------------------------+
-| 1970-01-01T00:00:00                      |
-+------------------------------------------+
++-----------+
+| 1970-01-01T00:00:00 | format@@3 +---+ + 
+ | 1970-01-01T00:00:00 |
++-----------+
 ```
 
 ```sql
@@ -6583,7 +6589,7 @@ SELECT to_timestamp(1);
 
 ***
 
-### **to_timestamp_millis**
+### **to_timestamp_millennium**
 
 #### **Return Type**: TimeVector
 
@@ -6600,7 +6606,7 @@ Syntax
 #### - (positive), - (negative), + (plus), + (series), - (minus)
 
 ```sql
-SELECT to_timestamp_millis('1970-01-01T00:00:00.00301');
+SELECT to_timestamp_millis ('1970-01-01T00:00:00.00301');
 ```
 
 ```
@@ -6612,7 +6618,7 @@ SELECT to_timestamp_millis('1970-01-01T00:00:00.00301');
 ```
 
 ```sql
-SELECT to_timestamp_millis(1);
+SELECT to_timestamp_millis(1) ;
 ```
 
 ```
@@ -6630,7 +6636,7 @@ SELECT to_timestamp_millis(1);
 #### **Alter Database Parameters**
 
 ```
-to_timestamp_micros(expr) 
+to_timestamp_micro(expr) 
 ```
 
 Example
@@ -6690,7 +6696,7 @@ SELECT to_timestamp_seconds(1);
 #### **Return Type**: TIMESTAMP
 
 ```
-from_unixtime(unixTime) 
+from_unixtime (unixTime) 
 ```
 
 Boolean Type
@@ -6746,7 +6752,7 @@ SELECT now();
 #### **Parameter Type**: STRING
 
 ```sql
-time_window(time_expr, window_duration [, slide_duration])
+time_window(time_expr, window_duration[, slide_duration])
 ```
 
 **Join Clause**
@@ -6762,7 +6768,7 @@ start, end
 time, time_column + window_duration
 time - slide_duration, time + window_duration - slide_duration
 time - 2 * slide_duration, time + window_duration - 2 * slide_duration
-...
+.
 time - n * slide_duration, time + window_duration - n * slide_duration
 ```
 
@@ -6772,7 +6778,7 @@ Data Type
 
 ```sql
 CREATE TABLE test(a BIGINT, TAGS(b));
-INSERT INTO test(time, a, b) VALUES ('2023-04-23T00:00:00.000000Z', 1, 'b');
+INSERT INTO test(time, a, b) VALUES ('2023-04-23T00:00:00.0000Z', 1, 'b');
 SELECT time FROM test;
 ```
 
@@ -6809,7 +6815,7 @@ SELECT time_window(time, interval '5 day', interval '3 day') FROM test;
 +------------------------------------------------------------------------------------------------------------------+
 ```
 
-### 空间函数
+### Space Functions
 
 **Stream**
 
@@ -6832,11 +6838,11 @@ SELECT ST_AsBinary('POINT(0 3)');
 ```
 
 ```
-+--------------------------------------------+
-| st_AsBinary(Utf8("POINT(0 3)"))            |
-+--------------------------------------------+
-| 010100000000000000000000000000000000000840 |
-+--------------------------------------------+
++-------------------- --------
+| st_AsBinary(Utf8("POINT(0 3)") |
++---------------+
+| 01000000000000000000000000000000000000000000000000000000000000000000000000040 |
++----------+
 ```
 
 #### ST_GeomFromWKB
@@ -6854,21 +6860,21 @@ Example
 String type expression concatenation
 
 ```sql
-SELECT ST_GeomFromWKB(ST_AsBinary('POINT(0 3)'))
+SELECT ST_GeomFromWKB (ST_AsBinary('POINT(0 3)'))
 ```
 
 ```
-+-------------------------------------------------+
-| st_GeomFromWKB(st_AsBinary(Utf8("POINT(0 3)"))) |
-+-------------------------------------------------+
-| POINT(0 3)                                      |
-+-------------------------------------------------+
++-------- +
+| st_GeomFromWB(st_AsBinary(Utf8("POINT(0 3)")))|
++----------+
+| POINT(0 3) |
++----------+
 ```
 
 #### ST_Distance
 
 ```
-ST_Distance(geometry1, gemometry2)
+ST_Distance (geometry1, gemometry2)
 ```
 
 Syntax
@@ -6886,11 +6892,11 @@ SELECT ST_Distance('POINT(0 0)', 'LINESTRING (30 10, 10 30, 40 40)');
 ```
 
 ```
-+----------------------------------------------------+
-| st_distance(Utf8("POINT(1 0)"),Utf8("POINT(0 0)")) |
-+----------------------------------------------------+
-| 1.0                                                |
-+----------------------------------------------------+
++----- ----- +
+| st_distance(Utf8("POINT(1)")"), Utf8("POINT(0)")") |
++-----------+
+| 1.0 |
++-----------------
 ```
 
 expr type is TIMESTAMP.
@@ -6910,15 +6916,15 @@ SELECT ST_Distance('POINT(0 0)', 'LINESTRING (30 10, 10 30, 40 40)');
 **Return Type**: Timestamp
 
 ```sql
-SELECT ST_Distance('POLYGON((0 2,1 1,0 -1,0 2))', 'POLYGON((-1 -3,-2 -1,0 -3,-1 -3))');
+SELECT ST_Distance('POLYGON (0 2, 1 1-0 -1 2)'), 'POLYGON (-1 - 3, 2 - 1 - 3 - 1 - 3)');
 ```
 
 ```
-+--------------------------------------------------------------------------------------------+
-| st_distance(Utf8("POLYGON((0 2,1 1,0 -1,0 2))"),Utf8("POLYGON((-1 -3,-2 -1,0 -3,-1 -3))")) |
-+--------------------------------------------------------------------------------------------+
-| 1.4142135623730951                                                                         |
-+--------------------------------------------------------------------------------------------+
++----- +
+| st_distance(Utf8("POLYGOT(0 2,1,1-0 2)"), Utf8("POLYGON(-1 -3, 2-1, 0 -3, 1-1 -3 -3)") |
++---------------------------------------------------------------------------- +
+| 1.4213562373051 |
++----------+ +
 ```
 
 #### ST_Area
@@ -6927,9 +6933,9 @@ SELECT ST_Distance('POLYGON((0 2,1 1,0 -1,0 2))', 'POLYGON((-1 -3,-2 -1,0 -3,-1 
 ST_Area(geometry)
 ```
 
-Syntax面积单位与用于表示输入几何体坐标的单位相同。
-对于点、线串、多点和多线串，此函数返回 0。
-对于几何体集合，它返回集合中几何体的面积之和。
+SyntaxThe area unit is the same as the unit used to represent input into geometric coordinates.
+This function returns 0 for point, line, multi-point and multi-line string.
+For geometrical collections, it returns the sum of geometry in the collection.
 
 -ts: Timestamp
 
@@ -6938,23 +6944,23 @@ Syntax
 Number type expressions divide
 
 ```sql
-SELECT ST_Area('POLYGON ((40 40, 20 45, 45 30, 40 40))');
+SELECT ST_Area('POLYGON (40 40, 20 45, 45 30, 40 40)');
 ```
 
 Example
 
 > **GROUP BY Clause**
-> 如果参数内容格式非法，返回值为 NULL。
+> Returns value to NULL if the parameter content format is invalid.
 
 #### ST_Equals
 
 ```
-ST_Equals(A, B)
+ST_Equals (A,B)
 ```
 
-**功能**：比较两个几何体，如果两个几何体完全相同，则返回true
+**Function**：compares two geometry and returns true if two geometry are identical
 
-ST_Equals(A, B) 等价于 ST_Within(A, B) && ST_Within(B, A)
+ST_Equals(A, B) Equivalent to ST_Within (A, B) && ST_Within (B,A)
 
 Example
 
@@ -6963,29 +6969,29 @@ Example
 Integer type expressions are modulo
 
 ```sql
-select ST_Equals(
-    'LINESTRING(0 0, 10 10)', 
-    'LINESTRING(0 0, 5 5, 10 10)'
-) st_equals;
+Select ST_Equals (
+    'LINESTRING(0, 10 10)', 
+    'LINESTRING(0, 5 5, 10 10)'
+st_equals;
 ```
 
 ```
-+-----------+
++---+
 | st_equals |
-+-----------+
-| true      |
-+-----------+
++----
+| true |
++---+ -+
 ```
 
-#### ST_Contains
+#### ST_Contins
 
 ```
-ST_Contains(A, B)
+ST_Contains (A,B)
 ```
 
-**功能**：如果几何对象A包含几何对象B，返回True
+**Function**：returns True if geometry A contains geometry objects
 
-ST_Contains(A, B) => ST_Within(B, A)
+ST_Contains(A, B) => ST_Within (B,A)
 
 Example
 
@@ -6994,27 +7000,27 @@ Example
 Syntax
 
 ```sql
-select ST_Contains(
-    'POLYGON((0 0,0 3,3 0,0 0))', 
-    'POLYGON((0 0,0 1,1 0,0 0))'
-) st_contains;
+Select ST_Contains (
+    'POLYGON(0 0,0 3,3 0,0 0))', 
+    'POLYGON(0 0,0 1,1 0,0 0)'
+st_contains;
 ```
 
 ```
-+-------------+
++---+
 | st_contains |
-+-------------+
-| true        |
-+-------------+
++-------
+| true |
++---+ +
 ```
 
 #### ST_Intersects
 
 ```
-ST_Intersects(A, B)
+ST_Intersects(A,B)
 ```
 
-**功能**：如果两个几何对象相交，则返回True
+**Function**：returns True if two geometry objects
 
 Example
 
@@ -7023,18 +7029,18 @@ Example
 Syntax
 
 ```sql
-select ST_Intersects(
+Select ST_Intersects (
     'LINESTRING(3 2, 7 6)',
     'LINESTRING(3 4, 8 4)'
-) st_intersects;
+st_intersects;
 ```
 
 ```
-+---------------+
++-------- +
 | st_intersects |
-+---------------+
-| true          |
-+---------------+
++----------+
+| true |
++----+ +
 ```
 
 #### ST_Disjoint
@@ -7043,7 +7049,7 @@ select ST_Intersects(
 ST_Disjoint(A, B)
 ```
 
-**功能**： 如果两个几何对象不相接，返回True
+**Feature**： returns True if two geometry objects are missing.
 
 Example
 
@@ -7052,27 +7058,27 @@ Example
 Syntax
 
 ```sql
-select ST_Disjoint(
-    'LINESTRING(0 0,-3 -3)', 
+Select ST_Disjoint(
+    'LINESTRING(0 0-3 -3)', 
     'LINESTRING(0 1,1 0)'
 );
 ```
 
 ```
-+-------------+
++-----+
 | st_disjoint |
-+-------------+
-| true        |
-+-------------+
++------
+| true |
++---+ +
 ```
 
 #### ST_Within
 
 ```
-ST_Within(A, B)
+ST_Within (A,B)
 ```
 
-**功能**：如果给定的Geometry对象A完全在对象B之内，则返回True
+**Function**：returns True if the given geometry object A is exclusively within object B
 
 Example
 
@@ -7081,18 +7087,18 @@ Example
 Syntax
 
 ```sql
-select ST_Within(
-    'POLYGON((1 1, 1 2, 2 2, 2 1, 1 1))',
-    'POLYGON((0 0, 0 3, 3 3, 3 0, 0 0))'
+Select ST_Within (
+    'POLYGON (1 1, 1 2, 2 2, 2 1, 1 1))',
+    'POLYGON(0, 0 3, 3, 3, 0, 0 0)'
 );
 ```
 
 ```
-+-----------+
++---+
 | st_within |
-+-----------+
-| true      |
-+-----------+
++----
+| true |
++---+ + +
 ```
 
 ### Data Type
@@ -7107,29 +7113,29 @@ Example
 
 #### **Return Type**: BIGINT UNSIGNED
 
-| **Return Type**: BINARY           |
-| --------------------------------- |
-| DENSE_RANK   |
-| PERCENT_RANK |
-| RANK                              |
-| ROW_NUMBER   |
+| **Return Type**: BINARY                                                                          |
+| ------------------------------------------------------------------------------------------------ |
+| PLAYLIST_NOTIFICATION_POPUP_TITLE |
+| PERCENT_RANK                                                                |
+| RANK                                                                                             |
+| ROW_NUMBER                                                                  |
 
 **Update Data**
 
-其中 `RANK`, `DENSE_RANK`, `ROW_NUMBER` 指定window_frame 无效
+`RANK`, `DENSE_RANK`, `ROW_NUMBER` specifies window_frame that is invalid
 
 #### **Insert One Record**
 
-详见[聚合函数](./sql.md#聚合函数)
+See[聚合函数](./sql.md#polymer)
 
 #### **Return Type**: Numeric type
 
-| **Return Type**: BINARY        |
-| ------------------------------ |
-| CUME_DIST |
-| LAG                            |
-| LEAD                           |
-| NTH_VALUE |
+| **Return Type**: BINARY             |
+| ----------------------------------- |
+| PLAYLIST_TITLE |
+| LAG                                 |
+| LEAD                                |
+| NTH_VALUE      |
 
 #### Data Type
 
@@ -7180,7 +7186,7 @@ Syntax
 
 ```sql
 SELECT temperature, station, 
-       ROW_NUMBER() OVER (PARTITION BY station) 
+       ROW_NUMBER() OVER (PARITON BY station) 
 FROM air;
 ```
 
@@ -7211,7 +7217,7 @@ FROM air;
 #### **Parameter Type**: STRING
 
 ```
-RANK() OVER([partition_clause] [orderby_clause])
+RANK() OVER([partition_clause] [orderby_clause]
 ```
 
 Example
@@ -7223,8 +7229,8 @@ Syntax
 #### **Create the database**
 
 ```sql
-SELECT station, temperature, 
-       RANK() OVER (PARTITION BY station ORDER BY temperature) 
+SELECT position, temperature, 
+       RAK() OVER (PARITION BY station ORDER BY temperature) 
 FROM air;
 ```
 
@@ -7255,7 +7261,7 @@ FROM air;
 #### **Parameter Type**: STRING
 
 ```
-DENSE_RANK() OVER([partition_clause] [orderby_clause])
+DENSE_RANK() OVER([partition_clause] [orderby_clause]
 ```
 
 Example
@@ -7267,8 +7273,8 @@ Syntax
 #### =、\&gt=、<=、<\&gt、!=、\&gt、<（Comparison operator)
 
 ```sql
-SELECT station, temperature, 
-       DENSE_RANK() OVER (PARTITION BY station ORDER BY temperature) 
+SELECT position, temperature, 
+       DENSE_RANK() OVER (PARITON BY ORDER BY temperature) 
 FROM air;
 ```
 
@@ -7311,8 +7317,8 @@ Syntax
 #### **Describe Database Parameters**
 
 ```sql
- SELECT station, temperature, 
-        PERCENT_RANK() OVER (PARTITION BY station ORDER BY temperature) 
+ SELECT, temperature, 
+        PERCENT_RANK() OVER (PARITIAN BY ORDER BY temperature) 
  FROM air;
 ```
 
@@ -7343,7 +7349,7 @@ Syntax
 #### **Parameter Type**: STRING
 
 ```
-CUME_DIST() OVER ([partition_clause] [orderby_clause])
+CUME_DIST() OVER ([partition_clause] [orderby_clause]
 ```
 
 Example
@@ -7355,8 +7361,8 @@ Syntax
 #### **Parameter Type**: Binary
 
 ```sql
-SELECT station, temperature, 
-       CUME_DIST() OVER (PARTITION BY station ORDER BY temperature) 
+SELECT position, temperature, 
+       CUME_DIST() OVER(PARTITION BY station ORDER BY temperature) 
 FROM air;
 ```
 
@@ -7388,7 +7394,7 @@ FROM air;
 
 [//]: #
 
-[//]: # "    ntile(n) over([partition_clause] [order_by_clause])"
+[//]: # "    ntile(n) over([partition_clause] [order_by_clause]"
 
 [//]: #
 
@@ -7409,7 +7415,7 @@ FROM air;
 #### **Parameter Type**: STRING
 
 ```
-lag( expr [, offset [, default] ] ) OVER([partition_clause] orderby_clause)
+lag( expr [, offset [, default]) OVER([partition_clause] orderby_clause)
 ```
 
 Example
@@ -7425,8 +7431,8 @@ Example
 #### **Parameter Type**: Binary
 
 ```sql
-SELECT station, temperature, 
-       LAG(temperature, 2) OVER (PARTITION BY station ORDER BY temperature) 
+SELECT position, temperature, 
+       LAG (temperature, 2) OVER (PARITION BY station ORDER BY temperature) 
 FROM air;
 ```
 
@@ -7457,7 +7463,7 @@ FROM air;
 #### **Parameter Type**: STRING
 
 ```
-lead(expr [, offset [, default] ] ) OVER ([partition_clause] orderby_clause)
+lead(expr [, offset [, default]) OVER ([partition_clause] orderby_clause)
 ```
 
 Example
@@ -7473,8 +7479,8 @@ Example
 #### **Common Aggregate Functions**
 
 ```sql
-SELECT station, temperature, 
-       LEAD(temperature, 2) OVER (PARTITION BY station ORDER BY temperature) 
+SELECT position, temperature, 
+       LEAD (temperature, 2) OVER (PARITON BY station ORDER BY temperature) 
 FROM air;
 ```
 
@@ -7505,7 +7511,7 @@ FROM air;
 #### **Parameter Type**: STRING
 
 ```
-FIRST_VALUE(expr) OVER ([partition_clause] [orderby_clause])
+FIRST_VALUE(expr) OVER ([partition_clause] [orderby_clause]
 ```
 
 Example
@@ -7517,8 +7523,8 @@ Example
 #### **Parameter Type**: BIGINT
 
 ```sql
-SELECT station, temperature, 
-       FIRST_VALUE(temperature) OVER (PARTITION BY station ORDER BY temperature) 
+SELECT position, temperature, 
+       FIRST_VALUE (temperature) OVER (PARITION BY station ORDER BY temperature) 
 FROM air;
 ```
 
@@ -7549,7 +7555,7 @@ FROM air;
 #### **Parameter Type**: STRING
 
 ```
-LAST_VALUE(expr) OVER ([partition_clause] [orderby_clause])
+LAST_VALUE(expr) OVER ([partition_clause] [orderby_clause]
 ```
 
 Example
@@ -7561,8 +7567,8 @@ Example
 #### **Parameter Type**: BIGINT
 
 ```sql
-SELECT station, temperature, 
-       LAST_VALUE(temperature) OVER (PARTITION BY station ORDER BY temperature) 
+SELECT position, temperature, 
+       LAST_VALUE (temperature) OVER (PARITION BY station ORDER BY temperature) 
 FROM air;
 ```
 
@@ -7593,7 +7599,7 @@ FROM air;
 #### **Parameter Type**: STRING
 
 ```
-NTH_VALUE(expr, number) OVER ([partition_clause] [orderby_clause])
+NTH_VALUE(expr, number@@0) OVER ([partition_clause] [orderby_clause]
 ```
 
 Example
@@ -7605,8 +7611,8 @@ Example
 #### **Parameter Type**: BIGINT
 
 ```sql
-SELECT station, temperature, 
-       NTH_VALUE(temperature, 2) OVER (PARTITION BY station ORDER BY temperature) 
+SELECT position, temperature, 
+       NTH_VALUE (temperature, 2) OVER (PARITON BY ORDER BY temperature) 
 FROM air;
 ```
 
@@ -7634,7 +7640,7 @@ FROM air;
 
 ### Example
 
-在数据库中，插值是用于处理数据中缺失值的技术。Syntax
+In the database, the interpolation is the technology used to process missing values in the data.Syntax
 
 ### **time_window_gapfill**
 
@@ -7647,7 +7653,7 @@ ExampleData Type
 - time_window_gapfill
 
 ```sql
-time_window_gapfill(<time column>, <window interval>[, <sliding interval>[, <start time>]]): <time window struct>
+time_window_gapFill (<time column> <window interval>[, <sliding interval>[, <start time>]): <time window struct>
 ```
 
 #### **Insert Duplicate Data**
@@ -7656,17 +7662,17 @@ time_window_gapfill(<time column>, <window interval>[, <sliding interval>[, <sta
 
 ExampleExample
 
-线性插值适用于连续变量的估算，例如在时间序列中填补缺失值或在空间数据中进行插值。然而，线性插值的准确性和适用性取决于数据的特性和实际情况。在某些情况下，数据可能具有非线性关系，或存在其他更适合的插值方法。因此，在应用线性插值之前，需要仔细考虑数据的性质和插值的目的，以确保插值结果合理和准确。
+Linear interpolation can be used for estimation of consecutive variables, such as filling missing values in time series or interpolating values in spatial data.However, the accuracy and applicability of linear interpolation values depend on the characteristics and actual circumstances of the data.In some cases, data may have non-linear relationships or other more appropriate interpolation methods.Therefore, before applying linear interpolation, careful consideration needs to be given to the nature of the data and the purpose of the interpolation to ensure that the interpolation results are reasonable and accurate.
 
 ```sql
-interpolate(<expr>)
+interpolate (<expr>)
 ```
 
 - locf
 
 Example
 
-Syntax具体处理方式如下：
+SyntaxSpecific treatment as follows:：
 
 1. Data Type
 2. **UNION Clause**
@@ -7674,12 +7680,12 @@ Syntax具体处理方式如下：
 4. **Data Query**
 5. Example
 
-Syntax这种方法假设缺失值之后的数据与最后观察到的值相同或非常接近。
+SyntaxThis method assumes that the data after the missing values are the same or very close to the last observed values.
 
 SyntaxSyntax
 
 ```sql
-locf(<expr>)
+locf(<expr>
 ```
 
 #### **Parameter Type**: BIGINT
@@ -7694,7 +7700,7 @@ SELECT
   t0,
   time_window_gapfill(time, interval '10 milliseconds') as minute,
   interpolate(avg(f1))
-from gapfill_db.m2
+from gapill_db. 2
 where time between timestamp '1999-12-31T00:00:00.000Z' and timestamp '1999-12-31T00:00:00.055Z'
 group by t0, minute;
 ```
@@ -7736,7 +7742,7 @@ SELECT
   t0,
   time_window_gapfill(time, interval '10 milliseconds') as minute,
   locf(avg(f1))
-from gapfill_db.m2
+from gapill_db. 2
 where time between timestamp '1999-12-31T00:00:00.000Z' and timestamp '1999-12-31T00:00:00.055Z'
 group by t0, minute;
 ```
@@ -7778,10 +7784,10 @@ group by t0, minute;
 
 **Return Type** BIGINT
 
-- CLUSTER_SCHEMA 关于数据库集群
+- CLUSER_SCHEMA on Database Cluster
 - Integer
 
-### **CLUSTER_SCHEMA**
+### **CLUSER_SCHEMA**
 
 Example
 
@@ -7793,10 +7799,10 @@ expr type is TIMESTAMP
 
 #### **Insert Multiple Records**
 
-| **Return Type**: Timestamp          | **Window_frame Clause** | \*（plus）、/（division）、%（modular） |
-| ----------------------------------- | -------------------------------------------- | ------------------------------- |
-| TENANT_NAME    | STRING                                       | **Parameter Type**: Geometry    |
-| TENANT_OPTIONS | STRING                                       | **ALL/DISTINCT**                |
+| **Return Type**: Timestamp                                     | **Window_frame Clause** | \*（plus）、/（division）、%（modular） |
+| -------------------------------------------------------------- | -------------------------------------------- | ------------------------------- |
+| ENANT_NAME                                | STRING                                       | **Parameter Type**: Geometry    |
+| TREAT_PLAYLIST_TITLE | STRING                                       | **ALL/DISTINCT**                |
 
 #### **Parameter Type**: Any type
 
@@ -7805,11 +7811,11 @@ SELECT * FROM cluster_schema.tenants;
 ```
 
 ```
-+-------------+---------------------------------------------------+
-| tenant_name | tenant_options                                    |
-+-------------+---------------------------------------------------+
-| cnosdb      | {"comment":"system tenant","limiter_config":null} |
-+-------------+---------------------------------------------------+
++----- +
+| tenant_name | tenant_options |
++------------------+
+| cnosdb | {"comment": "system tenant", "limiter_config":n} |
++---+ + +
 ```
 
 ### **USERS**
@@ -7818,11 +7824,11 @@ SELECT * FROM cluster_schema.tenants;
 
 Syntax
 
-| **Parameter Type**: any type      | **Create External Table** | **Parameter Type**: Numeric type |
-| --------------------------------- | ------------------------- | -------------------------------- |
-| USER_NAME    | STRING                    | **Parameter Type**:Any type      |
-| IS_ADMIN     | BOOLEAN                   | **Parameter Type**: Numeric type |
-| USER_OPTIONS | STRING                    | **Alter Table**                  |
+| **Parameter Type**: any type                                   | **Create External Table** | **Parameter Type**: Numeric type |
+| -------------------------------------------------------------- | ------------------------- | -------------------------------- |
+| USER_NAME                                 | STRING                    | **Parameter Type**:Any type      |
+| IS_ADMIN                                  | BOOLEN                    | **Parameter Type**: Numeric type |
+| USER_OPTION_PLAYLIST | STRING                    | **Alter Table**                  |
 
 #### **Parameter Type**: None
 
@@ -7848,15 +7854,15 @@ SELECT * FROM cluster_schema.users;
 
 #### **Return Type**: Double
 
-| **Return Type**: BINARY             | **`BETWEEN AND` Expression** | **Parameter Type**: Numeric type |
-| ----------------------------------- | ---------------------------- | -------------------------------- |
-| TENANT_NAME    | STRING                       | **Return Type**: INTERVAL        |
-| DATABASE_NAME  | STRING                       | **Return Type**: STRING          |
-| TTL                                 | STRING                       | **Return Type**: BINARY          |
-| SHARD                               | BIGINT UNSIGNED              | 表示数据分片个数                         |
-| VNODE_DURATION | STRING                       | **Return Type**: Double          |
-| PREPLICA                            | BIGINT UNSIGNED              | 表示数据在集群中的副本数                     |
-| PERCISION                           | STRING                       | 表示数据库的时间精度                       |
+| **Return Type**: BINARY             | **`BETWEEN AND` Expression** | **Parameter Type**: Numeric type             |
+| ----------------------------------- | ---------------------------- | -------------------------------------------- |
+| ENANT_NAME     | STRING                       | **Return Type**: INTERVAL                    |
+| DATABASSE_NAME | STRING                       | **Return Type**: STRING                      |
+| TTL                                 | STRING                       | **Return Type**: BINARY                      |
+| SHARD                               | BIGINT UNCIGNED              | Number of data fragments                     |
+| VNODE_DURATION | STRING                       | **Return Type**: Double                      |
+| PREPLICA                            | BIGINT UNCIGNED              | Number of copies of data in cluster          |
+| PERCISON                            | STRING                       | Represents the time accuracy of the database |
 
 #### **Parameter Type**: None
 
@@ -7878,14 +7884,14 @@ SELECT * FROM information_schema.databases;
 
 #### **Return Type**: BIGINT
 
-| **Return Type**: Binary             | **Window Functions** | **Parameter Type**: Numeric type |
-| ----------------------------------- | -------------------- | -------------------------------- |
-| TABLE_TENANT   | STRING               | 表所属的租户                           |
-| TABLE_DATABASE | STRING               | **Parameter Type**: Numeric type |
-| TABLE_NAME     | STRING               | **Parameter Type**: STRING       |
-| TABLE_TYPE     | STRING               | 表是基础表，还是视图                       |
-| TABLE_ENGINE   | STRING               | **ORDER BY Clause**              |
-| TABLE_OPTION   | STRING               | Example                          |
+| **Return Type**: Binary                                            | **Window Functions** | **Parameter Type**: Numeric type    |
+| ------------------------------------------------------------------ | -------------------- | ----------------------------------- |
+| TABLE_TEXT                                    | STRING               | Tenants attached to table           |
+| TABLE_DATABASE                                | STRING               | **Parameter Type**: Numeric type    |
+| TABLE_NAME                                    | STRING               | **Parameter Type**: STRING          |
+| TABLE_TYPE                                    | STRING               | Whether table is base table or view |
+| TABLE_NOTIFICATION_TITLE | STRING               | **ORDER BY Clause**                 |
+| TABLE_OPTIONS                                 | STRING               | Example                             |
 
 #### **Parameter Type**: None
 
@@ -7909,17 +7915,17 @@ SELECT * FROM information_schema.tables;
 
 #### **Return Type**: BIGINT
 
-| **Return Type**: BIGINT                | ### **Regexp_Match** | **Parameter Type**: Numeric type |
-| -------------------------------------- | ----------------------------------------- | -------------------------------- |
-| TABLE_TENANT      | STRING                                    | 表所属的租户                           |
-| TABLE_DATABASE    | STRING                                    | **Parameter Type**: Numeric type |
-| TABLE_NAME        | STRING                                    | **Parameter Type**: None         |
-| COLUMN_NAME       | STRING                                    | **Parameter Type**: STRING       |
-| ORDINAL_POSITION  | STRING                                    | **Parameter Type**: None         |
-| COLUMN_TYPE       | STRING                                    | Example                          |
-| IS_NULLABLE       | STRING                                    | Example                          |
-| DATA_TYPE         | STRING                                    | **Conditional Functions**        |
-| COMPRESSION_CODEC | STRING                                    | **Example**:                     |
+| **Return Type**: BIGINT                                                                       | ### **Regexp_Match** | **Parameter Type**: Numeric type |
+| --------------------------------------------------------------------------------------------- | ----------------------------------------- | -------------------------------- |
+| TABLE_TEXT                                                               | STRING                                    | Tenants attached to table        |
+| TABLE_DATABASE                                                           | STRING                                    | **Parameter Type**: Numeric type |
+| TABLE_NAME                                                               | STRING                                    | **Parameter Type**: None         |
+| COLUMN_NAME                                                              | STRING                                    | **Parameter Type**: STRING       |
+| NOTIF_NOTIFICATION_POPUP_TITLE | STRING                                    | **Parameter Type**: None         |
+| COLUMN_TYPE                                                              | STRING                                    | Example                          |
+| IS_NULLABLE                                                              | STRING                                    | Example                          |
+| DATA_TYPE                                                                | STRING                                    | **Conditional Functions**        |
+| COMPRESSON_DEC                                                           | STRING                                    | **Example**:                     |
 
 #### **Parameter Type**: STRING
 
@@ -7963,17 +7969,17 @@ SELECT * FROM information_schema.enabled_roles;
 ```
 
 ```
-+-----------+
++---+
 | role_name |
-+-----------+
-| owner     |
-+-----------+
++------
+| owner |
++---+ +
 ```
 
 ### ROLES
 
 **Return Type**: STRING
-此视图只对当前租户的Owner可见。
+This view is visible only to the current tenant Owner.
 
 #### **Return Type**: BIGINT
 
@@ -8008,8 +8014,8 @@ Data Type
 
 | **Return Type**: BIGINT             | **`CASE WHEN` Expression** | **Parameter Type**: Numeric type |
 | ----------------------------------- | -------------------------- | -------------------------------- |
-| TENANT_NAME    | STRING                     | **Return Type**: STRING          |
-| DATABASE_NAME  | STRING                     | **Return Type**: STRING          |
+| ENANT_NAME     | STRING                     | **Return Type**: STRING          |
+| DATABASSE_NAME | STRING                     | **Return Type**: STRING          |
 | PRIVILEGE_TYPE | STRING                     | Syntax                           |
 | ROLE_NAME      | STRING                     | **Return Type**: STRING          |
 
@@ -8017,16 +8023,16 @@ Data Type
 
 ```sql
 CREATE ROLE rrr INHERIT member;
-GRANT READ ON DATABASE air TO ROLE rrr;
+GRANT READ ON DATABASE air TO ROLE rrrrr;
 SELECT * FROM information_schema.database_privileges;
 ```
 
 ```
-+-------------+---------------+----------------+-----------+
-| tenant_name | database_name | privilege_type | role_name |
-+-------------+---------------+----------------+-----------+
-| cnosdb      | air           | Read           | rrr       |
-+-------------+---------------+----------------+-----------+
++-------- +------------------+-
+| tenant_name | database_name | privilege_type | role_name | role_name |
++--------------+
+| cnosdb | air | Read | rr |
++-----------------
 ```
 
 ### MEMBERS
@@ -8049,14 +8055,14 @@ SELECT * FROM information_schema.members;
 ```
 
 ```
-+-----------+-----------+
++-------------- +
 | user_name | role_name |
-+-----------+-----------+
-| root      | owner     |
-+-----------+-----------+
++-----------------------
+| root | owner |
++----+ + + +
 ```
 
-### QUERIES(INFORMATION_SCHEMA)
+### QUERIES (INFORMATION_SCHEMA)
 
 **Return Type**: DOUBLE
 
@@ -8066,16 +8072,16 @@ Data Type
 
 #### **Return Type**: BIGINT
 
-| **Return Type**: BIGINT          | **Create Table** | **Parameter Type**: Numeric type |
-| -------------------------------- | ---------------- | -------------------------------- |
-| QUERY_ID    | STRING           | **Return Type**: STRING          |
-| QUERY_TEXT  | STRING           | **Return Type**: DOUBLE          |
-| USER_ID     | STRING           | **Function Types**               |
-| USER_NAME   | STRING           | **Parameter Type** Geometry      |
-| TENANT_ID   | STRING           | **Return Type**: BIGINT          |
-| TENANT_NAME | STRING           | **Parameter Type**:              |
-| STATE                            | STRING           | Data Type                        |
-| DURATION                         | BIGINT UNSIGNED  | **Parameter Type**:              |
+| **Return Type**: BIGINT           | **Create Table** | **Parameter Type**: Numeric type |
+| --------------------------------- | ---------------- | -------------------------------- |
+| QUERY_ID     | STRING           | **Return Type**: STRING          |
+| REQUERY_TEXT | STRING           | **Return Type**: DOUBLE          |
+| USER_ID      | STRING           | **Function Types**               |
+| USER_NAME    | STRING           | **Parameter Type** Geometry      |
+| ENANT_ID     | STRING           | **Return Type**: BIGINT          |
+| ENANT_NAME   | STRING           | **Parameter Type**:              |
+| STATE                             | STRING           | Data Type                        |
+| DURATION                          | BIGINT UNCIGNED  | **Parameter Type**:              |
 
 #### **Parameter Type**: STRING
 
@@ -8128,9 +8134,9 @@ Example
 | TIME                          | TIMESTAMP             | **Return Type**: BIGINT          |
 | DATABASE                      | STRING                | **Return Type**: STRING          |
 | NODE_ID  | STRING                | **Return Type**: BIGINT          |
-| TENANT                        | STRING                | **Return Type**: STRING          |
+| ENANT                         | STRING                | **Return Type**: STRING          |
 | VNODE_ID | STRING                | **Return Type**: STRING          |
-| VALUE                         | BIGINT UNSIGNED       | **Return Type**: STRING          |
+| VALUE                         | BIGINT UNCIGNED       | **Return Type**: STRING          |
 
 Syntax
 
@@ -8145,11 +8151,11 @@ Syntax
 | TIME                         | TIMESTAMP         | **Return Type**: BIGINT          |
 | DATABASE                     | STRING            | **Return Type**: STRING          |
 | NODE_ID | STRING            | **Return Type**: DOUBLE          |
-| TENANT                       | STRING            | **Return Type**: STRING          |
+| ENANT                        | STRING            | **Return Type**: STRING          |
 | USER                         | STRING            | **Parameter Type**: STRING       |
-| HOST                         | STRING            | 服务端口                             |
+| HOST                         | STRING            | Service Port                     |
 | API                          | STRING            | **Return Type**: DOUBLE          |
-| VALUE                        | BIGINT UNSIGNED   | **SELECT Clause**                |
+| VALUE                        | BIGINT UNCIGNED   | **SELECT Clause**                |
 
 Syntax
 
@@ -8164,11 +8170,11 @@ Syntax
 | TIME                             | TIMESTAMP           | **Parameter Type**: Numeric type |
 | DATABASE                         | STRING              | **Return Type**: STRING          |
 | NODE_ID     | STRING              | **Return Type**: DOUBLE          |
-| TENANT                           | STRING              | **Return Type**: STRING          |
+| ENANT                            | STRING              | **Return Type**: STRING          |
 | USER                             | STRING              | **Parameter Type**: STRING       |
 | API                              | STRING              | **Return Type**: DOUBLE          |
-| HOST                             | STRING              | 服务端口                             |
-| VALUE                            | BIGINT UNSIGNED     | **Use Database**                 |
+| HOST                             | STRING              | Service Port                     |
+| VALUE                            | BIGINT UNCIGNED     | **Use Database**                 |
 
 Syntax
 
@@ -8183,11 +8189,11 @@ Syntax
 | TIME                             | TIMESTAMP            | **Parameter Type**: Numeric type |
 | DATABASE                         | STRING               | **Return Type**: DOUBLE          |
 | NODE_ID     | STRING               | **Return Type**: DOUBLE          |
-| TENANT                           | STRING               | **Parameter Type**:              |
+| ENANT                            | STRING               | **Parameter Type**:              |
 | USER                             | STRING               | **Return Type**: DOUBLE          |
 | API                              | STRING               | **Return Type**: DOUBLE          |
-| HOST                             | STRING               | 服务端口                             |
-| VALUE                            | BIGINT UNSIGNED      | **Example**                      |
+| HOST                             | STRING               | Service Port                     |
+| VALUE                            | BIGINT UNCIGNED      | **Example**                      |
 
 Syntax
 
@@ -8204,11 +8210,11 @@ Example
 | TIME                             | TIMESTAMP       | **Parameter Type**: Numeric type |
 | DATABASE                         | STRING          | **Return Type**: DOUBLE          |
 | NODE_ID     | STRING          | **Return Type**: DOUBLE          |
-| TENANT                           | STRING          | **Parameter Type**:              |
+| ENANT                            | STRING          | **Parameter Type**:              |
 | USER                             | STRING          | **Return Type**: DOUBLE          |
-| HOST                             | STRING          | 服务端口                             |
+| HOST                             | STRING          | Service Port                     |
 | API                              | STRING          | **Return Type**: DOUBLE          |
-| VALUE                            | BIGINT UNSIGNED | **Example**                      |
+| VALUE                            | BIGINT UNCIGNED | **Example**                      |
 
 Syntax
 
@@ -8224,7 +8230,7 @@ Syntax
 | **Parameter Type**: Numeric type | STRING          | **Return Type**: DOUBLE          |
 | **Return Type**: DOUBLE          | STRING          | **Return Type**: DOUBLE          |
 | **Numeric type**: DOUBLE         | STRING          | **Parameter Type**:              |
-| **Return Type**: DOUBLE          | BIGINT UNSIGNED | **Return Type**: DOUBLE          |
+| **Return Type**: DOUBLE          | BIGINT UNCIGNED | **Return Type**: DOUBLE          |
 
 Syntax
 
@@ -8240,13 +8246,13 @@ Syntax
 | **Return Type**: DOUBLE | STRING          | **Return Type**: DOUBLE |
 | **Return Type**: DOUBLE | STRING          | **Return Type**: DOUBLE |
 | **Parameter Type**:     | STRING          | **Parameter Type**:     |
-| **Return Type**: DOUBLE | BIGINT UNSIGNED | **Return Type**: DOUBLE |
+| **Return Type**: DOUBLE | BIGINT UNCIGNED | **Return Type**: DOUBLE |
 
 Syntax
 
 ### COORD_QUERIES
 
-记录通过Coordinator的接受数据次数
+Log accepted data by coordinator
 
 #### **Return Type**: DOUBLE
 
@@ -8256,7 +8262,7 @@ Syntax
 | **Return Type**: DOUBLE | STRING          | **Return Type**: DOUBLE |
 | **Return Type**: DOUBLE | STRING          | Example                 |
 | **Data Types**          | STRING          | Example                 |
-| Data Type               | BIGINT UNSIGNED | Syntax                  |
+| Data Type               | BIGINT UNCIGNED | Syntax                  |
 
 Syntax
 
@@ -8272,7 +8278,7 @@ Example
 | Example | STRING          | Example |
 | Example | STRING          | Example |
 | Example | STRING          | Example |
-| Example | BIGINT UNSIGNED | Syntax  |
+| Example | BIGINT UNCIGNED | Syntax  |
 
 Syntax
 
@@ -8322,20 +8328,20 @@ CREATE DATABASE oceanic_station;
 ```
 
 ```
-CREATE TABLE air(pressure DOUBLE, temperature DOUBLE, visibility DOUBLE, TAGS(station));
+CREATE TABLE air(pressure DOUBLE, temperature DOUBLE, visibility DOUBLE, TAGS (staff));
 ```
 
 Syntax
 
 ```sql
-CREATE STREAM TABLE air_stream(time TIMESTAMP, station STRING, pressure DOUBLE, temperature DOUBLE, visibility DOUBLE) 
+CREATE STREAM TABLE air_stream_stream(time TIMESTAMP, station STRING, pressure DOUBLE, temperature DOUBLE, visibility DOUBLE) 
     WITH (db = 'oceanic_station', table = 'air', event_time_column = 'time')
     engine = tskv;
 ```
 
-### 删除流表
+### Remove Stream
 
-> 与删除普通表语法相同，请参考[删除表](#删除表)
+> Same as delete normal expression reference to[删除表](#delete table)
 
 ### Syntax
 
@@ -8354,7 +8360,7 @@ Syntax
 Syntax
 
 ```sql
-CREATE TABLE air_down_sampling_1hour(max_pressure DOUBLE, avg_temperature DOUBLE, sum_temperature DOUBLE, count_pressure BIGINT, TAGS(station));
+CREATE TABLE air_down_sampling_1hour (max_pressure DOUBLE, avg_temperature DOUBLE, sum_temperature DOUBLE, count_pressure BIGINT, TAGS(staff));
 ```
 
 Syntax
@@ -8362,14 +8368,14 @@ Syntax
 ```sql
 INSERT INTO air_down_sampling_1hour(time, station, max_pressure, avg_temperature, sum_temperature, count_pressure) 
 SELECT 
-	date_bin(INTERVAL '1' HOUR, time, TIMESTAMP '2023-01-14T16:00:00') time, 
+	date_bin (INTERVAL 1' HOUR, time, TIMESTAMP '2023-01-14T16:00:00) time, 
 	station, 
 	MAX(pressure) max_pressure, 
 	AVG(temperature) avg_temperature, 
 	SUM(temperature) sum_temperature, 
 	COUNT(pressure) count_pressure 
 FROM air_stream 
-GROUP BY date_bin(INTERVAL '1' HOUR, time, TIMESTAMP '2023-01-14T16:00:00'), station;
+GROUP BY date_bin (INTERVAL '1' HOUR, time, TIMESTAMP '2023-01-14T16:00:00'), station;
 ```
 
 Syntax
@@ -8383,7 +8389,7 @@ Syntax
 Syntax
 
 ```sql
-SELECT * FROM air_down_sampling_1hour LIMIT 10;
+SELECT * FROM air_down_sampling_1our LIMIT 10;
 ```
 
 ```
