@@ -1,0 +1,13 @@
+project_id: 'ivan-123'
+api_token_env: 4b6e4fc7632c5cec7f2fbb0fd5e8580082c2f814533c7897da2fa4fd99aad3d1eb68f1eac211d59c
+preserve_hierarchy: true
+languages_mapping: &languages_mapping
+  two_letters_code:
+    en-US: en-US
+files:
+  - source: /docs/**/*
+    translation: /i18n/%two_letters_code%/docusaurus-plugin-content-docs/current/**/%original_file_name%
+    languages_mapping: *languages_mapping
+  - source: /versioned_docs/**/*
+    translation: /i18n/%two_letters_code%/docusaurus-plugin-content-docs/**/%original_file_name%
+    languages_mapping: *languages_mapping
