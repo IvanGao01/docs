@@ -15,15 +15,15 @@ CnosDB supports alarm management. Through CnosDB alarm management, you can view 
 ## Principle of Implementation
 
 For the time series data stored in CnosDB, cnos-alert component executes sql query regularly according to the configuration file submitted by the user, compares the query result with the threshold, and sends the query result that triggers the alarm to the user specified receiving terminal.
-sql查询：
-标准的cnosdb-sql查询语句，考虑到告警的使用场景，一般都是带有time相关where子句。
-阈值：
-配置时需要指定sql查询返回值的一个字段，为这个字段设置一个触发告警的阈值，目前支持大于、小于、等于、区间内、区间外五类阈值形式。
-通知接收终端：
-目前支持slack、twitter两种。
-历史记录：
-所有触发告警的查询结果、发出的通知都将记录在cnosdb中。
-用户配置的告警规则记录在用户指定位置json文件中。
+sql queried：
+standard cnosdb-sql query, usually with time related to where given warning scenarios.
+Threshold：
+needs to specify a sql query return value, setting a threshold for triggering a warning for this field that is currently supported in five categories greater than or less and equal to, within and outside range.
+Notification receiving terminal：
+currently supports slack, twitter and twitter.
+History history：
+All queries triggering warnings and notifications will be recorded in cnosdb.
+The user configured warning rule is recorded in the user locator json file.
 ![告警组件原理](/img/cnos-alert.png)
 
 ## Start
@@ -64,7 +64,7 @@ Test the running status of the service
 **Request Example**
 
 ```shell
-curl -X GET http:/127.0.0.1:30001/api/http/ping
+curl-X GET http://127.0.0.1:3001/api/http/ping
 ```
 
 **Request Succeeded**
@@ -92,7 +92,7 @@ Create an alert rule.
 **Request Example**
 
 ```shell
-curl -X POST http:/127.0.0.1:30001/api/v1/alert/config/rule
+curl-X POST http://127.0.0.0.1:30001/api/v1/alert/config/rule
 ```
 
 **Request Parameters**
@@ -137,8 +137,8 @@ curl -X POST http:/127.0.0.1:30001/api/v1/alert/config/rule
 **Request Succeeded**
 
 ```shell
-{ 
-    "message":"succeed", 
+LO 
+    "message": "suceed", 
     "id":"1"
 }
 ```
@@ -146,9 +146,9 @@ curl -X POST http:/127.0.0.1:30001/api/v1/alert/config/rule
 **Request Failed**
 
 ```shell
-{
+LO
     "code":3, 
-    "message":"invalid character '}' looking for beginning of object key string", 
+    "message": "invalid character '}' looking for beginning of object key string", 
     "details":[]
 }
 ```
@@ -166,7 +166,7 @@ Modify an alert rule.
 **Request Example**
 
 ```shell
-curl -X PUT http:/127.0.0.1:30001/api/v1/alert/config/rule
+curl-X PUT http://127.0.0.0.1:30001/api/v1/alert/config/rule
 ```
 
 **Request Parameters**
@@ -212,17 +212,17 @@ curl -X PUT http:/127.0.0.1:30001/api/v1/alert/config/rule
 **Request Succeeded**
 
 ```shell
-{ "message":"succeed" }
+"message":"ucceed" }
 ```
 
 **Request Failed**
 
 ```shell
-{
+LO
     "code": error id, 
     "message": error string, 
     "details":[]
-}
+ } }
 ```
 
 ### api/v1/alert/config/rule/tenant/:tenant/id/:id
@@ -238,7 +238,7 @@ Get the specified rule information.
 **Request Example**
 
 ```shell
-curl -X GET http:/127.0.0.1:30001/api/v1/alert/config/rule/tenant/cnosdb/id/1
+curl-X GET http://127.0.0.1:3001/api/v1/alert/config/rule/tenant/cnosdb/id/1
 ```
 
 **Request Parameters**
@@ -296,11 +296,11 @@ curl -X GET http:/127.0.0.1:30001/api/v1/alert/config/rule/tenant/cnosdb/id/1
 **Request Failed**
 
 ```shell
-{
+LO
     "code": error id, 
     "message": error string, 
     "details":[]
-}
+ } }
 ```
 
 ### api/v1/alert/config/rule/tenant/:tenant/id/:id
@@ -316,7 +316,7 @@ Remove the top rule.
 **Request Example**
 
 ```shell
-curl -X DELETE http:/127.0.0.1:30001/api/v1/alert/config/rule/tenant/cnosdb/id/1
+curl-X DELETE http://127.0.0.1:3001/api/v1/alert/config/rule/tenant/cnosdb/id/1
 ```
 
 **Request Parameters**
@@ -330,19 +330,19 @@ curl -X DELETE http:/127.0.0.1:30001/api/v1/alert/config/rule/tenant/cnosdb/id/1
 **Request Succeeded**
 
 ```shell
-{
-    "message": "succeed"
+LO
+    "message": "ucce"
 }
 ```
 
 **Request Failed**
 
 ```shell
-{
+LO
     "code": error id, 
     "message": error string, 
     "details":[]
-}
+ } }
 ```
 
 ### /api/v1/alert/config/rule/tenant/:tenant
@@ -358,7 +358,7 @@ List all rules for the specified tenant.
 **Request Example**
 
 ```shell
-curl -X DELETE http:/127.0.0.1:30001/api/v1/alert/config/rule/tenant/cnosdb?page=1&per_page=10
+curl-X DELETE http://127.0.0.0.1:3001/api/v1/alert/config/rule/tenant/cnosdb?page=1&per_page=10
 ```
 
 **Request Parameters**
@@ -391,11 +391,11 @@ curl -X DELETE http:/127.0.0.1:30001/api/v1/alert/config/rule/tenant/cnosdb?page
 **Request Failed**
 
 ```shell
-{
+LO
     "code": error id, 
     "message": error string, 
     "details":[]
-}
+ } }
 ```
 
 ### /api/v1/alert/config/rule/tenant/:tenant
@@ -411,7 +411,7 @@ List all rules for the specified tenant.
 **Request Example**
 
 ```shell
-curl -X DELETE http:/127.0.0.1:30001/api/v1/alert/config/rule/tenant/cnosdb?page=1&per_page=10
+curl-X DELETE http://127.0.0.0.1:3001/api/v1/alert/config/rule/tenant/cnosdb?page=1&per_page=10
 ```
 
 **Request Parameters**
@@ -444,11 +444,11 @@ curl -X DELETE http:/127.0.0.1:30001/api/v1/alert/config/rule/tenant/cnosdb?page
 **Request Failed**
 
 ```shell
-{
+LO
     "code": error id, 
     "message": error string, 
     "details":[]
-}
+ } }
 ```
 
 ### api/v1/alert/data/alert/tenant/:tenant
@@ -464,7 +464,7 @@ List all alert records for the specified tenant.
 **Request Example**
 
 ```shell
-curl -X DELETE http:/127.0.0.1:30001/api/v1/alert/data/alert/tenant/cnosdb?page=1&per_page=10
+curl-X DELETE http://127.0.0.0.1:3001/api/v1/alert/data/alert/tenant/cnosdb?page=1&per_page=10
 ```
 
 **Request Parameters**
@@ -488,11 +488,11 @@ curl -X DELETE http:/127.0.0.1:30001/api/v1/alert/data/alert/tenant/cnosdb?page=
 **Request Failed**
 
 ```shell
-{
+LO
     "code": error id, 
     "message": error string, 
     "details":[]
-}
+ } }
 ```
 
 ### api/v1/alert/data/noti/tenant/:tenant
@@ -508,7 +508,7 @@ Lists all notification records for the specified tenant.
 **Request Example**
 
 ```shell
-curl -X DELETE http:/127.0.0.1:30001/api/v1/alert/data/noti/tenant/cnosdb?page=1&per_page=10
+curl-X DELETE http://127.0.0.0.1:3001/api/v1/alert/data/noti/tenant/cnosdb?page=1&per_page=10
 ```
 
 **Request Parameters**
@@ -532,11 +532,11 @@ curl -X DELETE http:/127.0.0.1:30001/api/v1/alert/data/noti/tenant/cnosdb?page=1
 **Request Failed**
 
 ```shell
-{
+LO
     "code": error id, 
     "message": error string, 
     "details":[]
-}
+ } }
 ```
 
 ## Example
