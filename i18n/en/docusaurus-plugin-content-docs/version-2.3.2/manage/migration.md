@@ -63,5 +63,5 @@ DROP VNODE 13;
 - #### Compact Vnode
 
 ```sql
-COMPACT VNODE  7 10 11 12;
+COMPACT VNODE 7 10 11 12;
 ```
