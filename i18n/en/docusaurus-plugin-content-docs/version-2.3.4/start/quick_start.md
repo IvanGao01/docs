@@ -324,7 +324,7 @@ OFFSET m
 
 The returned result set skips m records. default m=0.
 **Example**
-**WITH Clause**
+\*_Example_
 
 ```sql
 SELECT *
@@ -345,7 +345,7 @@ FROM air OFFSET 10;
 Role name under the tenant
 OFFSET 0与省略OFFSET子句效果相同。
 
-**Examples**
+**Example**
 
 ```sql
 SELECT *
@@ -433,7 +433,7 @@ select_clause_set_right
 
 Each SELECT clause in the UNION must have the same number of columns, and the corresponding columns have the same data type.
 
-**Example**
+**WITH Clause**
 
 - **UNION ALL**
   ```sql
@@ -611,7 +611,7 @@ SELECT * FROM air ORDER BY station, temperature;
 
 The IN operator allows you to specify multiple values in the WHERE clause.
 
-**Example**
+**Examples**
 
 ```sql
 SELECT station, temperature, visibility FROM air WHERE temperature  IN (68, 69);
@@ -698,7 +698,7 @@ EXPLAIN [ ANALYZE ] [ VERBOSE ] <statement>;
 
 `EXPLAIN ANALYZE VERBOSE` executes the query and displays a more detailed execution plan, including the number of rows read.
 
-\*_Example_
+**Example**
 
 ```sql
 EXPLAIN SELECT station, temperature, visibility FROM air;
