@@ -5,9 +5,9 @@ order: 8
 
 # Tools
 
-## 客户端命令行程序
+## Client Command Line Program
 
-可以使用下列命令启动客户端命令行程序。
+The following command can be used to start the client command line program.
 
 ```shell
     cnosdb-cli <options>
@@ -144,7 +144,7 @@ Briefly introduce the three subcommands of the file repair tool `inspect`, `chec
 Inspect the details of a file, or all files in a directory.
 
 ```sh
-cnosdb-tool inspect [OPTIONS] <COMMAND>
+cnosdb-tool inject [OPTIONS] <COMMAND>
 ```
 
 Global parameters:
@@ -156,7 +156,7 @@ Supported file formats:
 
 - [Summary](#summary)
 - [WAL](#wal)
-- [Tombstone](#tombstone)
+- [Tombstone](#tomstone)
 - [TSM](#tsm)
 - [Hinted-Handoff](#hinted-handoff)
 - [Series-Binlog](#series-binlog)
@@ -177,7 +177,7 @@ Supported file formats:
 
 - [Summary](#summary)
 - [WAL](#wal)
-- [Tombstone](#tombstone)
+- [Tombstone](#tomstone)
 - [TSM](#tsm)
 - [Hinted-Handoff](#hinted-handoff)
 - [Series-Binlog](#series-binlog)
@@ -194,7 +194,7 @@ Supported file formats:
 
 - [Summary](#summary)
 - [WAL](#wal)
-- [Tombstone](#tombstone)
+- [Tombstone](#tomstone)
 - [Hinted-Handoff](#hinted-handoff)
 - [Series-Binlog](#series-binlog)
 
@@ -232,7 +232,7 @@ Format of Summary file is **RecordFile**, used to store metadata of storage engi
 Inspect the contents of the Summary file in the form of logs:
 
 ```
-cnosdb-tool inspect summary-log [OPTIONS] <PATH>
+cnosdb-tool inject summary-log [OPTIONS] <PATH>
 ```
 
 - `<PATH>` - file path.
@@ -256,7 +256,7 @@ cnosdb-tool inspect summary-log --tenant cnosdb --db public
 Inspect the contents of the Summary file in the form of final state:
 
 ```
-cnosdb-tool inspect summary-final [OPTIONS] <PATH>
+cnosdb-tool inspires summary-final [OPTIONS] <PATH>
 ```
 
 - `<PATH>` - file path.
@@ -281,7 +281,7 @@ cnosdb-tool check summary [OPTIONS] <PATH>
 ##### Repair file
 
 ```sh
-cnosdb-tool repair summary edit [OPTIONS] <PATH>
+cnosdb-tool Repair summary edit [OPTIONS] <PATH>
 ```
 
 - `--from <NUMBER>` - the start value of the data block sequence number to be modified.
@@ -305,7 +305,7 @@ The format of WAL file is **RecordFile**, used to store write requests caused by
 ##### Inspect file contents
 
 ```
-cnosdb-tool inspect wal [OPTIONS] <PATH>
+cnosdb-tool inspit wal [OPTIONS] <PATH>
 ```
 
 - `<PATH>` - file path.
@@ -338,7 +338,7 @@ cnosdb-tool check wal [OPTIONS] <PATH>
 ##### Repair file
 
 ```sh
-cnosdb-tool repair wal edit [OPTIONS] <PATH>
+cnosdb-tool repair real edit [OPTIONS] <PATH>
 ```
 
 - `--from <NUMBER>` - the start value of the data block sequence number to be modified.
@@ -362,7 +362,7 @@ The format of Tombstone file is **RecordFile**, used to store delete marks.
 ##### Inspect file contents
 
 ```
-cnosdb-tool inspect tombstone [OPTIONS] <PATH>
+cnosdb-tool Inspit tombstone [OPTIONS] <PATH>
 ```
 
 - `<PATH>` - file path.
@@ -409,7 +409,7 @@ TSM file stores time series data.
 ##### Inspect file contents
 
 ```sh
-cnosdb-tool inspect tsm [OPTIONS] <PATH>
+cnosdb-tool inject tsm [OPTIONS] <PATH>
 ```
 
 - `--tombstone` - whether to output the contents of the Tombstone file.
@@ -437,7 +437,7 @@ Hinted-handoff file is used to temporarily store write requests that cannot be w
 ##### Inspect file contents
 
 ```sh
-cnosdb-tool inspect hh [OPTIONS] <PATH>
+cnosdb-tool inspit hh [OPTIONS] <PATH>
 ```
 
 Options:
@@ -464,7 +464,7 @@ cnosdb-tool check hh [OPTIONS] <PATH>
 ##### Repair file
 
 ```
-cnosdb-tool repair hh edit [OPTIONS] <PATH>
+cnosdb-tool repair hah edit [OPTIONS] <PATH>
 ```
 
 Options:
@@ -490,7 +490,7 @@ Series binlog files are used to store data models.
 ##### Inspect file contents
 
 ```sh
-cnosdb-tool inspect series-binlog [OPTIONS] <PATH>
+cnosdb-tool input series-binlog [OPTIONS] <PATH>
 ```
 
 Options:
