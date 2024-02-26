@@ -11,7 +11,7 @@ Only Enterprise Edition supports
 In the actual service scenario, there are multiple data disks on one machine at the same time. Therefore, it is necessary to give full play to the capabilities of these disks to improve the throughput of the system.
 Another scenario is that multiple data disks on the same or multiple machines use different storage media, and customers want to store cold data that is not frequently accessed move to cheap storage media to reduce the cost of enterprise storage.
 In CnosDB, we solve these two scenarios through the following solutions:
-在CnosDB中我们通过如下的方案解决这两种场景：
+In CnosDB we solve both scenarios： by following
 
 # Tiered Storage
 
@@ -33,9 +33,9 @@ ALTER NODE [node_id] ATTRIBUTE [HOT/COLD];  // Modify the attribute of the node
 CREATE DATABASE [IF NOT EXISTS] db_name [WITH db_options];
 
 db_options:
-    db_option ...
+    db_option...
 
-db_option: {
+db_option: LO
       TTL value
     | SHARD value
     | VNODE_DURATION value
@@ -45,9 +45,9 @@ db_option: {
 }
 ```
 
-在 `CREATE DATABASE` 的语句中增加 `COOLING_DURATION value` 增加一个冷却时间的字段。 Add `COOLING_DURATION value` to the `CREATE DATABASE` statement to add a cooldown time field. `option` indicates the interval for data cooling, `COOLING_DURATION` defaults to 0, which means stopping data migration.
+Add `COOLING_DURATION_value` to the `CREATE DATABASE`. Add `COOLING_DURATION value` to the `CREATE DATABASE` statement to add a cooldown time field. `option` indicates the interval for data cooling, `COOLING_DURATION` defaults to 0, which means stopping data migration.
 
-`COOLING_DURATION` 必须是 `VNODE_DURATION` 的整数倍。 `COOLING_DURATION` must be a multiple of `VNODE_DURATION`. The `COOLING_DURATION` field can be modified by `alter database`.
+`COOLING_DURATION` must be several times as many as `VNODE_DURATION`. `COOLING_DURATION` must be a multiple of `VNODE_DURATION`. The `COOLING_DURATION` field can be modified by `alter database`.
 
 After data is cooled, the `migrate` thread in meta will migrate data from hot nodes to cold nodes. The `migrate` thread periodically checks whether there is data to be migrated. The timing can be modified using the `auto_migrate_vnodes_duration` configuration item in the meta configuration file. The unit of this configuration item is seconds, and the default value is 0, which means that tiered storage is not enabled. The timing for periodic checks can be set according to practical needs. It is recommended to set the minimum check time to 1800 seconds, which is `auto_migrate_vnodes_duration = 1800`.
 
