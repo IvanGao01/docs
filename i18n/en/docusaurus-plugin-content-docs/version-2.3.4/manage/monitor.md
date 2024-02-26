@@ -74,7 +74,7 @@ Data traffic written over http, excluding SQL.
 
 #### Tag
 
-| Field                        | Discription                          |
+| Field                        | Description                          |
 | ---------------------------- | ------------------------------------ |
 | TIME                         | Time of data_in |
 | DATABASE                     | Database name                        |
@@ -88,7 +88,7 @@ Data traffic written over http, excluding SQL.
 
 sql_data_in
 
-#### Type
+#### Category
 
 Count
 
@@ -160,11 +160,11 @@ Total outflow traffic for reading data from the database.
 
 http_data_out
 
-#### Category
+#### Type
 
 Count
 
-#### Description
+#### Discription
 
 The size of the Http returned data.
 
@@ -173,7 +173,7 @@ The size of the Http returned data.
 | Field                        | Description                                                     |
 | ---------------------------- | --------------------------------------------------------------- |
 | TIME                         | Time of http_data_out |
-| DATABASE                     | Database name                                                   |
+| DATABASE                     | DatabaseName                                                    |
 | NODE_ID | ID of data node                                                 |
 | TENANT                       | Tenant name the database belongs to                             |
 | Database                     | DatabaseName                                                    |
@@ -224,7 +224,7 @@ The times the user writes to the database.
 | Field                        | Discription                         |
 | ---------------------------- | ----------------------------------- |
 | TIME                         | Time of writes                      |
-| DATABASE                     | DatabaseName                        |
+| DATABASE                     | Database name                       |
 | NODE_ID | ID of data node                     |
 | TENANT                       | Tenant name the database belongs to |
 | USER                         | User name                           |
