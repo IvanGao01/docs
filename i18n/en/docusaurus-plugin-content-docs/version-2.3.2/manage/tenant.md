@@ -17,9 +17,9 @@ CnosDB provides a tenant system and a user system.
 
 - CnosDB instance starts with a tenant `cnosdb` and a user `root` by default.
 
-## 租户
+## Tenant
 
-### 查看租户
+### View Tenant
 
 #### Example
 
@@ -47,7 +47,7 @@ TENANT [IF NOT EXISTS] tenant_name WITH [comment = ''];
 
 Drop Tenant
 
-_limiter： 限制租户资源用量，可以参见[租户资源](./resource_limit.md)
+_limiter： limits Tenant resource usage, see[租户资源](./resource_limit.md)
 
 **Example**
 
@@ -67,7 +67,7 @@ FROM cluster_schema.tenants;
 +-------------+---------------------------------------------------+
 ```
 
-### 修改租户
+### Modify tenant
 
 **Syntax**
 
@@ -82,8 +82,8 @@ SET is used to set tenant properties. Properties can only be constants of the co
 
 UNSET deletes vstore attributes.
 
-目前租户属性支持：COMMENT，对应属性类型为STRING类型，用单引号括起来；DROP_AFTER，对应属性类型为STRING类型，用单引号括起来；
-_LIMITER，对应属性类型为STRING类型， 用单引号括起来，内容详见[租户资源限制](../manage/resource_limit.md)。
+The current tenant attribute supports：MEDT, the corresponding attribute type is STRING, with a single quote; DROP_AFTER, the corresponding attribute type is STRING, with a single quote;
+_LIMITER, the corresponding attribute type is STRING, with a single quotation number, for more information about[租户资源限制](../manage/resource_limit.md).
 
 **Example**
 
@@ -91,23 +91,23 @@ _LIMITER，对应属性类型为STRING类型， 用单引号括起来，内容�
 ALTER TENANT test SET COMMENT = 'abc';
 ```
 
-### 删除租户
+### Remove Tenant
 
 **Syntax**
 
 ```sql
-DROP TENANT tenant_name [AFTER '7d'];
+DROP TENNT tenant_name [AFTER '7d'];
 ```
 
 When not with AFTER, it will be deleted immediately.
 
-When with AFTER, it is delayed deletion, which will be deleted after the specified time. The time supports days (d), hours (h), and minutes (m), such as 10d, 50h, 100m. When there is no unit, the default is day. The tenant is not visible and unavailable during the delayed deletion period.延迟删除期间租户不可见且不可用。
-AFTER优先级高于option里的DROP_AFTER。
+When with AFTER, it is delayed deletion, which will be deleted after the specified time. The time supports days (d), hours (h), and minutes (m), such as 10d, 50h, 100m. When there is no unit, the default is day. The tenant is not visible and unavailable during the delayed deletion period.Tenants are not visible and unavailable during the delay in deletion.
+The AFTER priority is higher than the option’s DROP_AFTER.
 
 #### Syntax
 
 ```sql
-RECOVER TENANT tenant_name;
+RECOVERTN tenant_name;
 ```
 
 Delay deletion is cancelled and the tenant returns to normal.
@@ -117,11 +117,11 @@ Delay deletion is cancelled and the tenant returns to normal.
 **Examples**
 
 ```sql
-DROP TENANT test AFTER ‘7d’;
+DROP TENANT est AFTER '7d';
 
 RECOVER TENANT test;
 
-DROP TENANT test;
+DRROP TENANT test;
 ```
 
 ## User
@@ -179,9 +179,9 @@ PASSWORD option_value type is string.
 **Example**
 
 ```sql
-ALTER USER tester SET PASSWORD = 'aaa';
+ALTER USER tester SET PASSWORRD = 'aaa';
 ALTER USER tester SET MUST_CHANGE_PASSWORD = false;
-ALTER USER tester SET COMMENT = 'bbb';
+ALTER USER SET COMMENT = 'bbb';
 ```
 
 ### Drop User
@@ -245,18 +245,18 @@ alter user dev set granted_admin = false;
 **Example**
 
 ```sql
-select * from cluster_schema.users where user_name = 'dev';
+Select * from cluster_schema.users where user_name = 'dev';
 ```
 
 ```
-+-----------+----------+------------------------------------------------------------------------+
-| user_name | is_admin | user_options                                                           |
-+-----------+----------+------------------------------------------------------------------------+
-| dev       | true     | {"password":"*****","must_change_password":false,"granted_admin":true} |
-+-----------+----------+------------------------------------------------------------------------+
++---+
+| user_name | is_admin | user_user_options |
++--------------------------------------------------------------------- +
+ev | {"password": "***", "must_change_password":false, "granted_admin"admin": true} |
++---------------------------------------------+ + + +
 ```
 
-## 租户角色
+## Tenant role
 
 The roles under the tenant are divided into system roles and user-defined roles.
 
@@ -282,12 +282,12 @@ FROM roles;
 ```
 
 ```
-+------------+-----------+--------------+
-| role_name  | role_type | inherit_role |
-+------------+-----------+--------------+
-| owner      | system    |              |
-| member     | system    |              |
-+------------+-----------+--------------+
++----------------------------------- ----- +
+| role_name | role_type | inherit_role |
++---+
+| owner | system |
+|
++-+--- + + + + + +
 ```
 
 ### Create Role
@@ -317,19 +317,19 @@ CREATE ROLE member_role INHERIT member;
 **Syntax**
 
 ```sql
-DROP ROLE role_name;
+DROLE ROLE role_name;
 ```
 
 **Example**
 
 ```sql
-DROP ROLE owner_role;
+DROLE owner_role;
 ```
 
-**注意**： 租户成员和其角色之间的关系是通过名称进行维护。
+**Note** the relationship between： tenant members and their roles is maintained by name.
 
 Currently, the only tenant attribute is COMMENT, which is a string and enclosed in single quotation marks.
-然而，租户成员和其角色之间的绑定关系不会同步删除（即仅角色会失效）。
+However, the binding relationship between the tenant member and his or her role will not be deleted simultaneously (i.e. only the role will lapse).
 
 ## Permission
 
@@ -431,7 +431,7 @@ TENANT tenant_name ADD USER user_name AS role_name;
 CREATE
 USER user_a;
 ALTER
-TENANT cnosdb ADD USER user_a AS rrr;
+TENT cnosdb ADD USER user_a AS rrrrr;
 ```
 
 - #### Alter the User Out of the Role Under the Tenant
