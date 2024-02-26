@@ -1,13 +1,16 @@
 ---
 title: Tools
-order: 7
+order: 8
 ---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # CnosDB Tools
 
-## Client CLI
+## 客户端命令行程序
 
-Run the following command to start the CLI program in the root directory of CnosDB source code.
+可以使用下列命令启动客户端命令行程序。
 
 ```shell
     cnosdb-cli <options>
@@ -127,6 +130,11 @@ Query took 0.020 seconds.
 test ❯ \q
 ```
 
+<Tabs groupId="editions">
+<TabItem value="Community" label="社区版">
+</TabItem>
+<TabItem value="Enterprise" label="企业版">
+
 ## File Repair Tool
 
 Used to view file contents, check, repair files.
@@ -137,7 +145,7 @@ cnosdb-tool <options> <COMMAND>
 
 ### Main Function
 
-Briefly introduce the three subcommands of the file repair tool `inspect`, `check`, `edit`, and the global parameters of the corresponding subcommands. For an explanation of each file format, see: [Supported file formats](#supported-file-formats).
+Briefly introduce the three subcommands of the file repair tool `inspect`, `check`, `edit`, and the global parameters of the corresponding subcommands. For an explanation of each file format, see: [Supported file formats](#supported-file-formats).Run the following command to start the CLI program in the root directory of CnosDB source code.
 
 #### Inspect file contents
 
@@ -235,7 +243,7 @@ Inspect the contents of the Summary file in the form of logs:
 cnosdb-tool inspect summary-log [OPTIONS] <PATH>
 ```
 
-- `<PATH>` - file path.
+- `<PATH>` - path of the file.
 - `--from` - start position of the data block.
 - `--to` - end position of the data block.
 - `--tenant` - filter data blocks by Tenant.
@@ -243,7 +251,7 @@ cnosdb-tool inspect summary-log [OPTIONS] <PATH>
 - `--vnode` - filter data blocks by Vnode.
 - `--tsm-id` - filter data blocks by TSM ID.
 
-Examples:
+Client CLI
 
 ```sh
 # Output the contents of the 5th to 10th data blocks in a Summary file
@@ -286,7 +294,7 @@ cnosdb-tool repair summary edit [OPTIONS] <PATH>
 
 - `--from <NUMBER>` - the start value of the data block sequence number to be modified.
 - `--to <NUMBER>` - the end value of the data block sequence number to be modified.
-- `--out` - the save location of the repaired file, the default is: `<out_dir>/<source_file>.{%Y%m%d_%H%M%S}.{e|d}.summary`
+- `--out` - output path of the modified file, default is: `<out_dir>/<source_file>.{%Y%m%d_%H%M%S}.{e|d}.hh`
 
 Examples:
 
@@ -316,7 +324,7 @@ cnosdb-tool inspect wal [OPTIONS] <PATH>
 - `--action <ACTION>` - filter data by action, options: `write`，`delete`，`delete-vnode`，`delete-table`，`update-series-keys`。
 - `--tenant <STRING>` - filter data by Tenant.
 - `--db <STRING>` - filter data by Database.
-- `--vnode <NUMBER>` - filter data by Vnode.
+- `--vnode <NUMBER>` - filter data blocks by Vnode.
 - `--table <STRING>` - filter data by Table.
 
 Examples:
@@ -442,11 +450,11 @@ cnosdb-tool inspect hh [OPTIONS] <PATH>
 
 Options:
 
-- `<PATH>` - path of the file.
+- `<PATH>` - file path.
 - `--from` - start position of the data block.
 - `--to` - end position of the data block.
 - `--tenant <STRING>` - filter data blocks by Tenant.
-- `--vnode <NUMBER>` - filter data blocks by Vnode.
+- `--vnode <NUMBER>` - filter data by Vnode.
 
 Examples:
 
@@ -471,7 +479,7 @@ Options:
 
 - `--from <NUMBER>` - the start value of the data block sequence number to be modified.
 - `--to <NUMBER>` - the end value of the data block sequence number to be modified.
-- `--out` - output path of the modified file, default is: `<out_dir>/<source_file>.{%Y%m%d_%H%M%S}.{e|d}.hh`
+- `--out` - the save location of the repaired file, the default is: `<out_dir>/<source_file>.{%Y%m%d_%H%M%S}.{e|d}.summary`
 
 Examples:
 
@@ -535,4 +543,5 @@ cnosdb-tool repair series-binlog edit <PATH> --delete --from 5 --to 6
 # Replace the contents of the 5th and 6th data blocks in a Series-binlog file with the contents of the specified file, and output to the s_log.bak file
 cnosdb-tool repair series-binlog edit <PATH> --from 5 --to 6 --input <PATH> --output s_log.bak
 ```
+
 
