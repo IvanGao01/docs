@@ -11,7 +11,7 @@ CnosDBSQL is inspired by [DataFusion](https://arrow.apache.org/datafusion/user-g
 
 ## Sample Data
 
-To further study CnosDB, this section will provide sample data for you to download and teach you how to import data into the database. The data sources referenced in the following chapters are all from this sample data.后面章节中引用的数据源都来自此示例数据。
+To further study CnosDB, this section will provide sample data for you to download and teach you how to import data into the database. The data sources referenced in the following chapters are all from this sample data.The data sources cited in the subsequent sections are derived from this sample data.
 
 ### Download Data
 
@@ -31,7 +31,7 @@ curl -o oceanic_station.txt https://dl.cnosdb.com/sample/oceanic_station.txt
   ```
 - **Create the database**
   ```shell
-  create database oceanic_station;
+  Create database oceanic_station;
   ```
 - **Switch to the specified database**
   ```shell
@@ -48,33 +48,33 @@ curl -o oceanic_station.txt https://dl.cnosdb.com/sample/oceanic_station.txt
 ## **Syntax**
 
 ```sql
-[ WITH with_query [, ...] ]
-SELECT [ ALL | DISTINCT ] select_expression [, ...]
-    [ FROM from_item [, ...] ]
+[ WITH with_query [, ...]
+SELECT [ ALL | DISTINCT ] select_expression [, . .]
+    [ FROM from_item[, . ]
     [ WHERE condition ]
-    [ GROUP BY [ ALL | DISTINCT ] grouping_element [, ...] ]
+    [ GROUP BY [ ALL | DISTINCT ] grouping_element[, ... ]
     [ HAVING condition ]
-    [ { UNION | INTERSECT | EXCEPT } [ ALL | DISTINCT ] select ]
-    [ ORDER BY expression [ ASC | DESC ] [, ...] ]
+    [ { UNION | INTERSECT | EXCEPT } [ ALL | DISTINCT] select]
+    [ ORDER BY expression [ ASC | DESC ] [, , . ]
     [ OFFSET count ]
     [ LIMIT { count | ALL } ];
 
 -- from_item
 -- 1.
-    tb_name [ [ AS ] alias [ ( column_alias [, ...] ) ] ]
--- 2.
-    from_item join_type from_item
-    { ON join_condition | USING ( join_column [, ...] ) }
+    tb_name [ AS ] alias [ ( column_alias [, ...]] ]
+-2.
+    from_item_join_type from_item_item_
+    ) }
 
 -- join_type
     [ INNER ] JOIN
-    LEFT [ OUTER ] JOIN
-    RIGHT [ OUTER ] JOIN
-    FULL [ OUTER ] JOIN
+    LEFT [ OUTE] JOIN
+    RIGHT [ OUTE] JOIN
+    FULL [ OUTE] JOIN
     CROSS JOIN
 
 -- grouping_element
-    ()
+()
 ```
 
 ## **SELECT Clause**
@@ -118,7 +118,7 @@ SELECT [ ALL | DISTINCT ] select_expression [, ...];
 ```
 
 After the keyword `SELECT`, you can use `DISTINCT`to remove duplicate fields and return only the values after duplicate removal. Using ALL returns all duplicate values in the field. When this option is not specified, the default value is `ALL`。
-Alias Column Expression不指定此选项时，默认值为`ALL`。
+Alias Column ExpressionWhen this option is not specified, the default value is `ALL`.
 
 **Example**
 
@@ -146,7 +146,7 @@ SELECT DISTINCT station, visibility FROM air;
 ```
 
 ```sql
-SELECT station, visibility FROM air;
+SELECT, visibility FROM air;
 ```
 
 ```
@@ -173,18 +173,18 @@ SELECT station, visibility FROM air;
 
 You can use the keyword`AS`to alias a column expression or table.
 
-### 为列表达式取别名
+### Pick alias for column expression
 
 **Syntax**
 
 ```sql
-expression [ [ AS ] column_alias ]
+Express [ AS ] column_alias ]
 ```
 
 **Example**
 
 ```sql
-SELECT station s, visibility AS v FROM air;
+SELECT stations, visibility AS v FROM air;
 ```
 
 ```
@@ -221,7 +221,7 @@ FROM tb_name [AS] alias_name
 
 ```sql
 SELECT a.visibility, s.temperature
-FROM air AS a JOIN sea s ON a.temperature = s.temperature limit 10;
+FROM air AS a JOIN sea ON a.temperature = s.temperature limit 10;
 ```
 
 ```
@@ -272,12 +272,12 @@ FROM air AS a JOIN sea s ON a.temperature = s.temperature limit 10;
   ```
 
   ```
-  +-------------+
-  | station     |
-  +-------------+
-  | XiaoMaiDao  |
+  +---+
+  | Station |
+  +------
+  | XiaoMaiDao |
   | LianYunGang |
-  +-------------+ 
+  +---+ 
   ```
 
 ## LIMIT Clause
@@ -343,7 +343,7 @@ FROM air OFFSET 10;
 
 `OFFSET`can be used with the`LIMIT`statement to specify the number of lines to skip.The format is `LIMIT n OFFSET m`，or it can be abbreviated as LIMIT n, m. LIMIT n controls the output of n rows of data, and OFFSET m indicates the number of rows skipped before starting to return data. OFFSET 0 has the same effect as omitting the OFFSET clause.
 Role name under the tenant
-OFFSET 0与省略OFFSET子句效果相同。
+OFFSET 0 has the same effect as omitting OFFSET sentences.
 
 **Example**
 
@@ -367,48 +367,48 @@ FROM air LIMIT 3 OFFSET 3;
 **Syntax**
 
 ```sql
-WITH cte AS cte_query_definiton [, ...] query
+WITH cte AS cte_query_definiton [, ..] query
 ```
 
-可选。Optional. The WITH clause contains one or more commonly used expressions CTE (Common Table Expression). CTE acts as a temporary table in the current running environment, which you can refer to in subsequent queries.The rules for using CTE are as follows：
-Alias TableCTE使用规则如下：
+Optional.Optional. The WITH clause contains one or more commonly used expressions CTE (Common Table Expression). CTE acts as a temporary table in the current running environment, which you can refer to in subsequent queries.The rules for using CTE are as follows：
+Alias TableThe following rules for use by CTE are：
 
 - CTE in the same WITH clause must have a unique name.
 - The CTE defined in the WITH clause can only be used for other CTEs in the same WITH clause defined later. Suppose A is the first CTE in the clause and B is the second CTE in the clause：
-  假设A是子句中的第一个CTE，B是子句中的第二个CTE：
+  Assume A is the first CTE, B is the second CTE：
 
 **Example**
 
 ```sql
-SELECT station, avg 
-FROM (  SELECT station, AVG(visibility) AS avg 
+SELECT, avg 
+FROM ( SELECT station, AVG(visibility) AS avg 
         FROM air 
-        GROUP BY station) AS x;
+        GROUP station) AS x;
 ```
 
 ```
-+-------------+--------------------+
-| station     | avg                |
-+-------------+--------------------+
-| XiaoMaiDao  | 62.285714285714285 |
-| LianYunGang | 70.33333333333333  |
-+-------------+--------------------+
++-----+-------------------- +
+| station | avg |
++---------------------------
+| XiaoMaiDao | 62.2857142857147142872872885 |
+| LianYunGang | 70.33333333333333333 |
++------+ ---+
 ```
 
 ```sql
 WITH x AS 
-    (SELECT station, AVG(visibility) AS avg FROM air GROUP BY station)
-SELECT station, avg
+    (SLECT, AVG(visibility) AS avg FROM air GROUP BY station)
+SELECT, avg
 FROM x;
 ```
 
 ```
-+-------------+--------------------+
-| station     | avg                |
-+-------------+--------------------+
-| XiaoMaiDao  | 62.285714285714285 |
-| LianYunGang | 70.33333333333333  |
-+-------------+--------------------+
++-----+-------------------- +
+| station | avg |
++---------------------------
+| XiaoMaiDao | 62.2857142857147142872872885 |
+| LianYunGang | 70.33333333333333333 |
++------+ ---+
 ```
 
 ## **UNION Clause**
@@ -442,43 +442,43 @@ Each SELECT clause in the UNION must have the same number of columns, and the co
   SELECT visibility FROM air WHERE temperature > 50 LIMIT 10;
   ```
   ```
-  +------------+
-  | visibility |
-  +------------+
-  | 53         |
-  | 56         |
-  | 50         |
-  | 67         |
-  | 65         |
-  | 53         |
-  | 74         |
-  | 71         |
-  | 78         |
-  | 79         |
-  +------------+
+  +---+
+  | visible |
+  +--------
+  | 53 |
+  | 56 |
+  | 50 |
+  | 67 |
+  | 65 |
+  | 53 |
+  74 |
+  | 71 |
+  | 78 |
+  | 79 |
+  +--+
   ```
 
 - **UNION**
   ```sql
-  SELECT visibility FROM air WHERE temperature < 60
+  SELECT vision FROM air WHERE temperature < 60
   UNION
   SELECT visibility FROM air WHERE temperature > 50 LIMIT 10;
   ```
   ```
-  +------------+
+  +---+
   | visibility |
-  +------------+
-  | 53         |
-  | 56         |
-  | 50         |
-  | 67         |
-  | 65         |
-  | 74         |
-  | 71         |
-  | 78         |
-  | 79         |
-  | 59         |
-  +------------+
+  +--------
+  | 53 |
+  | 56 |
+  | 50 |
+  | 67 |
+  | 65 |
+  | 74 |
+  | 71 |
+  | 78 |
+  | 79 |
+  | 59 |
+  +-+
   ```
 
 - **EXCEPT**
@@ -490,48 +490,48 @@ Each SELECT clause in the UNION must have the same number of columns, and the co
   ```
 
   ```
-  +------------+
-  | visibility |
-  +------------+
-  | 56         |
-  | 50         |
-  | 67         |
-  | 65         |
-  | 53         |
-  | 74         |
-  | 71         |
-  | 78         |
-  | 79         |
-  | 59         |
-  +------------+
+  +---+
+  | visitity |
+  +---+
+  | 56 |
+  | 50 |
+  | 67 |
+  | 65 |
+  | 53 |
+  | 74 |
+  | 71 |
+  | 78 |
+  | 79 |
+  | 59 |
+  +--+
   ```
 
 - **INTERSECT**
   ```sql
   SELECT visibility FROM air
   INTERSECT
-  SELECT visibility FROM air WHERE temperature > 50 LIMIT 10;
+  SELECT visibility ROM ROM air WHERE temperature > 50 LIMIT 10;
   ```
   ```
-  +------------+
-  | visibility |
-  +------------+
-  | 56         |
-  | 50         |
-  | 67         |
-  | 65         |
-  | 53         |
-  | 74         |
-  | 71         |
-  | 78         |
-  | 79         |
-  | 59         |
-  +------------+
+  +---+
+  | visitity |
+  +---+
+  | 56 |
+  | 50 |
+  | 67 |
+  | 65 |
+  | 53 |
+  | 74 |
+  | 71 |
+  | 78 |
+  | 79 |
+  | 59 |
+  +--+
   ```
 
 ## ORDER BY Clause
 
-按引用的表达式对结果进行排序。默认情况使用升序 (ASC)。Sort the results by the referenced expression. Ascending (ASC) is used by default. Sort in descending order by adding DESC after the expression of ORDER BY.
+Sort results by referenced expression.Default usage ascending (ASC).Sort the results by the referenced expression. Ascending (ASC) is used by default. Sort in descending order by adding DESC after the expression of ORDER BY.
 
 **Example**
 
@@ -614,7 +614,7 @@ The IN operator allows you to specify multiple values in the WHERE clause.
 **Examples**
 
 ```sql
-SELECT station, temperature, visibility FROM air WHERE temperature  IN (68, 69);
+SELECT position, temperature, vision FROM air WHERE temperature IN (68, 69);
 ```
 
 ```
@@ -659,13 +659,13 @@ SHOW TABLES;
 ```
 
 ```
-+-------+
++--+
 | Table |
-+-------+
-| sea   |
-| air   |
-| wind  |
-+-------+
++---+
+| sea |
+| air |
+| wind |
++---+ +
 ```
 
 ```sql
@@ -680,14 +680,14 @@ SHOW QUERIES;
 +----------+------------------------------------------------------------------+-----------------------------------------+-----------+----------------------------------------+-------------+------------+--------------+
 ```
 
-关于 SHOW QUERIES 语句的详细信息，可以在[系统表 QUERIES](../reference/sql#queries-information-schema) 查看
+Detailed information on SHOW QUERIES statements can be found in [System Table QUERIES](../reference/sql#queries-information-schema)
 
 ## **EXPLAIN**
 
 **Syntax**
 
 ```sql
-EXPLAIN [ ANALYZE ] [ VERBOSE ] <statement>;
+EXPLIN [ ANALYZE ] [ VERBOSE ] <statement>;
 ```
 
 **Explanation**
@@ -701,7 +701,7 @@ EXPLAIN [ ANALYZE ] [ VERBOSE ] <statement>;
 **Example**
 
 ```sql
-EXPLAIN SELECT station, temperature, visibility FROM air;
+EXPLIN SELECT station, temperature, vision FROM air;
 ```
 
 ```
@@ -717,7 +717,7 @@ EXPLAIN SELECT station, temperature, visibility FROM air;
 ```
 
 ```sql
-EXPLAIN ANALYZE SELECT station, temperature, visibility FROM air;
+EXPLIN ANALYZE SELECT station, temperature, vision FROM air;
 ```
 
 ```
@@ -731,7 +731,7 @@ EXPLAIN ANALYZE SELECT station, temperature, visibility FROM air;
 ```
 
 ```sql
-EXPLAIN ANALYZE SELECT station, temperature, visibility FROM air;
+EXPLIN ANALYZE SELECT station, temperature, vision FROM air;
 ```
 
 ```
@@ -745,7 +745,7 @@ EXPLAIN ANALYZE SELECT station, temperature, visibility FROM air;
 ```
 
 ```sql
-EXPLAIN ANALYZE VERBOSE SELECT station, temperature, visibility FROM air;
+EXPLAIN ANALYZE VERBOSE SELECT position, temperature, visibility FROM air;
 ```
 
 ```
@@ -768,7 +768,7 @@ EXPLAIN ANALYZE VERBOSE SELECT station, temperature, visibility FROM air;
 **Syntax**
 
 ```sql
-DESCRIBE {DATABASE db_name | TABLE tb_name};
+DESCREIBE {DATABASE db_name | TABLE tb_name};
 ```
 
 Describe the parameters of the database and the pattern of the table.
@@ -776,7 +776,7 @@ Describe the parameters of the database and the pattern of the table.
 **Example**
 
 ```sql
-DESCRIBE TABLE air;
+DESCREIBE TABLE air;
 ```
 
 ```
@@ -796,24 +796,24 @@ DESCRIBE DATABASE public;
 ```
 
 ```
-+----------+-------+----------------+---------+-----------+
-| TTL      | SHARD | VNODE_DURATION | REPLICA | PRECISION |
-+----------+-------+----------------+---------+-----------+
-| 365 Days | 1     | 365 Days       | 1       | NS        |
-+----------+-------+----------------+---------+-----------+
++---+---------+-------+-------+-
+| TTL | SHARD | VNODE_DURATION | REPLICA | PRECISION |
++------+---------------+
+| 365 Days | 1 365 Days | 1 | NS |
++---------------------------+----+
 ```
 
 [//]: # "## **EXISTS**"
 
-[//]: # "EXISTS 条件测试子查询中是否存在行，并在子查询返回至少一个行时返回 true。如果指定 NOT，此条件将在子查询未返回任何行时返回 true。"
+[//]: # "EXISTS conditions test if a row exists in a subquery and return true when a subquery returns at least one line.If NOT is specified, this condition returns true if the subquery returns any line."
 
 [//]: # "The wildcard * can be used to refer to all columns."
 
-[//]: # "```sql"
+[//]: # "``sql"
 
-[//]: # "SELECT id  FROM date"
+[//]: # "SELECT id FROM date"
 
-[//]: # "WHERE EXISTS (SELECT 1 FROM shop"
+[//]: # "WHERE EXISTS (SECLECT 1 FROM shop"
 
 [//]: # "WHERE date.id = shop.id)"
 
@@ -821,9 +821,9 @@ DESCRIBE DATABASE public;
 
 [//]: # "```"
 
-[//]: # "# **DCL (无)**"
+[//]: # "# **DCL (none)**"
 
-[//]: # "```sql"
+[//]: # "``sql"
 
 [//]: # "DESCRIBE table_name"
 
@@ -835,9 +835,9 @@ DESCRIBE DATABASE public;
 
 [//]: # "## **SHOW VARIABLE**"
 
-[//]: # "```sql"
+[//]: # "``sql"
 
-[//]: # "-- only support show tables"
+[//]: # "-- only support shows tables"
 
 [//]: # "-- SHOW TABLES is not supported unless information_schema is enabled"
 
@@ -849,13 +849,13 @@ DESCRIBE DATABASE public;
 
 [//]: #
 
-[//]: # "```sql"
+[//]: # "``sql"
 
 [//]: # "-- SHOW COLUMNS with WHERE or LIKE is not supported"
 
 [//]: # "-- SHOW COLUMNS is not supported unless information_schema is enabled"
 
-[//]: # "-- treat both FULL and EXTENDED as the same"
+[//]: # "- treat both FULL and EXTENDED as the same"
 
 [//]: # "SHOW [ EXTENDED ] [ FULL ]"
 
@@ -869,7 +869,7 @@ DESCRIBE DATABASE public;
 
 [//]: # "## **SHOW CREATE TABLE**"
 
-[//]: # "```sql"
+[//]: # "``sql"
 
 [//]: # "SHOW CREATE TABLE table_name"
 
