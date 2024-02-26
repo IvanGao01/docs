@@ -11,10 +11,10 @@ Resource operations currently supported:
 ```
 DropTenant,
 DropDatabase,
-DropTable,
+Droptable,
 DropColumn,
 AddColumn,
-AlterColumn,
+Alternate,
 RenameTagName,
 UpdateTagValue
 ```
