@@ -16,9 +16,9 @@ CnosDB provides a tenant system and a user system.
 
 - CnosDB instance starts with a tenant `cnosdb` and a user `root` by default.
 
-## 租户
+## Tenant
 
-### 查看租户
+### View Tenant
 
 #### Example
 
@@ -28,11 +28,11 @@ FROM cluster_schema.tenants;
 ```
 
 ```
-+-------------+---------------------------------------------------+
-| tenant_name | tenant_options                                    |
-+-------------+---------------------------------------------------+
-| cnosdb      | {"comment":"system tenant","limiter_config":null} |
-+-------------+---------------------------------------------------+
++----- +
+| tenant_name | tenant_options |
++------------------+
+| cnosdb | {"comment": "system tenant", "limiter_config":n} |
++---+ + +
 ```
 
 ### Create Tenant
@@ -44,7 +44,7 @@ CREATE
 TENANT [IF NOT EXISTS] tenant_name WITH [comment = ''];
 ```
 
-_limiter： 限制租户资源用量，可以参见[租户资源](https://docs.cnosdb.com/zh/latest/manage/resource_limit)
+_limiter： limits the use of tenant resources, see[租户资源](https\://docs.cnosdb.com/en/ latest/manage/resource_limit)
 
 **Example**
 
@@ -64,7 +64,7 @@ FROM cluster_schema.tenants;
 +-------------+---------------------------------------------------+
 ```
 
-### 修改租户
+### Modify tenant
 
 **Syntax**
 
@@ -87,7 +87,7 @@ Currently, the only tenant attribute is COMMENT, which is a string and enclosed 
 ALTER TENANT test SET COMMENT = 'abc';
 ```
 
-### 删除租户
+### Remove Tenant
 
 **Syntax**
 
@@ -98,14 +98,14 @@ DROP TENANT tenant_name [AFTER '7d'];
 #### Syntax
 
 ```sql
-RECOVER TENANT tenant_name;
+RECOVERTN tenant_name;
 ```
 
 SET is used to set tenant properties. Properties can only be constants of the corresponding attribute type.
 
 Delay deletion is cancelled and the tenant returns to normal.
 
-目前租户属性支持：COMMENT，对应属性类型为STRING类型，用单引号括起来； _LIMITER，对应属性类型为STRING类型， 用单引号括起来，内容详见[租户资源限制](https://docs.cnosdb.com/zh/latest/manage/resource_limit)。
+At present, the tenant attribute supports：MEDT, the corresponding attribute type is STRING, with a single quote; _LIMITER, the corresponding attribute type is STRING, with a single quote, see[租户资源限制](https://docs.cosdb.com/en/latest/manage/resource_limit).
 
 **Example**
 
@@ -172,9 +172,9 @@ PASSWORD option_value type is string.
 **Example**
 
 ```sql
-ALTER USER tester SET PASSWORD = 'aaa';
+ALTER USER tester SET PASSWORRD = 'aaa';
 ALTER USER tester SET MUST_CHANGE_PASSWORD = false;
-ALTER USER tester SET COMMENT = 'bbb';
+ALTER USER SET COMMENT = 'bbb';
 ```
 
 ### Drop User
@@ -190,7 +190,7 @@ USER [IF EXISTS] user_name;
 
 ```sql
 DROP
-USER IF EXISTS tester;
+USER IF EXISTS test;
 ```
 
 ## Admin Permission
@@ -238,18 +238,18 @@ alter user dev set granted_admin = false;
 **Example**
 
 ```sql
-select * from cluster_schema.users where user_name = 'dev';
+Select * from cluster_schema.users where user_name = 'dev';
 ```
 
 ```
-+-----------+----------+------------------------------------------------------------------------+
-| user_name | is_admin | user_options                                                           |
-+-----------+----------+------------------------------------------------------------------------+
-| dev       | true     | {"password":"*****","must_change_password":false,"granted_admin":true} |
-+-----------+----------+------------------------------------------------------------------------+
++---+
+| user_name | is_admin | user_user_options |
++--------------------------------------------------------------------- +
+ev | {"password": "***", "must_change_password":false, "granted_admin"admin": true} |
++---------------------------------------------+ + + +
 ```
 
-## 租户角色
+## Tenant role
 
 The roles under the tenant are divided into system roles and user-defined roles.
 
@@ -275,12 +275,12 @@ FROM roles;
 ```
 
 ```
-+------------+-----------+--------------+
-| role_name  | role_type | inherit_role |
-+------------+-----------+--------------+
-| owner      | system    |              |
-| member     | system    |              |
-+------------+-----------+--------------+
++----------------------------------- ----- +
+| role_name | role_type | inherit_role |
++---+
+| owner | system |
+|
++-+--- + + + + + +
 ```
 
 ### Create Role
@@ -310,13 +310,13 @@ CREATE ROLE member_role INHERIT member;
 **Syntax**
 
 ```sql
-DROP ROLE role_name;
+DROLE ROLE role_name;
 ```
 
 **Example**
 
 ```sql
-DROP ROLE owner_role;
+DROLE owner_role;
 ```
 
 ## Permission
@@ -419,7 +419,7 @@ TENANT tenant_name ADD USER user_name AS role_name;
 CREATE
 USER user_a;
 ALTER
-TENANT cnosdb ADD USER user_a AS rrr;
+TENT cnosdb ADD USER user_a AS rrrrr;
 ```
 
 - #### Alter the User Out of the Role Under the Tenant
