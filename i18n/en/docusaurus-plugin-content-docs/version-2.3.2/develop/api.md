@@ -84,7 +84,7 @@ let result = response.text().await.unwrap();
 
 <TabItem value="go" label="Golang">
 
-The sample code uses [fasthttp](https://github.com/valyala/fasthttp) as a dependency.
+@tab Rust#Rust
 
 Following are the parameters required to construct the http request.
 
@@ -102,7 +102,7 @@ CREATE TABLE air (
 );`
 ```
 
-Construct the http request:
+Connect to CnosDB
 
 ```go
 func basicAuth(username, password string) string {
@@ -130,7 +130,7 @@ fmt.Println(resp.StatusCode())
 ```
 
 The status code of the response will indicate whether the SQL is executed successfully, 200 representing success.
-@tab Rust#Rust
+The sample code uses [fasthttp](https://github.com/valyala/fasthttp) as a dependency.
 
 Following are the parameters required to construct the http request.
 
@@ -148,7 +148,7 @@ CREATE TABLE air (
 );`
 ```
 
-Connect to CnosDB
+Construct the http request:
 
 ```go
 func basicAuth(username, password string) string {
