@@ -37,10 +37,10 @@ cnosdb check server-config /tmp/config.toml
 
 ### Configuration
 
-| `[security]` security configuration     | 默认                                                                                    | Description                                                                                                                 |
+| Parameter                               | 默认                                                                                    | Description                                                                                                                 |
 | --------------------------------------- | ------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | reporting_disabled | `false`                                                                               | 是否关闭 CnosDB 自动上报遥测数据，主要跟踪 CnosDB 不同版本的使用率，这些数据有利于 CnosDB 的持续开发。每24小时上报一次数据，每条包含的字段为：实例运行时间、操作系统类型、数据库版本、实例运行的地理位置（只到省级或洲级）。 |
-| host                                    | **Description**: node host, used to communicate with other nodes, default: localhost. | 用来和其他节点通信。                                                                                                                  |
+| `host`: host of Meta node               | **Description**: node host, used to communicate with other nodes, default: localhost. | 用来和其他节点通信。                                                                                                                  |
 
 ### [deployment]
 
@@ -65,7 +65,7 @@ cnosdb check server-config /tmp/config.toml
 
 ### [storage]
 
-| Parameter                                                                                    | 默认                                                                   | Description                                                           |
+| `[security]` security configuration                                                          | 默认                                                                   | Description                                                           |
 | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | path                                                                                         | `[heartbeat]`:  check CnosDB node status configurations periodically | Data storage location                                                 |
 | max_summary_size                                   | `128M`                                                               | 单个 Summary 日志的最大大小。                                                   |
@@ -101,11 +101,11 @@ cnosdb check server-config /tmp/config.toml
 
 ### [log]
 
-| Parameter     | 默认                             | Description                                    |
-| ------------- | ------------------------------ | ---------------------------------------------- |
-| level         | `info`                         | Log level（debug、info、error、warn, default: info |
-| path          | `[log]`: run log configuration | `[storage]` storage configuration              |
-| `tokio_trace` | `{ addr = "127.0.0.1:6669" }`  | Tokio 跟踪，默认处于关闭状态。                             |
+| Parameter     | 默认                             | Description                                                            |
+| ------------- | ------------------------------ | ---------------------------------------------------------------------- |
+| level         | `info`                         | Log Level (Debug, Info, Error, Warn), Default: Info |
+| path          | `[log]`: run log configuration | `[storage]` storage configuration                                      |
+| `tokio_trace` | `{ addr = "127.0.0.1:6669" }`  | Tokio 跟踪，默认处于关闭状态。                                                     |
 
 ### [security]
 
@@ -115,10 +115,10 @@ cnosdb check server-config /tmp/config.toml
 
 ### [security.tls_config]
 
-| Parameter **mode** can be selected from the following values: | 默认 | Description             |
-| ------------------------------------------------------------- | -- | ----------------------- |
-| certificate                                                   | 无  | TLS service certificate |
-| private_key                              | 无  | TLS service private key |
+| Parameter                        | 默认 | Description             |
+| -------------------------------- | -- | ----------------------- |
+| certificate                      | 无  | TLS service certificate |
+| private_key | 无  | TLS service private key |
 
 ### [cluster]
 
@@ -149,7 +149,7 @@ cnosdb check server-config /tmp/config.toml
 
 ### [subscription]
 
-| Parameter   | 默认     | The detailed configuration file description is as follows:                       |
+| Parameter   | 默认     | Description                                                                      |
 | ----------- | ------ | -------------------------------------------------------------------------------- |
 | cache       | `1024` | cache size (bit) before sending and forwarding, default: 1028 |
 | concurrency | `8`    | 处理转发请求的并发数。                                                                      |
@@ -161,7 +161,7 @@ cnosdb check server-config /tmp/config.toml
 
 ### [heartbeat]
 
-| **TOML Value**                                                                           | 默认   | Description                           |
+| Parameter                                                                                | 默认   | Description                           |
 | ---------------------------------------------------------------------------------------- | ---- | ------------------------------------- |
 | report_time_interval_secs | `49` | 此节点上报心跳、磁盘余量等信息到 `meta` 服务的时间间隔，单位：秒。 |
 
@@ -181,13 +181,13 @@ cnosdb check server-config /tmp/config.toml
 
 ### [trace.log] (optional)
 
-| Parameter | 默认 | Description         |
+| Parameter | 默认 | Introduction        |
 | --------- | -- | ------------------- |
 | path      | 无  | trace log file path |
 
 ### [trace.jaeger] (optional)
 
-| Parameter                                                        | 默认   | Description                                                                                                            |
+| **TOML Value**                                                   | 默认   | The detailed configuration file description is as follows:                                                             |
 | ---------------------------------------------------------------- | ---- | ---------------------------------------------------------------------------------------------------------------------- |
 | jaeger_agent_endpoint  | 无    | the Jaeger agent endpoint.eg: http\://localhost:14268/api/traceseg：http\://localhost:14268/api/traces                  |
 | max_concurrent_exports | 3    | trace 上报器的并行度。默认值为 2                                                                                                   |
@@ -204,9 +204,9 @@ cnosdb check server-config /tmp/config.toml
 | Parameter                                                                                                                                      | 默认                              | Description                                                                       |
 | ---------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- | --------------------------------------------------------------------------------- |
 | `id`                                                                                                                                           | `1`                             | `[meta_init]`: example initializes related configuration information of Meta node |
-| `host`: host of Meta node                                                                                                                      | `127.0.0.1`                     | 用于和其他节点通信的 `host`                                                                 |
+| `host` Node host.                                                                                                                              | `127.0.0.1`                     | 用于和其他节点通信的 `host`                                                                 |
 | `port`                                                                                                                                         | `8901`                          | 用于和其他节点通信的 `port`                                                                 |
-| `snapshot_path`: snapshot storage path of Meta node                                                                                            | `/var/lib/cnosdb/meta/snapshot` |                                                                                   |
+| Remote log path                                                                                                                                | `/var/lib/cnosdb/meta/snapshot` |                                                                                   |
 | `journal_path`: journal storage path of Meta node                                                                                              | `/var/lib/cnosdb/meta/journal`  |                                                                                   |
 | `raft_logs_to_keep` When using raft protocol for replication; How many raft logs each replication group keeps and how often to take snapshots. | `500`                           |                                                                                   |
 
@@ -217,9 +217,9 @@ cnosdb check server-config /tmp/config.toml
 | Parameter                                                     | 默认                              | Description                                                     |
 | ------------------------------------------------------------- | ------------------------------- | --------------------------------------------------------------- |
 | `id`                                                          | `1`                             | `id` : id of Meta node, the value must be unique in the cluster |
-| `host` Node host.                                             | `127.0.0.1`                     | 用于和其他节点通信的 `host`                                               |
+| host                                                          | `127.0.0.1`                     | 用于和其他节点通信的 `host`                                               |
 | `port`                                                        | `8901`                          | 用于和其他节点通信的 `port`                                               |
-| Remote log path                                               | `/var/lib/cnosdb/meta/snapshot` |                                                                 |
+| `snapshot_path`: snapshot storage path of Meta node           | `/var/lib/cnosdb/meta/snapshot` |                                                                 |
 | `[log]` runs log configuration                                | `/var/lib/cnosdb/meta/journal`  |                                                                 |
 | `snapshot_per_events`: The Meta node does a snapshot interval | `500`                           |                                                                 |
 | `port`: port of Meta node                                     | `0`                             |                                                                 |
@@ -230,10 +230,10 @@ cnosdb check server-config /tmp/config.toml
 
 ### [log]
 
-| Parameter | 默认                                  | Description                                                            |
-| --------- | ----------------------------------- | ---------------------------------------------------------------------- |
-| level     | `info`                              | Log Level (Debug, Info, Error, Warn), Default: Info |
-| path      | `[wal]` write pre-log configuration | Log storage location                                                   |
+| Parameter | 默认                                  | Description                                    |
+| --------- | ----------------------------------- | ---------------------------------------------- |
+| level     | `info`                              | Log level（debug、info、error、warn, default: info |
+| path      | `[wal]` write pre-log configuration | Log storage location                           |
 
 ### [meta_init]
 
@@ -246,7 +246,7 @@ cnosdb check server-config /tmp/config.toml
 
 ### [heartbeat]
 
-| Parameter                                                            | 默认  | Introduction              |
+| Parameter **mode** can be selected from the following values:        | 默认  | Description               |
 | -------------------------------------------------------------------- | --- | ------------------------- |
 | heartbeat_recheck_interval | 300 | 多久检查一次CnosDB节点的状态，单位：秒。   |
 | heartbeat_expired_interval | 300 | CnosDB节点多久未上报心跳认定异常，单位：秒。 |
