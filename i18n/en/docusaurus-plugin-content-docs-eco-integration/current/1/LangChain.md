@@ -61,15 +61,15 @@ def SQLDatabase.from_cnosdb(url: str = "127.0.0.1:8902",
                               database: str = "public")
 ```
 
-| 参数名      | 描述                                                                         |
-| :------- | :------------------------------------------------------------------------- |
-| url      | CnosDB服务的HTTP连接主机名和端口号，不包括 "http\://" 或 "https\://"，默认值为 "127.0.0.1:8902"。 |
-| user     | 用于连接到CnosDB服务的用户名，默认值为 "root"。                                             |
-| password | 连接到CnosDB服务的用户密码，默认值为空字符串 ""。                                              |
-| tenant   | 用于连接到CnosDB服务的租户名称，默认值为 "cnosdb"。                                          |
-| database | CnosDB租户中数据库的名称。                                                           |
+| Parameter name | NAME                                                                       |
+| :------------- | :------------------------------------------------------------------------- |
+| url            | CnosDB服务的HTTP连接主机名和端口号，不包括 "http\://" 或 "https\://"，默认值为 "127.0.0.1:8902"。 |
+| user           | 用于连接到CnosDB服务的用户名，默认值为 "root"。                                             |
+| password       | 连接到CnosDB服务的用户密码，默认值为空字符串 ""。                                              |
+| Example        | 用于连接到CnosDB服务的租户名称，默认值为 "cnosdb"。                                          |
+| Example        | CnosDB租户中数据库的名称。                                                           |
 
-### 使用示例
+### Usage Examples
 
 ```python
 # 使用 SQLDatabase 连接 CnosDB
