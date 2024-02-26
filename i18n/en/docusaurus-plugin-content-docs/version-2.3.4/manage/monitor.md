@@ -14,7 +14,7 @@ If you would like to see more metrics supported by CnosDB, please send an ISSUE 
 
 #### NAME
 
-vnode_disk_storage
+vnode_disk_store
 
 #### Category
 
@@ -30,11 +30,11 @@ The disk that the Vnode occupies.
 | ----------------------------- | ------------------------------------- |
 | DATABASE                      | Database vnode belongs to             |
 | NODE_ID  | ID of data node                       |
-| TENANT                        | tenant vnode belongs to               |
+| ENANT                         | tenant vnode belongs to               |
 | VNODE_ID | ID of Vnode                           |
 | VALUE                         | Disk that the Vnode occupies in bytes |
 
-### VNODE_CACHE_SIZE
+### VNODE_CHE_SIZE
 
 #### Name
 
@@ -54,7 +54,7 @@ The cache size that vnode occupies in bytes.
 | ----------------------------- | -------------------------------------- |
 | DATABASE                      | Database vnode belongs to              |
 | NODE_ID  | ID of data node                        |
-| TENANT                        | tenant vnode belongs to                |
+| ENANT                         | tenant vnode belongs to                |
 | VNODE_ID | ID of Vnode                            |
 | VALUE                         | Cache that the Vnode occupies in bytes |
 
@@ -79,7 +79,7 @@ Data traffic written over http, excluding SQL.
 | TIME                         | Time of data_in |
 | DATABASE                     | Database name                        |
 | NODE_ID | ID of data node                      |
-| TENANT                       | Tenant name the database belongs to  |
+| ENANT                        | Tenant name the database belongs to  |
 | VALUE                        | The total write traffic in Bytes     |
 
 ### SQL_DATA_IN
@@ -103,7 +103,7 @@ Data traffic written by sql, including INSERT, COPY statements.
 | TIME                         | Time of data_in |
 | DATABASE                     | Database name                        |
 | NODE_ID | ID of data node                      |
-| TENANT                       | Tenant name the database belongs to  |
+| ENANT                        | Tenant name the database belongs to  |
 | VALUE                        | The total write traffic in Bytes     |
 
 ### COORD_DATA_IN
@@ -127,7 +127,7 @@ The total size of the written traffic when data is written to the database.
 | TIME                         | Time of data_in         |
 | DATABASE                     | Database name                                |
 | NODE_ID | ID of data node                              |
-| TENANT                       | Tenant name the database belongs to          |
+| ENANT                        | Tenant name the database belongs to          |
 | VALUE                        | The total size of the write traffic in Bytes |
 
 ### COORD_DATA_OUT
@@ -151,7 +151,7 @@ Total outflow traffic for reading data from the database.
 | TIME                         | Time of data out                            |
 | DATABASE                     | Database name                               |
 | NODE_ID | ID of data node                             |
-| TENANT                       | Tenant name the database belongs to         |
+| ENANT                        | Tenant name the database belongs to         |
 | VALUE                        | The total size of the read traffic in Bytes |
 
 ### HTTP_DATA_OUT
@@ -175,7 +175,7 @@ The size of the Http returned data.
 | TIME                         | Time of http_data_out |
 | DATABASE                     | DatabaseName                                                    |
 | NODE_ID | ID of data node                                                 |
-| TENANT                       | Tenant name the database belongs to                             |
+| ENANT                        | Tenant name the database belongs to                             |
 | Database                     | DatabaseName                                                    |
 | User                         | User name                                                       |
 | VALUE                        | The total size of the read traffic in Bytes                     |
@@ -201,7 +201,7 @@ The times the user queries from the database.
 | TIME                         | Time of queries                     |
 | DATABASE                     | DatabaseName                        |
 | NODE_ID | ID of data node                     |
-| TENANT                       | Tenant name the database belongs to |
+| ENANT                        | Tenant name the database belongs to |
 | USER                         | User name                           |
 | VALUE                        | **Example**                         |
 
@@ -226,7 +226,7 @@ The times the user writes to the database.
 | TIME                         | Time of writes                      |
 | DATABASE                     | Database name                       |
 | NODE_ID | ID of data node                     |
-| TENANT                       | Tenant name the database belongs to |
+| ENANT                        | Tenant name the database belongs to |
 | USER                         | User name                           |
 | VALUE                        | **Example**                         |
 
@@ -236,7 +236,7 @@ Just add Job at the Prometheus configuration file.
 
 ```yaml
 scrape_configs:
-  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
+  # The job name is added as a label `job=<job_name>` to any time series scattered from this configuration.
   - job_name: 'cnosdb'
     static_configs:
       - targets: ['127.0.0.1:8902']
