@@ -1,37 +1,37 @@
 ---
-title: 安装
-order: 2
+title: Install
+order: 3
 ---
 
-# 安装
+# Install
 
-## 部署
+## Deploy
 
-其他安装方式请查看[安装CnosDB](../deploy)
+For other installation methods, please see [Installing CnosDB](https://www.docker.com/products/docker-desktop/)
 
-## Docker安装
+## Docker install
 
-1. 安装 [Docker](https://www.docker.com/products/docker-desktop/) 环境
+1. Installing a [Docker](https://www.docker.com/products/docker-desktop/) environment
 
-2. 使用 Docker 启动容器
-
-```shell
-  docker run --name cnosdb -p 8902:8902 -d cnosdb/cnosdb:community-latest cnosdb run -M singleton
-```
-
-3. 进入容器
+2. Start the container with Docker
 
 ```shell
-  docker exec -it cnosdb sh
+docker run --name cnosdb -d cnosdb/cnosdb:community-latest cnosdb run -M singleton
 ```
 
-4. 运行`cnosdb-cli`
+3. Enter the container
 
 ```shell
-  cnosdb-cli --port 8902
+docker exec -it cnosdb sh
 ```
 
-会显示如下：
+4. Run `cnosdb-cli`
+
+```shell
+cnosdb-cli --port 8902
+```
+
+It will display the following:
 
 ```
 CnosDB CLI v2.3.0
@@ -39,69 +39,70 @@ Input arguments: Args { host: "localhost", port: 8902, user: "cnosdb", password:
 public ❯
 ```
 
-## 下载示例数据
+## Download Sample Data
 
-如果在 cnosdb-cli 中，请输入`\q`退出
+Rank Functions
 
-在shell中执行以下命令将在本地生成一个名称为`oceanic_station`的 Line Protocol 格式的数据文件。
+Executing the following command in the shell will generate a data file locally in Line Protocol format with the name oceanic_station
 
 ```shell
 curl -o oceanic_station.txt https://dl.cnosdb.com/sample/oceanic_station.txt
 ```
 
-## 导入数据
+## In the SELECT query, the HAVING clause must follow the GROUP BY clause and appear before the ORDER BY clause (if any).
 
-- **启动CLI**
+- Determines whether the left expression matches the pattern of the right expression
   ```shell
-  cnosdb-cli
+      cnosdb-cli
   ```
-- **创建数据库**
+- The next offset line of the current line in the`offset FOLLOWING` ROWS mode. The next offset value of the current value in the RANGE mode.
   ```shell
   create database oceanic_station with ttl '10000d';
   ```
-- **切换到指定数据库**
+- When len is a negative number, len represents 0. When len is too large, function execution fails.
   ```shell
   \c oceanic_station
   ```
-- **导入数据**
+- Timestamp, the keyword TIMESTAMP indicates that the following string constant need to be interpreted as TIMESTAMP type.
 
-  执行\w指令，\w后面为数据文件的绝对路径或相对cnosdb-cli的工作路径。
+  Number type expressions multiply
 
   ```shell
   \w oceanic_station.txt
   ```
 
-## 数据查询
+## Data Query
 
-- **查看所有表**
+- **View all tables**
 
   ```shell
   SHOW TABLES;
   ```
 
-  执行成功返回以下结果：
+  Successful execution returns the following results:
 
   ```
-  +-------+
-  | Table |
-  +-------+
-  | sea   |
-  | wind  |
-  | air   |
-  +-------+
-  Query took 0.002 seconds.
+    +-------+
+    | Table |
+    +-------+
+    | sea   |
+    | wind  |
+    | air   |
+    +-------+
+    Query took 0.002 seconds.
   ```
-- **查询数据**
+- **Query data**
 
   ```shell
   SELECT * FROM air limit 10;
   ```
 
-  执行成功返回以下结果：
+  Successful execution returns the following results:
 
   ```sql
   +---------------------+------------+------------+-------------+----------+
   | time                | station    | visibility | temperature | pressure |
+
   +---------------------+------------+------------+-------------+----------+
   | 2022-01-14 16:00:00 | XiaoMaiDao | 50         | 63          | 52       |
   | 2022-01-14 16:03:00 | XiaoMaiDao | 56         | 62          | 54       |
@@ -117,8 +118,8 @@ curl -o oceanic_station.txt https://dl.cnosdb.com/sample/oceanic_station.txt
   Query took 0.635 seconds.
   ```
 
-> 有关更多关于数据库的操作请查看：
+> For more information about database operations, please refer to：
 >
 > [SQL](../reference/sql.md)
 >
-> [编程接口](../develop/api.md)
+> [Programming Interface](../develop/api.md)
