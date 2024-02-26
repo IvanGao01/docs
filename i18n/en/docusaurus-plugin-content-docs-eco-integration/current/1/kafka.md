@@ -228,7 +228,7 @@ python3 test.py
 1. 使用工具连接到CnosDB
 
 ```shell
-cnosdb-cli
+    cnosdb-cli
 ```
 
 2. 切换到指定库
