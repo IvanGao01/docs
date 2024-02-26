@@ -35,7 +35,7 @@ In the process of redesigning the time series database, we solve a series of pro
 
 - Data Replication and Consensus
 - Meta cluster
-- SQL Engine
+- SQL engine
 - tskv index and data storage
 
 ## Data replication and consensus
@@ -134,7 +134,7 @@ We adopt a strong consistency meta cluster and realize corresponding optimizatio
 >   \>   - Meta clusters share the leveler pressure and provide the Follower / Read scheme. Reading performance is optimized.
 >   \>   - meta 集群分担 leader 压力，提供 Follower/Read 方案。读性能得以优化。
 
-## SQL engine
+## SQL Engine
 
 We used [DataFusion](https://arrow.apache.org/datafusion/) as the query engine. DataFusion is an extensible query execution framework, written with Rust, used [Apache Arrow](https://arrow.apache.org/) As its memory format. DataFusion supports SQL and DataFrame API for building logical query schemes, as well as query optimizers and execution engines that can be executed in parallel with partition data sources using threads. It has the following advantages:DataFusion 支持用于构建逻辑查询计划的 SQL 和 DataFrame API 以及能够使用线程对分区数据源并行执行的查询优化器和执行引擎。具有如下优点：
 
