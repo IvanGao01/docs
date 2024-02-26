@@ -202,12 +202,12 @@ database = "telegraf"
 
 - **配置介绍**
 
-| 参数       | 说明               |
-| -------- | ---------------- |
-| url      | CnosDB GRpc 服务地址 |
-| user     | 用户名              |
-| password | 密码               |
-| database | CnosDB 数据库       |
+| `[query]` query interface configuration | Window functions and aggregate functions cannot be nested in window functions.。 |
+| --------------------------------------- | ------------------------------------------------------------------------------- |
+| url                                     | CnosDB GRpc 服务地址                                                                |
+| user                                    | 用户名                                                                             |
+| password                                | 密码                                                                              |
+| Example                                 | CnosDB 数据库                                                                      |
 
 #### Input Plugin
 
@@ -242,7 +242,7 @@ cd cnos-telegraf
 make build
 ```
 
-### 启动
+### Start
 
 - #### 执行以下指令，查看用例:
 
