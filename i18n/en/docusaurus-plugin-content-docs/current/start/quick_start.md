@@ -1,9 +1,9 @@
 ---
-title: Quick start
+title: Quick Start
 order: 4
 ---
 
-# Quick Start
+# Quick start
 
 CnosDBSQL is inspired by [DataFusion](https://arrow.apache.org/datafusion/user-guide/introduction), We support most of the SQL syntax of DataFusion.
 
@@ -376,7 +376,7 @@ Alias TableCTE使用规则如下：
 - The CTE defined in the WITH clause can only be used for other CTEs in the same WITH clause defined later. Suppose A is the first CTE in the clause and B is the second CTE in the clause:
   假设A是子句中的第一个CTE，B是子句中的第二个CTE：
 
-**Example**
+**Examples**
 
 ```sql
 SELECT station, avg 
@@ -610,7 +610,7 @@ SELECT * FROM air ORDER BY station, temperature;
 
 The IN operator allows you to specify multiple values in the WHERE clause.
 
-**Examples**
+**Example**
 
 ```sql
 SELECT station, temperature, visibility FROM air WHERE temperature  IN (68, 69);
