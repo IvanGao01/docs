@@ -1,12 +1,12 @@
 ---
-title: Tools
+title: CnosDB Tools
 order: 8
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# CnosDB Tools
+# Tools
 
 ## 客户端命令行程序
 
@@ -243,7 +243,7 @@ Inspect the contents of the Summary file in the form of logs:
 cnosdb-tool inspect summary-log [OPTIONS] <PATH>
 ```
 
-- `<PATH>` - path of the file.
+- `<PATH>` - file path.
 - `--from` - start position of the data block.
 - `--to` - end position of the data block.
 - `--tenant` - filter data blocks by Tenant.
@@ -503,7 +503,7 @@ cnosdb-tool inspect series-binlog [OPTIONS] <PATH>
 
 Options:
 
-- `<PATH>` - file path.
+- `<PATH>` - path of the file.
 - `--from` - start position of the data block.
 - `--to` - end position of the data block.
 - `--database <STRING>` - filter data blocks by Database.
