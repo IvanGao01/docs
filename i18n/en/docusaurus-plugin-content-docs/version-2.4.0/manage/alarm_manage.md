@@ -244,7 +244,7 @@ curl -X GET http:/127.0.0.1:30001/api/v1/alert/config/rule/tenant/cnosdb/id/1
 **Request Parameters**
 
 ```shell
-    :tenant: tenant name
+    :tenant: tenant name 
     :id: rule id
 
 ```
@@ -322,7 +322,7 @@ curl -X DELETE http:/127.0.0.1:30001/api/v1/alert/config/rule/tenant/cnosdb/id/1
 **Request Parameters**
 
 ```shell
-    :tenant: tenant name 
+    :tenant: tenant name
     :id: rule id
 
 ```
