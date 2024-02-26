@@ -1,11 +1,10 @@
 ---
 title: Connector
-order: 3
+order: 4
 index: false
 ---
 
 # Connector
-
 
 - [Arrow Filght SQL](./arrow_flight_sql)
 - [C++](./arrow_flight_sql#different-client-usage)
