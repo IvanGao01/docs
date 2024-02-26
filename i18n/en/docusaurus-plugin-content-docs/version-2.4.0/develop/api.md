@@ -102,46 +102,6 @@ CREATE TABLE air (
 );`
 ```
 
-Connect to CnosDB
-
-```go
-func basicAuth(username, password string) string {
-    auth := username + ":" + password
-    return "Basic " + base64.StdEncoding.EncodeToString([]byte(auth))
-}
-
-req := fasthttp.AcquireRequest()
-req.Header.SetMethod("POST")
-req.Header.Set("Authorization", basicAuth(user, pwd))
-req.SetBody([]byte(query1))
-req.SetRequestURI(url)
-```
-
-@tab Golang#Golang
-
-```go
-@tab Java#Java
-```
-
-The status code of the response will indicate whether the SQL is executed successfully, 200 representing success.
-The sample code uses [fasthttp](https://github.com/valyala/fasthttp) as a dependency.
-
-Following are the parameters required to construct the http request.
-
-```go
-user := "cnosdb"
-pwd := ""
-// db means database, we use default db 'public'
-url := "http://127.0.0.1:8902/" + "api/v1/sql?db=public&pretty=true"
-query1 := `
-CREATE TABLE air (
-  visibility DOUBLE,****
-  temperature DOUBLE,
-  pressure DOUBLE,
-  TAGS(station)
-);`
-```
-
 Construct the http request:
 
 ```go
@@ -167,6 +127,46 @@ if err != nil {
    return
 }
 fmt.Println(resp.StatusCode())
+```
+
+The status code of the response will indicate whether the SQL is executed successfully, 200 representing success.
+The sample code uses [fasthttp](https://github.com/valyala/fasthttp) as a dependency.
+
+Following are the parameters required to construct the http request.
+
+```go
+user := "cnosdb"
+pwd := ""
+// db means database, we use default db 'public'
+url := "http://127.0.0.1:8902/" + "api/v1/sql?db=public&pretty=true"
+query1 := `
+CREATE TABLE air (
+  visibility DOUBLE,****
+  temperature DOUBLE,
+  pressure DOUBLE,
+  TAGS(station)
+);`
+```
+
+Connect to CnosDB
+
+```go
+func basicAuth(username, password string) string {
+    auth := username + ":" + password
+    return "Basic " + base64.StdEncoding.EncodeToString([]byte(auth))
+}
+
+req := fasthttp.AcquireRequest()
+req.Header.SetMethod("POST")
+req.Header.Set("Authorization", basicAuth(user, pwd))
+req.SetBody([]byte(query1))
+req.SetRequestURI(url)
+```
+
+@tab Golang#Golang
+
+```go
+@tab Java#Java
 ```
 
 The status code of the response will indicate whether the SQL is executed successfully, 200 representing success.
