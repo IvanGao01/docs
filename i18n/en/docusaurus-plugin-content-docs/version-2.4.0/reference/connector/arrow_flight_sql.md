@@ -20,9 +20,9 @@ Our current environments that support the Arrow Flight SQL client are
 
 ## Benefits of Arrow Flight SQL
 
-1. 功能强大。Powerful functionality. Functionality similar to APIs such as JDBC and ODBC, including executing queries, creating prepared statements
-2. 安全。security. Flight, supporting features such as out-of-the-box encryption and authentication.
-3. 性能。Performance. Communicates with client-side servers that implement Arrow Flight without data transformation, while allowing further optimizations such as parallel data access.
+1. Function is strong.Powerful functionality. Functionality similar to APIs such as JDBC and ODBC, including executing queries, creating prepared statements
+2. Security.security. Flight, supporting features such as out-of-the-box encryption and authentication.
+3. Performance.Performance. Communicates with client-side servers that implement Arrow Flight without data transformation, while allowing further optimizations such as parallel data access.
 
 @tab ODBC#ODBC While it can be used directly for database access, it is not a direct replacement for JDBC/ODBC. However, Flight SQL can be used as a specific wired protocol/driver implementation that supports JDBC/ODBC drivers and reduces the implementation burden on the database.
 
@@ -62,15 +62,15 @@ If the data set is sorted, the data will be returned in only one FlightEndPoint.
 
 The flow chart is as follows:
 
-![流程图](/img/arrow_flight_flow.png)
+![流程图](/img/arrow_flowt_flow.png)
 
 ## Different Client Usage
 
 :::info Here's how to use the different clients:
-:::::: tabs#language\@tab C++#C++* #### 安装Apache Arrow
+:::::::tabs#language\@tab C+#C++#C+* #### Installing Apache Arrow
 
-  你可以去[官方文档](https://arrow.apache.org/install/)找到详细的安装教程
-  在Mac系统下，使用brew命令就可以简单安装了。
+  You can go to[官方文档](https://arrow.apache.org/install/) to find detailed installation tutorials
+  under Mac, it's easy to install using the brew command.
 
   ```shell
   brew install apache-arrow
@@ -804,32 +804,32 @@ async fn main() {
     }
   }
 
-  ```@tab ODBC#ODBC目前仅支持x86_64架构的系统，linux仅支持centos和redhat系列发行版。For more on Arrow Flight SQL ODBC, see the [Dremio documentation](https://docs.dremio.com/software/drivers/arrow-flight-sql-odbc-driver/).The following steps are based on Centos7.* #### 安装ODBC管理器
+  ```@tab ODBC#ODBC目前仅支持x86_64架构的系统，linux仅支持centos和redhat系列发行版。For more on Arrow Flight SQL ODBC, see the [Dremio documentation](https://docs.dremio.com/software/drivers/arrow-flight-sql-odbc-driver/).The following steps are based on Centos7.* ### Install ODBC Manager
 
-  在Linux下安装unixODBC
-
-  ```shell
-  yum install unixODBC-devel
-  ```
-
-* #### 安装arrow-flight-odbc驱动
+  install unixODBC
 
   ```shell
-  wget https://download.dremio.com/arrow-flight-sql-odbc-driver/arrow-flight-sql-odbc-driver-LATEST.x86_64.rpm
-  yum localinstall arrow-flight-sql-odbc-driver-LATEST.x86_64.rpm
+  yum install unixODBC-dedel
   ```
 
-* #### 修改配置文件
+* ### install arrow-flight-odbc driver
 
-  修改位于`/etc/odbc.ini`的配置文件。
-
+  ```shell
+  wget https://download. remio. om/arrow-flight-sql-odbc-driver/arrow-flight-sql-odbc-driver-LATESST.x86_64.rpm
+  yum localinstall arrow-flight-sql-odbc-driver-LAST.x86_64.rpm
   ```
+
+* ### Modify profile
+
+  change the configuration file in `/etc/odbc.ini`.
+
+  \`\`
   [ODBC Data Sources]
-  CNOSDB=Arrow Flight SQL ODBC Driver
+  CNOSDB =Arrow Flight SQL ODBC Driver
 
   [CNOSDB]
-  Description=ODBC Driver DSN for Arrow Flight SQL developed by Dremio
-  Driver=Arrow Flight SQL ODBC Driver
+  Description=ODBC DDS for Arrow Flight SQL developed by Dremio
+  Driver=Arrow Flight ODBC DBC Driver
   Host=localhost
   Port=8904
   UID=root
@@ -837,33 +837,39 @@ async fn main() {
   Database=public
   Tenant=cnosdb
   useEncryption=false
-  TrustedCerts=/opt/arrow-flight-sql-odbc-driver/lib64/cacerts.pem
+  TrustCerts=/arrow-flight-sql-odbc-driver/lib64/cers. em
   UseSystemTrustStore=true
+
   ```
 
-  其中 UID是用户名，PWD是密码。
+  of which UID is a username, PWD is a password.
 
-* #### 测试是否连接
+  ```
 
-  ```shell
+* ## Test whether to connect to
+
+  \`\`shell
   isql -v CNOSDB
-  ```
 
-  如果出现如下内容，说明连接成功。
+  ````
+
+  indicates that the connection was successful.
 
   ```
-  +---------------------------------------+
-  | Connected!                            |
-  |                                       |
-  | sql-statement                         |
+  +------------------- ------------------------+
+  | Connected! |
+  |
+  | sql-statement |
   | help [tablename]                      |
-  | quit                                  |
-  |                                       |
-  +---------------------------------------+
+  | quit |
+  |
+  +------+
   SQL>
   ```
 
-  下面进入代码测试。
+  below enter code tests.
+
+  ````
 
 * #### 编写cmake
 
@@ -1011,10 +1017,10 @@ async fn main() {
   Most of arrow's functions return the `arrow::Result\<T\>` type, so you need to write the code in a function that returns a value of the type `arrow::Result\<T>`, as follows:
 
   ```c++
-   arrow::Result <std::unique_ptr<FlightClient>> get_location() {
-       ARROW_ASSIGN_OR_RAISE(auto location, Location::ForGrpcTcp("localhost", 8904));
-       ARROW_ASSIGN_OR_RAISE(auto client, FlightClient::Connect(location))
-   }
+   arrow::Result <std::unique_ptr<FlightClient>> get_location() [ROW]
+       ARROW_ASSIGN_OR_RAISE(auto location, Location::ForGrpcTcp ("localhost", 8904));
+       ARROW_ASSIGN_OR_OR_RAISE(auto client, FlowtClient::Connect (location))
+  }
   ```
 
   `ARROW_ASSIGN_OR_RAISE`The effect of the macro is to first evaluate the expression with a return value of type `arrow::Result\<T\>` on the right, and then return it early if an exception occurs, assigning the corresponding Status value.
@@ -1134,21 +1140,21 @@ int main() {
   Add dependencies in `go.mod`.
 
   ```go
-  require (
+  Require (
     github.com/apache/arrow/go/v10 v10.0.1
     google.golang.org/grpc v1.51.0
-  )
+
   ```
 
 - #### Build Flight SQL Client
 
   ```go
   addr := "127.0.0.1:8904"
-  var dialOpts = []grpc.DialOption{
-    grpc.WithTransportCredentials(insecure.NewCredentials()),
+  var dialOpts = []grpc.DialOptionLed
+    grpc.GithTransportCredentials(insecure.NewCredentials()),
   }
-  cl, err := flightsql.NewClient(addr, nil, nil, dialOpts...)
-  if err != nil {
+  cl, err := flightsql. ewClient(addr, nil, nil, dialOpts...)
+  if err != nil Led
     fmt.Print(err)
     return
   }
@@ -1160,7 +1166,7 @@ int main() {
 
   ```go
   ctx, err := cl.Client.AuthenticateBasicToken(context.Background(), "root", "")
-  if err != nil {
+  if err != nil L/
     fmt.Print(err)
     return
   }
@@ -1204,7 +1210,7 @@ int main() {
   }
   ```
 
-@tab Java#Java
+@tab Java #Java
 
 - #### Add dependencies
 
@@ -1283,24 +1289,24 @@ int main() {
 - #### Build Flight SQL Client
 
   ```java
-  BufferAllocator allocator = new RootAllocator(Integer.MAX_VALUE);
-  final Location clientLocation = Location.forGrpcInsecure("localhost", 8904);
+  Buffering Allocator = new RootAllocator (Integer.MAX_VALUE);
+  final location clientlocation = Location.forGrpcInsecure ("localhost", 8904);
 
-  FlightClient client = FlightClient.builder(allocator, clientLocation).build();
-  FlightSqlClient sqlClinet = new FlightSqlClient(client);
+  Flash customer = FlightClient.builder(allocator, clientLocation).build();
+  FlihtSqlClient sqlClinet = new Flash SqClient(client);
   ```
 
 - #### Config Authentication
 
   ```java
-  Optional<CredentialCallOption> credentialCallOption = client.authenticateBasicToken("root", "");
-  final CallHeaders headers = new FlightCallHeaders();
-  headers.insert("tenant", "cnosdb");
+  Optional<CredentialCallOption> credentialCallOption = client.authorticateBasicToken ("root", "");
+  final CallHeaders headers = new Flash CallHeaders();
+  heads. nert("tenant", "cnosdb");
   Set<CallOption> options = new HashSet<>();
 
-  credentialCallOption.ifPresent(options::add);
+  credentialCalloption.ifPresent(options::add);
   options.add(new HeaderCallOption(headers));
-  CallOption[] callOptions = options.toArray(new CallOption[0]);
+  CallOptions = options.toArray(new Call[0]);
   ```
 
 - #### Execute SQL in the authenticated context to get FlightInfo
@@ -1395,23 +1401,23 @@ The code runs in an asynchronous environment.
 - #### Add dependencies
 
   ```toml
-  arrow = {version = "28.0.0", features = ["prettyprint"] }
+  arrow = {version = "28.0.0", features = ["prettyprint"]}
   arrow-flight = {version = "28.0.0", features = ["flight-sql-experimental"]}
-  tokio = "1.23.0"
-  futures = "0.3.25"
+  token = "1.23. "
+  futures = "0.3.2"
   prost-types = "0.11.2"
-  tonic = "0.8.3"
+  taste = "0.8.3"
   prost = "0.11.3"
-  http-auth-basic = "0.3.3"
-  base64 = "0.13.1"
+  http-auth-basic = "0.3"
+  base64 = "0.1"
   ```
 
-- #### 创建FlightServerClient
+- #### Create Flash ServerClient
 
   ```rust
-  let mut client = FlightServiceClient::connect("http://localhost:8904")
+  let client = FightServiceClient::connect("http://localhost:8904")
   .await
-  .expect("connect faile");
+  .expect("connit faile");
   ```
 
 - #### Verify
@@ -1632,15 +1638,15 @@ async fn main() {
   ```xml
   <dependencies>
     <dependency>
-      <groupId>org.apache.arrow</groupId>
+      <groupId>org.apache. rrow</groupId>
       <artifactId>arrow-jdbc</artifactId>
-      <version>10.0.1</version>
+      <version></version>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/org.apache.arrow/flight-sql-jdbc-driver -->
+    <!-- https://mvnrepository.com/artifact.org.apache. grow/flow-sql-jdbc-driver -->
     <dependency>
-      <groupId>org.apache.arrow</groupId>
+      <groupId>org.apache. rrow</groupId>
       <artifactId>flight-sql-jdbc-driver</artifactId>
-      <version>10.0.1</version>
+      <version>10. 1</version>
     </dependency>
   </dependencies>
   ```
@@ -1759,7 +1765,7 @@ The following steps are based on Centos7.
   Install unixODBC under Linux
 
   ```shell
-  yum install unixODBC-devel
+  yum install unixODBC-dedel
   ```
 
 - #### Install arrow-flight-odbc driver
@@ -1796,20 +1802,20 @@ The following steps are based on Centos7.
 - #### test whether the connection
 
   ```shell
-  isql -v CNOSDB
+  isql - v CNOSDB
   ```
 
   If the following appears, the connection is successful.
 
   ```
-  +---------------------------------------+
-  | Connected!                            |
-  |                                       |
-  | sql-statement                         |
+  +---------------- ------ -+
+  | Connected! |
+  |
+  | sql-statement |
   | help [tablename]                      |
-  | quit                                  |
-  |                                       |
-  +---------------------------------------+
+  | quit |
+  |
+  +------+
   SQL>
   ```
 
