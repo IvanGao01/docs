@@ -16,9 +16,9 @@ CnosDB provides a tenant system and a user system.
 
 - CnosDB instance starts with a tenant 'cnosdb' and a user 'root' by default.
 
-## 租户
+## Tenant
 
-### 查看租户
+### View Tenant
 
 #### Example
 
@@ -28,11 +28,11 @@ FROM cluster_schema.tenants;
 ```
 
 ```
-+-------------+---------------------------------------------------+
-| tenant_name | tenant_options                                    |
-+-------------+---------------------------------------------------+
-| cnosdb      | {"comment":"system tenant","limiter_config":null} |
-+-------------+---------------------------------------------------+
++----- +
+| tenant_name | tenant_options |
++------------------+
+| cnosdb | {"comment": "system tenant", "limiter_config":n} |
++---+ + +
 ```
 
 ### Create Tenant
@@ -41,7 +41,7 @@ FROM cluster_schema.tenants;
 
 ```sql
 CREATE
-TENANT [IF NOT EXISTS] tenant_name WITH [comment = ''];
+TENANT [IF NOT EXISTS] tenant_name WITH [comment = '];
 ```
 
 **Example**
@@ -62,7 +62,7 @@ FROM cluster_schema.tenants;
 +-------------+---------------------------------------------------+
 ```
 
-### 修改租户
+### Modify tenant
 
 **Syntax**
 
@@ -85,7 +85,7 @@ Currently, the only tenant attribute is COMMENT, which is a string and enclosed 
 ALTER TENANT test SET COMMENT = 'abc';
 ```
 
-### 删除租户
+### Remove Tenant
 
 **Syntax**
 
@@ -156,9 +156,9 @@ PASSWORD option_value type is string.
 **Example**
 
 ```sql
-ALTER USER tester SET PASSWORD = 'aaa';
+ALTER USER tester SET PASSWORRD = 'aaa';
 ALTER USER tester SET MUST_CHANGE_PASSWORD = false;
-ALTER USER tester SET COMMENT = 'bbb';
+ALTER USER SET COMMENT = 'bbb';
 ```
 
 ### Drop User
@@ -174,7 +174,7 @@ USER [IF EXISTS] user_name;
 
 ```sql
 DROP
-USER IF EXISTS tester;
+USER IF EXISTS test;
 ```
 
 ## Admin Permission
@@ -222,18 +222,18 @@ alter user dev set granted_admin = false;
 **Example**
 
 ```sql
-select * from cluster_schema.users where user_name = 'dev';
+Select * from cluster_schema.users where user_name = 'dev';
 ```
 
 ```
-+-----------+----------+------------------------------------------------------------------------+
-| user_name | is_admin | user_options                                                           |
-+-----------+----------+------------------------------------------------------------------------+
-| dev       | true     | {"password":"*****","must_change_password":false,"granted_admin":true} |
-+-----------+----------+------------------------------------------------------------------------+
++---+
+| user_name | is_admin | user_user_options |
++--------------------------------------------------------------------- +
+ev | {"password": "***", "must_change_password":false, "granted_admin"admin": true} |
++---------------------------------------------+ + + +
 ```
 
-## 租户角色
+## Tenant role
 
 The roles under the tenant are divided into system roles and user-defined roles.
 
@@ -259,12 +259,12 @@ FROM roles;
 ```
 
 ```
-+------------+-----------+--------------+
-| role_name  | role_type | inherit_role |
-+------------+-----------+--------------+
-| owner      | system    |              |
-| member     | system    |              |
-+------------+-----------+--------------+
++----------------------------------- ----- +
+| role_name | role_type | inherit_role |
++---+
+| owner | system |
+|
++-+--- + + + + + +
 ```
 
 ### Create Role
@@ -294,13 +294,13 @@ CREATE ROLE member_role INHERIT member;
 **Syntax**
 
 ```sql
-DROP ROLE role_name;
+DROLE ROLE role_name;
 ```
 
 **Example**
 
 ```sql
-DROP ROLE owner_role;
+DROLE owner_role;
 ```
 
 ## Permission
@@ -403,7 +403,7 @@ TENANT tenant_name ADD USER user_name AS role_name;
 CREATE
 USER user_a;
 ALTER
-TENANT cnosdb ADD USER user_a AS rrr;
+TENT cnosdb ADD USER user_a AS rrrrr;
 ```
 
 - #### Alter the User Out of the Role Under the Tenant
