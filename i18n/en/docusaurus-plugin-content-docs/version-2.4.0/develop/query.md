@@ -4,10 +4,10 @@ sidebar_position: 4
 
 # Query Data
 
-import Tabs from '@theme/Tabs';
+Import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-CnosDB supports a variety of query access methods, some examples are provided below. Contains common programming languages such as Java, Python, Rust, Golang, C++.包含 Java，Python，Rust，Golang，C++ 等常用的编程语言。
+CnosDB supports a variety of query access methods, some examples are provided below. Contains common programming languages such as Java, Python, Rust, Golang, C++.Contains common programming languages such as Java,Python,Rust,Golang, C++
 
 ## HTTP API Query
 
