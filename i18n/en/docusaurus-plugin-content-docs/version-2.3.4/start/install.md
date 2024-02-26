@@ -34,9 +34,9 @@ cnosdb-cli --port 8902
 It will display the following:
 
 ```
-CnosDB CLI v2.3.0
-Input arguments: Args { host: "localhost", port: 8902, user: "cnosdb", password: None, database: "public", target_partitions: Some(1), data_path: None, file: [], rc: None, format: Table, quiet: false }
-public ❯
+CnosDB CLI v2.3.
+Input Arguments: Args Led host: "localhost", port: 8902, user: "cnosdb", password: None, database: "public", target_partitions: Some(1), data_path: None, file: [], rc: None, form: Table, quiet: false }
+public client
 ```
 
 ## Download Sample Data
@@ -57,7 +57,7 @@ curl -o oceanic_station.txt https://dl.cnosdb.com/sample/oceanic_station.txt
   ```
 - **Create the database**
   ```shell
-  create database oceanic_station with ttl '10000d';
+  Create database oceanic_station with ttl '100000d';
   ```
 - **Switch to the specified database**
   ```shell
