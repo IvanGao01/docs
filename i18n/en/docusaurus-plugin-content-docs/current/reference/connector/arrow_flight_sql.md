@@ -3,7 +3,7 @@ title: Arrow Flight SQL
 order: 3
 ---
 
-import Tabs from '@theme/Tabs';
+Import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # Arrow Flight SQL
@@ -23,9 +23,9 @@ Our current environments that support the Arrow Flight SQL client are
 
 ## Benefits of Arrow Flight SQL
 
-1. 功能强大。Powerful functionality. Functionality similar to APIs such as JDBC and ODBC, including executing queries, creating prepared statements
-2. 安全。security. Flight, supporting features such as out-of-the-box encryption and authentication.
-3. 性能。Performance. Communicates with client-side servers that implement Arrow Flight without data transformation, while allowing further optimizations such as parallel data access.
+1. Function is strong.Powerful functionality. Functionality similar to APIs such as JDBC and ODBC, including executing queries, creating prepared statements
+2. Security.security. Flight, supporting features such as out-of-the-box encryption and authentication.
+3. Performance.Performance. Communicates with client-side servers that implement Arrow Flight without data transformation, while allowing further optimizations such as parallel data access.
 
 @tab ODBC#ODBC While it can be used directly for database access, it is not a direct replacement for JDBC/ODBC. However, Flight SQL can be used as a specific wired protocol/driver implementation that supports JDBC/ODBC drivers and reduces the implementation burden on the database.
 
@@ -62,11 +62,11 @@ If the data set is sorted, the data will be returned in only one FlightEndPoint.
 
 The flow chart is as follows:
 
-![流程图](/img/arrow_flight_flow.png)
+![流程图](/img/arrow_flowt_flow.png)
 
 ## Different Client Usage
 
-:::info 本章节分别介绍不同客户端的使用方式。
+:::info Section shows how different clients are used.
 
 <Tabs>
 <TabItem value="c++" label="C++">
@@ -105,10 +105,10 @@ The flow chart is as follows:
   Most of arrow's functions return the `arrow::Result\<T\>` type, so you need to write the code in a function that returns a value of the type `arrow::Result\<T>`, as follows:
 
   ```c++
-   arrow::Result <std::unique_ptr<FlightClient>> get_location() {
-       ARROW_ASSIGN_OR_RAISE(auto location, Location::ForGrpcTcp("localhost", 8904));
-       ARROW_ASSIGN_OR_RAISE(auto client, FlightClient::Connect(location))
-   }
+   arrow::Result <std::unique_ptr<FlightClient>> get_location() [ROW]
+       ARROW_ASSIGN_OR_RAISE(auto location, Location::ForGrpcTcp ("localhost", 8904));
+       ARROW_ASSIGN_OR_OR_RAISE(auto client, FlowtClient::Connect (location))
+  }
   ```
 
   `ARROW_ASSIGN_OR_RAISE`The effect of the macro is to first evaluate the expression with a return value of type `arrow::Result\<T\>` on the right, and then return it early if an exception occurs, assigning the corresponding Status value.
@@ -283,7 +283,7 @@ int main() {
   </build>
   ```
 
-- #### Add environment variable
+- #### Add environment variables
 
   ```shell
   _JAVA_OPTIONS="--add-opens=java.base/java.nio=ALL-UNNAMED"
@@ -295,31 +295,31 @@ int main() {
   env _JAVA_OPTIONS="--add-opens=java.base/java.nio=ALL-UNNAMED" java -jar ...
 
 
-  # if you use maven
+  # if maven used 
   _JAVA_OPTIONS="--add-opens=java.base/java.nio=ALL-UNNAMED" mvn exec:java -Dexec.mainClass="YourMainCode"
   ```
 
 - #### Build Flight SQL Client
 
   ```java
-  BufferAllocator allocator = new RootAllocator(Integer.MAX_VALUE);
-  final Location clientLocation = Location.forGrpcInsecure("localhost", 8904);
+  Buffering Allocator = new RootAllocator (Integer.MAX_VALUE);
+  final location clientlocation = Location.forGrpcInsecure ("localhost", 8904);
 
-  FlightClient client = FlightClient.builder(allocator, clientLocation).build();
-  FlightSqlClient sqlClinet = new FlightSqlClient(client);
+  Flash customer = FlightClient.builder(allocator, clientLocation).build();
+  FlihtSqlClient sqlClinet = new Flash SqClient(client);
   ```
 
 - #### Config Authentication
 
   ```java
-  Optional<CredentialCallOption> credentialCallOption = client.authenticateBasicToken("root", "");
-  final CallHeaders headers = new FlightCallHeaders();
-  headers.insert("tenant", "cnosdb");
+  Optional<CredentialCallOption> credentialCallOption = client.authorticateBasicToken ("root", "");
+  final CallHeaders headers = new Flash CallHeaders();
+  heads. nert("tenant", "cnosdb");
   Set<CallOption> options = new HashSet<>();
 
-  credentialCallOption.ifPresent(options::add);
+  credentialCalloption.ifPresent(options::add);
   options.add(new HeaderCallOption(headers));
-  CallOption[] callOptions = options.toArray(new CallOption[0]);
+  CallOptions = options.toArray(new Call[0]);
   ```
 
 - #### Execute SQL in the authenticated context to get FlightInfo
@@ -415,20 +415,20 @@ public class Main {
   ```xml
   <dependencies>
     <dependency>
-      <groupId>org.apache.arrow</groupId>
+      <groupId>org.apache. rrow</groupId>
       <artifactId>arrow-jdbc</artifactId>
-      <version>10.0.1</version>
+      <version></version>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/org.apache.arrow/flight-sql-jdbc-driver -->
+    <!-- https://mvnrepository.com/artifact.org.apache. grow/flow-sql-jdbc-driver -->
     <dependency>
-      <groupId>org.apache.arrow</groupId>
+      <groupId>org.apache. rrow</groupId>
       <artifactId>flight-sql-jdbc-driver</artifactId>
-      <version>10.0.1</version>
+      <version>10. 1</version>
     </dependency>
   </dependencies>
   ```
 
-- #### Add environment variables
+- #### Add environment variable
 
   ```shell
   _JAVA_OPTIONS="--add-opens=java.base/java.nio=ALL-UNNAMED"
@@ -440,7 +440,7 @@ public class Main {
   env _JAVA_OPTIONS="--add-opens=java.base/java.nio=ALL-UNNAMED" java -jar ...
 
 
-  # if maven used 
+  # if you use maven
   _JAVA_OPTIONS="--add-opens=java.base/java.nio=ALL-UNNAMED" mvn exec:java -Dexec.mainClass="YourMainCode"
   ```
 
@@ -535,23 +535,23 @@ public class Main {
 - #### Add dependencies
 
   ```toml
-  arrow = {version = "28.0.0", features = ["prettyprint"] }
+  arrow = {version = "28.0.0", features = ["prettyprint"]}
   arrow-flight = {version = "28.0.0", features = ["flight-sql-experimental"]}
-  tokio = "1.23.0"
-  futures = "0.3.25"
+  token = "1.23. "
+  futures = "0.3.2"
   prost-types = "0.11.2"
-  tonic = "0.8.3"
+  taste = "0.8.3"
   prost = "0.11.3"
-  http-auth-basic = "0.3.3"
-  base64 = "0.13.1"
+  http-auth-basic = "0.3"
+  base64 = "0.1"
   ```
 
-- #### 创建FlightServerClient
+- #### Create Flash ServerClient
 
   ```rust
-  let mut client = FlightServiceClient::connect("http://localhost:8904")
+  let client = FightServiceClient::connect("http://localhost:8904")
   .await
-  .expect("connect faile");
+  .expect("connit faile");
   ```
 
 - #### Verify
@@ -780,7 +780,7 @@ The following steps are based on Centos7.
   Install unixODBC under Linux
 
   ```shell
-  yum install unixODBC-devel
+  yum install unixODBC-dedel
   ```
 
 - #### Install arrow-flight-odbc driver
@@ -817,20 +817,20 @@ The following steps are based on Centos7.
 - #### test whether the connection
 
   ```shell
-  isql -v CNOSDB
+  isql - v CNOSDB
   ```
 
   If the following appears, the connection is successful.
 
   ```
-  +---------------------------------------+
-  | Connected!                            |
-  |                                       |
-  | sql-statement                         |
+  +---------------- ------ -+
+  | Connected! |
+  |
+  | sql-statement |
   | help [tablename]                      |
-  | quit                                  |
-  |                                       |
-  +---------------------------------------+
+  | quit |
+  |
+  +------+
   SQL>
   ```
 
