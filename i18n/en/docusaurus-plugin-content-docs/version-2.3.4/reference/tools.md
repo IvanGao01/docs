@@ -1,9 +1,9 @@
 ---
-title: Tools
+title: CnosDB Tools
 order: 8
 ---
 
-# CnosDB Tools
+# Tools
 
 ## Client CLI
 
