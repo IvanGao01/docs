@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-import Tabs from '@theme/Tabs';
+Import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # Connect to CnosDB
@@ -14,7 +14,7 @@ The HTTP API query command is as follows, which you can refer to when implementi
 #### Syntax
 
 ```shell
-curl -X POST "http://<cnosdb_url>:<cnosdb_port>/api/v1/sql?db=<database_name>&pretty=true" \
+curl -X POST "http://<cnosdb_url>:<cnosdb_port>/api/v1/sql? b=<database_name>&pretty=true" \
   -u "<username>:<password>" \
   -H "Content-Type: application/x-www-form-urlencoded" \
   -d "<your SQL statement>"
@@ -44,14 +44,14 @@ The sample code uses [reqwest](https://crates.io/crates/reqwest) to build Http r
 Http request needs to specify the database to be operated on, written in the url query as db=database_name.
 
 ```rust
-let url = Url::parse("http://127.0.0.1:8902/api/v1/sql?db=public&pretty=true").unwrap();
+let url = Url:::parse ("http://127.0.0.1:8902/api/v1/sql?db=public&pretty=true"). nwrap();
 let sql = r#"
 CREATE TABLE air (
  visibility DOUBLE,
  temperature DOUBLE,
  pressure DOUBLE,
- TAGS(station)
-);"#.to_string();
+ TAGS(station
+);"#. o_string();
 ```
 
 Set the SQL requested for execution into the body of the http.
@@ -77,7 +77,7 @@ The error messages or the result of the correct execution will be in the text() 
 
 ```rust
 let response = http_client.execute(request).await.unwrap();
-let success = response.status().is_success();
+let success = response.status().is_success ();
 let result = response.text().await.unwrap();
 ```
 
@@ -89,15 +89,15 @@ let result = response.text().await.unwrap();
 Following are the parameters required to construct the http request.
 
 ```go
-user := "cnosdb"
+User := "cnosdb"
 pwd := ""
 // db means database, we use default db 'public'
-url := "http://127.0.0.1:8902/" + "api/v1/sql?db=public&pretty=true"
+url := "http://127.0.0. :8902/" + "api/v1/sql? b=public&pretty=true"
 query1 := `
 CREATE TABLE air (
-  visibility DOUBLE,****
+  visible DOUBLE, ***
   temperature DOUBLE,
-  pressure DOUBLE,
+  press DOUBLE,
   TAGS(station)
 );`
 ```
@@ -105,12 +105,12 @@ CREATE TABLE air (
 Construct the http request:
 
 ```go
-func basicAuth(username, password string) string {
+func basicAuth(username, password string) string. string Flux
     auth := username + ":" + password
-    return "Basic " + base64.StdEncoding.EncodeToString([]byte(auth))
+    return "Basic " + base64. tdEncoding.EncodeToString([]byte(author))
 }
 
-req := fasthttp.AcquireRequest()
+req := fasthttp. cquireRequest()
 req.Header.SetMethod("POST")
 req.Header.Set("Authorization", basicAuth(user, pwd))
 req.SetBody([]byte(query1))
@@ -135,15 +135,15 @@ The sample code uses [fasthttp](https://github.com/valyala/fasthttp) as a depend
 Following are the parameters required to construct the http request.
 
 ```go
-user := "cnosdb"
+User := "cnosdb"
 pwd := ""
 // db means database, we use default db 'public'
-url := "http://127.0.0.1:8902/" + "api/v1/sql?db=public&pretty=true"
+url := "http://127.0.0. :8902/" + "api/v1/sql? b=public&pretty=true"
 query1 := `
 CREATE TABLE air (
-  visibility DOUBLE,****
+  visible DOUBLE, ***
   temperature DOUBLE,
-  pressure DOUBLE,
+  press DOUBLE,
   TAGS(station)
 );`
 ```
@@ -151,12 +151,12 @@ CREATE TABLE air (
 Connect to CnosDB
 
 ```go
-func basicAuth(username, password string) string {
+func basicAuth(username, password string) string. string Flux
     auth := username + ":" + password
-    return "Basic " + base64.StdEncoding.EncodeToString([]byte(auth))
+    return "Basic " + base64. tdEncoding.EncodeToString([]byte(author))
 }
 
-req := fasthttp.AcquireRequest()
+req := fasthttp. cquireRequest()
 req.Header.SetMethod("POST")
 req.Header.Set("Authorization", basicAuth(user, pwd))
 req.SetBody([]byte(query1))
