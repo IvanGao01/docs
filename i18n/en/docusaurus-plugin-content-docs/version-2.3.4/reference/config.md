@@ -33,26 +33,26 @@ cnosdb check server-config /tmp/config.toml
 
 ## The detailed configuration file description is as follows:
 
-### `[hintedoff]` hintedOff configuration
+### `[trace]` Full link tracing configuration
 
 <Tabs groupId="editions">
 
 <TabItem value="Community" label="社区版">
 
-| **TOML Value**                                 | 默认                             | Description                                                                                                                 |
-| ---------------------------------------------- | ------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
-| reporting_disabled = true | `false`                        | 是否关闭 CnosDB 自动上报遥测数据，主要跟踪 CnosDB 不同版本的使用率，这些数据有利于 CnosDB 的持续开发。每24小时上报一次数据，每条包含的字段为：实例运行时间、操作系统类型、数据库版本、实例运行的地理位置（只到省级或洲级）。 |
-| `host` Node host.                              | Database instance running time | 用来和其他节点通信。                                                                                                                  |
+| Parameter                               | 默认                             | Introduction                                                                                                                |
+| --------------------------------------- | ------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
+| reporting_disabled | `false`                        | 是否关闭 CnosDB 自动上报遥测数据，主要跟踪 CnosDB 不同版本的使用率，这些数据有利于 CnosDB 的持续开发。每24小时上报一次数据，每条包含的字段为：实例运行时间、操作系统类型、数据库版本、实例运行的地理位置（只到省级或洲级）。 |
+| `host`: host of Meta node               | Database instance running time | 用来和其他节点通信。                                                                                                                  |
 
 </TabItem>
 
 <TabItem value="Enterprise" label="企业版">
 
-| Parameter                               | 默认                                                                                   | Description                                                                                                                 |
-| --------------------------------------- | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
-| reporting_disabled | `false`                                                                              | 是否关闭 CnosDB 自动上报遥测数据，主要跟踪 CnosDB 不同版本的使用率，这些数据有利于 CnosDB 的持续开发。每24小时上报一次数据，每条包含的字段为：实例运行时间、操作系统类型、数据库版本、实例运行的地理位置（只到省级或洲级）。 |
-| `host`: host of Meta node               | **Description**：node host, used to communicate with other nodes, default: localhost. | 用来和其他节点通信。                                                                                                                  |
-| `license_file`                          | `/etc/cnosdb/license.json`                                                           | 用于指定 `License` 文件位置。                                                                                                        |
+| Parameter                                      | 默认                                                                                   | Description                                                                                                                 |
+| ---------------------------------------------- | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
+| reporting_disabled = true | `false`                                                                              | 是否关闭 CnosDB 自动上报遥测数据，主要跟踪 CnosDB 不同版本的使用率，这些数据有利于 CnosDB 的持续开发。每24小时上报一次数据，每条包含的字段为：实例运行时间、操作系统类型、数据库版本、实例运行的地理位置（只到省级或洲级）。 |
+| `host` Node host.                              | **Description**：node host, used to communicate with other nodes, default: localhost. | 用来和其他节点通信。                                                                                                                  |
+| `license_file`                                 | `/etc/cnosdb/license.json`                                                           | 用于指定 `License` 文件位置。                                                                                                        |
 
 </TabItem>
 
@@ -60,11 +60,11 @@ cnosdb check server-config /tmp/config.toml
 
 ### [deployment]
 
-| Parameter | 默认           | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| --------- | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| mode      | **TOML KEY** | Deployment mode, select from ['tskv ',' query ',' query_tskv ',' singleton '], defalut: `query_tskv`  `tskv` : Deploying only tskv engine requires specifying a meta address. `query` : Deploying only the query engine requires specifying a meta address. `query_tskv` : Both query and tskv engines are deployed, and a meta address needs to be specified. `singleton` : Deploying a standalone version without specifying a meta address. |
-| cpu       | `49`         | 节点运行所使用的 cpu 核数                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| memory    | `16`         | 节点运行所使用的最大内存，单位：（G)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| **TOML Value** | 默认           | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| -------------- | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| mode           | **TOML KEY** | Deployment mode, select from ['tskv ',' query ',' query_tskv ',' singleton '], defalut: `query_tskv`  `tskv` : Deploying only tskv engine requires specifying a meta address. `query` : Deploying only the query engine requires specifying a meta address. `query_tskv` : Both query and tskv engines are deployed, and a meta address needs to be specified. `singleton` : Deploying a standalone version without specifying a meta address. |
+| cpu            | `49`         | 节点运行所使用的 cpu 核数                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| memory         | `16`         | 节点运行所使用的最大内存，单位：（G)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 
 ### [query]
 
@@ -81,7 +81,7 @@ cnosdb check server-config /tmp/config.toml
 
 ### [storage]
 
-| Configuration                                                                                | 默认                                                     | Description                                                           |
+| `[security]` security configuration                                                          | 默认                                                     | Description                                                           |
 | -------------------------------------------------------------------------------------------- | ------------------------------------------------------ | --------------------------------------------------------------------- |
 | path                                                                                         | HintedOff storage directory, default: `/tmp/cnosdb/hh` | Data storage location                                                 |
 | max_summary_size                                   | `128M`                                                 | 单个 Summary 日志的最大大小。                                                   |
@@ -118,7 +118,7 @@ cnosdb check server-config /tmp/config.toml
 
 ### [log]
 
-| Parameter     | 默认                             | **TOML TABLE**                                |
+| Parameter     | 默认                             | **Note**：If close information collection      |
 | ------------- | ------------------------------ | --------------------------------------------- |
 | level         | `info`                         | Log leverl（debug、info、error、warn），defult：info |
 | path          | `[log]`: run log configuration | Log storage location                          |
@@ -126,7 +126,7 @@ cnosdb check server-config /tmp/config.toml
 
 ### [security]
 
-| Parameter                       | 默认 | Introduction                |
+| Parameter                       | 默认 | Description                 |
 | ------------------------------- | -- | --------------------------- |
 | tls_config | 无  | Optional, TLS configuration |
 
@@ -139,19 +139,19 @@ cnosdb check server-config /tmp/config.toml
 
 ### [cluster]
 
-| Parameter **mode** can be selected from the following values:                         | 默认                                | Description                               |
-| ------------------------------------------------------------------------------------- | --------------------------------- | ----------------------------------------- |
-| `name`                                                                                | `[cluster]` cluster configuration | name                                      |
-| meta_service_port                           | `127.0.0.1:8901`                  | Remote Meta Service port                  |
-| http_listen_port                            | `8902`                            | HTTP service listening port               |
-| grpc_listen_port                            | `8903`                            | GRPC service listening port               |
-| flight_rpc_listen_port | `8904`                            | Flight RPC service listening port         |
-| tcp_listen_port                             | `8905`                            | TCP service listening port                |
-| `port`: port of Meta node                                                             | `8906`                            | 用于监听 [Vector](https://vector.dev/) 写入的数据。 |
+| Parameter **mode** can be selected from the following values:                         | 默认                                | The detailed configuration file description is as follows: |
+| ------------------------------------------------------------------------------------- | --------------------------------- | ---------------------------------------------------------- |
+| `name`                                                                                | `[cluster]` cluster configuration | name                                                       |
+| meta_service_port                           | `127.0.0.1:8901`                  | Remote Meta Service port                                   |
+| http_listen_port                            | `8902`                            | HTTP service listening port                                |
+| grpc_listen_port                            | `8903`                            | GRPC service listening port                                |
+| flight_rpc_listen_port | `8904`                            | Flight RPC service listening port                          |
+| tcp_listen_port                             | `8905`                            | TCP service listening port                                 |
+| `port`: port of Meta node                                                             | `8906`                            | 用于监听 [Vector](https://vector.dev/) 写入的数据。                  |
 
 ### [hintedoff]
 
-| Parameter | 默认                   | **Note**：If close information collection        |
+| Parameter | 默认                   | **TOML TABLE**                                  |
 | --------- | -------------------- | ----------------------------------------------- |
 | `enable`  | `true`               | Is the HIntedOff service enabled, default: true |
 | path      | `/var/lib/cnosdb/hh` | HintedOff 存储目录。                                 |
@@ -167,11 +167,11 @@ cnosdb check server-config /tmp/config.toml
 
 ### [subscription]
 
-| Parameter   | 默认     | Description                                                                      |
-| ----------- | ------ | -------------------------------------------------------------------------------- |
-| cache       | `1024` | cache size (bit) before sending and forwarding, default: 1028 |
-| concurrency | `8`    | 处理转发请求的并发数。                                                                      |
-| timeout     | `1000` | 转发请求的超时时间，单位：秒。                                                                  |
+| `[query]` query interface configuration | 默认     | Description                                                                      |
+| --------------------------------------- | ------ | -------------------------------------------------------------------------------- |
+| cache                                   | `1024` | cache size (bit) before sending and forwarding, default: 1028 |
+| concurrency                             | `8`    | 处理转发请求的并发数。                                                                      |
+| timeout                                 | `1000` | 转发请求的超时时间，单位：秒。                                                                  |
 
 </TabItem>
 
@@ -192,18 +192,18 @@ cnosdb check server-config /tmp/config.toml
 | ------------------------------------------------------------- | ------- | ------------------------------------------------ |
 | `[node_basic]` node configuration (v2.3.0) | `1001`  | Interval for checking whether a node is abnormal |
 | cold_data_server    | `false` | 是否停止在此节点上创建 Vnode。                               |
-| `[storage]` storage configuration                             | `true`  | 是否统计此节点的使用情况并存储到 `usage_schema` 数据库。             |
+| store_metrics                            | `true`  | 是否统计此节点的使用情况并存储到 `usage_schema` 数据库。             |
 
 </TabItem>
 
 <TabItem value="Enterprise" label="企业版">
 
-| Parameter                          | 默认        | The detailed configuration file description is as follows: |
-| ---------------------------------- | --------- | ---------------------------------------------------------- |
-| node_id       | `1001`    | Interval for checking the heartbeat status of a node       |
-| Database version                   | `false`   | 是否停止在此节点上创建 Vnode。                                         |
-| store_metrics | `true`    | 是否统计此节点的使用情况并存储到 `usage_schema` 数据库。                       |
-| `location`                         | `default` | 定义实例部署位置。                                                  |
+| Parameter                         | 默认        | Description                                          |
+| --------------------------------- | --------- | ---------------------------------------------------- |
+| node_id      | `1001`    | Interval for checking the heartbeat status of a node |
+| Database version                  | `false`   | 是否停止在此节点上创建 Vnode。                                   |
+| `[storage]` storage configuration | `true`    | 是否统计此节点的使用情况并存储到 `usage_schema` 数据库。                 |
+| `location`                        | `default` | 定义实例部署位置。                                            |
 
 
 
@@ -222,7 +222,7 @@ cnosdb check server-config /tmp/config.toml
 
 ### [trace.jaeger] (optional)
 
-| `[query]` query interface configuration                          | 默认   | enable                                                                                                                 |
+| Configuration                                                    | 默认   | enable                                                                                                                 |
 | ---------------------------------------------------------------- | ---- | ---------------------------------------------------------------------------------------------------------------------- |
 | jaeger_agent_endpoint  | 无    | the Jaeger agent endpoint.eg: http\://localhost:14268/api/traceseg：http\://localhost:14268/api/traces                  |
 | max_concurrent_exports | 3    | trace 上报器的并行度。默认值为 2                                                                                                   |
@@ -230,35 +230,35 @@ cnosdb check server-config /tmp/config.toml
 
 ## `meta` 文件描述
 
-### `[trace]` Full link tracing configuration
+### `[hintedoff]` hintedOff configuration
 
 <Tabs groupId="editions">
 
 <TabItem value="Community" label="社区版">
 
-| Parameter                                                     | 默认                              | Description                                                     |
-| ------------------------------------------------------------- | ------------------------------- | --------------------------------------------------------------- |
-| Node ID                                                       | `1`                             | `id` : id of Meta node, the value must be unique in the cluster |
-| host                                                          | `127.0.0.1`                     | 用于和其他节点通信的 `host`                                               |
-| port                                                          | `8901`                          | 用于和其他节点通信的 `port`                                               |
-| trace parallelism of the reporter, default value is 2         | `/var/lib/cnosdb/meta/snapshot` |                                                                 |
-| Remote log path                                               | `/var/lib/cnosdb/meta/journal`  |                                                                 |
-| snapshot_per_events | `500`                           |                                                                 |
+| Parameter                                                     | 默认                              | Description                                                                       |
+| ------------------------------------------------------------- | ------------------------------- | --------------------------------------------------------------------------------- |
+| Node ID                                                       | `1`                             | `[meta_init]`: example  initialize related configuration information of Meta node |
+| host                                                          | `127.0.0.1`                     | 用于和其他节点通信的 `host`                                                                 |
+| port                                                          | `8901`                          | 用于和其他节点通信的 `port`                                                                 |
+| trace parallelism of the reporter, default value is 2         | `/var/lib/cnosdb/meta/snapshot` |                                                                                   |
+| Remote log path                                               | `/var/lib/cnosdb/meta/journal`  |                                                                                   |
+| snapshot_per_events | `500`                           |                                                                                   |
 
 </TabItem>
 
 <TabItem value="Enterprise" label="企业版">
 
-| Parameter                                                         | 默认                              | Description                                                                       |
-| ----------------------------------------------------------------- | ------------------------------- | --------------------------------------------------------------------------------- |
-| `id`                                                              | `1`                             | `[meta_init]`: example  initialize related configuration information of Meta node |
-| **TOML Key**                                                      | `127.0.0.1`                     | 用于和其他节点通信的 `host`                                                                 |
-| `port`                                                            | `8901`                          | 用于和其他节点通信的 `port`                                                                 |
-| `license_file`                                                    | `/etc/cnosdb/license.json`      | 用于指定 `License` 文件位置。                                                              |
-| `snapshot_path`: snapshot storage path of Meta node               | `/var/lib/cnosdb/meta/snapshot` |                                                                                   |
-| `journal_path`: journal storage path of Meta node                 | `/var/lib/cnosdb/meta/journal`  |                                                                                   |
-| `snapshot_per_events`: The Meta node does a snapshot interval     | `500`                           |                                                                                   |
-| `[heartbeat]` heartbeat configuration (v2.3.0) | `0`                             |                                                                                   |
+| Parameter                                                         | 默认                              | Description                                                     |
+| ----------------------------------------------------------------- | ------------------------------- | --------------------------------------------------------------- |
+| `id`                                                              | `1`                             | `id` : id of Meta node, the value must be unique in the cluster |
+| **TOML Key**                                                      | `127.0.0.1`                     | 用于和其他节点通信的 `host`                                               |
+| `port`                                                            | `8901`                          | 用于和其他节点通信的 `port`                                               |
+| `license_file`                                                    | `/etc/cnosdb/license.json`      | 用于指定 `License` 文件位置。                                            |
+| `snapshot_path`: snapshot storage path of Meta node               | `/var/lib/cnosdb/meta/snapshot` |                                                                 |
+| `journal_path`: journal storage path of Meta node                 | `/var/lib/cnosdb/meta/journal`  |                                                                 |
+| `snapshot_per_events`: The Meta node does a snapshot interval     | `500`                           |                                                                 |
+| `[heartbeat]` heartbeat configuration (v2.3.0) | `0`                             |                                                                 |
 
 </TabItem>
 
@@ -282,7 +282,7 @@ cnosdb check server-config /tmp/config.toml
 
 ### [heartbeat]
 
-| `[security]` security configuration                                  | 默认  | Description               |
+| Parameter                                                            | 默认  | Description               |
 | -------------------------------------------------------------------- | --- | ------------------------- |
 | heartbeat_recheck_interval | 300 | 多久检查一次CnosDB节点的状态，单位：秒。   |
 | heartbeat_expired_interval | 300 | CnosDB节点多久未上报心跳认定异常，单位：秒。 |
