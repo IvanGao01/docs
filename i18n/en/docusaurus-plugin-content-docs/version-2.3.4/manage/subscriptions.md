@@ -8,15 +8,15 @@ sidebar_position: 9
 Only Enterprise Edition supports
 :::
 
-CnosDB 订阅可以将本地端点的数据写入到远程端点，可以和另一个 CnosDB 实例 或 Telegraf 一起使用。CnosDB 订阅使用流量复制的方式进行分发。
+CnosDB subscription can write local endpoint data to remote endpoints and can be used with another CnosDB instance or Telegraf.CnosDB Subscription for distribution using data copiing.
 
-支持分发的流量：
+Traffic Support for Distribution：
 
 - `/api/v1/write`
 
-- `/api/v1/sql` 中的 `INSERT` 写入语句
+- `INSERT` in `/api/v1/sql`
 
-> 将数据分发至 CnosDB 实例前，请提前创建表，否则将导致数据丢失
+> Please create tables in advance before distributing data to the CnosDB instance or cause data loss
 
 ## Create Subscription
 
@@ -30,11 +30,11 @@ CREATE SUBSCRIPTION <subscription_name> ON <database_name> DESTINATIONS ALL "<ho
 
 :::note
 
-`DESTINATIONS`：定义数据写入的目标位置，`ALL` 表示将数据写入所有的端点，`ANY` 表示轮询写入到多个端点，`end_point`表示写入的目标端点（CnosDB 实例的 `host` 以及配置文件中的`grpc_listen_port`，示例：`127.0.0.1:8903`）。
+`DESTINATIONS`：defines the destination of the data written, `ALL` to write the data to all endpoints, `ANY` to write to multiple endpoints, `end_point` to write to the destination point (`host` for CnosDB instance and `grpc_listen_port`, example：`127.0.0.1:8903`).
 
-`ON`：设置被订阅列表以及表中的列。
+`ON`：settings are subscribed to lists and columns.
 
-`FILTER_BY`：使用条件过滤需要分发的记录，示例：`FILTER_BY WHERE station = 'XiaoMaiDao'`。
+`FILTER_BY`：uses conditions to filter records for distribution, example：\`FILTER_BY WHERE station = 'XiaoMaiDao'.
 
 :::
 
@@ -57,7 +57,7 @@ CREATE SUBSCRIPTION test ON public DESTINATIONS ALL "127.0.0.1:8903"
 
 At this time, if any data is written to the current CnosDB node, the data will be synchronized copied and forwarded to `127.0.0.1:8903`.
 
-如果需要对数据进行过滤，可以增加关键字 `FILTER_BY`：
+If filtering data is required, add the keyword `FILTER_BY`：
 
 ```sql
 [[outputs.http]]
@@ -97,7 +97,7 @@ We can use `SHOW SUBSCRIPTION` to show the subscription information.
 ### Syntax
 
 ```sql
-SHOW SUBSCRIPTION ON <database_name>
+SHOW SUBSCRIPON ON <database_name>
 ```
 
 ### Example
@@ -106,11 +106,11 @@ SHOW SUBSCRIPTION ON <database_name>
 SHOW SUBSCRIPTION ON public
 ```
 
-输出结果：
+Output Result：
 
 ```sql
-SUBSCRIPTION,DESTINATIONS,MODE
-test,"127.0.0.1:8902,127.0.0.1:8903",ALL
+SUBSCRIPTION,DESTINATIONS, MODE
+test,"127.0.0.1:8902,127.0.1:8903", ALL
 ```
 
 ## Drop Subscription
@@ -120,7 +120,7 @@ We can use `DROP SUBSCRIPTION` to drop the subscription.
 ### Syntax
 
 ```sql
-DROP SUBSCRIPTION <subscription_name> ON <database_name>
+DROP SUBSCRIPTON <subscription_name> ON <database_name>
 ```
 
 ### Example
@@ -129,20 +129,20 @@ DROP SUBSCRIPTION <subscription_name> ON <database_name>
 DROP SUBSCRIPTION test ON public
 ```
 
-## 将数据发送到 telegraf
+## Send data to telegraf
 
 > You can refer to [Telegraf](/eco-integration/index/telegraf.md#cnos-telegraf) to know how to use Telegraf and how to install Telegraf.
 
-修改 `telegraf` 配置文件，增加如下配置，监听 `8803`端口
+Change the `telegraf` configuration to add the following configuration to listen on the `8803` port
 
 ```toml
-[[inputs.cnosdb]]
+[[inputs.cnosdb]
 service_address = ":8803"
 ```
 
 The data can be replicated to another CnosDB cluster by subscription, and the data replication will help to improve the fault tolerance and reliability of the whole system. CnosDB supports managing subscriptions through SQL, and CnosDB supports subscribing through Telegraf or another CnosDB cluster.
 
-> 假设 telegraf 位置在 `127.0.0.1` 上。
+> Assume that the telegraf position is on `127.0.0.1`.
 
 ```sql
 Supposing that we've started CnosDB and created a subscription, set `DESTINATIONS` to `127.0.0.1:8803` :
@@ -159,4 +159,4 @@ Subscriptions
 +--------------+----------------+-------------+
 ```
 
-现在，你可以使用 `telegraf` 将数据发送至任何位置。
+You can now send data to any location using `telegram`.
