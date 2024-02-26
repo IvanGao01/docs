@@ -84,7 +84,7 @@ let result = response.text().await.unwrap();
 
 <TabItem value="go" label="Golang">
 
-The sample code uses [fasthttp](https://github.com/valyala/fasthttp) as a dependency.
+@tab Rust#Rust
 
 Following are the parameters required to construct the http request.
 
@@ -120,11 +120,17 @@ req.SetRequestURI(url)
 Send the http request:
 
 ```go
-@tab Java#Java
+cli := fasthttp.Client{}
+resp := fasthttp.Response{}
+err := cli.Do(req, &resp)
+if err != nil {
+   return
+}
+fmt.Println(resp.StatusCode())
 ```
 
 The status code of the response will indicate whether the SQL is executed successfully, 200 representing success.
-@tab Rust#Rust
+The sample code uses [fasthttp](https://github.com/valyala/fasthttp) as a dependency.
 
 Following are the parameters required to construct the http request.
 
@@ -160,13 +166,7 @@ req.SetRequestURI(url)
 @tab Golang#Golang
 
 ```go
-cli := fasthttp.Client{}
-resp := fasthttp.Response{}
-err := cli.Do(req, &resp)
-if err != nil {
-   return
-}
-fmt.Println(resp.StatusCode())
+@tab Java#Java
 ```
 
 The status code of the response will indicate whether the SQL is executed successfully, 200 representing success.
