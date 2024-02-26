@@ -442,7 +442,7 @@ cnosdb-tool inspect hh [OPTIONS] <PATH>
 
 Options:
 
-- `<PATH>` - path of the file.
+- `<PATH>` - file path.
 - `--from` - start position of the data block.
 - `--to` - end position of the data block.
 - `--tenant <STRING>` - filter data blocks by Tenant.
@@ -495,7 +495,7 @@ cnosdb-tool inspect series-binlog [OPTIONS] <PATH>
 
 Options:
 
-- `<PATH>` - file path.
+- `<PATH>` - path of the file.
 - `--from` - start position of the data block.
 - `--to` - end position of the data block.
 - `--database <STRING>` - filter data blocks by Database.
