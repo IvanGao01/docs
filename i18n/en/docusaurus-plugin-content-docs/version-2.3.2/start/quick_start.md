@@ -1,9 +1,9 @@
 ---
-title: Quick Start
+title: Quick start
 order: 4
 ---
 
-# Quick start
+# Quick Start
 
 CnosDBSQL is inspired by [DataFusion](https://arrow.apache.org/datafusion/user-guide/introduction), We support most of the SQL syntax of DataFusion.
 
@@ -432,7 +432,7 @@ select_clause_set_right
 
 Each SELECT clause in the UNION must have the same number of columns, and the corresponding columns have the same data type.
 
-**Example**
+**Examples**
 
 - **UNION ALL**
   ```sql
@@ -532,7 +532,7 @@ Each SELECT clause in the UNION must have the same number of columns, and the co
 
 按引用的表达式对结果进行排序。默认情况使用升序 (ASC)。Sort the results by the referenced expression. Ascending (ASC) is used by default. Sort in descending order by adding DESC after the expression of ORDER BY.
 
-**Examples**
+**Example**
 
 ```sql
 SELECT * FROM air ORDER BY temperature;
