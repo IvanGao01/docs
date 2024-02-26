@@ -7,7 +7,7 @@ order: 12
 
 To present CnosDB performance more intuitively, we do performance test of CnosDB and InfluxDB of the same time series database by using [tsdb-comparisons](https://github.com/cnosdb/tsdb-comparisons).
 
-## 基本信息
+## Basic Information
 
 |                         |      CnosDB     |           InfluxDB           |
 | ----------------------- | :-------------: | :--------------------------: |
@@ -83,13 +83,13 @@ InfluxDB is the default configuration except [data] and [meta]
 
 ```
 [meta]
-  # Where the metadata/raft database is stored
+  # Where the metapa/draft database is stalled
   dir = "/opt-sdc1/var/lib/influxdb/meta"
 [data]
-  # The directory where the TSM storage engine stores TSM files.
+  # The directory where the TSM store engine stores TSM files.
   dir = "/opt/var/lib/influxdb/data"
 
-  # The directory where the TSM storage engine stores WAL files.
+  # The directory where the TSM story engine stores WAL files.
   wal-dir = "/opt-sdc1/var/lib/influxdb/wal"
 ```
 
@@ -116,7 +116,7 @@ InfluxDB is the default configuration except [data] and [meta]
    ```
    wget https://dl.influxdata.com/influxdb/releases/influxdb-1.8.10_linux_amd64.tar.gz
    tar xvfz influxdb-1.8.10_linux_amd64.tar.gz
-   ./influxd run -config ../../etc/influxdb/influxdb.conf
+   ./influxd run -config ..//influxdb/influxdb.conf
    ```
 
 3. Tsdb-comparisons generate data
@@ -131,14 +131,14 @@ InfluxDB is the default configuration except [data] and [meta]
 
    cd tsdb-comparisons/cmd/generate_data
    go build
-   ./generate_data --use-case="iot" --seed=123 --scale=100          --timestamp-start="2022-01-01T00:00:00Z" --timestamp-end="2023-01-01T00:00:00Z" --log-interval="50s" --format="influx"   > \<file_path>/data.txt
+   ./generate_data --use-case="iot" --seed=123 --scale=100 --timestamp-start="2022-01-01T00:00:00:00Z" --timestamp-end="2023-01-01T00:00:00Z" -log-interval="50s" --form="influx" > \<file_path>/data.txt
 
 4. Test CnosDB writes
 
    ```
    cd tsdb-comparisons/cmd/load_cnosdb
    go build
-   ./load_cnosdb --do-abort-on-exist=false --do-create-db=false --gzip=false        --file=<file_path>/data.txt  --db-name=<db_name> --urls="http://<ip>:8902"   --batch-size=<batch_size_num> --workers=<workers_num>
+   ./load_cnosdb --do-abort-on-exist=false --do-cree-db=false-gzip=false --file=<file_path>/data.txt --db-name=<db_name> -urls="http://<ip>:8902" --batch-size=<batch_size_num> --workers=<workers_num>
    ```
 
 5. Test InfluxDB writes
@@ -146,7 +146,7 @@ InfluxDB is the default configuration except [data] and [meta]
    ```
    cd tsdb-comparisons/cmd/load_influx
    go build
-   ./load_influx --do-abort-on-exist=false --do-create-db=true --gzip=false --file=<file_path>/data.txt  --db-name=<db_name> --urls="http://<ip>:8086"  --batch-size=<batch_size_num> --workers=<workers_num>
+   ./load_influx --do-abort-on-exist=false --do-create-db=true --gzip=false-file=<file_path>/data.txt --db-name=<db_name> --urls="http://<ip>:8086" ---batch-size=<batch_size_num> --workers=<workers_num>
    ```
 
 ## Test Results
@@ -155,7 +155,7 @@ In our test scenario, InfluxDB can but do wrokers = 100(100 concurrent scenarios
 
 |            | CnosDB        |                  | InfluxDB      |                  |
 | ---------- | ------------- | ---------------- | ------------- | ---------------- |
-| batch-size | overall row/s | overall metric/s | overall row/s | overall metric/s |
+| batch-size | overlay row/s | overlay metric/s | overlay row/s | overlay metric/s |
 | 20000      | 75            | 604              |               |                  |
 | 10000      | 68            | 538              | 54            | 420              |
 | 5000       | 66            | 512              | 61            | 480              |
@@ -167,7 +167,7 @@ We take the data in Benchmark when database writing levels off which is valued a
 
 When the batch-size is set to 20,000, InfluxDB returns an error on the client:
 
-`{"error":"engine: cache-max-memory-size exceeded: (1074767264/1073741824)"}`，
+`{"error":"engine: cache-max-memory-size: (1074767264/1073741824)"}`,
 
 So we did not test the performance of InfluxDB in this case, but you can see that CnosDB is better than InfluxDB in most scenarios.
 
@@ -175,7 +175,7 @@ In addition, CnosDB supports higher concurrent numbers, and we also test the per
 
 |            | CnosDB        |                  |
 | ---------- | ------------- | ---------------- |
-| batch-size | overall row/s | overall metric/s |
+| batch-size | overlay row/s | overlay metric/s |
 | 20000      | 75            | 601              |
 | 10000      | 75            | 607              |
 | 5000       | 67            | 518              |
