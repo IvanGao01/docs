@@ -11,7 +11,7 @@ order: 8
     cnosdb-cli
 ```
 
-**程序的参数如下：**
+**Parameters below：**
 
 ```
     -h --host CnosDB            Host of the service. The default is "localhost".
