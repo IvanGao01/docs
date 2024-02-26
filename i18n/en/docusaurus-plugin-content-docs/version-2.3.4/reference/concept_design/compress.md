@@ -5,9 +5,9 @@ order: 10
 
 # Compression Algorithm
 
-时序数据规模很大，且可能存在大量冗余，因而在时序数据库中经常使用压缩方法来节约存储空间和查询执行时的I/O代价，下面将讨论一些时序数据库中常见的压缩技术。
+Because of the large scale of time-series data and the potential for large amounts of redundancy, compression methods are frequently used in the time series database to save storage space and query the I/O costs of implementation, compression techniques that are common in some time series databases are discussed below.
 
-不同时序数据库的具体存储结构与压缩算法在设计上相差很大。以Open TSDB为代表的分布式时序数据库底层依托HBase集群存储，存在基本的时序数据模型，根据时序数据的基本特征对时序数据进行压缩存储。Open TSDB使用类字典压缩算法，通过将索引名称和每个序列名称的每个标签，通过进行编码来减少序列内存使用。然而依然存在很多无用的字段，无法有效的压缩，聚合能力比较弱。InfluxDB具有更丰富的数据类型，InfluxDB在整型数据采用整型编码，整数编码的压缩具体取决于原始数值的范围。时间戳为独立的数据类型，并且具有一定的规律可循，在InfluxDB中，针对时间戳数据先执行排序操作后使用delta算法进行编码，然后再根据编码结果采用不同的算法进行处理。有关 CnosDB 的压缩算法，下面的内容将帮您对其有更清楚的了解。
+The specific storage structure of different time series databases differs significantly from the design of compression algorithms.The base layer of the distributed time-series database represented by the Open TSDB is based on HBase cluster storage, where basic time-series data models exist for compressed storage based on the basic characteristics of the time-series data.Open TSDB uses classical compression algorithms to reduce sequence memory usage by encoding index names and each tag with each sequence name.However, there are still many useless fields that cannot be effectively compressed and have weak aggregation capabilities.InfluxDB has a more abundant data type, InfluxDB is encoded in whole data, and compression of integer codes depends on the range of original values.Timestamp is a stand-alone data type and has a certain pattern to follow, in InfluxDB, after sorting over timestamps, then encoded using delta algorithms before using different algorithms based on encoding results.With regard to CnosDB compression algorithm, the following content will help you understand it more clearly.
 
 ### DELTA
 
@@ -15,7 +15,7 @@ Mainly used for timestamp, integer and unsigned integer.
 
 #### Principle
 
-First, the difference is made, that is, the first data is unchanged, other data are transformed into delta with the previous data, and all numbers are processed byzigzag, i64 is mapped to u64, specifically to zero, negative numbers are mapped to odd numbers, such as [0, 1, 2] after zigzag processing to [0, 1,2] and maximum convention numbers are calculated. Then judge that if all deltas are the same, use the cruise path code directly, that is, only the first value, delta, and the number of data. Otherwise, all delta values are divided into maximum convention numbers (maximum convention numbers are encoded into data), and then encoded using Simple 8b.之后判断一下如果所有的delta都相同，就直接使用游程编码，即只需要记录第一个值，delta和数据的数量。Compared with the delta algorithm and the gorilla algorithm, because the difference algorithm is also used, it is roughly the same in the selection of applicable data.
+First, the difference is made, that is, the first data is unchanged, other data are transformed into delta with the previous data, and all numbers are processed byzigzag, i64 is mapped to u64, specifically to zero, negative numbers are mapped to odd numbers, such as [0, 1, 2] after zigzag processing to [0, 1,2] and maximum convention numbers are calculated. Then judge that if all deltas are the same, use the cruise path code directly, that is, only the first value, delta, and the number of data. Otherwise, all delta values are divided into maximum convention numbers (maximum convention numbers are encoded into data), and then encoded using Simple 8b.It is then judged that if all delta are identical, the code is directly used, i.e. only the amount of the first value, delta and data is to be recorded.Compared with the delta algorithm and the gorilla algorithm, because the difference algorithm is also used, it is roughly the same in the selection of applicable data.
 
 ![](/img/simple8b.png)
 
@@ -33,7 +33,7 @@ Mainly used for floating point type.
 
 #### Principle
 
-The principle of Gorilla is similar to the difference, the difference is that the difference is the difference between two data, and gorilla is different or different. The first data is not processed at the time of coding, and if the previous data is different from the previous data, if the difference or value is 0, repeat it with the previous data, write a patch to represent repetition, and, if not zero, calculate the first zero and back derivative zeros of the heterogeneous or value delta. If the number is the same, only the intermediate valid bit is encoded. If the number is different, the first 0.5 bits are derived, the back 0. 5 bits are written, and then the intermediate valid bit is written.编码时第一个数据不进行处理，计算后一个的数据与前一个数据的异或，如果异或值为0，则与上一个数据重复，写一个补位用来表示重复，如果不为零，则计算异或值delta的前导零和后导零个数，如果个数相同，则只编码中间有效位，如果个数不同则前导零写5位，后导零写6位，然后再写中间有效位。
+The principle of Gorilla is similar to the difference, the difference is that the difference is the difference between two data, and gorilla is different or different. The first data is not processed at the time of coding, and if the previous data is different from the previous data, if the difference or value is 0, repeat it with the previous data, write a patch to represent repetition, and, if not zero, calculate the first zero and back derivative zeros of the heterogeneous or value delta. If the number is the same, only the intermediate valid bit is encoded. If the number is different, the first 0.5 bits are derived, the back 0. 5 bits are written, and then the intermediate valid bit is written.The first data is not processed at the time of encoding and the latter data is calculated as different from the previous data or, if the value is 0, duplicates the previous data by writing a supplement, calculates the lead zero and back zero for the difference or value delta or, if the number is the same, encoded only the middle position and 5 for the lead if the number differs, then zero for 6 and then write the intermediate valid position.
 
 ![](/img/gorilla.png)
 
@@ -51,13 +51,13 @@ Mainly used for timestamps, integers, unsigned integers and floating points.
 
 Qantile supports multiple levels of compression, and CosDB currently uses the default compression level.
 
-通过哈夫曼编码和偏移量描述每个数据，用哈夫曼码对应数据所在的范围[lower, upper]，偏移量指定该范围内的确切位置。Each data is described by Huffman coding and offset, and the offset specifies the exact location of the range of the data by the Huffman code corresponding to the range of the data. For each block compression, the difference processing is first carried out, the data after the difference is replaced by the current data, then the current array is divided into multiple blocks at an interval of 128, each block determines a range and associated metadata, while calculating the maximum number of conventions per block, optimizes the number of conventions as appropriate, and merges some adjacent blocks, then determines its Huffman encoding based on the weight of each block in the data, and finally encodes the data using them.
+Describe each data with the Hafman encoding and offset, using the Hafman code in the range [lower, upper], the offset specifies the exact location within that range.Each data is described by Huffman coding and offset, and the offset specifies the exact location of the range of the data by the Huffman code corresponding to the range of the data. For each block compression, the difference processing is first carried out, the data after the difference is replaced by the current data, then the current array is divided into multiple blocks at an interval of 128, each block determines a range and associated metadata, while calculating the maximum number of conventions per block, optimizes the number of conventions as appropriate, and merges some adjacent blocks, then determines its Huffman encoding based on the weight of each block in the data, and finally encodes the data using them.
 
 ![](/img/quantile.png)
 
 #### Applicability
 
-相比较于delta算法与gorilla算法，由于同样使用了差分算法，在适用数据的选择上大致相同，由于quantile算法采用了更复杂的编码方式，导致压缩效率比较低，大约有5到10倍的差距，相对地，压缩率则稍优于delta与gorilla算法。
+Comparing the delta algam with the gorilla algorithm, which also uses differential algorithms, the choice of applicable data is broadly the same, and quantile algorithms result in lower compression efficiency, with a gap of approximately 5 to 10 times, and a slightly better compression rate than delta and gorilla algorithms.
 
 The longitudinal axis of the image is the compression ratio, the time is only relative.
 
@@ -87,21 +87,21 @@ And compressed time and decompression time, units are us.
 
 ![](/img/str_compress_time.png)
 
-#### SNAPPY
+#### SNPPY
 
-Snappy algorithms are not designed to minimize compression or are not designed to be compatible with any other compression library. Instead, its goal is to be very high compression efficiency and reasonable compression rates, so it is recommended to use snappy more efficiently.相反，它的目标是非常高的压缩效率和合理的压缩率，所以在更加需要效率的情况下推荐使用snappy。
+Snappy algorithms are not designed to minimize compression or are not designed to be compatible with any other compression library. Instead, its goal is to be very high compression efficiency and reasonable compression rates, so it is recommended to use snappy more efficiently.Rather, it aims at very high compression efficiency and reasonable compression, and therefore recommends the use of snapmy when there is a greater need for efficiency.
 
 In the absence of specifying a string compression algorithm, we specify this compression algorithm by default.
 
-#### ZSTD
+#### ZSTs
 
 Zstd supports multiple compression levels, and CnosDB currently uses the default compression level.
 
-Zstd, known as Zstand, is a fast compression algorithm that provides high compression ratio, and Zstt uses a finite state entropy encoder. A very powerful compromise scheme for compression speed/compression rate is provided.提供了非常强大的压缩速度/压缩率的折中方案。
+Zstd, known as Zstand, is a fast compression algorithm that provides high compression ratio, and Zstt uses a finite state entropy encoder. A very powerful compromise scheme for compression speed/compression rate is provided.A very powerful compression speed/compression compromise solution is provided.
 
 #### GZIP/ZLIB
 
-Gzip is similar to zlib. For files to be compressed, a variant of the LZ77 algorithm is first used to compress the results by using Huffman coding, with high compression rate but also time-consuming. Both algorithms are widely used and have similar performances and can be selected according to the situation.这两种算法使用均比较广泛，性能相似，可以根据情况选择。
+Gzip is similar to zlib. For files to be compressed, a variant of the LZ77 algorithm is first used to compress the results by using Huffman coding, with high compression rate but also time-consuming. Both algorithms are widely used and have similar performances and can be selected according to the situation.Both of these algorithms are used more widely, with similar performance and can be selected according to the circumstances.
 
 #### BZIP
 
