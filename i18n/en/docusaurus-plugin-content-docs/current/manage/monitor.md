@@ -12,9 +12,9 @@ If you would like to see more metrics supported by CnosDB, please send an ISSUE 
 
 ### VNODE_DISK_STORAGE
 
-#### Name
+#### NAME
 
-vnode_disk_storage
+vnode_disk_store
 
 #### Category
 
@@ -26,21 +26,21 @@ The disk that the Vnode occupies.
 
 #### Tag
 
-| Field                         | Type                                  |
+| Field                         | Description                           |
 | ----------------------------- | ------------------------------------- |
 | DATABASE                      | Database vnode belongs to             |
 | NODE_ID  | ID of data node                       |
-| TENANT                        | tenant vnode belongs to               |
+| ENANT                         | tenant vnode belongs to               |
 | VNODE_ID | ID of Vnode                           |
 | VALUE                         | Disk that the Vnode occupies in bytes |
 
-### VNODE_CACHE_SIZE
+### VNODE_CHE_SIZE
 
 #### Name
 
 vnode_cache_size
 
-#### Type
+#### Category
 
 Gauge
 
@@ -54,7 +54,7 @@ The cache size that vnode occupies in bytes.
 | ----------------------------- | -------------------------------------- |
 | DATABASE                      | Database vnode belongs to              |
 | NODE_ID  | ID of data node                        |
-| TENANT                        | tenant vnode belongs to                |
+| ENANT                         | tenant vnode belongs to                |
 | VNODE_ID | ID of Vnode                            |
 | VALUE                         | Cache that the Vnode occupies in bytes |
 
@@ -64,11 +64,11 @@ The cache size that vnode occupies in bytes.
 
 http_data_in
 
-#### Category
+#### Type
 
 Count
 
-#### Description
+#### Type
 
 Data traffic written over http, excluding SQL.
 
@@ -79,7 +79,7 @@ Data traffic written over http, excluding SQL.
 | TIME                         | Time of record                      |
 | DATABASE                     | Database name                       |
 | NODE_ID | ID of data node                     |
-| TENANT                       | Tenant name the database belongs to |
+| ENANT                        | Tenant name the database belongs to |
 | VALUE                        | The total write traffic in Bytes    |
 
 ### HTTP_DATA_OUT
@@ -103,9 +103,9 @@ The size of the Http return data
 | TIME                         | Time of record                              |
 | DATABASE                     | Database name                               |
 | NODE_ID | ID of data node                             |
-| TENANT                       | Tenant name the database belongs to         |
+| ENANT                        | Tenant name the database belongs to         |
 | Database                     | DatabaseName                                |
-| User                         | DatabaseName                                |
+| User                         | User name                                   |
 | VALUE                        | The total size of the read traffic in Bytes |
 
 ### HTTP_QUERIES
@@ -126,10 +126,10 @@ This metric keeps track of the number of Http queries a user makes.
 
 | Field                        | Discription                         |
 | ---------------------------- | ----------------------------------- |
-| TIME                         | Time of record                      |
+| TIME                         | Time of queries                     |
 | DATABASE                     | Database name                       |
 | NODE_ID | ID of data node                     |
-| TENANT                       | Tenant name the database belongs to |
+| ENANT                        | Tenant name the database belongs to |
 | USER                         | User name                           |
 | VALUE                        | Query times                         |
 
@@ -151,10 +151,10 @@ This metric records the number of times a user writes via Http.
 
 | Field                        | Discription                         |
 | ---------------------------- | ----------------------------------- |
-| TIME                         | Time of queries                     |
+| TIME                         | Time of record                      |
 | DATABASE                     | Database name                       |
 | NODE_ID | ID of data node                     |
-| TENANT                       | Tenant name the database belongs to |
+| ENANT                        | Tenant name the database belongs to |
 | USER                         | User name                           |
 | VALUE                        | **Example**                         |
 
@@ -168,7 +168,7 @@ http_query_duration
 
 Histogram
 
-#### Discription
+#### Description
 
 Time spent querying through the Http interface.
 
@@ -179,7 +179,7 @@ Time spent querying through the Http interface.
 | TIME                         | Time of record                      |
 | DATABASE                     | Database name                       |
 | NODE_ID | ID of data node                     |
-| TENANT                       | Tenant name the database belongs to |
+| ENANT                        | Tenant name the database belongs to |
 | USER                         | User name                           |
 | LE                           | Less than this time, in ms          |
 | VALUE                        | Times                               |
@@ -205,8 +205,8 @@ Time taken to write through the Http interface.
 | TIME                         | Time of record                      |
 | DATABASE                     | Database name                       |
 | NODE_ID | ID of data node                     |
-| TENANT                       | Tenant name the database belongs to |
-| USER                         | User name                           |
+| ENANT                        | Tenant name the database belongs to |
+| USER                         | DatabaseName                        |
 | LE                           | Less than this time, in ms          |
 | VALUE                        | Times                               |
 
@@ -231,7 +231,7 @@ Total size of the data accepted by the Coordinator when the data is written to t
 | TIME                         | Time of record                      |
 | DATABASE                     | Database name                       |
 | NODE_ID | ID of data node                     |
-| TENANT                       | Tenant name the database belongs to |
+| ENANT                        | Tenant name the database belongs to |
 | VALUE                        | Data size in bytes                  |
 
 ### COORD_DATA_OUT
@@ -255,7 +255,7 @@ Total size of the data sent by the Coordinator when the data is read out of the 
 | TIME                         | Time of record                      |
 | DATABASE                     | Database name                       |
 | NODE_ID | ID of data node                     |
-| TENANT                       | Tenant name the database belongs to |
+| ENANT                        | Tenant name the database belongs to |
 | VALUE                        | Data size in bytes                  |
 
 ### COORD_QUERIES
@@ -268,23 +268,23 @@ coord_queries
 
 Count
 
-#### Discription
+#### Description
 
 The number of times the data passes through the Coordinator during the query.
 
 #### Tag
 
-| Field                        | Description                         |
+| Field                        | Discription                         |
 | ---------------------------- | ----------------------------------- |
 | TIME                         | Time of record                      |
 | DATABASE                     | Database name                       |
 | NODE_ID | ID of data node                     |
-| TENANT                       | Tenant name the database belongs to |
+| ENANT                        | Tenant name the database belongs to |
 | VALUE                        | Times                               |
 
 ### COORD_WRITES
 
-#### NAME
+#### Name
 
 coord_writes
 
@@ -303,7 +303,7 @@ The number of times the data passes through the Coordinator during writing.
 | TIME                         | Time of record                      |
 | DATABASE                     | DatabaseName                        |
 | NODE_ID | ID of data node                     |
-| TENANT                       | Tenant name the database belongs to |
+| ENANT                        | Tenant name the database belongs to |
 | VALUE                        | Times                               |
 
 ### SQL_DATA_IN
@@ -316,7 +316,7 @@ sql_data_in
 
 Count
 
-#### Description
+#### Discription
 
 The size of the data written via sql, including INSERT, COPY statements
 
@@ -327,7 +327,7 @@ The size of the data written via sql, including INSERT, COPY statements
 | TIME                         | Time of record                      |
 | DATABASE                     | Database name                       |
 | NODE_ID | ID of data node                     |
-| TENANT                       | Tenant name the database belongs to |
+| ENANT                        | Tenant name the database belongs to |
 | VALUE                        | Data size in bytes                  |
 
 ## Prometheus Monitor
