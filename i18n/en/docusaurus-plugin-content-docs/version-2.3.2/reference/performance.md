@@ -15,25 +15,25 @@ When the batch-size is set to 20,000, InfluxDB returns an error on the client: `
 
 ### Testing Environment
 
-|               | CnosDB                                                                                                                         | InfluxDB                                                                                                                                  |
-| ------------- | ------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| Version       | 2.0.1                                                                                                                          | 1.8.10                                                                                                                                    |
-| 机器            | 1                                                                                                                              | 1                                                                                                                                         |
-| Configuration | 3.10.0-1160.81.1.el7.x86_64                                                                               | 3.10.0-1160.81.1.el7.x86_64                                                                                          |
-| 操作系统版本        | CentOS Linux release 7.9.2009 (Core)                                                                        | CentOS Linux release 7.9.2009 (Core)                                                                                   |
-| CPU           | Service side server:32 CPUs x Intel(R) Xeon(R) Gold 5218 CPU @ 2.30GHz（memory:255.65 GB） | Client server: 32 CPUs x Intel (R) Xion (R) Gold 5218 CPU @ 2.30GHz (memory 256) |
-| 内存            | 512                                                                                                                            | 480                                                                                                                                       |
-| 磁盘            | 1块SSD盘(1T)                                                                                                  | 1块SSD盘(1T)                                                                                                             |
+|                          | CnosDB                                                                                                                         | InfluxDB                                                                                                                                  |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| Version                  | 2.0.1                                                                                                                          | 1.8.10                                                                                                                                    |
+| Machine                  | 1                                                                                                                              | 1                                                                                                                                         |
+| Configuration            | 3.10.0-1160.81.1.el7.x86_64                                                                               | 3.10.0-1160.81.1.el7.x86_64                                                                                          |
+| Operating system version | CentOS Linux release 7.9.9 (Core)                                                                           | CentOS Linux release 7.9.9 (Core)                                                                                      |
+| CPU                      | Service side server:32 CPUs x Intel(R) Xeon(R) Gold 5218 CPU @ 2.30GHz（memory:255.65 GB） | Client server: 32 CPUs x Intel (R) Xion (R) Gold 5218 CPU @ 2.30GHz (memory 256) |
+| Memory                   | 512                                                                                                                            | 480                                                                                                                                       |
+| Disk                     | 1 SDD (1T)                                                                                                  | 1 SDD (1T)                                                                                                             |
 
-> 注：CnosDB和InfluxDB均为容器内部署，CPU核数为8，内存限制为32G。
+> Note：CnosDB and InfluxDB are internal to the container, the CPU number is 8, and the memory limit is 32G.
 
-### 2.测试实例准备
+### 2. Test case preparation
 
 1. Install the db environment, go environment, etc. of the corresponding machine in advance, and ensure normal connection.
 
 2. Install CnosDB:
 
-   参照部署文档：[Docker安装CnosDB](../start/install.md)
+   Reference deployment document：[Docker安装CnosDB](../start/install.md)
 
 3. Test InfluxDB writes
 
@@ -41,24 +41,24 @@ When the batch-size is set to 20,000, InfluxDB returns an error on the client: `
    tar xvfz influxdb-1.8.10_linux_amd64.tar.gz
    ./influxd run -config ../../etc/influxdb/influxdb.conf
 
-### 3.配置项检查及修改
+### 3) Configuration Check & Modify
 
 ```
- CnosDB和InfluxDB均只修改了Data、Wal、Meta的存储文件夹路径，其余均保持默认，此处不做赘述。
+ Both CnosDB and InfluxDB modify only the data storage folder path for Data, Wal, Meta, all remaining by default, and are not repeated here.
 ```
 
-### 4.数据集准备
+### Data set preparation
 
-| 用例  | 确定性生成的PRNG种子 | 要生成的设备数量 | 开始时间戳                | 结束时间戳                | 每台设备每次读数时间间隔 | 目标数据库    | 数据量大小 | 数据行数       |
-| --- | ------------ | -------- | -------------------- | -------------------- | ------------ | -------- | ----- | ---------- |
-| iot | 67           | 75       | 2023-01-01T00:00:00Z | 2023-05-01T00:00:00Z | 60           | CnosDB   | 8G    | 37,342,964 |
-| iot | 66           | 75       | 2023-01-01T00:00:00Z | 2023-05-01T00:00:00Z | 57           | InfluxDB | 8G    | 37,342,964 |
+| Example | Determine the PRNG-seed | Number of devices to generate | Start timestamp      | End timestamp        | Interval between readings per device | Target database | Data Size | Data lines |
+| ------- | ----------------------- | ----------------------------- | -------------------- | -------------------- | ------------------------------------ | --------------- | --------- | ---------- |
+| iot     | 67                      | 75                            | 2023-01-01T00:00:00Z | 2023-05-01T00:00:00Z | 60                                   | CnosDB          | 8G        | 37,342,964 |
+| iot     | 66                      | 75                            | 2023-01-01T00:00:00Z | 2023-05-01T00:00:00Z | 57                                   | InfluxDB        | 8G        | 37,342,964 |
 
-### 5.测试方案
+### 5. Test Scheme
 
-此次测试方案主要从两个角度考量：保持同等batch-size下，测试导入并发；保持同等导入并发大小，测试batch-size。
+This test program looks primarily at：to keep the same batch-size below from two angles and tests to import and distribute; keep the same import and dispatch size; test batch-size.
 
-| batch-size | workers |
+| batch-size | Workers |
 | ---------- | ------- |
 | 1000       | 61      |
 | 10000      | 75      |
@@ -66,7 +66,7 @@ When the batch-size is set to 20,000, InfluxDB returns an error on the client: `
 | 5000       | 6       |
 | 20000      | 6       |
 
-## 测试中期
+## Test medium term
 
 1. Tsdb-comparisons generate data
 
@@ -74,7 +74,7 @@ When the batch-size is set to 20,000, InfluxDB returns an error on the client: `
 git clone https://github.com/cnosdb/cnosdb.git
 ```
 
-2. 生成InfluxDB数据集
+2. Generate InfluxDB Dataset
 
 ```shell
 cd tsdb-comparisons/cmd/generate_data
@@ -85,7 +85,7 @@ cd tsdb-comparisons/cmd/generate_data
 3. www\.cnosdb.com
 
 ```shell
-docker run --name cnosdb -p 8902:8902 -d --cpus=8 --memory=32g cnosdb/cnosdb:community-latest cnosdb run -M singleton
+docker run --name cnosdb -p 8902:8902-d --cpus=8 --memory=32g cnosdb/cnosdb:community-latestcnosdb run -M singleton
 ```
 
 4. InfluxDB is the default configuration except [data] and [meta]
@@ -99,7 +99,7 @@ docker run --name influxdb -p 8086:8086 -d --cpus=8 --memory=32g influxdb
 ```shell
 cd tsdb-comparisons/cmd/load_cnosdb
 go build
-./load_cnosdb --do-abort-on-exist=false --do-create-db=false --gzip=false        --file=<file_path>/data.txt  --db-name=<db_name> --urls="http://<ip>:8902"   --batch-size=<batch_size_num> --workers=<workers_num>
+./load_cnosdb --do-abort-on-exist=false --do-cree-db=false-gzip=false --file=<file_path>/data.txt --db-name=<db_name> -urls="http://<ip>:8902" --batch-size=<batch_size_num> --workers=<workers_num>
 ```
 
 6. Download InfluxDB, modify configurations in `etc/influxdb/influxdb.conf`, run
@@ -114,7 +114,7 @@ go build
 
 |            |         | CnosDB        |                  | InfluxDB      |                  | With the increase of concurrent numbers, performance in some scenarios will also be improved, and CnosDB performance has a higher ceiling. |
 | ---------- | ------- | ------------- | ---------------- | ------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| batch-size | workers | overall row/s | overall metric/s | overall row/s | overall metric/s |                                                                                                                                            |
+| batch-size | Workers | overlay row/s | overlay metric/s | overlay row/s | overlay metric/s |                                                                                                                                            |
 | 1000       | 49      | 102089.67     | 807526.66        | 93781.54      | 741809.55        | 518                                                                                                                                        |
 | 2500       | 47      | 137468.17     | 607 463 382      | 106206.98     | 840094.40        | 330                                                                                                                                        |
 | 2500       | 49      | 211845.94     | 1675695.81       | 158378.11     | 1252766.68       | 43                                                                                                                                         |
