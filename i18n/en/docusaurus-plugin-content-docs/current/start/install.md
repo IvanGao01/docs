@@ -79,7 +79,7 @@ curl -o oceanic_station.txt https://dl.cnosdb.com/sample/oceanic_station.txt
   SHOW TABLES;
   ```
 
-  Successful execution returned the following results:
+  Successful execution returns the following results:
 
   ```
     +-------+
@@ -97,7 +97,7 @@ curl -o oceanic_station.txt https://dl.cnosdb.com/sample/oceanic_station.txt
   SELECT * FROM air limit 10;
   ```
 
-  Successful execution returns the following results:
+  Successful execution returned the following results:
 
   ```sql
   +---------------------+------------+------------+-------------+----------+
