@@ -2,68 +2,68 @@
 sidebar_position: 12
 ---
 
-# 数据分布策略
+# Data Distribution Strategy
 
 :::tip
 Only Enterprise Edition supports
 :::
 
-对于重要的线上生产，需要支持跨区域级别的容灾。CnosDB的多副本特性搭配合理的数据分布策略可以满足这个目标。
+For important online production, there is a need to support disaster preparedness at the cross-regional level.A sound data distribution strategy for CnosDB’s multi-copy properties can meet this goal.
 
-## 数据分布的两个维度
+## Two dimensions of data distribution
 
-rack：机架维度，一般指同一个机房的同一个机架上的数据节点。
+rack：frame dimensions that typically refer to data nodes on the same racket in the same room.
 
-dc：  数据中心维度，一般指一个机房、一个数据中心。
+dc：  data centre dimension generally refers to a room and a data centre.
 
-## 策略类型
+## Policy type
 
-### 简单策略
+### Simple Policy
 
-副本数据放置同一个rack上
-名称：simple
-参数：dc、rack
+Copy data is placed on
+with the same rack name：Simple
+parameter：dc and rack
 
 ```SQL
-create placement_policy policy_name WITH rule simple dc 'dc1' rack 'rack1'  -- 所有副本都放置在dc1的rack1的机器上
+create placement_policy policy_name WITH rule simple dc 'dc1' rack 'rack1' -- all copies are placed on a rack1 machine in dc1
 ```
 
-### 感知Rack策略
+### Know Rack Policy
 
-副本数据尽可能放置在同一个dc的不同rack上
-名称：rack_aware
-参数：dc、以及rack列表
+To the extent possible, copy data is placed on
+name：rack_aware
+parameter：dc and rack list on different rack of the same dc
 
 ```SQL
-create placement_policy policy_name WITH rule rack_aware dc 'dc1' rack 'rack1,rack2,rack3,rack4' -- 所有副本都放置在dc1的rack1-4的不同机架上
+create placement_policy policy_name WITH rule back_aware dc 'dc1' rack 'rack1,rack2,rack3,rack4' -- all copies are placed on different rack1-4 shelves of dc1
 ```
 
-### 感知DC策略
+### Know DC Policy
 
-副本数据尽可能放置在不同dc上
-名称：dc_aware
-参数：dc列表
+Copy data is placed on
+name：dc_aware
+parameter：dc list
 
 ```SQL
-create placement_policy policy_name WITH rule dc_aware dc 'dc1,dc2,dc3,dc4' -- 所有副本尽可能放置在dc1-4的机器上
+create placement_policy policy_name WITH rule dc_aware dc 'dc1,dc2,dc3,dc4' -- all copies will be placed on dc1-4 machines to the extent possible
 ```
 
 **Notice**
 
-副本放置策略隶属于租户，同一个租户下，策略名字唯一。
+A copy of the strategy is attached to the tenant and is unique under the same tenant.
 
-## 策略关联
+## Policy association
 
-创建/修改Database时可以指定放置策略的名字进行关联，如果不指定放置策略按照现有逻辑处理，就是不感知dc与rack。
+The name of the placement policy can be associated when created/modifying the Database. If you do not specify the placement strategy according to existing logic, you don't know dc and rack.
 
 ```SQL
 create database db with replica 2 placement_policy policy_name
 alter database db set placement_policy policy_name
 ```
 
-## 策略查看
+## Policy View
 
-可以通过系统表来查看当前租户下的策略和使用情况
+A system table can be used to view current tenant strategies and usage
 
 ```SQL
 select * from information_schema.placement_policys;
@@ -74,18 +74,18 @@ select * from information_schema.placement_policys;
 +---------+-----------+-----+-------------------------+------------+
 ```
 
-## 策略的修改和删除
+## Policy modification and deletion
 
-当没有database使用策略时，可以进行drop/alter
+Drop/alter can be used when no data usage policy is available
 
 ```SQL
-drop placement_policy policy1
-alter placement_policy policy1 WITH rule dc_aware dc 'dc1,dc2,dc3,dc4'
+Drop placement_policy 1
+alter placement_policy policy 1 WITH rule dc_aware dc 'dc1,dc2,dc3,dc4'
 ```
 
-## Node标签
+## Node Label
 
-节点在加入集群的时候通过配置文件指定所属的dc和rack，并且可以通过show datanodes进行查看
+The node specifies the dc and rack when joining the cluster and can be viewed through show datanodes.
 
 ```
 location = "/dc1/rack1"
