@@ -283,7 +283,7 @@ int main() {
   </build>
   ```
 
-- #### Add environment variable
+- #### Add environment variables
 
   ```shell
   _JAVA_OPTIONS="--add-opens=java.base/java.nio=ALL-UNNAMED"
@@ -295,7 +295,7 @@ int main() {
   env _JAVA_OPTIONS="--add-opens=java.base/java.nio=ALL-UNNAMED" java -jar ...
 
 
-  # if you use maven
+  # if maven used 
   _JAVA_OPTIONS="--add-opens=java.base/java.nio=ALL-UNNAMED" mvn exec:java -Dexec.mainClass="YourMainCode"
   ```
 
@@ -428,7 +428,7 @@ public class Main {
   </dependencies>
   ```
 
-- #### Add environment variables
+- #### Add environment variable
 
   ```shell
   _JAVA_OPTIONS="--add-opens=java.base/java.nio=ALL-UNNAMED"
@@ -440,7 +440,7 @@ public class Main {
   env _JAVA_OPTIONS="--add-opens=java.base/java.nio=ALL-UNNAMED" java -jar ...
 
 
-  # if maven used 
+  # if you use maven
   _JAVA_OPTIONS="--add-opens=java.base/java.nio=ALL-UNNAMED" mvn exec:java -Dexec.mainClass="YourMainCode"
   ```
 
