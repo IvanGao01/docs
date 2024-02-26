@@ -228,7 +228,7 @@ alter user dev set granted_admin = true;
 
 ### Revoke admin Permission
 
-**Syntax**
+**Examples**
 
 ```sql
 alter user <user_name> set granted_admin = false
@@ -418,7 +418,7 @@ REVOKE READ ON DATABASE air FROM rrr;
 
 - ### Alter a User With a Role Under a Tenant
 
-**Examples**
+**Syntax**
 
 ```sql
 ALTER
