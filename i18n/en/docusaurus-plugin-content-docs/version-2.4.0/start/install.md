@@ -1,37 +1,37 @@
 ---
-title: 安装
+title: Install
 order: 2
 ---
 
-# 安装
+# Install
 
-## 部署
+## Deploy
 
-其他安装方式请查看[安装CnosDB](../deploy)
+For other installation methods, please see [Installing CnosDB](https://www.docker.com/products/docker-desktop/)
 
-## Docker安装
+## Docker install
 
-1. 安装 [Docker](https://www.docker.com/products/docker-desktop/) 环境
+1. Installing a [Docker](https://www.docker.com/products/docker-desktop/) environment
 
-2. 使用 Docker 启动容器
-
-```shell
-  docker run --name cnosdb -p 8902:8902 -d cnosdb/cnosdb:community-latest cnosdb run -M singleton
-```
-
-3. 进入容器
+2. Start the container with Docker
 
 ```shell
-  docker exec -it cnosdb sh
+docker run --name cnosdb -d cnosdb/cnosdb:community-latest cnosdb run -M singleton
 ```
 
-4. 运行`cnosdb-cli`
+3. Enter the container
 
 ```shell
-  cnosdb-cli --port 8902
+docker exec -it cnosdb sh
 ```
 
-会显示如下：
+4. Run `cnosdb-cli`
+
+```shell
+cnosdb-cli --port 8902
+```
+
+It will display the following:
 
 ```
 CnosDB CLI v2.3.0
@@ -39,69 +39,70 @@ Input arguments: Args { host: "localhost", port: 8902, user: "cnosdb", password:
 public ❯
 ```
 
-## 下载示例数据
+## Download Sample Data
 
-如果在 cnosdb-cli 中，请输入`\q`退出
+If in cnosdb-cli, type `\q` to exit
 
-在shell中执行以下命令将在本地生成一个名称为`oceanic_station`的 Line Protocol 格式的数据文件。
+Executing the following command in the shell will generate a data file locally in Line Protocol format with the name oceanic_station
 
 ```shell
 curl -o oceanic_station.txt https://dl.cnosdb.com/sample/oceanic_station.txt
 ```
 
-## 导入数据
+## Import Data
 
-- **启动CLI**
+- **Start the CLI**
   ```shell
   cnosdb-cli
   ```
-- **创建数据库**
+- **Create the database**
   ```shell
   create database oceanic_station with ttl '10000d';
   ```
-- **切换到指定数据库**
+- **Switch to the specified database**
   ```shell
   \c oceanic_station
   ```
-- **导入数据**
+- **Import data**
 
-  执行\w指令，\w后面为数据文件的绝对路径或相对cnosdb-cli的工作路径。
+  Execute the \w command, followed by the absolute path of the data file or the working path relative to cnosdb-cli.
 
   ```shell
   \w oceanic_station.txt
   ```
 
-## 数据查询
+## Data Query
 
-- **查看所有表**
+- **View all tables**
 
   ```shell
   SHOW TABLES;
   ```
 
-  执行成功返回以下结果：
+  Successful execution returned the following results:
 
   ```
-  +-------+
-  | Table |
-  +-------+
-  | sea   |
-  | wind  |
-  | air   |
-  +-------+
-  Query took 0.002 seconds.
+    +-------+
+    | Table |
+    +-------+
+    | sea   |
+    | wind  |
+    | air   |
+    +-------+
+    Query took 0.002 seconds.
   ```
-- **查询数据**
+- **Query data**
 
   ```shell
   SELECT * FROM air limit 10;
   ```
 
-  执行成功返回以下结果：
+  Successful execution returns the following results:
 
   ```sql
   +---------------------+------------+------------+-------------+----------+
   | time                | station    | visibility | temperature | pressure |
+
   +---------------------+------------+------------+-------------+----------+
   | 2022-01-14 16:00:00 | XiaoMaiDao | 50         | 63          | 52       |
   | 2022-01-14 16:03:00 | XiaoMaiDao | 56         | 62          | 54       |
@@ -117,8 +118,8 @@ curl -o oceanic_station.txt https://dl.cnosdb.com/sample/oceanic_station.txt
   Query took 0.635 seconds.
   ```
 
-> 有关更多关于数据库的操作请查看：
+> For more information about database operations, please refer to:
 >
 > [SQL](../reference/sql.md)
 >
-> [编程接口](../develop/api.md)
+> [Programming Interface](../develop/api.md)
