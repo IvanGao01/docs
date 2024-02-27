@@ -1,9 +1,8 @@
 ---
-title: 备份还原
-order: 6
+sidebar_position: 3
 ---
 
-### 概述
+# 备份还原
 
 CnosDB 备份和还原工具是一个用于导出、导入和迁移 CnosDB 集群数据的命令行工具。该工具支持备份元数据和用户数据，以及在不同集群之间进行数据迁移。
 
@@ -136,7 +135,7 @@ cnosdb-cli [--error-stop] restore-dump-ddl DUMP_FILE
 
 当指定 --error-stop 时，恢复中出错会中断恢复过程
 
-cnosdb-cli 支持更多参数，参数可参考[文档](../reference/tools.md/#客户端命令行程序)，其中的参数应该放在 dump-ddl 和
+cnosdb-cli 支持更多参数，参数可参考[文档](../reference/tools.md#客户端命令行程序)，其中的参数应该放在 dump-ddl 和
 restore-dump-ddl 前面
 
 ## 示例
