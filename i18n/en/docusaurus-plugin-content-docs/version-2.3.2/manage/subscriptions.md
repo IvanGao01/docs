@@ -1,33 +1,34 @@
 ---
-title: 订阅管理
+title: Subscriptions
 order: 9
 ---
 
 :::tip
-仅企业版支持
+Only Enterprise Edition supports
 :::
 
-通过订阅可以把数据复制到另一个 CnosDB 集群，数据复制将有助于提高整个系统的容错性和可靠性。CnosDB 支持通过 SQL 管理订阅，CnosDB 支持通过 Telegraf 进行订阅或者另一个 CnosDB 集群进行订阅。
+The data can be replicated to another CnosDB cluster by subscription, and the data replication will help to improve the fault tolerance and reliability of the whole system. CnosDB supports managing subscriptions through SQL, and CnosDB supports subscribing through Telegraf or another CnosDB cluster.Subscription Distribution Through Telegraf
 
-## 创建订阅
+## Create Subscription
 
-可以使用 `CREATE SUBSCRIPTION` 创建订阅。
+We can use `CREATE SUBSCRIPTION` to create a subscription.
 
-### 语法
+### Syntax
 
 ```
-CREATE SUBSCRIPTION <subscription_name> ON <database_name> DESTINATIONS ALL "<host_name>" ["<host_name>"]
+CREATE SUBSCRIPTION <subscription_name> ON <database_name> DESTINATIONS ALL "<host_nmae>" ["<host_name>"]
 ```
 
-1. host_name 为订阅此节点的 CnosDB 节点的 grpc 服务的 host_name。
+1. Configure the output plug-in `http` to distribute messages. If there is another CnosDB instance with an HTTP listening port number of `127.0.0.1:8912`, we can forward the subscription message to that instance with the following configuration.
 
-所有写入 CnosDB 指定 database 的数据，都将被复制并分发到 host 节点。
+`host_name` indicates the `host_name` of the grpc service of the CnosDB node that subscribing to this node.
+All the data written to the specified database, CnosDB, will be copied and distributed to the host node.
 
-1. ALL 表示数据复制的模式，目前仅支持 ALL。
+1. `ALL` Indicates the data replication mode. Currently, only `ALL` is supported.
 
-### 示例
+### Example
 
-若接受分发数据的 CnosDB 节点的部分配置如下：
+For example, the partial configuration of the CnosDB node that accepts the distributed data is as follows:
 
 ```
 [cluster]
@@ -36,134 +37,134 @@ meta_service_addr = ["127.0.0.1:8901"]
 grpc_listen_port = 8903
 ```
 
-则在当前 CnosDB 创建订阅的 SQL 如下：
+The SQL for creating the subscription in the current CnosDB is as follows:
 
 ```
-CREATE SUBSCRIPTION test ON public DESTINATIONS ALL "127.0.0.1:8903";
+CREATE SUBSCRIPTION test ON public DESTINATIONS ALL "127.0.0.1:8903"
 ```
 
-此时若有数据写入当前 CnosDB 节点，则数据将同步复制转发到`127.0.0.1:8903`。
+At this time, if any data is written to the current CnosDB node, the data will be synchronized copied and forwarded to `127.0.0.1:8903`.
 
-## 更新订阅
+## Alter Subscription
 
-可以使用 `ALTER SUBSCRIPTION` 更新订阅。
+We can use `ALTER SUBSCRIPTION` to alter the subscription.
 
-### 语法
+### Syntax
 
 ```
 ALTER SUBSCRIPTION <subscription_name> ON <database_name> DESTINATIONS ALL "<host_name>" ["<host_name>"]
 ```
 
-### 示例
+### Example
 
 ```
-ALTER SUBSCRIPTION test ON public DESTINATIONS ALL "127.0.0.1:8903" "127.0.0.1:8913";
+ALTER SUBSCRIPTION test ON public DESTINATIONS ALL "127.0.0.1:8903" "127.0.0.1:8913"
 ```
 
-可以通过这种方法来修改 host_name，需要注意的是，通过 `ALTER SUBSCRIPTION` 进行修改是直接覆盖，如果不希望删除之前的 host_name，`DESTINATIONS ALL` 后需要添加之前的所有 host_name。
+You can modify host_name in this way, and note that modifying by `ALTER SUBSCRIPTION` overwrites it directly. If you do not want to delete host_name, ALL previous host_name needs to be added after `DESTINATIONS ALL`.
 
-## 显示订阅
+## Show Subscription
 
-可以使用 `SHOW SUBSCRIPTION` 查看订阅信息。
+We can use `SHOW SUBSCRIPTION` to show the subscription information.
 
-### 语法
+### Syntax
 
 ```
 SHOW SUBSCRIPTION ON <database_name>
 ```
 
-### 示例
+### Example
 
 ```
-SHOW SUBSCRIPTION ON public;
+SHOW SUBSCRIPTION ON public
 ```
 
-输出结果：
+Output Result：
 
 ```
 SUBSCRIPTION,DESTINATIONS,MODE
 test,"127.0.0.1:8902,127.0.0.1:8903",ALL
 ```
 
-## 删除订阅
+## Drop Subscription
 
-可以使用 `DROP SUBSCRIPTION` 删除订阅。
+We can use `DROP SUBSCRIPTION` to drop the subscription.
 
-### 语法
+### Syntax
 
 ```
 DROP SUBSCRIPTION <subscription_name> ON <database_name>
 ```
 
-### 示例
+### Example
 
 ```
-DROP SUBSCRIPTION test ON public;
+DROP SUBSCRIPTION test ON public
 ```
 
-## 通过 Telegraf 实现异构数据同步
+## Synchronization of isomer data via Telegraf
 
-### Telegraf 安装
+### Install Telegraf
 
-关于 Telegraf 的使用方法，以及如何安装 Telegraf，见 [Telegraf 章节](/eco-integration/telegraf#cnos-telegraf)。
+You can refer to [Telegraf](/eco-integration/index/telegraf#cnos-telegraf) to know how to use Telegraf and how to install Telegraf.
 
-### 将数据发送至 InfluxDB
+### Send data to InfluxDB
 
-> 本例中的 InfluxDB 版本为 1.8.10 。
+> InfluxDB version in this instance is 1.8.10.
 >
-> Telegraf 安装在本地（可以通过 127.0.0.1 进行访问）。
+> Telegraf is installed locally (accessible through 127.0.0.1).
 
-假设我们已经启动了 CnosDB，并在 Database `public` 上创建了订阅，将 `DESTINATIONS` 设置为 `127.0.0.1:8803`：
+Supposing that we've started CnosDB and created a subscription, set `DESTINATIONS` to `127.0.0.1:8803` :
 
 ```sh
 > SHOW SUBSCRIPTION ON public;
-+--------------+----------------+------+
-| subscription | destinations   | mode |
-+--------------+----------------+------+
-| sub_tr_1003  | 127.0.0.1:8803 | ALL  |
-+--------------+----------------+------+
++--------------+----------------+-------------+
+| Subscription | DESTINATIONS   | Concurrency |
++--------------+----------------+-------------+
+| sub_tr_1003  | 127.0.0.1:8803 | ALL         |
++--------------+----------------+-------------+
 ```
 
-在 Telegraf 的配置文件中增加**输入插件** `cnosdb`，并配置监听的 IP 与端口，如下：
+Add the input plug-in `cnosdb` in the configuration file of Telegraf, and configure the listening address and port number as follows:
 
 ```toml
 [[inputs.cnosdb]]
 service_address = ":8803"
 ```
 
-配置**输出插件** `http` 来实现分发消息。假设 InfluxDB 实例的 HTTP 监听端口号为 `127.0.0.1:8086`，并且创建了 Database `test_db`，那么我们可以使用如下配置：
+Configure **Output Plugins** to implement distribution messages.Assuming that the HTTP listener port number `127.0.0.1:8086` is `127.0.01:8086` and creating a database `test_db`, then we can use configuration： below
 
 ```toml
 [[outputs.http]]
-url = "http://127.0.0.1:8086/write?db=test_db"
+url = "http://127.0.0.1:8912/api/v1/write?db=destination"
 timeout = "5s"
 method = "POST"
-username = ""
-password = ""
+username = "admin"
+password = "admin"
 data_format = "influx"
 use_batch_format = true
 content_encoding = "identity"
 idle_conn_timeout = 10
 ```
 
-接下来，在 CnosDB 上执行写入操作，数据将被转发至 InfluxDB 的 Database `test_db` 上。
+Next, write on CnosDB, data will be forwarded to the InfluxDB database `test_db`.
 
-首先在 CnosDB 命令行客户端 `cnosdb-cli` 中执行：
+First CnosDB command line client `cnosdb-cli` executes：
 
 ```
-CREATE TABLE air (
-    visibility DOUBLE,
+CREATE TABair (
+    vision DOUBLE,
     temperature DOUBLE,
     pressure DOUBLE,
     TAGS(station)
-);
+;
 
 INSERT INTO air (time, station, visibility, temperature, pressure) VALUES('2023-01-01 01:10:00', 'XiaoMaiDao', 79, 80, 63);
 INSERT INTO air (time, station, visibility, temperature, pressure) VALUES('2023-01-01 01:20:00', 'XiaoMaiDao', 80, 60, 63);
 INSERT INTO air (time, station, visibility, temperature, pressure) VALUES('2023-01-01 01:30:00', 'XiaoMaiDao', 81, 70, 61);
 ```
 
-然后在 InfluxDB 命令行客户端 `influx` 中执行：
+then execute： in InfluxDB command line client `influx`
 
 ```
 use test_db;
@@ -171,7 +172,7 @@ use test_db;
 SELECT * FROM air;
 ```
 
-得到结果：
+Get Results：
 
 ```
 name: air
