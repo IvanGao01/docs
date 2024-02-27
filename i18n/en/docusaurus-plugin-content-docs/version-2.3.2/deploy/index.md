@@ -2,31 +2,31 @@
 sidebar_position: 3
 ---
 
-# 部署
+# Deploy
 
-您可以在 [此处](https://cn.cnosdb.com/download/)下载 CnosDB 的程序。
+You can download CnosDB programs at [此处](https://cn.cnosdb.com/download/).
 
-## CnosDB 安装要求
+## CnosDB Installation Requirements
 
-CnosDB 的安装可能需要 `root` 管理员权限才能成功完成
+CnosDB installation may require `root` administrator permission to complete successfully
 
-### CnosDB 网络端口
+### CnosDB Network Port
 
-在安装集群时，请确保服务间的端口互通，默认情况下，CnosDB 使用以下网络端口：
+When installing clusters, make sure the port is interoperable between services. By default, CnosDB uses the following network port：
 
-`cnosdb` TCP 端口 `8902` 可用于使用 CnosDB API 进行客户端 - 服务器通信。
+The `cnosdb` TCP port `8902` can be used for client - server communication using the CnosDB API.
 
-`cnosdb-meta` TCP 端口 `8901` 用于 `cnosdb-meta` 服务间通信，以及 `cnosdb` 服务的交互通信。
+The `cnosdb-meta` TCP port `8901` is used for communication between the `cnosdb-meta` service and the `cnosdb` service.
 
 当 `deployment.mode` 为 `singleton` 时，`cnosdb` 服务中会嵌入一个 `cnosdb-meta`，所以在这种情况下， `8901`、`8902` 端口会同时存在于 `cnosdb` 服务中，配置文件中对应的配置为：`meta_service_addr = ["127.0.0.1:8901"]`
 
-### 容易被忽略的注意事项
+### Note that can easily be ignored
 
-- [确保机器时间同步](#确保机器时间同步)
-- [禁用 `swap`](#禁用-swap)
-- [本章节中部署的架构示例](#本章节中部署的架构示例)
+- [确保机器时间同步](#ensure machine time synchronization)
+- [Disable `swap`](#Disabled-swap)
+- [本章节中部署的架构示例](#examples of structures deployed in this chapter)
 
-现在，您可以在您熟悉的环境下安装程序。
+Now you can install the program in your familiar environment.
 
 ```mdx-code-block
 import DocCardList from '@theme/DocCardList';
@@ -34,39 +34,39 @@ import DocCardList from '@theme/DocCardList';
 <DocCardList />
 ```
 
-#### 确保机器时间同步
+#### Make Machine Time Sync
 
-CnosDB 集群所在的主机需要确保时间一致，请使用网络时间协议（NTP）来同步主机之间的时间。
+Hosts in the CSDB cluster need to ensure consistency of time. Please use the Network Time Protocol (NTP) to synchronize the time between hosts.
 
-#### 禁用 `swap`
+#### Disable `swap`
 
-为了避免 CnosDB 高负载时潜在的磁盘争用，请在操作系统设置中禁用 `swap`。
+To avoid potential disk competition for CnosDB loads, disable `swap` in OS settings.
 
-#### 本章节中部署的架构示例
+#### Examples of structures deployed in this section
 
-为了说明能够更加清晰，此章节中所部署的集群使用 3 + 2 的方式，即 `3 meta + 2 query_tskv`
+For purposes of greater clarity, the cluster that is deployed in this section uses 3 + 2 method, that is, `3 meta + 2 query_tskv`
 
-在 CnosDB 中，cnosdb 程序有多种启动模式
+In CnosDB, cnosdb has multiple start-up modes
 
-- `singleton` meta、存储、查询服务全部在同一个实例里，不支持集群模式。
-- `query_tskv`：实例提供查询和存储服务，支持集群模式。
-- `query`：实例只提供查询服务，支持集群模式。
-- `tskv`：实例只提供存储服务，支持集群模式。
+- The `singleton` meta, storage, query service is all in the same instance. Cluster mode is not supported.
+- The `query_tskv`：instance provides query_query_tskv\` service and supports cluster mode.
+- The `query`：instance only provides query services, supports cluster mode.
+- The `tskv`：instance only provides storage services, supports cluster mode.
 
-CnosDB 是支持混合部署的，您可以自定义查询和存储服务的数量。
-但是一个完整的集群至少 1 个 meta服务、1 个查询服务和 1 个存储服务。
+CnosDB is a hybrid deployment. You can customize the number of queries and storage services.
+But a full cluster is at least 1 meta service, 1 query service and 1 storage service.
 
-所以在您的 CnosDB 集群中，您的搭配至少是以下这个样子：
+So in your CnosDB cluster, your mix is at least the following：
 
-- 1 个 meta 服务
-- 1 个 query_tskv 服务
+- 1 meta service
+- 1 query_tskv service
 
-或
+or
 
-- 1 个 meta 服务
-- 1 个 query 服务
-- 1 个 tskv 服务
+- 1 meta service
+- 1 query service
+- 1 tskv service
 
-通常在一个集群服务中，我们会部署多个 meta 服务，这样可以保证集群的高可用性。
+Usually in a cluster service, we deploy multiple meta services to ensure high cluster availability.
 
-此文章中的集群基于一个 3 + 2 的集群分布式集群，即 3 个 meta 服务 和 2 个 query_tskv 服务。
+The cluster in this article is based on a 3+2 cluster distribution cluster, i.e. 3 meta service and 2 query_tskv service.
