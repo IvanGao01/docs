@@ -1,66 +1,66 @@
 ---
-title: SQL语法参考手册
+title: This schema shows all available roles (including system and custom roles) under the current tenant.
 order: 5
 ---
 
-# SQL语法参考手册
+# This view keeps track of the total Body size of the HTTP response.
 
-## **数据库操作**
+## Continue traversing backwards until the next non-missing value is encountered.
 
-### **数据类型**
+### Frame is a subset of the current partition, which further subdivides windows in the partition.
 
-| 类型              | 描述          | 大小  |
-| --------------- | ----------- | --- |
-| BIGINT          | 整型          | 8字节 |
-| BIGINT UNSIGNED | 无符号整型       | 8字节 |
-| BOOLEAN         | 布尔类型        | 1字节 |
-| TIMESTAMP       | 时间戳         | 8字节 |
-| STRING          | UTF-8编码的字符串 | *** |
-| DOUBLE          | 双精度浮点型      | 8字节 |
+| `UNION` will de-duplicate the merged result set.&#xA;`UNION ALL` will retain the same data in the merged result set.&#xA;`EXCEPT` will make the difference between the two result sets, return all non-duplicate values not found in the right query from the left query.&#xA;`INTERSECT` returns the intersection of the two result sets (that means, all non-duplicate values are returned by both queries). | Calculate the skewness value of the specified dimension after the two-dimensional statistical aggregation, and the method is `population`.                  | This schema is only visible to the Owner of the current tenant. |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| BIGINT                                                                                                                                                                                                                                                                                                                                                                                                                            | COUNT(field) Returns the number of non-null values.                                                                                      | 8 Bytes                                                         |
+| BIGINT UNSIGNED                                                                                                                                                                                                                                                                                                                                                                                                                   | This schema displays information about the role of the current user under the current tenant.                                                               | 8 Bytes                                                         |
+| BOOLEAN                                                                                                                                                                                                                                                                                                                                                                                                                           | Stream QUERY statements are persisted and are cancelled by [KILL QUERY](#kill-query).                                                                       | 1byte                                                           |
+| TIMESTAMP                                                                                                                                                                                                                                                                                                                                                                                                                         | Status of SQL, including: ACCEPTING,DISPATCHING,ANALYZING,OPTMIZING,SCHEDULING                                                                              | 8 Bytes                                                         |
+| STRING                                                                                                                                                                                                                                                                                                                                                                                                                            | This schema allows you to query information about all users in the cluster.                                                                                 | ***                                                             |
+| DOUBLE                                                                                                                                                                                                                                                                                                                                                                                                                            | WHERE sets conditions on the selected column before the GROUP BY clause, while HAVING clause sets conditions on the group generated by the GROUP BY clause. | 8 Bytes                                                         |
 
-#### 其他数据类型
+#### ROLLUP generates all grouping sets that are meaningful in this hierarchy. Whenever the value of column_1 changes, it will generate a subtotal line;
 
-以下数据类型无法直接存储，但会在SQL表达式中出现
+Calculate the ratio of Gauge change and time change.
 
-| 类型       | 描述                        | 备注                                         |
-| -------- | ------------------------- | ------------------------------------------ |
-| BINARY   | 二进制数据，可以使用Cast子句转换成STRING | sha224, sha256, sha384, sha512函数的返回值均属于此类型 |
-| INTERVAL | 时间间隔                      | 时间加减运算和date_bin函数参数需要 |
-| ARRAY    | 数组类型                      | 聚合函数array_agg返回类型为此   |
+| This is the first step in analyzing the Gauge data. Create intermediate aggregates using gauge_agg,&#xA;The other functions then use the intermediate aggregated data for their calculations. | Changing to an existing series is not supported (all tag column values make up series).                                                                                                                                    | The covariance after aggregation of 2-D statistics is calculated. |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| BINARY                                                                                                                                                                                                             | This schema shows all permissions on db that have been granted to the specified role under the tenant.                                                                                                                                        | **Start the CLI**                                                 |
+| INTERVAL                                                                                                                                                                                                           | The precedence levels of the operators are given in the following table. Operators at higher levels are evaluated before operators at lower levels. In the following table, 1 represents the highest level and 8 represents the lowest level. | Field Name                                                        |
+| ARRAY                                                                                                                                                                                                              | For non-owner elements, only the records for the corresponding role are displayed.                                                                                                                                                            | `INTERVAL '1 YEAR'` One year(12 months)        |
 
-#### 常量
+#### The SELECT clause of a stream query does not support `JOIN`.
 
-| 类型              | 语法                                                            | 说明                                              |
-| --------------- | ------------------------------------------------------------- | ----------------------------------------------- |
-| BIGINT          | [{+-}]123 | 数值类型                                            |
-| BIGINT UNSIGNED | [+]123    | 数值类型                                            |
-| DOUBLE          | 123.45                                                        | 数值类型，目前暂不支持科学记数法                                |
-| BOOLEAN         | {true \| false \| t \| f}                                     |                                                 |
-| STRING          | 'abc'                                                         | 不支持双引号格式，引号中连续两个''转义成‘                          |
-| TIMESTAMP       | TIMESTAMP '1900-01-01T12:00:00Z'                              | 时间戳，TIMESTAMP 关键字表示后面的字符串常量需要被解释为 TIMESTAMP 类型。 |
-| Geometry        | [点击跳转](#geometry)                                             | 几何类型                                            |
-| --              | NULL                                                          | 空值                                              |
+| Get Gauge changes over a period of time. This is simply increment, calculated by subtracting the last value seen from the first value. | SHARD: represents the number of data partitions, defaults to 1.                            | Calculate the number of data rows after two-dimensional statistical aggregation                                                                |
+| -------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| BIGINT                                                                                                                                 | [{+-}]123                              | For regular users, only the part of the table in USAGE_SCHEMA that belongs to the current user tenant will be visible.    |
+| BIGINT UNSIGNED                                                                                                                        | [+]123                                 | All records of this schema are visible to all members of the current tenant.                                                                   |
+| DOUBLE                                                                                                                                 | 123.45                                                                                     | The database belongs to a tenant. When a tenant is created, the database is automatically created and visible to all members under the tenant. |
+| BOOLEAN                                                                                                                                | {true \| false \| t \| f}                                                                  |                                                                                                                                                |
+| STRING                                                                                                                                 | 'abc'                                                                                      | The CLUSTER_SCHEMA database belongs to the cluster, only the administrator users have the access to the database.         |
+| TIMESTAMP                                                                                                                              | TIMESTAMP '1900-01-01T12:00:00Z'                                                           | Join Operation                                                                                                                                 |
+| Geometry                                                                                                                               | Name of the system role that the custom role inherits from, or NULL if it is a system role | candlestick_agg gets the open and close price of the stock and the high price.                                            |
+| --                                                                                                                                     | NULL                                                                                       | At present, we support altering common tables.                                                                                                 |
 
-#### TIMESTAMP 常量语法
+#### To further study CnosDB, this section will provide sample data for you to download and teach you how to import data into the database. The data sources referenced in the following chapters are all from this sample data.
 
-时间戳是按RFC3339标准
+If the VALUES list requires an expression, please use the [INSERT SELECT](./sql.md#insert-query-results-insert-select) syntax.
 
-T代表间隔，仅可以用空格代替
+`EXPLAIN ANALYZE VERBOSE` executes the query and displays a more detailed execution plan, including the number of rows read.
 
-Z代表零时区
+You can use the ROLLUP option in a single query to generate multiple group sets.
 
-+08:00 代表东八区
+In order to query more efficiently, the order of each row may not be the same for queries without specified sorting.
 
-如下：
+Generate intermediate aggregate data CandleStackData from the original quote query.
 
-- `1997-01-31T09:26:56.123Z` # 标准RFC3339 UTC 时区
-- `1997-01-31T09:26:56.123+08:00` # 标准RFC3339 东八区
-- `1997-01-31 09:26:56.123+08:00` # 接近RFC3339, 只是用空格代替T
-- `1997-01-31T09:26:56.123` # 接近RFC3339, 没有指定时区，默认UTC
-- `1997-01-31 09:26:56.123` # 接近RFC3339, 用空格代替T， 且没有指定时区
-- `1997-01-31 09:26:56`     # 接近RFC3339, 精确度是秒级
+- The SQL statement above is equivalent to inserting the following k-v pairs into the database.
+- Instruction
+- Download Data
+- You can use the keyword `AS` to alias a column expression or table.
+- Get the highest price.
+- This schema can be used to query information about all tenants in the cluster.
 
-**注意**：`CAST (BIGINT AS TIMESTAMP)` 是转化为纳秒级的时间戳，如下：
+Get the lowest price.
 
 ```sql
 SELECT CAST (1 AS TIMESTAMP);
@@ -74,78 +74,72 @@ SELECT CAST (1 AS TIMESTAMP);
 +-------------------------------+
 ```
 
-#### INTERVAL 常量
+#### For non-owner members, only the SQL submitted by the current member is displayed.
 
-#### 示例
+#### Alter Column: alter the column definition. Currently supports changing column names and modifying compression algorithms for columns.
 
-1. `INTERVAL '1'` 一秒
-2. `INTERVAL '1 SECONDE'` 一秒
-3. `INTERVAL '1 MILLISECONDS'` 一毫秒
-4. `INTERVAL '1 MINUTE'` 一分钟
-5. `INTERVAL '0.5 MINUTE'` 半分钟
-6. `INTERVAL '1 HOUR'` 一小时
-7. `INTERVAL '1 DAY'` 一天
-8. `INTERVAL '1 DAY 1'` 一天零一秒
-9. `INTERVAL '1 WEEK'` 一周
-10. `INTERVAL '1 MONTH'` 一月(30天)
-11. `INTERVAL '0.5 MONTH'` 半月(15天)
-12. `INTERVAL '1 YEAR'` 一年（12个月）
-13. `INTERVAL '1 YEAR 1 DAY 1 HOUR 1 MINUTE'` 一年零一天零一小时一分
-14. `INTERVAL '1 DECADES' ` 一个十年
+1. All records of this schema are visible to the owner of the current tenant.
+2. All records of this schema are visible to the Owner of the current tenant.
+3. Executing the following command in the shell will generate a local data file named oceanic_station in Line Protocol format.
+4. Based on the 2-D statistical aggregation, the slope of the linear fitting line is calculated.
+5. Specify the order of rows in the partition.
+6. Record the accepted data size through the Coordinator.
+7. Delay deletion is cancelled and the tenant returns to normal.
+8. algorithm specifies the algorithm for computing hash. Only md5, sha224, sha256, sha384, sha512, blake2s, blake2b, blake3 are supported.
+9. The coefficient of determination after 2D statistical aggregation is calculated.
+10. 8 Bytes
+11. This schema shows the membership information under the tenant.
+12. Function Names
+13. Function Names
+14. The return values of functions sha224, sha256, sha384, sha512 belong to this type.
 
-**注意：**
+Given a system or a value that switches between discrete states,
 
-INTERVAL '1 YEAR' 并不是365天或366天，而是12个月。
-INTERVAL '1 MONTH' 并不是28天或29天或31天，而是30天。
+For example, you can use the compact_state_agg function to keep track of the system.
+User name
 
 #### Geometry
 
 #### WKT
 
-WKT格式是一种文本格式，用于描述二维和三维几何对象的空间特征。
-WKT是“Well-Known Text”的缩写，是一种开放的国际标准。
-WKT格式包括一些基本的几何对象，例如点、线、多边形和圆形，以及一些复合对象，例如多边形集合和几何对象集合。
+Show all databases or all tables or SQL in progress.
+Required by time addition or subtraction and function data_bin's parameters.
+Tenant ID
 
-#### 语法
+#### REPLICA: represents the number of replicas of data in the cluster, defaults to 1 (the number of replicas is not larger than the number of distributed data nodes).
 
 ```
-<geometry tag> <wkt data>
-
-<geometry tag> ::= POINT | LINESTRING | POLYGON | MULTIPOINT | 
-                   MULTILINESTRING | MULTIPOLYGON | GEOMETRYCOLLECTION
-                   
-<wkt data> ::= <point> | <linestring> | <polygon> | <multipoint> | 
-               <multilinestring> | <multipolygon> | <geometrycollection>
+Precedence
 ```
 
-| 几何对象   | 语法描述                                                                                 |
-| ------ | ------------------------------------------------------------------------------------ |
-| 点      | `POINT (<x1> <y1>)`                                                                  |
-| 线      | `LINESTRING (<x1> <y1>, <x2> <y2>, ...)`                                             |
-| 多边形    | `POLYGON ((<x1> <y1>, <x2> <y2>, ...))`                                              |
-| 多点     | `MULTIPOINT (<x1> <y1>, <x2> <y2>, ...)`                                             |
-| 多线     | `MULTILINESTRING ((<x1> <y1>, <x2> <y2>, ...), (<x1> <y1>, <x2> <y2>, ...))`         |
-| 多多边形   | `MULTIPOLYGON (((<x1> <y1>, <x2> <y2>, ...)), ((<x1> <y1>, <x2> <y2>, ...)))`        |
-| 几何对象集合 | `GEOMETRYCOLLECTION (<geometry tag1> <wkt data1>, <geometry tag2> <wkt data2>, ...)` |
+| begin_time: This is optional and specifies the start time of the period.                                                                                                                                                                                                                                                              | Get the duration, the time of the last Gauge minus the time of the first Gauge.      |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| CUBE creates a grouping set for each possible combination of the specified expression set. First, GROUP BY (A, B, C), then (A, B), (A, C), (A), (B, C), (B), (C), and finally GROUP BY the entire table.              | `POINT (<x1> <y1>)`                                                                  |
+| When with AFTER, it is delayed deletion, which will be deleted after the specified time. The time supports days (d), hours (h), and minutes (m), such as 10d, 50h, 100m. When there is no unit, the default is day. The tenant is not visible and unavailable during the delayed deletion period. | `LINESTRING (<x1> <y1>, <x2> <y2>, ...)`                                             |
+| begin_time: This is optional and specifies the start time of the period.                                                                                                                                                                                                                                                              | `POLYGON ((<x1> <y1>, <x2> <y2>, ...))`                                              |
+| Multipoint                                                                                                                                                                                                                                                                                                                                                 | `MULTIPOINT (<x1> <y1>, <x2> <y2>, ...)`                                             |
+| Common users can access only the tenant information of the current session.                                                                                                                                                                                                                                                                                | `MULTILINESTRING ((<x1> <y1>, <x2> <y2>, ...), (<x1> <y1>, <x2> <y2>, ...))`         |
+| Note that the INSERT statement is recorded in (#ht).                                                                                                                                                                                                                                                                                    | `MULTIPOLYGON (((<x1> <y1>, <x2> <y2>, ...)), ((<x1> <y1>, <x2> <y2>, ...)))`        |
+| When data is written to the source table, the streaming query is triggered.                                                                                                                                                                                                                                                                                | `GEOMETRYCOLLECTION (<geometry tag1> <wkt data1>, <geometry tag2> <wkt data2>, ...)` |
 
-#### 示例
+#### -- Column definitions can not be specified for PARQUET filesCREATE EXTERNAL TABLE [ IF NOT EXISTS ] tb_name&#xA;( field_definition [, field_definition] ... ) tb_option;field_definition:&#xA;column_name data_type [ NULL ]tb_option: {&#xA;STORED AS { PARQUET | JSON | CSV | AVRO }&#xA;| [ WITH HEADER ROW ]&#xA;| [ DELIMITER 'a_single_char' ]&#xA;| [ PARTITIONED BY ( column_name, [, ... ] ) ]&#xA;| LOCATION '/path/to/file'&#xA;}
 
-| 几何对象   | 图片                                               | 示例                                                                                                                                                                                                                                         |
-| ------ | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 点      | ![](/img/sql/SFA_Point.svg.png)                  | POINT (30 10)                                                                                                                                                                                                           |
-| 线      | ![](/img/sql/102px-SFA_LineString.svg.png)       | LINESTRING (30 10, 10 30, 40 40)                                                                                                                                                                                        |
-| 多边形    | ![](/img/sql/SFA_Polygon.svg.png)                | POLYGON ((30 10, 40 40, 20 40, 10 20, 30 10))                                                                                                                                                        |
-|        | ![](/img/sql/SFA_Polygon_with_hole.svg.png)      | POLYGON ((35 10, 45 45, 15 40, 10 20, 35 10), (20 30, 35 35, 30 20, 20 30))                                                                                                       |
-| 多点     | ![](/img/sql/SFA_MultiPoint.svg.png)             | MULTIPOINT ((10 40), (40 30), (20 20), (30 10))                                                                                             |
-|        |                                                  | MULTIPOINT (10 40, 40 30, 20 20, 30 10)                                                                                                                                                                                 |
-| 多线     | ![](/img/sql/102px-SFA_MultiLineString.svg.png)  | MULTILINESTRING ((10 10, 20 20, 10 40), (40 40, 30 30, 40 20, 30 10))                                                                                                             |
-| 多面     | ![](/img/sql/SFA_MultiPolygon.svg.png)           | MULTIPOLYGON (((30 20, 45 40, 10 40, 30 20)), ((15 5, 40 10, 10 20, 5 10, 15 5)))                                                           |
-|        | ![](/img/sql/SFA_MultiPolygon_with_hole.svg.png) | MULTIPOLYGON (((40 40, 20 45, 45 30, 40 40)), ((20 35, 10 30, 10 10, 30 5, 45 20, 20 35), (30 20, 20 15, 20 25, 30 20))) |
-| 几何对象集合 | ![](/img/sql/SFA_GeometryCollection.svg.png)     | GEOMETRYCOLLECTION (POINT (40 10), LINESTRING (10 10, 20 20, 10 40), POLYGON ((40 40, 20 45, 45 30, 40 40)))                                |
+| Record the number of times the output data passes through the Coordinator.                                                                       | **Function**: Return the number of rows retrieved in the selected element. | ROLLUP assumes a hierarchy between input columns.                                                                                                                                                                                          |
+| ------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| This view records the Body size of the HTTP request.                                                                                             | ![](/img/sql/SFA_Point.svg.png)                                            | POINT (30 10)                                                                                                                                                                                                           |
+| **Notice**: Only resources that are delayed deletion and during the delayed deletion period can be recovered by executing the RECOVER statement. | ![](/img/sql/102px-SFA_LineString.svg.png)                                 | LINESTRING (30 10, 10 30, 40 40)                                                                                                                                                                                        |
+| CnosDB supports updating the tag column value to NULL.                                                                                           | ![](/img/sql/SFA_Polygon.svg.png)                                          | POLYGON ((30 10, 40 40, 20 40, 10 20, 30 10))                                                                                                                                                        |
+|                                                                                                                                                  | ![](/img/sql/SFA_Polygon_with_hole.svg.png)                                | POLYGON ((35 10, 45 45, 15 40, 10 20, 35 10), (20 30, 35 35, 30 20, 20 30))                                                                                                       |
+| Multipoint                                                                                                                                       | ![](/img/sql/SFA_MultiPoint.svg.png)                                       | MULTIPOINT ((10 40), (40 30), (20 20), (30 10))                                                                                             |
+|                                                                                                                                                  |                                                                            | MULTIPOINT (10 40, 40 30, 20 20, 30 10)                                                                                                                                                                                 |
+| Common users can access only the tenant information of the current session.                                                                      | ![](/img/sql/102px-SFA_MultiLineString.svg.png)                            | MULTILINESTRING ((10 10, 20 20, 10 40), (40 40, 30 30, 40 20, 30 10))                                                                                                             |
+| A stream query statement is triggered when data is written.                                                                                      | ![](/img/sql/SFA_MultiPolygon.svg.png)                                     | MULTIPOLYGON (((30 20, 45 40, 10 40, 30 20)), ((15 5, 40 10, 10 20, 5 10, 15 5)))                                                           |
+|                                                                                                                                                  | ![](/img/sql/SFA_MultiPolygon_with_hole.svg.png)                           | MULTIPOLYGON (((40 40, 20 45, 45 30, 40 40)), ((20 35, 10 30, 10 10, 30 5, 45 20, 20 35), (30 20, 20 15, 20 25, 30 20))) |
+| For system administrators, the entire table in USAGE_SCHEMA is visible.                                                     | ![](/img/sql/SFA_GeometryCollection.svg.png)                               | GEOMETRYCOLLECTION (POINT (40 10), LINESTRING (10 10, 20 20, 10 40), POLYGON ((40 40, 20 45, 45 30, 40 40)))                                |
 
-### **创建数据库**
+### Interval type is STRING, which will be resolved to time interval.
 
-#### 语法
+#### Get the volume weighted average price.
 
 ```sql
 CREATE DATABASE [IF NOT EXISTS] db_name [WITH db_options];
@@ -162,31 +156,30 @@ db_option: {
 }
 ```
 
-#### 参数说明
+#### **Function**: Assign a unique sequence number (starting from 1) to each row according to the row order in the window partition.
 
-1. TTL：表示数据文件保存的时间，默认无限，用带单位的数据表示，支持天（d），小时（h），分钟（m），如TTL 10d，TTL 50h，TTL
-   100m，当不带单位时，默认为天，如TTL 30。
-2. SHARD：表示数据分片个数，默认为1。
-3. VNODE_DURATION：表示数据在shard中的时间范围，默认为365天，同样使用带单位的数据来表示，数据意义与TTL的value一致。
-4. REPLICA：表示数据在集群中的副本数，默认为1（副本数不大于分布式数据节点的数量）。
-5. PRECISION：数据库的时间戳精度，ms 表示毫秒，us 表示微秒，ns 表示纳秒，默认为ns纳秒。
+1. Get the opening price.
+2. User name
+3. todo
+4. User name
+5. Get the total volume.
 
-#### 示例
+#### It is important to note that the LOCF method can introduce certain biases, especially when the data after the missing value changes drastically. Therefore, when using LOCF to fill in missing values, it is necessary to carefully consider the characteristics of the data and the purpose of the analysis to ensure that the filled values can reasonably reflect the actual situation.
 
 ```sql
 > CREATE DATABASE oceanic_station;
 Query took 0.062 seconds.
 ```
 
-### **查看数据库**
+### The first offset line of the current line in the offset `offset PRECEDING` ROWS mode. The first offset value of the current value in the RANGE mode.
 
-#### 语法
+#### This database, which belongs to a Tenant, is automatically created when a tenant is created and is visible to all members under the tenant.
 
 ```sql
 SHOW DATABASES;
 ```
 
-#### 示例
+#### CnosDB store the shema information in two specific databases:
 
 ```
 +-----------------+
@@ -197,12 +190,11 @@ SHOW DATABASES;
 +-----------------+
 ```
 
-### **使用数据库**
+### The next offset line of the current line in the `offset FOLLOWING` ROWS mode. The next offset value of the current value in the RANGE mode.
 
-如果你通过[HTTP API](./rest_api.md)来使用数据库，
-你可以在url中指定参数 db=database_name 来使用数据库。
+Calculate the increment of value in the time series.
 
-在 CnosDB-Cli 中，可以使用如下命令切换数据库：
+Count the duration of a state, or count the duration of a state in a certain period of time.
 
 ```sql
 \c dbname
@@ -213,43 +205,39 @@ public ❯ \c oceanic_station
 oceanic_station ❯
 ```
 
-### **删除数据库**
+### interval_time: This is optional and specifies the duration of the time interval or infinity if not specified.
 
-#### 语法
+#### This schema stores information about all tables under the tenant.
 
 ```sql
 DROP DATABASE [IF EXISTS] db_name [AFTER '7d'];
 ```
 
-删除数据库会将指定database的所有table数据及元数据全部删除。
+Removing the database will delete all tables and metadata specified for the database.
 
-当不带AFTER时，会立即删除；
+**Function**: x returns the approximate percentage (TDigest) of the weighted input value, where w is the weight column expression and p is a floating point 64 between 0 and 1 inclusive.
 
-当带AFTER时，为延迟删除，会在指定时间后删除，时间支持天（d），小时（h），分钟（m），如10d，50h，100m，当不带单位时，默认为天。延迟删除期间数据库不可见且不可用。
+Common users can access only the tenant information of the current session.The database is not visible and unavailable during the delay deletion.
 
-#### 语法
+#### This schema records the amount of disk space, in bytes, occupied by each vnode in the cluster.
 
 ```sql
 RECOVER DATABASE [IF EXISTS] db_name;
 ```
 
-取消延迟删除，数据库恢复正常状态。
+Cancel Delay Deletion and Database Revert
 
-**注意**：只有对延迟删除的资源，且在延迟删除期间，执行RECOVER语句才有作用。
+Distance between two points.
 
-#### 示例
+#### `1997-01-31 09:26:56`     # Close to RCF3339, replace T by space, and no time zone is specified, the accuracy is on the order of seconds
 
 ```sql
-DROP DATABASE oceanic_station AFTER ‘7d’;
-
-RECOVER DATABASE oceanic_station;
-
-DROP DATABASE oceanic_station;
+Syntax
 ```
 
-### **修改数据库参数**
+### Overwriting occurs when duplicate k-v pairs occur in the same field.
 
-#### 语法
+#### Record the output data size through the Coordinator.
 
 ```sql
 ALTER DATABASE db_name [alter_db_options]
@@ -265,21 +253,21 @@ db_option: {
 }
 ```
 
-#### 示例
+#### **Function**: Replace all search items with replace.
 
 ```sql
 ALTER DATABASE oceanic_station SET TTL '30d';
 ```
 
-### **查看数据库参数**
+### When not with AFTER, it will be deleted immediately.
 
-#### 语法
+#### LOCATION: represents the location of the associated file.
 
 ```sql
 DESCRIBE DATABASE dbname;
 ```
 
-#### 示例
+#### CnosDB supports `INNER JOIN`、`LEFT OUTER JOIN`、`RIGHT OUTER JOIN`、`FULL OUTER JOIN`.
 
 ```sql
 DESCRIBE DATABASE oceanic_station;
@@ -293,17 +281,17 @@ DESCRIBE DATABASE oceanic_station;
 +-----+-------+----------------+---------+-----------+
 ```
 
-## **表操作**
+## Copies the value of the non-missing value to the location of the missing value.
 
-### **创建表**
+### Last Observation Carried Forward (LOCF) is a method for filling in missing values using the most recent observable values. The specific treatment is as follows:
 
-可以使用 `CREATE TABLE` 创建表。
+Given a system or value that switches between discrete states, the transitions between states are tracked.
 
-CnosDB 支持创建普通表和外部表。
+If a complex expression has more than one operator, operator precedence determines the sequence of operations. The order of execution may have a noticeable effect on the resulting value.
 
-### **创建普通(TSKV)表**
+### If the next non-missing value is encountered, steps 1 and 2 are repeated to copy the value of that non-missing value to the missing value location.
 
-#### 语法
+#### The data is read-only and cannot be DML operated or indexed.
 
 ```sql
 CREATE TABLE [IF NOT EXISTS] tb_name
@@ -316,21 +304,21 @@ field_codec_type:
     CODEC(code_type)
 ```
 
-#### 使用说明
+#### Gets the last value of one column sorted by another.
 
-1. 创建表时无需创建timestamp列，系统自动添加名为"time"的timestamp列。
-2. 各列的名字需要互不相同。
-3. 创建表时如果不指定压缩算法，则使用系统默认的压缩算法。
-4. 目前各种类型支持的压缩算法如下，每种类型第一个为默认指定的算法，NULL表示不使用压缩算法。
+1. Comparing expressions for inequality
+2. This function is used to perform Gap filling within the time window and to fillin the missing values using the "Last Observation Carried Forward" (LOCF) operation.
+3. Point to line distance.
+4. Point
 
 - BIGINT/BIGINT UNSIGNED: DELTA, QUANTILE, SDT, DEADBAND, NULL
 - DOUBLE: GORILLA, QUANTILE, SDT, DEADBAND, NULL
 - STRING: SNAPPY, ZSTD, GZIP, BZIP, ZLIB, NULL
 - BOOLEAN: BITPACK, NULL
 
-想了解更多有关压缩算法的内容可以看[压缩算法详情](./concept_design/compress.md#压缩算法)。
+Role name
 
-#### 示例
+#### The core idea of linear interpolation is to assume that the relationship between the known data points is linear, and then estimate the value of the unknown data points according to the linear relationship between the known data points. Specifically, linear interpolation deduces the ordinates of unknown data points by using the linear rate of change between the ordinates of known data points.
 
 ```sql
 CREATE TABLE air (
@@ -345,42 +333,28 @@ CREATE TABLE air (
 Query took 0.033 seconds.
 ```
 
-### **创建外部表**
+### Timestamp, the keyword TIMESTAMP indicates that the following string constant need to be interpreted as TIMESTAMP type.
 
-#### 语法
+#### Get the value corresponding to the largest timestamp in the Gauge.
 
 ```sql
--- Column definitions can not be specified for PARQUET files
-
-CREATE EXTERNAL TABLE [ IF NOT EXISTS ] tb_name 
-    ( field_definition [, field_definition] ... ) tb_option;
-
-field_definition:
-    column_name data_type [ NULL ]
-
-tb_option: {
-      STORED AS { PARQUET | NDJSON | CSV | AVRO }
-    | [ WITH HEADER ROW ]
-    | [ DELIMITER 'a_single_char' ]
-    | [ PARTITIONED BY ( column_name, [, ... ] ) ]
-    | LOCATION '/path/to/file'
-}
+Time Stamp
 ```
 
-#### 使用说明
+#### Gets the first value of one column sorted by another.
 
-1. 外部表并不存在数据库中，而是将一个操作系统文件当作数据库普通表来访问。
-2. 数据均是只读的，不能执行 DML 操作，也不能建索引。
+1. Calculates the latest instantaneous change in Gauge. This is equal to the last value value minus the penultimate value.
+2. Example:
 
-#### 参数说明
+#### Sort the results by the referenced expression. Ascending (ASC) is used by default. Sort in descending order by adding DESC after the expression of ORDER BY.
 
-1. STORED AS：表示文件以什么格式储存，目前支持 PARQUET，NDJSON，CSV，AVRO格式。
-2. WITH HEADER ROW：仅在csv文件格式下生效，表示带有csv表头。
-3. DELIMITER：仅在csv格式下生效，表示列数据的分隔符。
-4. PARTITIONED BY：使用创建表时指定的列来进行分区。
-5. LOCATION：表示关联的文件的位置。
+1. Calculate the intercept of y after 2D statistical aggregation.
+2. Calculate the standard deviation of the specified dimension after the two-dimensional statistical aggregation, and the method is `population`.
+3. User name
+4. Tenant name
+5. Nmuber of shards
 
-#### 示例
+#### **Function**: Split str according to delim, and return the nth part.
 
 ```sql
 CREATE EXTERNAL TABLE cpu (
@@ -399,15 +373,15 @@ LOCATION 'tests/data/csv/cpu.csv';
 Query took 0.031 seconds.
 ```
 
-### **删除表**
+### interval_time: This is optional; it specifies the duration of the time interval or infinity if not specified.
 
-#### 语法
+#### This schema stores tenant database information.
 
 ```sql
 DROP TABLE [ IF EXISTS ] tb_name;
 ```
 
-#### 示例
+#### Calculate the variance of the specified dimension after aggregating the two-dimensional statistics, and the method is `population`.
 
 ```sql
 DROP TABLE IF EXISTS air;
@@ -417,15 +391,15 @@ DROP TABLE IF EXISTS air;
 Query took 0.033 seconds.
 ```
 
-### **显示当前数据库所有表**
+### Calculate the standard deviation of the specified dimension after two-dimensional statistical aggregation, and the method is `sample`.
 
-#### 语法
+#### **Function**: Returns the rank (jump rank) of a value relative to all values in the partition.
 
 ```sql
 SHOW TABLES;
 ```
 
-#### 示例
+#### Execute the \w command, followed by the absolute path of the data file or the working path relative to cnosdb-cli.
 
 ```sql
 SHOW TABLES;
@@ -441,17 +415,17 @@ SHOW TABLES;
 +------------+
 ```
 
-### **查看表的模式**
+### The CTE defined in the WITH clause can only be used for other CTEs in the same WITH clause defined later.&#xA;Suppose A is the first CTE in the clause and B is the second CTE in the clause:
 
-外部表和普通表的模式都可以使用该语句查看。
+Both external and normal tables can be viewed using this statement.
 
-#### 语法
+#### Current row in `CURRENT ROW` ROWS  mode.Current value in RANGE mode.
 
 ```sql
 DESCRIBE DATABASE table_name;
 ```
 
-#### 示例
+#### ALTER TABLE tb_name alter_table_option;alter_table_option: {&#xA;ADD TAG col_name&#xA;| ADD FIELD col_name [CODEC(code_type)]&#xA;| ALTER col_name SET CODEC(code_type)&#xA;| DROP col_name&#xA;| RENAME COLUMN col_name TO new_col_name&#xA;}
 
 ```sql
 DESCRIBE TABLE air;
@@ -469,34 +443,26 @@ DESCRIBE TABLE air;
 +-------------+-----------------------+-------------+-------------------+
 ```
 
-### **修改表**
+### The first row of the partition in `UNBOUND PRECEDING` ROWS mode. The first value of the partition ORDER BY expression in RANGE mode.
 
-**说明**
+The correlation after aggregation of two-dimensional statistics is calculated.
 
-目前我们支持修改普通表。
+**Function**: The function trims a string by removing leading and trailing spaces or by removing characters that match an optional specified string.
 
-1. 添加列：添加 field，tag 列。
-2. 删除列：删除 field 列，当删除列导致删除某一行的最后一个 field 值时，我们认为这一行没有值，SELECT 时将不显示这一行。
-3. 修改列：修改列定义，目前支持修改列名、修改列的压缩算法。
+1. 1 Byte
+2. Common users can access only the tenant information of the current session.
+3. +08:00 represents the East 8th District
 
-#### 语法
+#### `1997-01-31T09:26:56.123` # Close to RCF3339, no time zone is specified, defaults to UTC
 
 ```sql
-ALTER TABLE tb_name alter_table_option;
-
-alter_table_option: {
-      ADD TAG col_name
-    | ADD FIELD col_name [data_type] [CODEC(code_type)]
-    | ALTER col_name SET CODEC(code_type)
-    | DROP col_name
-    | RENAME COLUMN col_name TO new_col_name
-}
+Show the result
 ```
 
-> 不支持修改 `time` 列名。
-> 避免在执行 rename tag column 时执行写入操作，可能会引起 series 冲突。
+> Modifying the `time` column name is not supported.
+> Description
 
-#### 示例
+#### resolution: Bigint, the approximate number of points to return ((Timestamp, value) pair), determines the horizontal resolution of the resulting plot.
 
 ```sql
 ALTER TABLE air ADD TAG height;
@@ -506,39 +472,38 @@ ALTER TABLE air DROP humidity;
 ALTER TABLE air RENAME COLUMN height to height_v2;
 ```
 
-## **插入数据**
+## The last row of partition in `UNBOUND FOLLOWING` ROWS mode.The last value of ORDER BY expression in RANGE mode.
 
-CnosDB支持两种数据写入的方法，一种是使用`INSERT INTO`语句，另一种是使用HTTP API的[write](./rest_api.md)接口，写入Line
-Protocol格式数据。
+Count the duration of the 'running' state starting 2020-01-01 11:00:00.
 
-本页面只展示`INSERT`相关的语法。
+Calculate the average of the specified dimensions after the aggregation of 2-D statistics.
 
 ### **INSERT**
 
-#### 语法
+#### Analyze Gauge data. Unlike Counter, Gauge can be decreased or increased.
 
 ```sql
 INSERT [INTO] tb_name [ ( column_name [, ...] ) ] VALUES (  const [, ...] ) [, ...] | query; 
 ```
 
-**说明**
+This is equivalent to inserting the following k-v pairs into the database.
 
-CnosDB 要求插入的数据列必须要有时间戳，且VALUES列表必须为[常量](#常量)。
-如果有列没有被选中，那么值为`NULL`。
+-state: Any
+Instructions
 
-**注意**
+This is equivalent to inserting the following k-v pairs into the database.
 
-时间列不能为`NULL`，Tag列和Field列可以为`NULL`。
+If you need to track the activity of your system based on heartbeat signals, consider using the heartbeat_agg function.
 
-例如`INSERT INTO air (TIME, station, visibility) VALUES(1666132800000000000, NULL, NULL)`
+Policy
 
-如果 VALUES 列表需要表达式，请使用[INSERT SELECT](./sql.md#插入查询结果insert-select)语法。
+The time stamp is based on RCF3339 standard.
 
-### **插入一条记录**
+### If the compression algorithm is not specified when creating a table, the system default compression algorithm is used.
 
-TIME 列的数据既可以用时间字符串表示，也可以用数字类型的时间戳表示，请注意。
+Name of the role granted
 
-#### 示例
+#### **Function**: Returns the rank (consecutive rank) of a value relative to all values in the partition.
 
 ```sql
 CREATE TABLE air (
@@ -594,15 +559,15 @@ SELECT * FROM air;
 +----------------------------+------------+------------+-------------+-----------+
 ```
 
-**注意**
+Similar to ROLLUP, CUBE is an extension of the GROUP BY clause. It allows you to generate subtotals for all combinations of grouping columns specified in the GROUP BY clause.
 
-关于时区表示，请参考[Timestamp](#timestamp-常量语法)。
+User name
 
-### **插入多条记录**
+### If RANGE is specified, the ORDER BY clause must be specified. The window calculates the offset in the unit of the value of the ORDER BY expression.
 
-`VALUES`关键字后面可以跟多个列表，用`,`分隔开。
+Whether administrator
 
-#### 例子
+#### The keyword `FULL JOIN` or `FULL OUTER JOIN` defines a full connection, which is actually the union of LEFT OUTER JOIN and RIGHT OUTER JOIN. It will display all the rows on the left and right of the join, and will generate null values where either side of the join does not match.
 
 ```sql
 INSERT INTO air (TIME, station, visibility, temperature, pressure) VALUES
@@ -634,17 +599,14 @@ SELECT * FROM air;
 +----------------------------+------------+------------+-------------+-----------+
 ```
 
-### **插入查询结果(INSERT SELECT)**
+### Multi-polygon
 
-你还可以使用 `INSERT SELECT`语法，向表中插入查询的数据。
+Number of replica
 
-#### 示例
+#### Define a right join with the keyword `RIGHT JOIN` or `RIGHT OUTER JOIN` . This join includes all the rows in the right table. If there are no matching rows in the left table, the left side of the join is null.
 
 ```sql
-CREATE TABLE air_visibility (
-    visibility DOUBLE,
-    TAGS(station)
-);
+8 Bytes
 ```
 
 ```
@@ -652,8 +614,7 @@ Query took 0.027 seconds.
 ```
 
 ```sql
-INSERT air_visibility (TIME, station, visibility) 
-    SELECT TIME, station, visibility FROM air;
+Multi-polygon
 ```
 
 ```
@@ -680,11 +641,11 @@ SELECT * FROM air_visibility;
 +----------------------------+------------+------------+
 ```
 
-### **插入重复数据**
+### If ROWS is specified, the window will calculate the offset in row units.
 
 [//]: # "2.3"
 
-CnosDB的存储引擎可以看成一种KV存储，其中Timestamp 和 Tags 构成了 KEY，Fields 构成了一系列Value。
+Instructions
 
 ```
 CREATE TABLE air (
@@ -697,14 +658,14 @@ INSERT INTO air (TIME, station, visibility, temperature) VALUES
 (1666165200290401000, 'XiaoMaiDao', 56, 69);
 ```
 
-上面语句相当于插入了如下k-v对：
+Geometry-collection
 
 | key                                                    | visibility-value | temperature-value | pressure-value |
 | ------------------------------------------------------ | ---------------- | ----------------- | -------------- |
 | (1666165200290401000, 'XiaoMaiDao') | 56               |                   |                |
 | (1666165200290401000, 'XiaoMaiDao') |                  | 69                |                |
 
-结果为
+CnosDB supports updating single or multiple field column values separately. It does not support updating tag column and field column at the same time.
 
 ```
 select * from air;
@@ -716,20 +677,20 @@ select * from air;
 +----------------------------+------------+------------+-------------+----------+
 ```
 
-当同一field字段出现重复的k-v 对时，会发生覆盖。
+Instructions
 
 ```sql
 INSERT INTO air (TIME, station, visibility) VALUES
 (1666165200290401000, 'XiaoMaiDao', 66);
 ```
 
-相当于插入
+Equivalent to insert
 
 | key                                                    | visibility-value | temperature-value | pressure-value |
 | ------------------------------------------------------ | ---------------- | ----------------- | -------------- |
 | (1666165200290401000, 'XiaoMaiDao') | 66               |                   |                |
 
-key 为 (1666165200290401000, 'XiaoMaiDao') 的 visibility-value 发生变化，变为 66。
+Tenant name
 
 ```
 select * from air;
@@ -746,7 +707,7 @@ INSERT INTO air (TIME, station, pressure) VALUES
 (1666165200290401000, 'XiaoMaiDao', 77);
 ```
 
-相当于插入
+Equivalent to insert
 
 | key                                                    | visibility-value | temperature-value | pressure-value |
 | ------------------------------------------------------ | ---------------- | ----------------- | -------------- |
@@ -762,38 +723,34 @@ select * from air;
 +----------------------------+------------+------------+-------------+----------+
 ```
 
-## **更新数据**
+## In the SELECT query, the HAVING clause must follow the GROUP BY clause and appear before the ORDER BY clause (if there is one).
 
-### **更新 tag 列**
+### Contain the DISTINCT keyword, which counts the results after deduplication.
 
-#### 语法
+#### **Function**: Calculate the percentage ranking of a value in the partition.
 
 ```
-UPDATE table_name SET ( assignment_clause [, ...] ) where_clause
-
-assignment clause :
-    tag_name = value_expression
+Size
 ```
 
-#### 使用说明
+#### **Function**: Return the overall covariance of number pairs in a group.
 
-1. CnosDB支持单独更新单个或多个 tag 列值，不支持同时更新 tag 列及 field 列。
-2. CnosDB支持更新 tag 列值为 NULL。
-3. `value_expression` 只能为编译期能确定值的表达式，如：'常量'、'1 + 2'、'CAST('1999-12-31 00:00:00.000' as timestamp)' 等。
-4. `where_clause` 中不能包含 field 列或 time 列，且不能为空，如果想更新表中所有数据，需要使用 'where
-   true'，这代表你接受在表数据量比较大时带来的性能问题。
-5. 不支持修改成已经存在 series（所有的 tag 列值构成 series）。
-6. 避免在写入数据时执行更新 tag 操作，可能会引起 series 冲突。
+1. Explanation
+2. Calculate the variance of the specified dimension after aggregating the two-dimensional statistics, and the method is `sample`.
+3. geometry object
+4. Calculate the kurtosis value of the specified dimension after two-dimensional statistical aggregation, and the method is `sample`.
+5. volume: Double
+6. Description
 
-#### 示例
+#### Add Column: add field and tag columns.
 
 ```sql
 update air set station = 'ShangHai' where station = 'LianYunGang';
 ```
 
-### **更新 field 列**
+### This view records the number of times the user writes to the DB over HTTP.
 
-#### 语法
+#### -- station is a Tag column&#xA;SELECT station FROM air;
 
 ```sql
 UPDATE table_name SET ( assignment_clause [, ...] ) where_clause
@@ -802,84 +759,83 @@ assignment clause :
     field_name = value_expression
 ```
 
-#### 使用说明
+#### The aggregate function result cannot be returned in CSV format.
 
-1. CnosDB支持单独更新单个或多个 field 列值，不支持同时更新 tag 列及 field 列。
+1. Instructions
 
-#### 示例
+#### CnosDB supports updating single or multiple tag column values separately. It does not support updating tag column and field column at the same time.
 
 ```sql
 update air set pressure = pressure + 100 where pressure = 68 and time < '2023-01-14T16:03:00';
 ```
 
-## **删除数据**
+## The `CASE WHEN` expression is used when the expression needs different values depending on the situation.
 
 [//]: # "2.4"
 
-按 tag 和 时间列过滤并删除数据。
+**Functions**: ST_Distance returns the minimum Euclidean distance between the 2D projections of two geometries.
 
-#### 语法
+#### CnosDB supports the creation of common tables and external tables.
 
 ```
 DELETE FROM table_name where_clause
 ```
 
-#### 使用说明
+#### Limit the number of rows returned from the result set to n, and n must be non-negative.
 
-1. `where_clause` 中仅能包含 tag 列和 time 列，不能包含 field 列。
+1. Calculate the skewness value of the specified dimension after two-dimensional statistical aggregation, and the method is `sample`.
 
-#### 示例
+#### **Notice**: Neither column is included in the aggregation if it is NULL.
 
 ```sql
 delete from air where station = 'LianYunGang' and time < '2023-01-14T16:03:00';
 ```
 
-## **查询数据**
+## Therefore, we often use ROLLUP in reports to generate subtotals and totals. The order of columns in ROLLUP is very important.
 
-CnosDB SQL 的灵感来自于 [DataFusion](https://arrow.apache.org/datafusion/user-guide/introduction)
-，我们支持DataFusion的大部分SQL语法。
+Get the time of the opening price.
 
-**注意**：为了查询能更高效，没有指定排序的查询，每次行顺序都不一定相同，如果需要按字段排序的话，请参看`ORDER BY`子句。
+**NOTE**：for more efficient query, no sorted queries specified, not necessarily in the same order per line, please see `ORDER BY` for field sorting.
 
-### 示例数据
+### `1997-01-31 09:26:56.123` # Close to RCF3339, replace T by space, and no time zone is specified
 
-为了进一步学习CnosDB，本节将提供示例数据供您下载，并教您如何将数据导入数据库。后面章节中引用的数据源都来自此示例数据。
+Count the time of 'running' status.The data sources cited in the subsequent sections are derived from this sample data.
 
-### 下载数据
+### HAVING enables you to specify filter conditions after the GROUP BY clause, so as to control which groups in the query results can appear in the final results.
 
-如果在 cnosdb-cli 中，请输入`\q`退出
+Statistical Aggregate Functions
 
-在shell中执行以下命令将在本地生成一个名称为oceanic_station的Line Protocol格式的数据文件
+See [Aggregate Function](#aggregate-function).
 
 ```shell
 curl -o oceanic_station.txt https://dl.cnosdb.com/sample/oceanic_station.txt
 ```
 
-### 导入数据
+### At present, the compression algorithms supported by various types are as follows. The first one of each type is the default specified algorithm. NULL means no compression algorithm is used.
 
-- **启动CLI**
+- This view records the number of times the user queries the DB.
   ```shell
   cnosdb-cli
   ```
-- **创建数据库**
+- Comparing expressions to see if they are less than or equal to
   ```shell
   create database oceanic_station;
   ```
-- **切换到指定数据库**
+- STORED AS: represents the format in which the file is stored. Currently, PARQUET, JSON, CSV and AVRO formats are supported.
   ```shell
   \c oceanic_station
   ```
-- **导入数据**
+- The GROUP BY clause must be after the condition of the WHERE clause (if there is one) and before the ORDER BY clause (if there is one).
 
-  执行\w指令，\w后面为数据文件的绝对路径或相对cnosdb-cli的工作路径。
+  Get the closing time.
 
   ```shell
   \w oceanic_station.txt
   ```
 
-## SQL 语法
+## Common users can access only the tenant information of the current session.
 
-#### 语法
+#### **Function**: Create a STRUCT with the specified field value.
 
 ```sql
 [ WITH with_query [, ...] ]
@@ -911,13 +867,13 @@ SELECT [ ALL | DISTINCT ] select_expression [, ...]
     ()
 ```
 
-### SELECT 子句
+### **Functions**: Convert WKB binary to Geometry type.
 
 ### SELECT \*
 
-通配符 \* 可以用于代指全部列。
+In short, the LOCF method populates the missing value by copying the most recent observable value to the missing value location, making the data continuous in time. This method assumes that the data after the missing value is the same or very close to the last observed value.
 
-#### 示例
+#### Define a left join with the keyword `LEFT JOIN` or `LEFT OUTER JOIN` . This join includes all the rows in the left table. If there are no matching rows in the right table, the right side of the join is null.
 
 ```
 SELECT * FROM air;
@@ -943,18 +899,18 @@ SELECT * FROM air;
 +---------------------+-------------+------------+-------------+----------+
 ```
 
-### ALL/DISTINCT
+### Return the series in the specified table.
 
-#### 语法
+#### Perform financial asset data analysis. This feature makes it easier to write financial analysis queries involving candlestick.
 
 ```sql
 SELECT [ ALL | DISTINCT ] select_expression [, ...];
 ```
 
-在`SELECT`关键字后可以使用`DISTINCT`去掉重复字段，只返回去重后的值。
-使用`ALL`会返回字段中所有重复的值。不指定此选项时，默认值为`ALL`。
+Count the duration of the 'running' state for four days starting on 2020-01-01 11:00:00.
+Schema DefinitionWhen this option is not specified, the default value is `ALL`.
 
-#### 示例
+#### `where_clause` can only contain tag and time columns, not field columns.
 
 ```sql
 SELECT DISTINCT station, visibility FROM air;
@@ -1003,19 +959,19 @@ SELECT station, visibility FROM air;
 +-------------+------------+
 ```
 
-### **别名**
+### Determines whether the left expression matches the pattern of the right expression
 
-可以用 `AS` 关键字为列表达式或表取别名。
+Calculate the sum of the specified dimensions after the two-dimensional statistical aggregation, and the method is `population`.
 
-### 为列表达式取别名
+### Pick alias for column expression
 
-#### 语法
+#### PARTITIONED BY: use the column specified when creating the table to partition.
 
 ```sql
 expression [ [ AS ] column_alias ]
 ```
 
-#### 示例
+#### In databases, interpolation is a technique used to deal with missing values in data. When there are missing values in the data, these techniques can help us estimate or speculate on those missing values, thus filling in the gaps in the data.
 
 ```sql
 SELECT station s, visibility AS v FROM air;
@@ -1041,17 +997,17 @@ SELECT station s, visibility AS v FROM air;
 +-------------+----+
 ```
 
-### 为表取别名
+### Common users can access only the tenant information of the current session.
 
-你也可以用关键字`AS`为表取别名。
+Explanation
 
-#### 语法
+#### This schema stores the definitions of all columns under the tenant.
 
 ```sql
 FROM tb_name [AS] alias_name
 ```
 
-#### 示例
+#### One or more expressions used to specify a row partition. If there is no such clause, the partition is composed of all rows.
 
 ```sql
 SELECT a.visibility, s.temperature
@@ -1069,15 +1025,14 @@ FROM air AS a JOIN sea s ON a.temperature = s.temperature limit 10;
 +------------+-------------+
 ```
 
-### **SELECT限制**
+### Binary operators and two expressions are combined to form a new expression.
 
-- 如果SELECT子句仅包含Tag列，相当于 SELECT DISTINCT Tag列
+- N: Int
 
-  #### 示例
+  #### **Function**: 将 str 中与 regexp 匹配的所有子字符串都替换为 rep。
 
   ```sql
-  -- station是Tag列，temperature是Field列
-  SELECT station, temperature FROM air;
+  Restrictions on Usage
   ```
 
   ```
@@ -1101,8 +1056,7 @@ FROM air AS a JOIN sea s ON a.temperature = s.temperature limit 10;
   ```
 
   ```sql
-  -- station 是Tag列
-  SELECT station FROM air;
+  Note
   ```
 
   ```
@@ -1114,17 +1068,17 @@ FROM air AS a JOIN sea s ON a.temperature = s.temperature limit 10;
   +-------------+ 
   ```
 
-### **LIMIT 子句**
+### External tables do not exist in the database, but an operating system file is accessed as a common database table.
 
-#### 语法
+#### VNODE_DURATION: represents the time range of data in the shard, defaults to 365 days, and also expressed by data with units.Its data meaning is consistent with the value of TTL.
 
 ```sql
 LIMIT n
 ```
 
-限制返回结果集的行数为n，n必须非负。
+price: Double
 
-#### 示例
+#### You can also use the keyword `AS` to alias the table.
 
 ```sql
 SELECT *
@@ -1148,17 +1102,17 @@ FROM air LIMIT 10;
 +---------------------+-------------+------------+-------------+----------+
 ```
 
-### **OFFSET 子句**
+### PRECISION: The timestamp accuracy of the database. ms represents milliseconds, us represents microseconds, ns represents nanoseconds,defaults to ns.
 
-#### 语法
+#### Example: `INSERT INTO air (TIME, station, visibility) VALUES(1666132800000000000, NULL, NULL)`
 
 ```sql
 OFFSET m
 ```
 
-返回的结果集跳过 m 条记录, 默认 m=0。
+Host of service
 
-#### 示例
+#### Calculate the kurtosis value of the specified dimension after two-dimensional statistical aggregation, and the method is `population`.
 
 ```sql
 SELECT *
@@ -1175,11 +1129,11 @@ FROM air OFFSET 10;
 +---------------------+-------------+------------+-------------+----------+
 ```
 
-`OFFSET`可以和`LIMIT`语句配合使用，用于指定跳过的行数，格式为`LIMIT n OFFSET m`。
-其中：`LIMIT n`控制输出m行数据，`OFFSET m`表示在开始返回数据之前跳过的行数。
-OFFSET 0与省略OFFSET子句效果相同。
+The tenant to which the vnode belongs
+Role name under the tenant
+OFFSET 0 has the same effect as omitting OFFSET sentences.
 
-#### 示例
+#### The keyword `VALUES` can be followed by multiple lists separated by `,`.
 
 ```sql
 SELECT *
@@ -1196,22 +1150,22 @@ FROM air LIMIT 3 OFFSET 3;
 +---------------------+------------+------------+-------------+----------+
 ```
 
-### **WITH 子句**
+### For more information about the compression algorithm, see the details of the [compression algorithm](./concept_design/compress.md#compression-algorithm).
 
-#### 语法
+#### **Function**: Return a value truncated to the unit specified in field.
 
 ```sql
 WITH cte AS cte_query_definiton [, ...] query
 ```
 
-可选。WITH子句包含一个或多个常用的表达式CTE(Common Table Expression)。
-CTE充当当前运行环境中的临时表，您可以在之后的查询中引用该表。CTE使用规则如下：
+Optional.`slide_duration` is an interval, and specifies the sliding size of the time window. If this parameter is not specified, `slide_duration` is the sliding size of the time window and becomes a rolling window.
+geometry objectThe following rules for use by CTE are：
 
-- 在同一WITH子句中的CTE必须具有唯一的名字。
-- 在WITH子句中定义的CTE仅对在其后定义的同一WITH子句中的其他CTE可以使用。
-  假设A是子句中的第一个CTE，B是子句中的第二个CTE：
+- Aggregate function array_agg's return type .
+- Note
+  Assume A is the first CTE, B is the second CTE：
 
-#### 示例
+#### **Function**: Return a concatenated string separated by sep.
 
 ```sql
 SELECT station, avg 
@@ -1245,11 +1199,11 @@ FROM x;
 +-------------+--------------------+
 ```
 
-### **UNION 子句**
+### Calculate the intercept of x after two-dimensional statistical aggregation.
 
-UNION 子句用于合并多个 SELECT 语句的分析结果。
+Type
 
-#### 语法
+#### Obtain the value corresponding to the smallest timestamp in the gauge
 
 ```
 select_clause_set_left
@@ -1258,16 +1212,16 @@ select_clause_set_right
 [sort_list_columns] [limit_clause]
 ```
 
-`UNION` 会对合并的结果集去重。
-`UNION ALL` 保留合并的结果集中相同的数据。
-`EXCEPT` 会作两个结果集的差，从左查询中返回右查询没有找到的所有非重复值。
-`INTERSECT` 返回两个结果集的交集（即两个查询都返回的所有非重复值）。
+`UNION` weights the merged resultset.
+Type
+User name under tenant
+Role name
 
-**注意**
+Time range of data in shard
 
-UNION 内每个 SELECT 子句必须拥有相同数量的列，对应列的数据类型相同。
+**Function**: Signs of parameter (-1,0,+1).
 
-#### 示例
+#### The keyword `JOIN` or `INNER JOIN` defines a join that only displays matching rows in two tables.
 
 - **UNION ALL**
 
@@ -1369,11 +1323,11 @@ UNION 内每个 SELECT 子句必须拥有相同数量的列，对应列的数据
   +------------+
   ```
 
-### **ORDER BY 子句**
+### This schema shows a real-time snapshot of SQL statements, which is used to monitor SQL jobs in real time.
 
-按引用的表达式对结果进行排序。默认情况使用升序 (ASC)。通过在 ORDER BY 的表达式后添加 DESC 按降序排序。
+Sort results by referenced expression.Default usage ascending (ASC).Measurement value
 
-#### 示例
+#### Window functions and aggregate functions cannot be nested in window functions.
 
 ```sql
 SELECT * FROM air ORDER BY temperature;
@@ -1447,13 +1401,13 @@ SELECT * FROM air ORDER BY station, temperature;
 +---------------------+-------------+------------+-------------+----------+
 ```
 
-## **表达式**
+## Drop Column: drop the field column. When dropping a column results in dropping the last field value of a row, we think that this row has no value, and this row will not be showed in SELECT.
 
-表达式是符号和运算符的一种组合，CnosDB 将处理该组合以获得单个数据值。
-简单表达式可以是一个常量、变量、列或标量函数。
-可以用运算符将两个或更多的简单表达式联接起来组成复杂表达式。
+Get the smallest timestamp in the gauge
+Simple expression can be a constant, variable, column or number function.
+Two or more simple expressions can be connected to complex expressions with an operator.
 
-#### 语法
+#### `1997-01-31T09:26:56.123+08:00` # Standard RCF3339, East 8th District
 
 ```sql
 <expresion> :: = { 
@@ -1467,12 +1421,12 @@ SELECT * FROM air ORDER BY station, temperature;
 }
 ```
 
-#### 常量
+#### `CROSS JOIN` is not supported currently.
 
-表示单个特定数据值的符号。
-详细内容请阅览[常量](#常量)。
+The time_window_gapfill must be used as a top-level expression in a query or subquery. For example, you cannot nest time_window_gapfill in another function, such as sum(time_window_gapfill(xxx)).
+See[常量](#constants) for details.
 
-#### 示例
+#### In CnosDB-Cli, you can use the following command to switch to the specified database.
 
 ```sql
 select 1;
@@ -1486,51 +1440,51 @@ select 1;
 +----------+
 ```
 
-#### 标量函数
+#### CnosDB supports two data inserting methods:&#xA;one is to use the `INSERT INTO` statement,&#xA;and the other is to use the HTTP API [write](./rest_api.md) interface to insert Line Protocol format data.
 
-详细内容请阅览[函数](#函数)
+Currently, only common tables can be source tables. Field names and field types defined in flow table fields must belong to the source table and be the same as those defined in the source table.
 
-#### 单目运算符
+#### DROP DATABASE oceanic_station AFTER ‘7d’;RECOVER DATABASE oceanic_station;
 
-| 运算符         | 说明                                                |
-| ----------- | ------------------------------------------------- |
-| NOT         | 如果子表达式为true，则整个表达式false，如果整个表达式为false，则整个表达式为true |
-| IS NULL     | 如果子表达式为null，则整个表达式为true                           |
-| IS NOT NULL | 如果子表达式为null，则整个表达式为false                          |
+| For more information about SHOW QUERIES, you can reference to [SHOW QUERIES](#show-queries). | Perform linear regression analysis on two-dimensional data, such as calculating correlation coefficients and covariances.&#xA;Common statistics such as mean and standard deviation can also be calculated for each dimension separately.&#xA;stats_agg provides the same functionality as aggregation functions such as sum, count, corr, covar_pop, and so on.&#xA;Suitable for use with multiple analysis functions in a single SQL. |
+| -------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| NOT                                                                                          | **Function**: Calculate the standard deviation of the sample.                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| IS NULL                                                                                      | Sample Data                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| IS NOT NULL                                                                                  | Geometry-collection                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 
-#### 二元运算符
+#### CREATE STREAM TABLE [IF NOT EXISTS] table_name(field_definition [, field_definition] ...)&#xA;WITH (db = 'db_name', table = 'table_name', event_time_column = 'time_column')&#xA;engine = tskv;&#xA;field_definition:&#xA;column_name data_type
 
-二元运算符和两个表达式组合在一起，形成一个新的表达式。
+CLUSTER_SCHEMA : The information of the cluster.
 
-支持的二元运算符有:
+Describe the parameters of the database and the pattern of the table.
 
-| 运算符       | 说明                                       |
-| --------- | ---------------------------------------- |
-| -         | 数字类型表达式相加                                |
-| *         | 数字类型表达式相减                                |
-| -         | 数字类型表达式相乘                                |
-| /         | 数字类型表达式相除                                |
-| %         | 整数类型表达式取余                                |
-| \|\&#124  | 字符串类型表达式拼接                               |
-| =         | 比较表达式是否相等                                |
-| !=、 <\&gt | 比较表达式是否不相等                               |
-| <         | 比较表达式是否小于                                |
-| <=        | 比较表达式是否小于等于                              |
-| &gt; | 比较表达式是否大于                                |
-| > =       | 比较表达式是否大于等于                              |
-| AND       | 先求左表达式的值，如果为true，计算右表达式的值，都为true为true    |
-| OR        | 先求左表达式的值，如果为false，计算右表达式的值，都为false为false |
-| LIKE      | 判断左表达式是否符合右表达式的模式                        |
+| Common users can access only the tenant information of the current session. | Linear interpolation is suitable for estimation of continuous variables, such as filling in missing values in time series or interpolating in spatial data. However, the accuracy and applicability of linear interpolation depends on the characteristics of the data and the actual situation. In some cases, the data may have non-linear relationships, or other interpolation methods may be more suitable. Therefore, before applying linear interpolation, it is necessary to carefully consider the nature of the data and the purpose of the interpolation to ensure that the interpolation results are reasonable and accurate. |
+| --------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| -                                                                           | Common users can access only the tenant information of the current session.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| *                                                                           | Common users can access only the tenant information of the current session.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| -                                                                           | **Function**: Starting from the origin, the bucket is split by interval, and the bucket timestamp of the source is returned.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| /                                                                           | If you use the database through [HTTP API](./rest_api.md), you can specify the parameter db=database_name in the url to use the database.                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| %                                                                           | CnosDB provides the system to check the status and information of CnosDB clusters. The system schema is a read-only schema. You can query the system schema using the SQL statement.                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| \|\&#124                                                                    | Calculates the earliest instantaneous change in Gauge. This is equal to the second value minus the first.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| =                                                                           | **Function**: Randomly select N records from the given column_key.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| !=、 <\&gt                                                                   | `event_time_column` Specifies the event time column. The data type of this column must be TIMESTAMP.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| <                                                                           | There is no need to create a timestamp column when creating a table. The system automatically adds a timestamp column named "time".                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| <=                                                                          | CnosDB provides geometry functions in the ST_Geometry SQL family. For the Geometry type, see the [Geometry](#geometry) data types section.                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| &gt;                                                                   | The database contains metadata information about the cluster, such as tenant information and user information.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| > =                                                                         | Column type, unique to the tskv table, supports TIME, TAG, FIELD, and usually Field                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| AND                                                                         | CnosDB provides `ROLLUP`, `CUBE` and other complex grouping operations, enabling you to operate query results in different ways.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| OR                                                                          | Time of record                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| LIKE                                                                        | INFORMATION_SCHEMA : The information of the tenant.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 
-### **`BETWEEN AND` 表达式**
+### candlestick_agg generates intermediate aggregate data CandleStackData from raw quote data,
 
-#### 语法
+#### DELIMITER: only effective in csv format, representing the delimiter of column data.
 
 ```sql
 expr BETWEEN expr AND expr
 ```
 
-#### 示例
+#### Tenant name of the database to which the permission is granted
 
 ```sql
 SELECT DISTINCT PRESSURE FROM AIR WHERE PRESSURE BETWEEN 50 AND 60;
@@ -1554,13 +1508,13 @@ SELECT DISTINCT PRESSURE FROM AIR WHERE PRESSURE BETWEEN 50 AND 60;
 +----------+
 ```
 
-注意：`BETWEEN x AND y` 会列出x和y之间的数，包括x和y
+**Drop Database**
 
-### **`IN` 表达式**
+### Filter and delete data by tag and time columns.
 
-IN 操作符判断列表中是否有值与表达式相等。
+as follows:
 
-#### 示例
+#### **Function**: Calculate sha224 hash value of the string str.
 
 ```sql
 SELECT station, temperature, visibility FROM air WHERE temperature  IN (68, 69);
@@ -1575,15 +1529,15 @@ SELECT station, temperature, visibility FROM air WHERE temperature  IN (68, 69);
 +-------------+-------------+------------+
 ```
 
-**注意**：
+Name of the database to which the permission was granted
 
-IN 列表暂时只支持常量
+Operator
 
-### **`CASE WHEN` 表达式**
+### Find the most recent non-missing value before the missing value.
 
-当表达式需要按照不同情况得不同的值时，可以使用 `CASE WHEN` 表达式。
+Total write traffic size
 
-#### 语法
+#### Get the time of the highest price.
 
 ```sql
 CASE
@@ -1592,7 +1546,7 @@ CASE
 END;
 ```
 
-#### 示例
+#### The `where_clause` must not contain a field or time column, and it must not be null. If you want to update all the data in the table, you need to use `where true`, which means you accept that there will be performance problems when the table is large.
 
 ```sql
 SELECT DISTINCT 
@@ -1619,32 +1573,32 @@ FROM AIR;
 +----------+
 ```
 
-### **运算符优先级**
+### You can also use `INSERT SELECT` to insert query data into the table.
 
-如果一个复杂表达式有多个运算符，则运算符优先级将确定操作序列。 执行顺序可能对结果值有明显的影响。
+The distance between the plane and the plane. The order of implementation may have a clear impact on the value of results.
 
-运算符的优先级别如下表中所示。 在较低级别的运算符之前先对较高级别的运算符进行求值。 在下表中，1 代表最高级别，8 代表最低级别。
+The priority level of the operator is shown in the table below. The higher level operator is valued before the lower level operator. Query took 0.030 seconds.
 
-| 级别 | 运算符                               |
-| -- | --------------------------------- |
-| 1  | \*（乘）、/（除）、%（取模）                  |
-| 2  | +（正）、-（负）、+（加）、+（串联）、-（减）         |
-| 3  | =、\&gt=、<=、<\&gt、!=、\&gt、<（比较运算符） |
-| 4  | NOT                               |
-| 5  | AND                               |
-| 6  | BETWEEN、IN、LIKE、OR                |
+| Level | WITH HEADER ROW: Effective only in csv file format, representing with csv header.                                                        |
+| ----- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| 1     | Stream queries support only `INSERT SELECT` statements, where the FROM clause is the stream table and is inserted into the target table. |
+| 2     | If the SELECT clause contains only the Tag column, it is equivalent to the SELECT DISTINCT Tag column.                                  |
+| 3     | The tenant of the database                                                                                                               |
+| 4     | NOT                                                                                                                                      |
+| 5     | AND                                                                                                                                      |
+| 6     | BETWEEN、IN、LIKE、OR                                                                                                                       |
 
 ### **SHOW**
 
-#### 语法
+#### Get the time of the lowest price.
 
 ```sql
 SHOW {DATABASES | TABLES | QUERIES}
 ```
 
-显示所有数据库，或显示所有表, 或正在执行的SQL。
+Double Precision Floating Point
 
-#### 示例
+#### **Functions**: Returns the Cartesian area of the 2D projection of a geometric object. The unit of area is the same as the unit used to represent the coordinates of the input geometry.&#xA;For point, string, multipoint, and multistring, this function returns 0.&#xA;For a collection of geometries, it returns the sum of the areas of the geometries in the collection.
 
 ```sql
 SHOW DATABASES;
@@ -1684,19 +1638,19 @@ SHOW QUERIES;
 +----------+------------------------------------------------------------------+-----------------------------------------+-----------+----------------------------------------+-------------+------------+--------------+
 ```
 
-关于 SHOW QUERIES 语句的详细信息，可以在[系统表 QUERIES](#show-queries) 查看。
+**Function**: Base 2 logarithm.
 
 #### SHOW SERIES
 
-返回指定表的series
+The time_window_gapfill is similar to time_window, but has the ability to fill in missing data. Interpolate and locf must be used in conjunction with time_window_gapfill, which controls how missing values are treated.
 
-#### 语法
+#### **Function**: Returns the position of a value relative to all values in the partition.
 
 ```sql
 SHOW SERIES [ON database_name] FROM table_name [WHERE expr] [order_by_clause] [limit_clause] 
 ```
 
-#### 示例
+#### The wildcard \* can be used to refer to all columns.
 
 ```sql
 SHOW SERIES FROM air WHERE station = 'XiaoMaiDao' ORDER BY key LIMIT 1;
@@ -1710,21 +1664,21 @@ SHOW SERIES FROM air WHERE station = 'XiaoMaiDao' ORDER BY key LIMIT 1;
 +------------------------+
 ```
 
-**注意**
+CnosDBSQL is inspired by [DataFusion](https://arrow.apache.org/datafusion/user-guide/introduction), We support most of the SQL syntax of DataFusion.
 
-WEHER子句中的表达式列，只能是tag列或time列，ORDER BY 子句的表达式只能是 key
+x: double
 
 #### SHOW TAG VALUES
 
-#### 语法
+#### To create a stream table, a source table is required. The stream table does not support `ALTER` now.
 
 ```sql
 SHOW TAG VALUES [ON database_name] FROM table_name WITH KEY [<operator> "<tag_key>" | [[NOT] IN ("<tag_key1>", ..)]] [WHERE expr] [order_by_clause] [limit_clause];
 ```
 
-operator 包括 `=`, `!=`。
+Time of record
 
-#### 示例
+#### **Function**: Return an inverted string or an array containing elements in reverse order.
 
 ```sql
 SHOW TAG VALUES FROM air WITH KEY = "station" WHERE station = 'XiaoMaiDao' ORDER BY key, value LIMIT 1;
@@ -1753,21 +1707,21 @@ SHOW TAG VALUES FROM air WITH KEY NOT IN ("station1");
 
 ### **EXPLAIN**
 
-#### 语法
+#### If there are still missing values at the end of the data series, the last non-missing value is copied until all missing values are filled in.
 
 ```sql
 EXPLAIN [ ANALYZE ] [ VERBOSE ] <statement>;
 ```
 
-**说明**
+Binary operators supported now:
 
-`EXPLAIN` 语句仅用于显示查询的执行计划，而不执行查询。
+When the time unit is ms, the ratio unit is /ms
 
-`EXPLAIN ANALYZE` 执行查询，并显示查询的执行计划。
+Equivalent to:
 
-`EXPLAIN ANALYZE VERBOSE` 执行查询，并显示更详细的执行计划，包括读取的行数等。
+Constant
 
-#### 示例
+#### The names of the columns need to be different.
 
 ```sql
 EXPLAIN SELECT station, temperature, visibility FROM air;
@@ -1834,15 +1788,15 @@ EXPLAIN ANALYZE VERBOSE SELECT station, temperature, visibility FROM air;
 
 ### **DESCRIBE**
 
-#### 语法
+#### Table storage engine. External and internal tskv tables supported now
 
 ```sql
 DESCRIBE {DATABASE db_name | TABLE tb_name};
 ```
 
-描述数据库的参数，描述表的模式。
+`1997-01-31 09:26:56.123+08:00` # Close to RCF3339, just replace T by space
 
-#### 示例
+#### **Functions**: The Geometry object is returned in OGC/ISO Well-Known Binary(WKB) format.
 
 ```sql
 DESCRIBE TABLE air;
@@ -1876,7 +1830,18 @@ DESCRIBE DATABASE public;
 
 [//]: # "EXISTS 条件测试子查询中是否存在行，并在子查询返回至少一个行时返回 true。如果指定 NOT，此条件将在子查询未返回任何行时返回 true。"
 
-[//]: # "示例："
+[//]: # "function([...expr] ) OVER ([PARTITION BY expr] [ORDER BY expr] [window_frame]);
+
+function: {aggregate_function | analytic_function| aggregate_function}
+
+window_frame: { frame_mode frame_start |
+                frame_mode BETWEEN frame_start AND frame_end } }
+frame_mode: {RANGE | ROWS}
+
+frame_start: {UNBOUNDED PRECEDING | offset_start PRECEDING | CURRENT ROW | offset_start FOLLOWING }
+
+frame_end: {offset_stop PRECEDING | CURRENT ROW | offset_stop FOLLOWING | UNBOUNDED FOLLOWING}
+"
 
 [//]: # "```sql"
 
@@ -1944,17 +1909,19 @@ DESCRIBE DATABASE public;
 
 [//]: # "```"
 
-### **Join 子句**
+### The db and table arguments specify the source table.
 
-CnosDB支持 `INNER JOIN`、`LEFT OUTER JOIN`、`RIGHT OUTER JOIN`、`FULL OUTER JOIN`。
+Remarks
 
-目前暂不支持 `CROSS JOIN`。
+The WKT format is a text format used to describe the spatial characteristics of 2D and 3D geometric objects.
+WKT stands for "Well-Known Text" and is an open international standard.
+The WKT format includes some basic geometric objects, such as points, lines, polygons and circles, and some composite objects, such as collections of polygons and collections of geometric objects.
 
 ### INNER JOIN
 
-关键字 `JOIN` 或 `INNER JOIN` 定义了一个只显示两个表中匹配的行的连接。
+Get the closing price.
 
-#### 示例
+#### **Function**: Calculate sha384 hash value of the string str.
 
 ```sql
 SELECT * FROM air INNER JOIN sea ON air.temperature = sea.temperature;
@@ -1973,9 +1940,9 @@ SELECT * FROM air INNER JOIN sea ON air.temperature = sea.temperature;
 
 ### LEFT JOIN
 
-用关键字 `LEFT JOIN` 或 `LEFT OUTER JOIN` 定义一个左连接。该连接包括左表中的所有行，如果右表没有匹配行，则连接的右侧为空值。
+Z represents zero time zoneHost of service
 
-#### 示例
+#### **Function**: Calculate sha384 hash value of the string str.
 
 ```sql
 SELECT * FROM air LEFT JOIN sea ON air.temperature = sea.temperature;
@@ -2004,9 +1971,9 @@ SELECT * FROM air LEFT JOIN sea ON air.temperature = sea.temperature;
 
 ### RIGHT JOIN
 
-用关键字 `RIGHT JOIN` 或 `RIGHT OUTER JOIN` 定义一个右连接。该连接包括右表中的所有行，如果左表没有匹配行，则连接的左侧为空值。
+8 BytesHost of service
 
-#### 示例
+#### **Function**:  Calculate sha256 hash value of the string str.
 
 ```sql
 SELECT * FROM air RIGHT JOIN sea ON air.temperature = sea.temperature;
@@ -2035,10 +2002,10 @@ SELECT * FROM air RIGHT JOIN sea ON air.temperature = sea.temperature;
 
 ### FULL JOIN
 
-关键字 `FULL JOIN` 或 `FULL OUTER JOIN` 定义了一个全连接，实际上它是 LEFT OUTER JOIN 和 RIGHT OUTER JOIN 的联合。
-它会显示连接左侧和右侧的所有行，并将在连接的任一侧不匹配的地方产生空值。
+[Data Source](#sample-data)
+It will display all lines that connect to the left and right and will create empty values where no match exists on either side of the connection.
 
-#### 示例
+#### **Function**: Return the rightmost len characters in the string str.
 
 ```sql
 SELECT * FROM air FULL JOIN sea ON air.temperature = sea.temperature;
@@ -2461,11 +2428,11 @@ SELECT * FROM air FULL JOIN sea ON air.temperature = sea.temperature;
 
 [//]: # "    +---------------------+-------------+------------+-------------+----------+---------------------+-------------+-------------+"
 
-### **GROUP BY 子句**
+### Struct {&#xA;time: List[Timestamp], -- ms&#xA;value: List[Double],&#xA;resolution: Int Unsigned,&#xA;}
 
-GROUP BY 子句必须在 WHERE 子句（如果有的话）的条件之后，ORDER BY 子句（如果有的话）之前。
+y: double
 
-#### 示例
+#### **Function**: Return the rightmost len characters in the string str.
 
 ```sql
 SELECT station, AVG(temperature) 
@@ -2482,24 +2449,24 @@ GROUP BY station;
 +-------------+----------------------+
 ```
 
-### **HAVING 子句**
+### When the time unit is ns, the ratio unit is /ns,
 
-#### 语法
+#### -- station is a Tag column, temperature is a Field Namecolumn.&#xA;SELECT station, temperature FROM air;
 
 ```sql
 group_by_clause 
 [ HAVING condition ];
 ```
 
-在 SELECT 查询中，HAVING 子句必须紧随 GROUP BY 子句，并出现在 ORDER BY 子句（如果有的话）之前。
+Note
 
-**HAVING 与 WHERE 的区别**
+The returned result set skips m records. default m=0.
 
-HAVING 在 GROUP BY 子句之后使你能够指定过滤条件，从而控制查询结果中哪些组可以出现在最终结果里面。
+Note
 
-WHERE 在 GROUP BY 子句之前对被选择的列施加条件，而 HAVING 子句则对 GROUP BY 子句所产生的组施加条件。
+Note
 
-#### 示例
+#### **Function**: Return the leftmost len characters in str.
 
 ```sql
 SELECT station, AVG(temperature)  AS avg_t 
@@ -2516,9 +2483,9 @@ HAVING avg_t > 70;
 +-------------+-------------------+
 ```
 
-### **复杂的分组操作**
+### Please note that data in the TIME column can be represented by either a time string or a numeric timestamp.
 
-CnosDB 提供了 `ROLLUP`，`CUBE` 等复杂分组操作，使您能以不同的方式操作查询结果
+Numerical type, scientific notation is not supported at present.
 
 [//]: # "### **GROUPING SETS**"
 
@@ -2622,13 +2589,13 @@ CnosDB 提供了 `ROLLUP`，`CUBE` 等复杂分组操作，使您能以不同的
 
 [//]: # "与 GROUPING SETS 类似，"
 
-您可以在单个查询中使用 ROLLUP 选项来生成多个分组集。
+Description
 
-ROLLUP 假定输入列之间存在层次结构。
+Note
 
-如果你的group by 子句是：
+If your group by child is：
 
-#### 语法
+#### **Function**: Returns the approximate percentile (TDigest) of the input value x, where p is the percentile and is a 64 bit floating point number between 0 and 1 (including 1).
 
 ```sql
 SELECT ...
@@ -2636,9 +2603,9 @@ FROM ...
 GROUP BY ROLLUP(column_1,column_2);
 ```
 
-它与如下的语句等同：
+Avoid performing update tag operations while writing data, which may cause series conflicts.
 
-#### 语法
+#### TTL: represents the saving time of the data file, defaults to 365 days, expressed in data with units. It supports day（d）, hour（h）, minute（m）, such as TTL 10d, TTL 50h, TTL 100m.When no unit, the default is day, such as TTL 30.
 
 ```sql
 SELECT ...
@@ -2670,11 +2637,11 @@ column_1, column2;
 
 [//]: # ")"
 
-ROLLUP 生成在此层次结构中有意义的所有分组集。 每次 column_1 的值发生变化时，它都会生成一个小计行；
+Other Data Types Type
 
-因此，我们经常在报告中使用 ROLLUP 来生成小计和总计。 ROLLUP 中列的顺序非常重要。
+**Function**: Return the position of a substring in a specified string. The sequence in ROLLUP is important.
 
-#### 示例
+#### <geometry tag> <wkt data>&#xA;<geometry tag> ::= POINT | LINESTRING | POLYGON | MULTIPOINT |&#xA;MULTILINESTRING | MULTIPOLYGON | GEOMETRYCOLLECTION<wkt data> ::= <point> | <linestring> | <polygon> | <multipoint> |&#xA;<multilinestring> | <multipolygon> | <geometrycollection>
 
 ```sql
 SELECT station, visibility, avg(temperature) 
@@ -2706,13 +2673,13 @@ GROUP BY ROLLUP (station, visibility);
 
 ### **CUBE**
 
-与 ROLLUP 类似，CUBE 是 GROUP BY 子句的扩展。 它允许您为 GROUP BY 子句中指定的分组列的所有组合生成小计。
+Like ROLLUP, CUBE is an extension of GROUP BY sentences. Time the data file saved
 
 [//]: # "CUBE 就像结合了 GROUPING SETS 和 ROLLUP。"
 
-CUBE为指定表达式集的每个可能组合创建分组集。首先会对(A、B、C)进行group by，
+Measurement valueThe group will start with (A, B, C)
 
-然后依次是(A、B)，(A、C)，(A)，(B、C)，(B)，(C)，最后对全表进行group by操作。
+Point
 
 ```sql
 SELECT ... 
@@ -2720,7 +2687,7 @@ FROM ...
 GROUP BY CUBE (column1, column2);
 ```
 
-等价于：
+`EXPLAIN ANALYZE` executes the query and displays the execution plan of the query.
 
 ```sql
 SELECT ...
@@ -2746,7 +2713,7 @@ FROM ...
 ;
 ```
 
-#### 示例
+#### **Function**: Returns the expr values of the offset rows after the current row in the partition.
 
 ```sql
 SELECT station, visibility, avg(temperature) 
@@ -2791,11 +2758,11 @@ GROUP BY CUBE (station, visibility);
 
 [//]: # "    GROUPING(column_expression)"
 
-[//]: # "**说明**：GROUPING函数只能用于有GROUP BY 子句的表达式"
+[//]: # "Time of record"
 
 [//]: # "当指定`GROUP BY`时，只能在 SELECT 列表、HAVING 和 ORDER BY 子句中使用 GROUPING。"
 
-[//]: # "**参数**： 只能是GROUP BY 子句中的表达式"
+[//]: # "Time of record"
 
 [//]: # "```sql"
 
@@ -2849,39 +2816,39 @@ GROUP BY CUBE (station, visibility);
 
 [//]: # "```"
 
-[//]: # "**注意**： GROUPING 用于区分 ROLLUP、CUBE 或 GROUPING SETS 返回的空值与标准空值。"
+[//]: # "tenant name"
 
 [//]: # "作为 ROLLUP、CUBE 或 GROUPING SETS 操作的结果返回的 NULL 是 NULL 的一种特殊用途。"
 
 [//]: # "这充当结果集中的列占位符，表示全部。"
 
-## **聚合函数**
+## You can also see the executing SQL statements using the `SHOW QUERIES` statement, which is a wrapper around the QUERIES schema.
 
-### **一般聚合函数**
+### The storage engine of CnosDB can be regarded as a KV storage, in which Timestamp and Tags constitute the KEY, and Fields constitute a series of values.
 
 ### COUNT
 
-#### 语法
+#### **Function**: Return the approximate median of the input value.
 
 ```
 COUNT(x)
 ```
 
-**功能**：返回选定元素中检索过的行的数目。
+image
 
-包含DISTINCT关键字，会对去重后的结果计数。
+Description
 
-> COUNT(\*) 和 COUNT(literal value) 是等价的，如果sql的投影中仅含有 `*/literal value`，则sql会被重写为 COUNT(time)。
+> Host of service
 
-> COUNT(tag) 等价于 COUNT(DISTINCT tag)。
+> 8 Bytes
 
-> COUNT(field) 返回非NULL值的个数。
+> Schema Definition
 
-**参数类型**：任意
+Compare expressions to see if they are less than
 
-**返回类型**：BIGINT
+Count the duration of a state, or count the duration of a state in a certain period of time.
 
-#### 示例
+#### UPDATE table_name SET ( assignment_clause [, ...] ) where_clause&#xA;assignment clause :&#xA;tag_name = value_expression
 
 ```sql
 SELECT COUNT(*) FROM air;
@@ -2923,19 +2890,19 @@ SELECT COUNT(DISTINCT temperature) FROM air;
 
 ### SUM
 
-#### 语法
+#### The time spent in each state is counted and aggregated into the StateAggData type.
 
 ```
 SUM(NUMERICS)
 ```
 
-**功能**：返回从选定元素计算出的总和值。
+Time of record
 
-**参数类型**：数值类型。
+The tenant of the database
 
-**返回类型**：与参数类型相同。
+Time of record
 
-#### 示例
+#### **Notice**:  GROUPING 用于区分 ROLLUP、CUBE 或 GROUPING SETS 返回的空值与标准空值。
 
 ```sql
 SELECT SUM(temperature) FROM air;
@@ -2953,19 +2920,19 @@ SELECT SUM(temperature) FROM air;
 
 ### MIN
 
-#### 语法
+#### The time spent in each state is counted, and aggregated into the StateAggData type.
 
 ```
 MIN(STRING | NUMERICS | TIMESTAMP)
 ```
 
-**功能**：返回选定元素中最小值。
+Time of record
 
-**参数类型**：数值类型或STRING或TIMESTAMP。
+ID of vnode
 
-**返回类型**：与参数类型相同。
+Time of record
 
-#### 示例
+#### **Function**: Capitalize the first letter of each word in the parameter.
 
 ```sql
  SELECT MIN(time), MIN(station), MIN(temperature) FROM air;
@@ -2983,19 +2950,19 @@ MIN(STRING | NUMERICS | TIMESTAMP)
 
 ### MAX
 
-#### 语法
+#### **Function**: Return its first non null parameter. Null is returned only when all parameters are null. When retrieving data for display, it is often used to replace the default value with a null value.
 
 ```
 MAX(STRINGS | NUMERICS | TIMESTAMPS)
 ```
 
-**功能**：返回选定元素中最大值。
+Time of record
 
-**参数类型**：数值类型或STRING或TIMESTAMP。
+The database to which the vnode belongs
 
-**返回类型**：与参数类型相同。
+The tenant of the database
 
-#### 示例
+#### After the keyword `SELECT`, you can use `DISTINCT` to remove duplicate fields and return only the values after duplicate removal. Using ALL returns all duplicate values in the field. When this option is not specified, the default value is `ALL`.
 
 ```sql
 SELECT MAX(time), MAX(station), MAX(temperature) FROM air;
@@ -3013,19 +2980,19 @@ SELECT MAX(time), MAX(station), MAX(temperature) FROM air;
 
 ### AVG
 
-#### 语法
+#### In the streaming down-sampling scenario, the source table interval is one minute, and the down-sampling interval is one hour
 
 ```
 AVG(NUMERICS)
 ```
 
-**功能**：返回选定元素的平均值。
+CTE in the same WITH clause must have a unique name.
 
-**参数类型**：数值类型。
+The tenant of the database
 
-**返回类型**：数值类型。
+The tenant of the database
 
-#### 示例
+#### Some geometries don't support area calculation and return 0 for these geometries: Point, MultiPoint, LineString, MultiLineString, Line.&#xA;If the content of the argument is of an invalid format, the return value is NULL.
 
 ```sql
 SELECT AVG(temperature) FROM air;
@@ -3043,19 +3010,19 @@ SELECT AVG(temperature) FROM air;
 
 ### ARRAY_AGG
 
-#### 语法
+#### **Function**: Return the average value of the selected element.
 
 ```
 ARRAY_AGG(expr)
 ```
 
-**功能**：返回一个数组，该数组由选定元素的所有值组成，元素类型必须相同。
+ID of user which commit the SQL
 
-**参数类型**：任意。
+Evaluate the left expression first, and if it's true, evaluate the right expression, both true and true
 
-**返回类型**：参数类型的数组。
+The tenant of the database
 
-#### 示例
+#### **Function**: Return the str with the trailing character trimstr deleted. trimstr is a blank character by default.
 
 ```sql
 SELECT ARRAY_AGG(temperature) from air;
@@ -3069,7 +3036,7 @@ SELECT ARRAY_AGG(temperature) from air;
 +------------------------------------------------------+
 ```
 
-**注意**：该聚合函数结果，无法以CSV格式返回。
+Description
 
 ### FIRST
 
@@ -3077,17 +3044,17 @@ SELECT ARRAY_AGG(temperature) from air;
 first(time,  value)
 ```
 
-获取一列按另一列排序的第一个值。
+Description
 
-**参数**:
+Count the state you are in at a certain time.
 
 - time: Timestamp
 
 - value: any
 
-**返回值**: 同value类型相同
+Time spent in the error, running, or start state.
 
-#### 示例
+#### **Function**: 把有序的数据集合平均分配到n个桶中,将桶号分配给每一行。
 
 ```sql
 select first(time, pressure) from air;
@@ -3107,17 +3074,17 @@ select first(time, pressure) from air;
 last(time,  value)
 ```
 
-获取一列按另一列排序的最后一个值。
+Description
 
-**参数**:
+If the subexpression is true, the whole expression is false, and if the whole expression is false, the whole expression is true
 
 - time: Timestamp
 
 - value: any
 
-**返回值**: 同value类型相同
+The tenant of the database
 
-#### 示例
+#### The time column cannot be `NULL`, and the Tag column and Field column can be `NULL`.
 
 ```sql
 select last(time, pressure) from air;
@@ -3137,13 +3104,13 @@ select last(time, pressure) from air;
 mode(value)
 ```
 
-计算一列的众数。
+Calculate the number of numbers in one column.
 
-**参数**: value: any
+Order of the column in table
 
-**返回值**: 同value类型相同
+The tenant of the database
 
-#### 示例
+#### `RANK`, `DENSE_RANK`, `ROW_NUMBER` need ORDER BY Clause.
 
 ```sql
 select mode(pressure) from air;
@@ -3163,13 +3130,13 @@ select mode(pressure) from air;
 increase(time, value order by time)
 ```
 
-计算 value 在时间序列中的增量
+**Return Type**: any, the same type as the state of compact_state_agg.
 
-**参数**: value 数字类型
+The UNION clause is used to combine the analysis results of multiple SELECT statements.
 
-**返回值**: 同value类型相同
+Name of user which commit the SQL
 
-**示例**：
+Get the largest timestamp in the Gauge
 
 ```sql
 CREATE DATABASE IF NOT EXISTS TEST_INCREASE;
@@ -3206,23 +3173,23 @@ FROM test_increase.test_increase GROUP BY t0 ORDER BY t0;
 +----+----------+
 ```
 
-### 统计聚合函数
+### `INTERVAL '1 YEAR 1 DAY 1 HOUR 1 MINUTE'` One year, one day, one hour, one minute
 
 ### VAR | VAR_SAMP
 
-#### 语法
+#### CnosDB requires that the inserted data column must have a timestamp, and the VALUES list must be a [constant](#constant).&#xA;If a column is not selected, the value is `NULL`.
 
 ```
 VAR(NUMERICS)
 ```
 
-**功能**：计算给定样本的方差
+Field Name
 
-**参数类型**：数值类型
+DROP STREAM TABLE
 
-**返回类型**：DOUBLE
+When the time unit is s, the ratio unit is /s
 
-#### 示例
+#### **Function**: Return approximations of different input values (HyperLogLog).
 
 ```sql
 SELECT VAR(temperature) FROM air;
@@ -3240,19 +3207,19 @@ SELECT VAR(temperature) FROM air;
 
 ### VAR_POP
 
-#### 语法
+#### **Function**: Return the minimum value of the selected element.
 
 ```
 VAR_POP(NUMERICS)
 ```
 
-**功能**：计算总体方差。
+We can get the `query_id` through [`SHOW QUERIES`](#show-queries).
 
-**参数类型**：数值类型。
+CREATE STREAM TABLE
 
-**返回类型**：DOUBLE
+Sum up the time taken for each state.
 
-#### 示例
+#### A JSON string that records all parameters of the table
 
 ```
 SELECT VAR_POP(temperature) FROM air;
@@ -3274,13 +3241,13 @@ SELECT VAR_POP(temperature) FROM air;
 STDDEV(NUMERICS)
 ```
 
-**功能**：计算样本标准差。
+Field Name
 
-**参数类型**：数值类型
+If in cnosdb cli, enter `\q` to exit.
 
-**返回类型**：DOUBLE
+First evaluate the left expression, and if it is false, evaluate the right expression, both false and false
 
-#### 示例
+#### **Function**: Returns the expr values of the offset rows before the current row in the partition.
 
 ```sql
 SELECT STDDEV(temperature) FROM air;
@@ -3298,19 +3265,19 @@ SELECT STDDEV(temperature) FROM air;
 
 ### STDDEV_POP
 
-#### 语法
+#### **Function**: Convert to a microsecond-level timestamp.
 
 ```
 STDDEV_POP(NUMERICS)
 ```
 
-**功能**：计算出的总体标准差。
+Field Name
 
-**参数类型**：数值类型。
+Create stream table
 
-**返回类型**：DOUBLE
+Configure of tenant in json
 
-#### 示例
+#### Binary data,can be converted to STRING using Cast clause.
 
 ```sql
 SELECT STDDEV_POP(temperature) FROM air;
@@ -3328,19 +3295,19 @@ SELECT STDDEV_POP(temperature) FROM air;
 
 ### COVAR | COVAR_SAMP
 
-#### 语法
+#### `1997-01-31T09:26:56.123Z` # Standard RCF3339, UTC time zone
 
 ```
 COVAR(NUMERICS, NUMERICS)
 ```
 
-**功能**：返回样本的协方差。
+Field Name
 
-**参数类型**：数值类型。
+Stream Queries
 
-**返回类型**：DOUBLE
+Compares expressions for greater than or equal to
 
-#### 示例
+#### **Function**: Returns str, in which the leading characters in trimstr are deleted. The default trimestr is blank character.
 
 ```sql
 SELECT COVAR(temperature, pressure) FROM air;
@@ -3358,19 +3325,19 @@ SELECT COVAR(temperature, pressure) FROM air;
 
 ### COVAR_POP
 
-#### 语法
+#### INSERT air_visibility (TIME, station, visibility)&#xA;SELECT TIME, station, visibility FROM air;
 
 ```
 COVAR_POP(NUMERICS, NUMERICS)
 ```
 
-**功能**：返回组中数字对的总体协方差。
+Field Name
 
-**参数类型**：数值类型。
+Tenant name of the table
 
-**返回类型**：DOUBLE
+Time that SQL costs
 
-#### 示例
+#### **Function**: Returns the last value in the current window.
 
 ```sql
 SELECT COVAR_POP(temperature, pressure) FROM air;
@@ -3388,19 +3355,19 @@ SELECT COVAR_POP(temperature, pressure) FROM air;
 
 ### CORR
 
-#### 语法
+#### You can use window functions (analysis functions) in CnosDB to flexibly analyze and process data of specified window columns. The command formats, parameter descriptions and examples of window functions supported by CnosDB are shown below to guide you to use window functions to complete development.
 
 ```
 CORR**(NUMERICS, NUMERICS)
 ```
 
-**功能**：返回表示一组数字对之间的关联情况的皮尔逊系数。
+Percision of database
 
-**参数类型**：数值类型。
+Tenant name of the table
 
-**返回类型**：DOUBLE
+Time Functions
 
-#### 示例
+#### **Function**: Return the length of the specified string in characters.
 
 ```sql
 SELECT CORR(temperature, pressure) FROM air;
@@ -3414,23 +3381,23 @@ SELECT CORR(temperature, pressure) FROM air;
 +-------------------------------------------+
 ```
 
-### **近似聚合函数**
+### You can use `CREATE TABLE`  to create tables.
 
 ### APPROX_DISTINCT
 
-#### 语法
+#### You can then use access and summary functions for this intermediate aggregate data.
 
 ```
 APPROX_DISTINCT(x)
 ```
 
-**功能**：返回不同输入值的近似值(HyperLogLog)。
+Field Name
 
-**参数类型**：STRING
+Compare expressions for greater than
 
-**返回类型**：BIGINT
+Key in (1666165200290401000, 'XiaoMaiDao') visibility-value has changed, change to 66.
 
-#### 示例
+#### **Function**: Return the maximum value in the selected element.
 
 ```sql
 SELECT APPROX_DISTINCT(station) FROM air;
@@ -3448,19 +3415,19 @@ SELECT APPROX_DISTINCT(station) FROM air;
 
 ### APPROX_PERCENTILE_CONT
 
-#### 语法
+#### **Function**: Returns the bit length of string data or the bit size of binary data.
 
 ```
 APPROX_PERCENTILE_CONT(x, p)  
 ```
 
-**功能**：返回输入值x的近似百分位(TDigest)，p是百分位，是0到1(包括1)之间的64位浮点数。
+Configure of users in json
 
-**参数类型**：x为数值类型，p为DOUBLE类型。
+Explanation
 
-**返回类型**：DOUBLE
+Time Interval
 
-#### 示例
+#### **Function**: Return e to the x power.
 
 ```sql
 SELECT APPROX_PERCENTILE_CONT(temperature, 0.1) FROM air;
@@ -3478,21 +3445,21 @@ SELECT APPROX_PERCENTILE_CONT(temperature, 0.1) FROM air;
 
 ### APPROX_PERCENTILE_CONT_WITH_WEIGHT
 
-#### 语法
+#### Note: `CAST (BIGINT AS TIMESTAMP)` is a timestamp converted to nanosecond, as follows:
 
 ```
 APPROX_PERCENTILE_CONT_WITH_WEIGHT(x, w, p)  
 ```
 
-**功能**：x返回带权重的输入值的近似百分比(TDigest)，其中w是权重列表达式，p是0到1(包括)之间的浮点64。
+Field Name
 
-APPROX_PERCENTILE_CONT(x, p) 相当于 APPROX_PERCENTILE_CONT_WITH_WEIGHT(x, 1, p)。
+ID of SQL
 
-**参数类型**：x,w为数值类型，p为DOUBLE类型。
+QUERIES
 
-**返回类型**：DOUBLE
+When len is a negative number, len represents 0. When len is too large, function execution fails.
 
-#### 示例
+#### **Function**: Remove blank characters at the begin and end of str.
 
 ```sql
 SELECT APPROX_PERCENTILE_CONT_WITH_WEIGHT(temperature,2, 0.1) FROM air;
@@ -3510,19 +3477,19 @@ SELECT APPROX_PERCENTILE_CONT_WITH_WEIGHT(temperature,2, 0.1) FROM air;
 
 ### APPROX_MEDIAN(NUMERICS)
 
-#### 语法
+#### **Function**: Returns the first value in a set of values, usually an ordered set.
 
 ```
 APPROX_MEDIAN(NUMERICS)
 ```
 
-**功能**：返回输入值的近似中值。
+Database name of the table
 
-**参数类型**：数值类型
+If you GRUOP BY Clause is as follows:
 
-**返回类型**：DOUBLE
+Analysis Window Functions
 
-#### 示例
+#### INTERVAL '1 YEAR' is not 365 days or 366 days, but 12-months.&#xA;INTERVAL '1 MONTH' is not 29 days or 31 days, but 30 days.
 
 ```sql
 SELECT APPROX_MEDIAN(temperature) FROM air;
@@ -3542,31 +3509,34 @@ SELECT APPROX_MEDIAN(temperature) FROM air;
 
 [//]: # "    GROUPING(x)"
 
-[//]: # "**功能**：函数采用单个参数，该参数必须是 GROUP BY 子句的 ROLLUP、CUBE 或 GROUPING SETS 扩展的表达式列表中指定的维度列的表达式。"
+[//]: # "Note"
 
-[//]: # "**参数类型**：数值类型"
+[//]: # "Create stream query statement"
 
-[//]: # "**返回类型** BIGINT"
+[//]: # "Unit:"
 
 ### SAMPLE
 
-#### 语法
+#### **Parameter Type**: Numeric type or STRING or TIMESTAMP.
 
 ```
 SAMPLE(<column_key>, <N>)
 ```
 
-**功能**：从给定的列 column_key 中随机选择 N 条记录。
+It is equivalent to the following statement:
 
-**参数类型**：
+Compression algorithm that the column uses
 
-- column_key：任意类型
+- `INTERVAL '1 DECADES' ` One decade(10 years)
 
-- N：整数类型
+- CREATE TABLE air_visibility (
+  visibility DOUBLE,
+  TAGS(station)
+  );
 
-**返回类型**：数组
+Import Data
 
-#### 示例
+#### For more information about timezone, please refer to [Timestamp](#timestamp-constant-syntax).
 
 ```sql
 select sample(visibility, 5) from air;
@@ -3586,28 +3556,24 @@ select sample(visibility, 5) from air;
 asap_smooth(time, value, resolution order by time)
 ```
 
-ASAP smoothing算法旨在创建人类可读的图形，保留输入数据的粗糙形状和较大趋势，同时最小化点之间的局部方差。
-采用 (Timestamp，value）对，将它们标准化为目标时间间隔，并返回 ASAP smooth 值。
+You can refer to [function](#functions).
+Table name
 
-**参数：**
+Each SELECT clause in the UNION must have the same number of columns, and the corresponding columns have the same data type.
 
 - time: Timestamp
 
 - value: Double
 
-- resolution: Bigint ，要返回的大概点数（ (Timestamp, value) 对），确定结果图的水平分辨率。
+- Field Name
 
-**返回值：** TimeVector
+The following data types can't be stored directly, but can appear in SQL expressions.
 
 ```
-Struct {
-  time: List[Timestamp], -- 毫秒级
-  value: List[Double],
-  resolution: Int Unsigned,
-}
+Example
 ```
 
-#### 示例
+#### **Function**: Return the Pearson coefficient representing the association between a set of number pairs.
 
 ```sql
 select asap_smooth(time, pressure, 10) from air group by date_trunc('month', time);
@@ -3623,16 +3589,15 @@ select asap_smooth(time, pressure, 10) from air group by date_trunc('month', tim
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ```
 
-## **两阶段聚合函数**
+## The result of the query is as follows:
 
 ### stats_agg
 
-对二维数据执行线性回归分析，例如计算相关系数和协方差。
-并且还可以分别计算每个维度的常见统计数据，例如平均值和标准差。
-stats_agg 提供了与sum, count, corr, covar_pop 等聚合函数相同的功能，
-适用于一条SQL中，包含多个分析函数的场景。
+Implement linear regression analysis for two-dimensional data, such as calculation of relevant coefficients and composites.
+Common statistical data for each dimension can also be calculated separately, such as averages and standard deviations.
+`INTERVAL '1 MILLISECONDS'` One millisecond
 
-**注意**： 两列都不为NULL时才纳入聚合。
+Operator
 
 #### stats_agg
 
@@ -3640,14 +3605,14 @@ stats_agg 提供了与sum, count, corr, covar_pop 等聚合函数相同的功能
 stats_agg(y, x)
 ```
 
-**功能**：进行统计聚合。
+offset type is BIGINT. When offset is negative, the values are returned from the last offset lines, defaults to 1.
 
-**参数类型**：
+If the subexpression is null, the whole expression is false
 
-- y: double 类型
-- x: double 类型
+- APPROX_PERCENTILE_CONT(x, p) is equivalent to APPROX_PERCENTILE_CONT_WITH_WEIGHT(x, 1, p)
+- The expression column in the WEHER clause can only be the tag column or the time column, and the expression in the ORDER BY clause can only be the key.
 
-**返回类型**：结构体类型
+Constant
 
 ```
 { 
@@ -3664,7 +3629,7 @@ stats_agg(y, x)
 }
 ```
 
-#### 示例
+#### **Function**: Rounded to the nearest whole number.
 
 ```sql
 create table if not exists test_stats(x bigint, y bigint);
@@ -3696,9 +3661,9 @@ select stats_agg(y, x) from test_stats;
 
 #### num_vals
 
-计算二维统计聚合后的数据行数。
+`INTERVAL '1 HOUR'` One hour
 
-**返回类型**：BIGINT UNSIGNED
+Rank Functions
 
 ```sql
 select num_vals(stats_agg(y, x)) from test_stats;
@@ -3714,9 +3679,9 @@ select num_vals(stats_agg(y, x)) from test_stats;
 
 #### average_y, average_x
 
-计算二维统计聚合后指定维度的平均值。
+Description
 
-**返回类型**：DOUBLE
+Functions
 
 ```sql
 select average_x(stats_agg(y, x)) from test_stats;
@@ -3732,9 +3697,9 @@ select average_x(stats_agg(y, x)) from test_stats;
 
 #### sum_y, sum_x
 
-计算二维统计聚合后指定维度的和，方式为 population。
+This page only shows `INSERT` related syntax.
 
-**返回类型**：DOUBLE
+Functions
 
 ```sql
 select sum_x(stats_agg(y, x)) from test_stats;
@@ -3750,9 +3715,9 @@ select sum_x(stats_agg(y, x)) from test_stats;
 
 #### stddev_samp_y, stddev_samp_x
 
-计算二维统计聚合后指定维度的标准差，方式为 sample。
+`time_column` is Timestamp.
 
-**返回类型**：DOUBLE
+If you need to track the time to enter and exit each state, use the state_agg function.
 
 ```sql
 select stddev_samp_x(stats_agg(y, x)) from test_stats;
@@ -3768,9 +3733,9 @@ select stddev_samp_x(stats_agg(y, x)) from test_stats;
 
 #### stddev_pop_y, stddev_pop_x
 
-计算二维统计聚合后指定维度的标准差，方式为 population。
+**OFFSET Clause**
 
-**返回类型**：DOUBLE
+Operator
 
 ```sql
 select stddev_pop_x(stats_agg(y, x)) from test_stats;
@@ -3786,9 +3751,9 @@ select stddev_pop_x(stats_agg(y, x)) from test_stats;
 
 #### var_samp_y, var_samp_x
 
-计算二维统计聚合后指定维度的方差，方式为 sample。
+Description
 
-**返回类型**：DOUBLE
+Disk size occupied by the vnode
 
 ```sql
 select var_samp_x(stats_agg(y, x)) from test_stats;
@@ -3804,9 +3769,9 @@ select var_samp_x(stats_agg(y, x)) from test_stats;
 
 #### var_pop_y, var_pop_x
 
-计算二维统计聚合后指定维度的方差，方式为 population。
+UTF-8 Encoded String
 
-**返回类型**：DOUBLE
+Measurement value
 
 ```sql
 select var_pop_x(stats_agg(y, x)) from test_stats;
@@ -3822,9 +3787,9 @@ select var_pop_x(stats_agg(y, x)) from test_stats;
 
 #### skewness_samp_y, skewness_samp_x
 
-计算二维统计聚合后指定维度的偏度值，方式为 sample。
+Description
 
-**返回类型**：DOUBLE
+Measurement value
 
 ```sql
 select skewness_samp_x(stats_agg(y, x)) from test_stats;
@@ -3840,9 +3805,9 @@ select skewness_samp_x(stats_agg(y, x)) from test_stats;
 
 #### skewness_pop_y, skewness_pop_x
 
-计算二维统计聚合后指定维度的偏度值，方式为 population。
+Description
 
-**返回类型**：DOUBLE
+The IN operator determines whether any value in the list is equal to the expression.
 
 ```sql
 select skewness_pop_x(stats_agg(y, x)) from test_stats;
@@ -3858,9 +3823,9 @@ select skewness_pop_x(stats_agg(y, x)) from test_stats;
 
 #### kurtosis_samp_y, kurtosis_samp_x
 
-计算二维统计聚合后指定维度的峰度值，方式为 sample。
+**`IN` Expression**
 
-**返回类型**：DOUBLE
+Comparing expressions for equality
 
 ```sql
 select kurtosis_samp_x(stats_agg(y, x)) from test_stats;
@@ -3876,9 +3841,9 @@ select kurtosis_samp_x(stats_agg(y, x)) from test_stats;
 
 #### kurtosis_pop_y, kurtosis_pop_x
 
-计算二维统计聚合后指定维度的峰度值，方式为 population。
+Calculate the peak of the two-dimensional aggregation and specify the dimension in a way that is population.
 
-**返回类型**：DOUBLE
+Aggregate Function
 
 ```sql
 select kurtosis_pop_x(stats_agg(y, x)) from test_stats;
@@ -3894,9 +3859,9 @@ select kurtosis_pop_x(stats_agg(y, x)) from test_stats;
 
 #### correlation
 
-计算二维统计聚合后的相关。
+`EXPLAIN` is only used to display the execution plan of a query, and does not execute the query.
 
-**返回类型**：DOUBLE
+Linestring
 
 ```sql
 select correlation(stats_agg(y, x)) from test_stats;
@@ -3912,9 +3877,9 @@ select correlation(stats_agg(y, x)) from test_stats;
 
 #### covariance_samp, covariance_pop
 
-计算二维统计聚合后的协方差。
+Calculate the syntax difference after the two-dimensional statistical aggregation.
 
-**返回类型**：DOUBLE
+Linestring
 
 ```sql
 select covariance_samp(stats_agg(y, x)) from test_stats;
@@ -3942,9 +3907,10 @@ select covariance_pop(stats_agg(y, x)) from test_stats;
 
 #### determination_coeff
 
-计算二维统计聚合后的决定系数。
+`OFFSET` can be used with the `LIMIT` statement to specify the number of lines to skip. The format is `LIMIT n OFFSET m`.
+`LIMIT n` controls the output of n rows of data, and `OFFSET m` indicates the number of rows skipped before starting to return data. OFFSET 0 has the same effect as omitting the OFFSET clause.
 
-**返回类型**：DOUBLE
+`window_duration` is an interval, specifying the window size of the time window.
 
 ```sql
 select determination_coeff(stats_agg(y, x)) from test_stats;
@@ -3960,9 +3926,10 @@ select determination_coeff(stats_agg(y, x)) from test_stats;
 
 #### slope
 
-根据二维统计聚合，计算线性拟合线的斜率。
+**Return Type**: Timestamp
 
-**返回类型**：DOUBLE
+The ASAP smoothing algorithm aims to create human-readable graphs that preserve the coarse shape and larger trends of the input data while minimizing the local variance between points.
+Take the (Timestamp, value) pair, normalize them to the target time interval, and return the ASAP smooth value.
 
 ```sql
 select slope(stats_agg(y, x)) from test_stats;
@@ -3978,9 +3945,9 @@ select slope(stats_agg(y, x)) from test_stats;
 
 #### intercept
 
-计算二维统计聚合后y的截距。
+**Parameter Type**: expr type is any type, ignore_ nulls type is BOOLEAN, defaults to false.
 
-**返回类型**：DOUBLE
+Geometry Functions
 
 ```sql
 select intercept(stats_agg(y, x)) from test_stats;
@@ -3996,9 +3963,10 @@ select intercept(stats_agg(y, x)) from test_stats;
 
 #### x_intercept
 
-计算二维统计聚合后x的截距。
+Optional. The WITH clause contains one or more commonly used expressions CTE (Common Table Expression).
+CTE acts as a temporary table in the current running environment, which you can refer to in subsequent queries.The rules for using CTE are as follows:
 
-**返回类型**：DOUBLE
+Function struct is not perfect at present.
 
 ```sql
 select x_intercept(stats_agg(y, x)) from test_stats;
@@ -4014,7 +3982,7 @@ select x_intercept(stats_agg(y, x)) from test_stats;
 
 ### gauge_agg
 
-分析Gauge数据。与Counter不同，Gauge可以减少也可以增加。
+Analyze Gauge data.Unlike the Counter, Gauge can be reduced or increased.
 
 #### gauge_agg
 
@@ -4022,16 +3990,15 @@ select x_intercept(stats_agg(y, x)) from test_stats;
 gauge_agg(time, value)
 ```
 
-这是分析 Gauge 数据的第一步。使用 gauge_agg 创建中间聚合数据，
-接下来其他函数使用中间聚合数据进行计算。
+This is the first step in analysing the Gauge data.Description
 
-**参数**：
+Role type, custom role or system role
 
 - time: Timestamp
 
 - value: DOUBLE
 
-**返回值**：
+`DENSE_RANK` | `RANK` | `PERCENT_RANK` need ORDER BY Clause.
 
 ```
 Struct {
@@ -4055,7 +4022,7 @@ Struct {
 }
 ```
 
-#### 示例：
+#### The double quotation mark format is not supported. Two consecutive '' in
 
 ```sql
 select gauge_agg(time, pressure) from air group by date_trunc('month', time);
@@ -4073,9 +4040,9 @@ select gauge_agg(time, pressure) from air group by date_trunc('month', time);
 
 #### delta
 
-获取一段时间内Gauge的变化。这是简单的增量，通过从第一个值减去最后一个看到的值来计算。
+Get changes to Gauge over time.column_key: Any type
 
-**返回值:** Double
+source and origin type are TIMESTAMP.
 
 ```sql
 select delta(gauge_agg(time, pressure)) from air group by date_trunc('month', time);
@@ -4093,9 +4060,9 @@ select delta(gauge_agg(time, pressure)) from air group by date_trunc('month', ti
 
 #### time_delta
 
-获取持续时间，最后一个Gauge的时间减去第一个Gauge的时间。
+Get duration, the last Gauge time minus the first Gauge time.
 
-**返回值**： INTERVAL
+state: any is the same type as the state of compact_state_agg.
 
 ```sql
 select time_delta(gauge_agg(time, pressure)) from air group by date_trunc('month', time);
@@ -4113,17 +4080,19 @@ select time_delta(gauge_agg(time, pressure)) from air group by date_trunc('month
 
 #### rate
 
-计算Gauge变化和时间变化的比率。
+**Return Type**: BOOLEAN
 
-**返回值**: Double
+You can use `DESCRIBE TABLE` to view the table structure.
 
-单位：
+```
+返回与正则表达式匹配的项
+```
 
-时间单位是ns时，比率单位是 /ns，
+Create source table
 
-时间单位是ms时，比率单位就是 /ms
+Create source table
 
-时间单位是s时，比率单位就是 /s
+Table type
 
 ```sql
 select rate(gauge_agg(time, pressure)) from air group by date_trunc('month', time);
@@ -4141,7 +4110,7 @@ select rate(gauge_agg(time, pressure)) from air group by date_trunc('month', tim
 
 #### first_time
 
-取得Gauge中最小的时间戳
+**Function**: Return an array consisting of all the values of the selected element. The element types must be the same.
 
 **返回类型**: TIMESTAMP
 
@@ -4159,7 +4128,7 @@ select first_time(gauge_agg(time, pressure)) from air;
 
 #### last_time
 
-取得Gauge中最大的时间戳
+Get the largest timestamp on Gauge
 
 **返回类型**: TIMESTAMP
 
@@ -4177,9 +4146,9 @@ select last_time(gauge_agg(time, pressure)) from air;
 
 #### first_val
 
-取得Gauge中最小时间戳对应的值
+Table name
 
-**返回类型**: gauge_agg 中指定的列的类型
+Unary Operator
 
 ```sql
 select first_val(gauge_agg(time, pressure)) from air;
@@ -4195,9 +4164,9 @@ select first_val(gauge_agg(time, pressure)) from air;
 
 #### last_val
 
-取得Gauge中最大时间戳对应的值
+Geometric type
 
-**返回类型**: gauge_agg 中指定的列的类型
+INTERVAL Constant
 
 ```sql
 select last_val(gauge_agg(time, pressure)) from air;
@@ -4213,9 +4182,9 @@ select last_val(gauge_agg(time, pressure)) from air;
 
 #### idelta_left
 
-计算Gauge最早的瞬时变化。这等于第二个值减去第一个值。
+Calculate the earliest transient changes in Gauge.This is equal to the second value minus the first value.
 
-**返回类型**：gauge_agg 中指定的列的类型
+Multi-point
 
 ```sql
  select time, station, pressure from air where station = 'XiaoMaiDao' order by time limit 4;
@@ -4246,9 +4215,9 @@ select idelta_left(gauge_agg(time, pressure)) from air where station = 'XiaoMaiD
 
 #### idelta_right
 
-计算Gauge最晚的瞬时变化。这等于最后一个值值减去倒数第二个值。
+Calculate the latest transient changes for Gauge.This is equal to the last value minus the second last value.
 
-**返回类型**：gauge_agg 中指定的列的类型
+Multi-point
 
 ```sql
 select time, station, pressure from air where station = 'XiaoMaiDao' order by time desc limit 4;
@@ -4279,19 +4248,19 @@ select idelta_right(gauge_agg(time, pressure)) from air where station = 'XiaoMai
 
 ### compact_state_agg
 
-给定一个在离散状态之间切换的系统或值，
+**Advanced Functions**
 
-汇总每个状态所花费的时间。
+Database name
 
-例如，您可以使用compact_state_agg函数来跟踪系统
+`INTERVAL '1 SECONDE'` One second
 
-处于错误、运行或启动状态的时间。
+**Return Type**: Struct as follows.
 
-compact_state_agg 设计用于处理相对较少的状态。它可能在行之间状态过多的数据集上表现不佳。
+`INTERVAL '1 DAY 1'` One day and one secondIt may not perform well on excessive data sets between them.
 
-如果您需要跟踪进入和退出每个状态的时间，请使用 state_agg 函数。
+Field Name
 
-如果您需要根据心跳信号跟踪系统的活跃度，请考虑使用 heartbeat_agg 函数。
+Field Name
 
 #### compact_state_agg
 
@@ -4299,39 +4268,17 @@ compact_state_agg 设计用于处理相对较少的状态。它可能在行之�
 compact_state_agg(ts, state)
 ```
 
-统计每个状态所花费的时间，并聚合成StateAggData类型
+**Function**: Square root of x.
 
-**参数**： ts 为时间戳类型，state为任意类型
+Database name
 
-**返回值**： StateAggData 类型
-
-```
-Struct {
-    state_duration: List[
-        Struct{
-          state: any,
-          interval: duration
-        },
-        ...
-    ]
-    state_periods: List[
-        Struct(
-            state: any,
-            periods: List[
-                Struct {
-                  start_time: timestamp, 
-                  end_time: timestamp
-                },
-                ...
-            ]
-        ),
-        ......
-    ]
-}
+Binary Operator
 
 ```
+Example
+```
 
-#### 示例：
+#### ---- Prepare data&#xA;DROP DATABASE IF EXISTS gapfill_db;&#xA;CREATE DATABASE gapfill_db WITH TTL '1000000d';&#xA;CREATE TABLE gapfill_db.m2(f0 BIGINT, f1 DOUBLE, TAGS(t0, t1, t2));INSERT gapfill_db.m2(TIME, f0, f1, t0, t1)&#xA;VALUES&#xA;('1999-12-31 00:00:00.000', 111, 444, 'tag11', 'tag21'),&#xA;('1999-12-31 00:00:00.005', 222, 333, 'tag12', 'tag22'),&#xA;('1999-12-31 00:00:00.010', 333, 222, 'tag13', 'tag23'),&#xA;('1999-12-31 00:00:00.015', 444, 111, 'tag14', 'tag24'),&#xA;('1999-12-31 00:00:00.020', 222, 555, 'tag11', 'tag21'),&#xA;('1999-12-31 00:00:00.025', 333, 444, 'tag12', 'tag22'),&#xA;('1999-12-31 00:00:00.030', 444, 333, 'tag13', 'tag23'),&#xA;('1999-12-31 00:00:00.035', 555, 222, 'tag14', 'tag24');
 
 ```sql
 alter database public set ttl '1000000d';
@@ -4365,21 +4312,21 @@ select compact_state_agg(time, state) from states;
 duration_in(state_agg_data, state [,begin_time, interval_time]) 
 ```
 
-统计某个状态的持续时间，或统计某个状态在某个时间段内的持续时间。
+**Function**: Return the character at the provided UTF-16 code.
 
-**参数**：
+If the subexpression is null, the whole expression is true
 
 state_agg_data: StateAggData
 
-state: any 与compact_state_agg 的state类型相同。
+Field Name
 
-begin_time: 可选，指定时间段内的开始时间。
+Total write traffic size
 
-interval_time: 可选，指定时间段的持续时间，不指定时，时间段为无穷大。
+Example
 
-**返回值**： INTERVAL 类型
+compact_state_agg is designed to handle a relatively small number of states. It may not perform well on datasets with too many states between rows.
 
-#### 示例：
+#### `INTERVAL '1 MONTH'` One month(30 days)
 
 ```sql
 select duration_in(compact_state_agg(time, state), 'running') from states;
@@ -4395,7 +4342,7 @@ select duration_in(compact_state_agg(time, state), 'running') from states;
 
 ### state_agg
 
-给定一个在离散状态之间切换的系统或值，跟踪状态之间的转换。
+Description
 
 #### state_agg
 
@@ -4403,7 +4350,7 @@ select duration_in(compact_state_agg(time, state), 'running') from states;
 state_agg(ts, state)
 ```
 
-统计每个状态所花费的时间，，并聚合成StateAggData类型。
+**HAVING Clause**
 
 ```sql
 alter database public set ttl '1000000d';
@@ -4437,23 +4384,23 @@ select state_agg(time, state) from states;
 duration_in(state_agg_data, state [,begin_time, interval_time]) 
 ```
 
-统计某个状态的持续时间，或统计某个状态在某个时间段内的持续时间。
+Multi-linestring
 
-**参数**：
+Calculate the mode of a column.
 
 state_agg_data: StateAggData
 
-state: any 与compact_state_agg 的state类型相同。
+Field Name
 
-begin_time: 可选，指定时间段内的开始时间。
+Total write traffic size
 
-interval_time: 可选，指定时间段的持续时间，不指定时，时间段为无穷大。
+Example
 
-**返回值**： INTERVAL 类型
+Polygon
 
-#### 示例：
+#### `INTERVAL '0.5 MINUTE'` Half a minute
 
-统计 'running' 状态的持续时间。
+**Parameter Type**: expr type is any type, ignore_ nulls type is BOOLEAN, defaults to false.
 
 ```sql
 select duration_in(state_agg(time, state), 'running') from states;
@@ -4467,7 +4414,7 @@ select duration_in(state_agg(time, state), 'running') from states;
 +------------------------------------------------------------------+
 ```
 
-统计 从2020-01-01 11:00:00 开始 'running' 状态的持续时间。
+Polygon
 
 ```sql
 select duration_in(state_agg(time, state), 'running', Timestamp '2020-01-01 11:00:00') 
@@ -4482,7 +4429,7 @@ from states;
 +----------------------------------------------------------------------------------------------+
 ```
 
-统计 从2020-01-01 11:00:00 开始的四天内 'running' 状态的持续时间。
+**Return Type**: Double
 
 ```sql
 select duration_in(state_agg(time, state), 'running', Timestamp '2020-01-01 11:00:00', interval '4 day')
@@ -4503,15 +4450,15 @@ from states;
 state_at(state_agg_data, ts)
 ```
 
-统计某一时刻所处的状态。
+**Function**: Convert the first character in str to its ASCII code and return it.
 
-**参数**：
+Type of permission granted, READ/WRITE/ALL
 
 - state_agg_data: StateAggData
 
 - ts: Timestamp
 
-**返回值**： any 类型，与state_agg_data 统计的状态类型相同。
+Field Name
 
 ```sql
 select state_at(state_agg(time, state), Timestamp '2020-01-01 10:30:00') from states;
@@ -4527,13 +4474,13 @@ select state_at(state_agg(time, state), Timestamp '2020-01-01 10:30:00') from st
 
 ### candlestick_agg
 
-进行金融资产数据分析。该功能使编写涉及 candlestick 财务分析查询变得更容易。
+Carry out analysis of financial asset data.Null Value
 
-candlestick_agg 能得到股票的开盘价和收盘价，何时最高价。
+Multi-linestring
 
-candlestick_agg 从原始报价数据生成中间聚合数据CandleStackData ，
+Field Name
 
-然后可以对此中间聚合数据使用访问函数和汇总函数。
+**Notice:**
 
 #### candlestick_agg
 
@@ -4541,17 +4488,21 @@ candlestick_agg 从原始报价数据生成中间聚合数据CandleStackData ，
 candlestick_agg(time, price, volume)
 ```
 
-从原始报价查询生成中间聚合数据 CandleStackData 。
+Description
 
-**参数：**
+The type of default should be the consistent with that of expr, defaults to NULL.
 
 - time: Timestamp
 
-- price: Double 价格
+- +---------------------------------------------------------+
+  \| st_Area(Utf8("POLYGON ((40 40, 20 45, 45 30, 40 40))")) |
+  +---------------------------------------------------------+
+  \| 87.5 |
+  +---------------------------------------------------------+
 
-- volume: Double 交易量
+- The type of default should be the consistent with that of expr, defaults to NULL.
 
-**返回值：** CandleStackData
+example
 
 ```
 Struct {
@@ -4578,7 +4529,7 @@ Struct {
 }
 ```
 
-#### 示例
+#### **Function**: Return the sum calculated from the selected element.
 
 ```sql
 alter database public set ttl '1000000d';
@@ -4613,11 +4564,11 @@ select candlestick_agg(time, price, volume) from tick;
 close(candlestick_agg_data)
 ```
 
-获取收盘价。
+Get the price of the bill.
 
-**返回值：** DOUBLE
+Syntax
 
-#### 示例
+#### **Function**: Return expr filled with pad on the right. After filling, the length of the whole string is len.
 
 ```sql
 select close(candlestick_agg(time, price, volume)) from tick;
@@ -4637,11 +4588,11 @@ select close(candlestick_agg(time, price, volume)) from tick;
 close_time(candlestick_agg_data)
 ```
 
-获取收盘时间。
+Retrieving billing time.
 
-**返回值：** Timestamp
+Field Name
 
-#### 示例
+#### **Function**: Return the byte length of string data.
 
 ```sql
 select close_time(candlestick_agg(time, price, volume)) from tick;
@@ -4661,11 +4612,11 @@ select close_time(candlestick_agg(time, price, volume)) from tick;
 high(candlestick_agg_data)
 ```
 
-获取最高价。
+state: any The same type of state as in compact_state_agg.
 
-**返回值：** DOUBLE
+Syntax
 
-#### 示例
+#### **Function**: Return expr filled with pad on the left. After filling, the length of the whole string is len.
 
 ```
 select high(candlestick_agg(time, price, volume)) from tick;
@@ -4685,11 +4636,11 @@ select high(candlestick_agg(time, price, volume)) from tick;
 high_time(candlestick_agg_data)
 ```
 
-获取最高价所在的时间。
+**Return Type**: Geometry
 
-**返回值：** DOUBLE
+Syntax
 
-#### 示例
+#### **Function**: Returns the expression value of the specified row of the window frame relative to the first row of the window.
 
 ```sql
 select high_time(candlestick_agg(time, price, volume)) from tick;
@@ -4709,11 +4660,32 @@ select high_time(candlestick_agg(time, price, volume)) from tick;
 low(candlestick_agg_data)
 ```
 
-获取最低价。
+Struct {
+state_duration: List[
+Struct{
+state: any,
+interval: duration
+},
+...
+]
+state_periods: List[
+Struct(
+state: any,
+periods: List[
+Struct {
+start_time: timestamp,
+end_time: timestamp
+},
+...
+]
+),
+......
+]
+}
 
-**返回值：** DOUBLE
+Syntax
 
-#### 示例
+#### **Function**: Return the arccosine of x.
 
 ```sql
 select low(candlestick_agg(time, price, volume)) from tick;
@@ -4733,11 +4705,11 @@ select low(candlestick_agg(time, price, volume)) from tick;
 low_time(candlestick_agg_data)
 ```
 
-获取最低价所在的时间。
+**Function**: The function takes a single argument, which must be an expression for the dimension column specified in the expression list extended BY the ROLLUP, CUBE, or GROUPING SETS of the GROUP BY clause.
 
-**返回值：** Timestamp
+Field Name
 
-#### 示例
+#### **Function**: Convert to a second-level timestamp.
 
 ```sql
 select low_time(candlestick_agg(time, price, volume)) from tick;
@@ -4757,11 +4729,11 @@ select low_time(candlestick_agg(time, price, volume)) from tick;
 open(candlestick_agg_data)
 ```
 
-获取最低价。
+IN only supports a list of constants, not a list of expressions.
 
-**返回值：** DOUBLE
+Syntax
 
-#### 示例
+#### **Function**: Joins two or more expressions and returns the generated expression.
 
 ```sql
 select open(candlestick_agg(time, price, volume)) from tick;
@@ -4781,11 +4753,11 @@ select open(candlestick_agg(time, price, volume)) from tick;
 open_time(candlestick_agg_data)
 ```
 
-获取最低价所在的时间。
+**Return Type**: First non null parameter type
 
-**返回值：** Timestamp
+Field Name
 
-#### 示例
+#### The window satisfies that: start <= time < end
 
 ```sql
 select open_time(candlestick_agg(time, price, volume)) from tick;
@@ -4805,11 +4777,11 @@ select open_time(candlestick_agg(time, price, volume)) from tick;
 volume(candlestick_agg_data)
 ```
 
-获取总共交易量。
+Get total transaction volume.
 
-**返回值：** DOUBLE
+Syntax
 
-#### 示例
+#### **Function**: Return the substring of expr (starting from pos, length len).
 
 ```sql
 select volume(candlestick_agg(time, price, volume)) from tick;
@@ -4829,11 +4801,11 @@ select volume(candlestick_agg(time, price, volume)) from tick;
 vwap(candlestick_agg_data)
 ```
 
-获取成交量加权平均价格。
+**Parameter Type**: None
 
-**返回值：** DOUBLE
+Syntax
 
-#### 示例
+#### **Function**: If expr starts with startExpr, it returns true.
 
 ```sql
 select vwap(candlestick_agg(time, price, volume)) from tick;
@@ -4847,19 +4819,19 @@ select vwap(candlestick_agg(time, price, volume)) from tick;
 +---------------------------------------------------------+
 ```
 
-## 函数
+## **Return Type**: Microsecond-level TIMESTAMP
 
-### **数学函数**
+### offset type is BIGINT. When offset is negative, the values are returned from the first offset lines, defaults to 1.
 
 ### **abs(x)**
 
-**功能**：返回x的绝对值。
+Database name
 
-**参数类型**：数值类型
+Field Name
 
-**返回类型**：与函数参数类型一致
+Database name
 
-#### 示例
+#### **Function**:Return the arctangent of y/x.
 
 ```sql
 SELECT abs(-1);
@@ -4877,13 +4849,13 @@ SELECT abs(-1);
 
 ### **acos(x)**
 
-**功能**：返回x的反余弦值。
+Database name of the table
 
-**参数类型**：数值类型
+Content of SQL
 
-**返回类型**：DOUBLE
+Database name
 
-#### 示例
+#### **Function**: Extract partial dates from timestamps or intervals.
 
 ```sql
 SELECT acos(3);
@@ -4913,13 +4885,13 @@ SELECT acos(0.5);
 
 ### **asin(x)**
 
-**功能**：返回x的反正弦值。
+Database name
 
-**参数类型**：数值类型
+Database name
 
-**返回类型**：DOUBLE
+Database name
 
-#### 示例
+#### **Function**: Convert to a millisecond-level timestamp.
 
 ```sql
 SELECT asin(0.5);
@@ -4949,13 +4921,13 @@ SELECT asin(5);
 
 ### **atan(x)**
 
-**功能**：返回x的反正切值。
+Database name
 
-**参数类型**：数值类型
+SQL Reference
 
-**返回类型**：DOUBLE
+Total write traffic size
 
-#### 示例
+#### **Function**:Return the arctangent of x.
 
 ```sql
 SELECT atan(5);
@@ -4973,13 +4945,13 @@ SELECT atan(5);
 
 ### **atan2(y,x)**
 
-**功能**：返回y/x的反正切值。
+Column name
 
-**参数类型**：数值类型
+SQL Reference
 
-**返回类型**：DOUBLE
+ID of data node
 
-#### 示例
+#### **Function**: Return the arcsine of x.
 
 ```sql
 SELECT atan2(10, 2);
@@ -4997,13 +4969,13 @@ SELECT atan2(10, 2);
 
 ### **ceil(x)**
 
-**功能**：向上取整。
+field type is STRING, only one of （'year', 'quarter', 'month', 'week', 'day', 'doy', 'dow', 'hour', 'minute', 'second'）
 
-**参数类型**：数值类型
+Description
 
-**返回类型**：BIGINT
+ID of data node
 
-#### 示例
+#### **Function**: Base 10 logarithm.
 
 ```sql
 SELECT ceil(1.6);
@@ -5021,13 +4993,13 @@ SELECT ceil(1.6);
 
 ### **floor(x)**
 
-**功能**：向下取整
+COUNT(tag) and COUNT(DISTINCT tag) are equivalent.
 
-**参数类型**：数值类型
+Description
 
-**返回类型**：BIGINT
+ID of data node
 
-#### 示例
+#### Include [Aggregate functions](#aggregate-function).
 
 ```sql
 SELECT floor(-3.1);
@@ -5045,13 +5017,13 @@ SELECT floor(-3.1);
 
 ### **cos(x)**
 
-**功能**：返回x的余弦值。
+Example
 
-**参数类型**：数值类型
+Description
 
-**返回类型**：DOUBLE
+ID of data node
 
-#### 示例
+#### **Function**: Return the current timestamp.
 
 ```sql
 SELECT cos(1);
@@ -5069,13 +5041,13 @@ SELECT cos(1);
 
 ### **sin(x)**
 
-**功能**：x的正弦值
+API of HTTP
 
-**参数类型**：数值类型
+Description
 
-**返回类型**：DOUBLE
+ID of data node
 
-#### 示例
+#### **Function**: Return the sine of x.
 
 ```sql
 SELECT sin(5);
@@ -5093,13 +5065,13 @@ SELECT sin(5);
 
 ### **exp(x)**
 
-**功能**：返回e的x次方。
+Example
 
-**参数类型**：数值类型
+Description
 
-**返回类型**：DOUBLE
+ID of data node
 
-#### 示例
+#### **Function**: x to the y power.
 
 ```sql
 SELECT exp(1);
@@ -5117,13 +5089,13 @@ SELECT exp(1);
 
 ### **ln(x)**
 
-**功能**：自然对数
+API of HTTP
 
-**参数类型**：数值类型
+Description
 
-**返回类型**：DOUBLE
+ID of data node
 
-#### 示例
+#### **Return Type**: TIMESTAMP. The precision depends on the parameter. If parameter type is BIGINT, it returns a nanosecond TIMESTAMP.
 
 ```sql
 SELECT ln(2.718281828459045);
@@ -5141,13 +5113,13 @@ SELECT ln(2.718281828459045);
 
 ### **log(x) | log10(x)**
 
-**功能**：以10为底的对数
+Description
 
-**参数类型**：数值类型
+Description
 
-**返回类型**：DOUBLE
+ID of data node
 
-#### 示例
+#### **Function**: Return an expr, where all characters in from are replaced by characters in to.
 
 ```sql
 SELECT log(10);
@@ -5177,13 +5149,13 @@ SELECT log10(10);
 
 ### **log2(x)**
 
-**功能**：以 2 为底的对数
+Description
 
-**参数类型**：数值类型
+Description
 
-**返回类型**：DOUBLE
+ID of data node
 
-#### 示例
+#### **Function**: Return the cosine of x.
 
 ```sql
 SELECT log2(4);
@@ -5201,13 +5173,13 @@ SELECT log2(4);
 
 ### **power(x,y) | pow(x,y)**
 
-**功能**：x的y次方
+Example
 
-**参数类型**：数值类型
+`INTERVAL '1 DAY'` One day
 
-**返回类型**：DOUBLE
+syntax descriptions
 
-#### 示例
+#### "YES" if the column may contain NULL, "NO" otherwise
 
 ```sql
 SELECT power(2, 3);
@@ -5225,13 +5197,13 @@ SELECT power(2, 3);
 
 ### **round(x)**
 
-**功能**：四舍五入到最接近的整数
+Schema Definition
 
-**参数类型**：数值类型
+Window functions can only appear in SELECT statements.
 
-**返回类型**：BIGINT
+API of HTTP
 
-#### 示例
+#### **Function**: Return expr cast to a timestamp in a optional format.
 
 ```sql
 SELECT round(3.5);
@@ -5249,13 +5221,13 @@ SELECT round(3.5);
 
 ### **signum(x)**
 
-**功能**：参数的符号 (-1, 0, +1)
+Example
 
-**参数类型**：数值类型
+The syntax is the same as [DROP TABLE](#drop-table)
 
-**返回类型**：BIGINT
+API of HTTP
 
-#### 示例
+#### **Function**: Round to zero.
 
 ```sql
 SELECT signum(-3);
@@ -5273,13 +5245,13 @@ SELECT signum(-3);
 
 ### **sqrt(x)**
 
-**功能**：x的平方根
+Array Type
 
-**参数类型**：数值类型
+`INTERVAL '1 WEEK'` One week
 
-**返回类型**：与函数参数类型一致
+Example
 
-#### 示例
+#### **Function**: Calculate the standard deviation of population.
 
 ```sql
 SELECT sqrt(4);
@@ -5297,13 +5269,13 @@ SELECT sqrt(4);
 
 ### **tan(x)**
 
-**功能**：x的正切值
+Example
 
-**参数类型**：数值类型
+Example
 
-**返回类型**：DOUBLE
+T represents interval, which can only be replaced by space
 
-#### 示例
+#### **Function**:Return the absolute value of x.
 
 ```sql
 SELECT tan(1);
@@ -5321,13 +5293,13 @@ SELECT tan(1);
 
 ### **trunc(x)**
 
-**功能**：向零取整
+Data type of the column
 
-**参数类型**：数值类型
+Example
 
-**返回类型**：BIGINT
+time_window(time, window_duration, slide_duration) the window is:
 
-#### 示例
+#### **Parameter Type**: str, delim type is STRING, partNum type is BIGINT
 
 ```sql
 SELECT trunc(-3.9);
@@ -5345,37 +5317,37 @@ SELECT trunc(-3.9);
 
 ### **struct**
 
-#### 语法
+#### `INTERVAL '0.5 MONTH'` Half a month(15 days)
 
 ```
 struct(expr1 [, ...] ) 
 ```
 
-**功能**：创建一个具有指定字段值的 STRUCT。
+Example
 
-**参数类型**：数值类型
+Example
 
-**注意**：struct函数目前功能并不完善
+Example
 
 ***
 
-### **条件函数**
+### Data Type
 
 ### **coalesce**
 
-#### 语法
+#### **Return Type**: Millisecond-level TIMESTAMP
 
 ```
 coalesce(expr[,...exp])
 ```
 
-**功能**：返回其第一个不为空的参数。只有当所有参数都为 null 时才返回 Null。当检索数据以进行显示时，它通常用于将默认值替换为空值。
+ExampleData TypeWhen retrieving data for display it is commonly used to replace default values with empty values.
 
-**参数类型**：任意
+Example
 
-**返回类型**：第一个不为null的参数类型
+Syntax
 
-#### 示例
+#### **Function**: Calculate the variance of population.
 
 ```sql
 SELECT coalesce(temperature, null, station) FROM air;
@@ -5405,19 +5377,19 @@ SELECT coalesce(temperature, null, station) FROM air;
 
 ### **nullif**
 
-#### 语法
+#### **Function**: Return a random value between 0 and 1.
 
 ```
 nullif(expr1, expr2) 
 ```
 
-**功能**：如果 expr1 等于 expr2，则返回 NULL；否则返回 expr1。
+Schema Definition
 
-**参数类型**：expr1，expr2为数值类型，且为带列值的表达式
+Schema Definition
 
-**返回类型**：expr1的类型或NULL
+Schema Definition
 
-#### 示例
+#### **Function**: If expr1 is equal to expr2, NULL is returned; Otherwise, expr1 is returned.
 
 ```sql
 SELECT nullif(temperature, 70) FROM air;
@@ -5445,7 +5417,7 @@ SELECT nullif(temperature, 70) FROM air;
 
 ***
 
-### **字符串函数**
+### Example
 
 [//]: # "### **Array**"
 
@@ -5453,19 +5425,21 @@ SELECT nullif(temperature, 70) FROM air;
 
 ### **ascii**
 
-#### 语法
+#### **Parameter Type**: Expr type is STRING, n type is BIGINT.
 
 ```
 ascii(str) 
 ```
 
-**功能**: 将 str 中的第一个字符转换成其ASCII 码后返回。
+Schema definition
 
-**参数类型**：STRING
+Example
 
-**返回类型**：BIGINT
+An expression is a kind of combination of symbols and operators that CnosDB will process to obtain a single data value.
+A simple expression can be a constant, variable, column, or scalar function.
+Complex expressions can be formed by concatenating two or more simple expressions with operators.
 
-#### 示例
+#### **Function**: Perform statistical aggregation.
 
 ```sql
 SELECT ascii('abc');
@@ -5495,19 +5469,19 @@ SELECT ascii('a');
 
 ### **bit_length**
 
-#### 语法
+#### **Parameter Type**: Numeric type or STRING or TIMESTAMP
 
 ```
 bit_length(str) 
 ```
 
-**功能**：返回字符串数据的位长度或二进制数据的位数。
+Schema Definition
 
-**参数类型**：STRING
+Example
 
-**返回类型**：BIGINT
+Syntax
 
-#### 示例
+#### **Return Type**: Unix time in second-level.
 
 ```sql
 SELECT bit_length('abc');
@@ -5525,19 +5499,19 @@ SELECT bit_length('abc');
 
 ### **btrim**
 
-#### 语法
+#### **Function**: Convert a decimal number to a hexadecimal representation.
 
 ```
 btrim(string [, matching_string ] ) 
 ```
 
-**功能**：函数通过删除前导空格和尾随空格或删除与可选的指定字符串匹配的字符来剪裁字符串。
+Example
 
-**参数类型**：STRING
+Example
 
-**返回类型**: STRING
+Schema definition
 
-#### 示例
+#### **Function**: Return uppercase string.
 
 ```sql
 SELECT btrim('     abc                  ');
@@ -5567,35 +5541,35 @@ SELECT btrim('111abc111','1');
 
 ### **trim**
 
-#### 语法
+#### **Function**: Return the covariance of the sample.
 
 ```
 trim(str) 
 ```
 
-**功能**：删除str首尾的空白字符
+Example
 
-**参数类型**：STRING
+Example
 
-**返回类型**：STRING
+Schema definition
 
 ***
 
 ### **char_length | character_length**
 
-#### 语法
+#### **Parammeter Type**: value: numeric type
 
 ```
 char_length(expr) 
 ```
 
-**功能**：以字符数形式返回指定字符串的长度。
+Example
 
-**参数类型**：STRING
+Example
 
-**返回类型**：BIGINT
+Syntax
 
-#### 示例
+#### **Function**: Return lowercase string.
 
 ```sql
 SELECT char_length('你好');
@@ -5613,19 +5587,19 @@ SELECT char_length('你好');
 
 ### **chr**
 
-#### 语法
+#### **Function**: Return the MD5 128 bit checksum of expr as a hexadecimal string.
 
 ```
 chr(expr) 
 ```
 
-**功能**：返回位于提供的 UTF-16 码位的字符。
+Schema definition
 
-**参数类型**: BIGINT
+Example
 
-**返回类型**: STRING
+Schema definition
 
-#### 示例
+#### **Switch to the specified database**
 
 ```sql
 SELECT chr(20005);
@@ -5643,19 +5617,19 @@ SELECT chr(20005);
 
 ### **concat**
 
-#### 语法
+#### **Return Type**: Second-level TIMESTAMP
 
 ```
 concat(expr1, expr2 [, ...exp] ) 
 ```
 
-**功能**：联接两个或两个以上表达式并返回生成的表达式。
+Schema definition
 
-**参数类型**：STRING
+Example
 
-**返回类型**: STRING
+Schema definition
 
-#### 示例
+#### **Return Type**: Consistent with function parameter type.
 
 ```sql
 SELECT concat('a', 'b', 'c');
@@ -5673,19 +5647,19 @@ SELECT concat('a', 'b', 'c');
 
 ### **concat_ws**
 
-#### 语法
+#### **Parameter Type**: str is STRING type, len is BIGINT type
 
 ```
 concat_ws(sep , expr1 [, ...] ) 
 ```
 
-**功能**：返回由 sep 分隔的串联字符串。
+Example
 
-**参数类型**：STRING
+Example
 
-**返回类型**：STRING
+Schema definition
 
-#### 示例
+#### **Return Type**: Consistent with function parameter type.
 
 ```sql
 SELECT concat_ws(' ', 'a', 'b', 'c');
@@ -5703,19 +5677,19 @@ SELECT concat_ws(' ', 'a', 'b', 'c');
 
 ### **initcap**
 
-#### 语法
+#### **返回类型**: The type of column specified in gauge_agg
 
 ```
 initcap(expr) 
 ```
 
-**功能**：将参数中每个单词的首字母大写。
+Example
 
-**参数类型**：STRING
+Example
 
-**返回类型**：BIGINT
+Syntax
 
-#### 示例
+#### **返回类型**：Type of column specified in gauge_agg
 
 ```sql
 SELECT initcap('hello world');
@@ -5733,19 +5707,19 @@ SELECT initcap('hello world');
 
 ### **left**
 
-#### 语法
+#### **Parameter Type**: x. w is numeric type, p is DOUBLE type.
 
 ```
 left(str, len) 
 ```
 
-**功能**：返回 str 中最左边的 len 个字符。
+Schema Definition
 
-**参数类型**：str为STRING类型，len为BIGINT类型
+Example
 
-**返回类型**：STRING
+Schema Definition
 
-#### 示例
+#### **返回类型**：Type of column specified in gauge_agg
 
 ```sql
 SELECT left('abcde', 3);
@@ -5763,21 +5737,21 @@ SELECT left('abcde', 3);
 
 ### **lpad**
 
-#### 语法
+#### **Parameter Type**: x is numeric type, p is DOUBLE type
 
 ```
 lpad(expr, len [, pad] ) 
 ```
 
-**功能**：返回 expr左侧填充了 pad，填充后长度为 len。
+Example
 
-**参数类型**：expr, pad 类型为 STRING， len类型为BIGINT
+Example
 
-**返回类型**：BIGINT
+Syntax
 
-当len为负数时，len表现为0，当len过大，函数执行失败
+Schema Definition
 
-#### 示例
+#### **Function**: Natural logarithm.
 
 ```sql
 SELECT lpad('abc', 10, '1');
@@ -5795,19 +5769,19 @@ SELECT lpad('abc', 10, '1');
 
 ### **rpad**
 
-#### 语法
+#### **返回类型**: Type of column specified in gauge_agg
 
 ```
 rpad(expr, len [, pad] ) 
 ```
 
-**功能**：返回右侧填充了 pad 的 expr，填充后整个字符的长度为 len。
+Schema Definition
 
-**参数类型**：expr, pad 类型为 STRING， len类型为BIGINT
+Example
 
-**返回类型**：STRING
+Syntax
 
-#### 示例
+#### **Function**: Round down.
 
 ```sql
 SELECT rpad('aaa', 10, 'b');
@@ -5825,19 +5799,19 @@ SELECT rpad('aaa', 10, 'b');
 
 ### **lower**
 
-#### 语法
+#### **Return Type**: Same as value type.
 
 ```
 lower(expr) 
 ```
 
-**功能**：返回字母小写。
+Example
 
-**参数类型**：STRING
+Example
 
-**返回类型**：STRING
+Syntax
 
-#### 示例
+#### **Parameter Type**: field type is STRING, only one of （'year', 'quarter', 'month', 'week', 'day', 'doy', 'dow', 'hour', 'minute', 'second'）
 
 ```sql
 SELECT lower('ABC');
@@ -5855,35 +5829,35 @@ SELECT lower('ABC');
 
 ### **upper**
 
-#### 语法
+#### **Return Type**: Same as value type.
 
 ```
 upper(expr)
 ```
 
-**功能**：返回将 expr 的所有字符均更改为大写后的结果。
+Example
 
-**参数类型**：STRING
+Example
 
-**返回类型**：STRING
+Syntax
 
 ***
 
 ### **ltrim**
 
-#### 语法
+#### **Return Type**: Same as value type.
 
 ```
 ltrim(str[, trimstr] ) 
 ```
 
-**功能**：返回 str，其中删除了 trimStr 内的前导字符。默认trimestr为空白符
+ExampleDefault trimester is empty
 
-**参数类型**：STRING
+Example
 
-**返回类型**：STRING
+Syntax
 
-#### 示例
+#### **Parameter**: BIGINT or STRING
 
 ```sql
 SELECT ltrim('   abc');
@@ -5901,19 +5875,19 @@ SELECT ltrim('   abc');
 
 ### **md5**
 
-#### 语法
+#### **Return Type**: Same as value type.
 
 ```
 md5(expr) 
 ```
 
-**功能**：以十六进制字符串形式返回 expr 的 MD5 128 位校验和。
+Example
 
-**参数类型**：STRING
+Example
 
-**返回类型**：STRING
+Syntax
 
-#### 示例
+#### **Function**: Return a string that repeats expr n times.
 
 ```sql
 SELECT md5('abc');
@@ -5931,19 +5905,19 @@ SELECT md5('abc');
 
 ### **octet_length**
 
-#### 语法
+#### **Show Tables of Current Database**
 
 ```
 octet_length(expr) 
 ```
 
-**功能**：返回字符串数据的字节长度。
+Example
 
-**参数类型**：STRING
+Example
 
-**返回类型**：BIGINT
+Syntax
 
-#### 示例
+#### **Return Type**: Consistent with parameter type.
 
 ```sql
 SELECT octet_length('你好');
@@ -5961,19 +5935,19 @@ SELECT octet_length('你好');
 
 ### **random**
 
-#### 语法
+#### **Return Type**: Consistent with parameter type.
 
 ```
 random( [seed] ) 
 ```
 
-**功能**：返回介于 0 和 1 之间的随机值。
+Example
 
-**参数类型**：无
+Example
 
-**返回类型**：DOUBLE
+Syntax
 
-#### 示例
+#### **Return Type**: Consistent with parameter type.
 
 ```sql
 SELECT random();
@@ -5991,29 +5965,29 @@ SELECT random();
 
 [//]: # "    regexp_replace(str, regexp, rep [, position] ) "
 
-[//]: # "**功能**：将 str 中与 regexp 匹配的所有子字符串都替换为 rep。"
+[//]: # "Example"
 
-[//]: # "**参数类型**：STRING"
+[//]: # "Example"
 
-[//]: # "**返回类型**：BIGINT"
+[//]: # "Syntax"
 
 ***
 
 ### **repeat**
 
-#### 语法
+#### **Function**: Tangent value of x.
 
 ```
 repeat(expr, n) 
 ```
 
-**功能**：返回重复 expr, n 次的字符串。
+Example
 
-**参数类型**：expr类型为STRING，n类型为BIGINT
+Example
 
-**返回类型**：BIGINT
+Syntax
 
-#### 示例
+#### **Parameter Type**: expr and algorithm are both STRING
 
 ```sql
 SELECT repeat('a', 5);
@@ -6031,19 +6005,19 @@ SELECT repeat('a', 5);
 
 ### **replace**
 
-#### 语法
+#### `INTERVAL '1 MINUTE'` One minute
 
 ```
 replace(str, search, replace ) 
 ```
 
-**功能**：将所有 search 项都替换为 replace。
+Example
 
-**参数类型**：STRING
+Example
 
-**返回类型**：BIGINT
+Syntax
 
-#### 示例
+#### **说明**:GROUPING函数只能用于有GROUP BY 子句的表达式
 
 ```sql
 SELECT replace('aaa', 'a', 'b');
@@ -6061,19 +6035,19 @@ SELECT replace('aaa', 'a', 'b');
 
 ### **reverse**
 
-#### 语法
+#### **Function**: Calculate the variance of a given sample
 
 ```
 reverse(expr) 
 ```
 
-**功能**：返回一个反向字符串或一个包含逆序的元素的数组。
+Data Type
 
-**参数类型**：STRING
+Example
 
-**返回类型**：BIGINT
+Syntax
 
-#### 示例
+#### **Differences between HAVING and WHERE**
 
 ```sql
 SELECT reverse('你好');
@@ -6091,19 +6065,19 @@ SELECT reverse('你好');
 
 ### **right**
 
-#### 语法
+#### **Parameter Type**: BIGINT or STRING
 
 ```
 right(str, len) 
 ```
 
-**功能**：返回字符串 str 中最右边的 len 个字符。
+Example
 
-**参数类型**：STRING
+Example
 
-**返回类型**：BIGINT
+Syntax
 
-#### 示例
+#### **Function**: Round up.
 
 ```sql
  SELECT right('aaabbb', 3);
@@ -6121,21 +6095,21 @@ right(str, len)
 
 ### **digest**
 
-#### 语法
+#### **Parameter Type**: BIGINT or STRING
 
 ```
 digest(expr, algorithm)
 ```
 
-**功能**：把表达式用给定算法计算散列值
+Example
 
-**参数类型**：expr, algorithm都为STRING类型
+Example
 
-algorithm指定计算散列的算法，仅支持 md5, sha224, sha256, sha384, sha512, blake2s, blake2b, blake3
+Example
 
-**返回类型**：BINARY
+TIMESTAMP constant syntax
 
-#### 示例
+#### **Parameter Type**: expr, pad type is STRING, len type is BIGINT
 
 ```sql
 SELECT digest('abc', 'md5');
@@ -6153,19 +6127,19 @@ SELECT digest('abc', 'md5');
 
 ### **rtrim**
 
-#### 语法
+#### **Return Type**: CandleStackData
 
 ```
 rtrim( str [, trimstr] ) 
 ```
 
-**功能**：返回删除了尾随字符trimstr的str，trimstr默认是空白字符。
+Example
 
-**参数类型**：STRING
+Example
 
-**返回类型**：STRING
+Syntax
 
-#### 示例
+#### **Function**: Return unixTime.
 
 ```sql
 SELECT rtrim('aaabbb', 'b');
@@ -6183,19 +6157,19 @@ SELECT rtrim('aaabbb', 'b');
 
 ### **sha224**
 
-#### 语法
+#### A symbol representing a single specific data value.&#xA;You can refer to [constant](#constant).
 
 ```
 sha224(str)
 ```
 
-**功能**：计算字符串的 sha224 散列值
+Example
 
-**返回类型**：BINARY
+Syntax
 
-**参数类型**：STRING
+Example
 
-#### 示例
+#### **Parameter Type**: STRING or BIGINT
 
 ```sql
  SELECT sha224('abc');
@@ -6213,19 +6187,19 @@ sha224(str)
 
 ### **sha256**
 
-#### 语法
+#### **Parameter Type**: expr, pad is STRING type, len is BIGINT type.
 
 ```
 sha256(str)
 ```
 
-**功能**：计算字符串的 sha256 散列值
+Example
 
-**返回类型**：BINARY
+Syntax
 
-**参数类型**：STRING
+Example
 
-#### 示例
+#### **Parameter Type**: expr1 and expr2 are numeric expressions with column values
 
 ```sql
 SELECT sha256('abc');
@@ -6243,19 +6217,19 @@ SELECT sha256('abc');
 
 ### **sha384**
 
-#### 语法
+#### **Insert Query Results (INSERT SELECT)**
 
 ```
 sha384(str)
 ```
 
-**功能**：计算字符串的 sha384 散列值
+Example
 
-**返回类型**：BINARY
+Syntax
 
-**参数类型**：STRING
+Example
 
-#### 示例
+#### **Parameter Type**: expr type is STRING, pos, len type is BIGINT
 
 ```sql
 SELECT sha384('abc');
@@ -6273,35 +6247,35 @@ SELECT sha384('abc');
 
 ### **sha512**
 
-#### 语法
+#### **Return Type**: INTERVAL 类型
 
 ```
 sha512(str)
 ```
 
-**功能**：计算字符串的 sha512 散列值
+Example
 
-**返回类型**：BINARY
+Syntax
 
-**参数类型**：STRING
+Example
 
 ***
 
 ### **split_part**
 
-#### 语法
+#### **Parameter Type**: Numeric type.
 
 ```
 split_part(str, delim, n) 
 ```
 
-**功能**：将 str 按照 delim 做拆分，返回第n部分。
+Example
 
-**参数类型**：str，delim类型为STRING，partNum类型为BIGINT
+Example
 
-**返回类型**：STRING
+Syntax
 
-#### 示例
+#### COUNT(_) and COUNT(literal value) are equivalent, and if the sql projection contains only '_/literal value', the sql is rewritten as COUNT(time).
 
 ```sql
 SELECT split_part('abc|def|ghi', '|', 2);
@@ -6319,19 +6293,19 @@ SELECT split_part('abc|def|ghi', '|', 2);
 
 ### **starts_with**
 
-#### 语法
+#### **Parameter Type**: Numeric type.
 
 ```
 starts_with(expr, startExpr) 
 ```
 
-**功能**：如果 expr 以 startExpr 开头，则返回 true。
+Example
 
-**参数类型**：STRING
+Example
 
-**返回类型**：BOOLEAN
+Syntax
 
-#### 示例
+#### **Note**: `BETWEEN x AND y` lists the numbers between x and y, including x and y.
 
 ```sql
 SELECT starts_with('abcdefg', 'abc');
@@ -6349,19 +6323,19 @@ SELECT starts_with('abcdefg', 'abc');
 
 ### **strpos**
 
-#### 语法
+#### **Parameter Type**: value: any
 
 ```
 strpos(str, substr ) 
 ```
 
-**功能**：返回子字符串在指定字符串中的位置。
+Example
 
-**参数类型**：STRING
+Example
 
-**返回类型**：BIGINT
+Syntax
 
-#### 示例
+#### **Parameter Type**:  只能是GROUP BY 子句中的表达式
 
 ```sql
 SELECT strpos('abcdef', 'def');
@@ -6379,19 +6353,19 @@ SELECT strpos('abcdef', 'def');
 
 ### **substr**
 
-#### 语法
+#### **Return Type**: Array of parameter type
 
 ```
 substr(expr, pos [, len] ) 
 ```
 
-**功能**：返回 expr 的子字符串（从 pos 开始，长度为 len）。
+Example
 
-**参数类型**：expr 类型为STRING，pos，len类型为BIGINT
+Example
 
-**返回类型**：STRING
+Syntax
 
-#### 示例
+#### `value_expression` can only be an expression whose value can be determined at compile time, such as `constant`, `1 + 2`, `CAST('1999-12-31 00:00:00.000` as timestamp)', and so on.
 
 ```sql
 SELECT substr('abcdef', 4, 3);
@@ -6409,19 +6383,19 @@ SELECT substr('abcdef', 4, 3);
 
 ### **to_hex**
 
-#### 语法
+#### **Parameter Type**:VALUE TYPE
 
 ```
 to_hex(value)
 ```
 
-**功能**：将十进制数字转换为十六进制表示形式。
+Parameter Description
 
-**参数类型**：BIGINT
+Example
 
-**返回类型**：STRING
+Syntax
 
-#### 示例
+#### **Return Type**: Consistent with expr.
 
 ```sql
 SELECT to_hex(100);
@@ -6439,19 +6413,19 @@ SELECT to_hex(100);
 
 ### **translate**
 
-#### 语法
+#### **Return Type**: StateAggData type
 
 ```
 translate(expr, from, to) 
 ```
 
-**功能**：返回一个 expr，其中 from 中的所有字符都替换为 to 中的字符。
+Example
 
-**参数类型**：STRING
+Example
 
-**返回类型**：STRING
+Syntax
 
-#### 示例
+#### **Return Type**: Consistent with expr.
 
 ```sql
 SELECT translate('aaabbb', 'bbb', 'ccc');
@@ -6467,28 +6441,27 @@ SELECT translate('aaabbb', 'bbb', 'ccc');
 
 ***
 
-### **时间函数**
+### Example
 
 ### **date_part**
 
-#### 语法
+#### **Return Type**: The type of expr1 or NULL
 
 ```
 date_part(field, expr) 
 ```
 
-**功能**：提取部分日期、时间戳或间隔。
+Example
 
-**参数类型**：
+Example
 
-field 类型为STRING，且只能是('year', 'quarter', 'month', 'week', 'day', 'doy', 'dow', 'hour', 'minute', '
-second')中的一种。
+!()
 
-expr 类型为 TIMESTAMP
+**Notice**
 
-**返回类型**：BIGINT
+Syntax
 
-#### 示例
+#### **Return Type**: Consistent with expr.
 
 ```sql
 SELECT date_part('hour', TIMESTAMP '2022-11-21T09:18:17');
@@ -6506,20 +6479,19 @@ SELECT date_part('hour', TIMESTAMP '2022-11-21T09:18:17');
 
 ### **date_trunc**
 
-#### 语法
+#### **Parameter Type**: expr type is any type, number type is BIGINT.
 
 ```
 date_trunc(field, expr) 
 ```
 
-**功能**：返回已截断到 field 中指定的单位的值。
+Example
 
-**参数类型**：field 类型为STRING，且只能是('year', 'quarter', 'month', 'week', 'day', 'doy', 'dow', 'hour', 'minute', '
-second')中的一种。
+Example
 
-expr 类型为TIMESTAMP
+**Alias**
 
-#### 示例
+#### **Return Type**: Consistent with expr.
 
 ```sql
 SELECT date_trunc('month', TIMESTAMP '2022-11-21T09:18:17');
@@ -6537,23 +6509,23 @@ SELECT date_trunc('month', TIMESTAMP '2022-11-21T09:18:17');
 
 ### **date_bin**
 
-#### 语法
+#### **Return Type**: DOUBLE.
 
 ```
 date_bin(interval, source, origin)
 ```
 
-**功能**：按 interval 分组成与origin对齐的均匀 bucket, 返回source所在的bucket 的 timestamp。
+Numeric type
 
-**参数类型**：
+Example
 
-interval 是 STRING 类型，会解析成时间间隔，
+**Database**
 
-source, origin 是 TIMESTAMP 类型。
+**Approximate Aggregate Functions**
 
-**返回类型**：TIMESTAMP
+Syntax
 
-#### 示例
+#### **Return Type**: Consistent with expr.
 
 ```sql
 SELECT date_bin(INTERVAL '1' DAY, TIMESTAMP '2022-11-21T09:10:24', TIMESTAMP '2022-11-01T00:00:00');
@@ -6571,19 +6543,19 @@ SELECT date_bin(INTERVAL '1' DAY, TIMESTAMP '2022-11-21T09:10:24', TIMESTAMP '20
 
 ### **to_timestamp**
 
-#### 语法
+#### **Create Common (TSKV) Table**
 
 ```
 to_timestamp(expr) 
 ```
 
-**功能**：返回使用可选格式设置强制转换为某个时间戳的 expr。
+Example
 
-**参数类型**：STRING或BIGINT
+Example
 
-**返回类型**：TIMESTAMP类型，精度随参数确定，BIGINT类型的参数，返回的是纳秒级的TIMESTAMP
+Syntax
 
-#### 示例
+#### **Complex Grouping Operation**
 
 ```sql
 SELECT to_timestamp('1970-01-01T00:00:00');
@@ -6613,19 +6585,19 @@ SELECT to_timestamp(1);
 
 ### **to_timestamp_millis**
 
-#### 语法
+#### **Return Type**: TimeVector
 
 ```
 to_timestamp_millis(expr) 
 ```
 
-**功能**：转化为毫秒级的时间戳
+Example
 
-**参数类型**：BIGINT 或 STRING
+Example
 
-**返回类型**：毫秒级的TIMESTAMP
+Syntax
 
-#### 示例
+#### - (positive), - (negative), + (plus), + (series), - (minus)
 
 ```sql
 SELECT to_timestamp_millis('1970-01-01T00:00:00.00301');
@@ -6655,19 +6627,19 @@ SELECT to_timestamp_millis(1);
 
 ### **to_timestamp_micros**
 
-#### 语法
+#### **Alter Database Parameters**
 
 ```
 to_timestamp_micros(expr) 
 ```
 
-**功能**：转为微秒精度的时间戳。
+Example
 
-**参数**：BIGINT 或 STRING
+Example
 
-**返回类型**： 微秒精度的TIMESTAMP
+Syntax
 
-#### 示例
+#### operator include `=`, `!=`.
 
 ```sql
 SELECT to_timestamp_micros(1)
@@ -6685,19 +6657,19 @@ SELECT to_timestamp_micros(1)
 
 ### **to_timestamp_seconds**
 
-#### 语法
+#### **Return Type**: TIMESTAMP
 
 ```
 to_timestamp_seconds(expr) 
 ```
 
-**功能**：转为秒级的时间戳
+Example
 
-**参数**：BIGINT 或 STRING
+Example
 
-**返回类型**：秒精度的TIMESTAMP
+Syntax
 
-#### 示例
+#### **Two-stage Aggregation Function**
 
 ```
 SELECT to_timestamp_seconds(1);
@@ -6715,19 +6687,19 @@ SELECT to_timestamp_seconds(1);
 
 ### **from_unixtime**
 
-#### 语法
+#### **Return Type**: TIMESTAMP
 
 ```
 from_unixtime(unixTime) 
 ```
 
-**功能**：返回 unixTime。
+Boolean Type
 
-**参数**： BIGINT
+Number type expressions are subtracted
 
-**返回类型**： unix时间，秒级
+Example
 
-#### 示例
+#### **Update tag column**
 
 ```
 SELECT from_unixtime(1);
@@ -6745,17 +6717,17 @@ SELECT from_unixtime(1);
 
 ### **now**
 
-#### 语法
+#### **Parameter Type**: STRING
 
 ```
 now()
 ```
 
-**功能**：返回当前时间戳
+Syntax
 
-**返回类型**：TIMESTAMP
+Syntax
 
-#### 示例
+#### [Click to jump](#geometry)
 
 ```
 SELECT now();
@@ -6771,19 +6743,19 @@ SELECT now();
 
 ### **time_window**
 
-#### 语法
+#### **Parameter Type**: STRING
 
 ```sql
 time_window(time_expr, window_duration [, slide_duration])
 ```
 
-time_column 为 Timestamp 类型
+**Join Clause**
 
-window_duration 为INTERVAL类型，指定时间窗口的窗口大小
+**Show All Databases**
 
-slide_duration 为INTERVAL类型，指定时间窗口滑动的大小，不指定此参数时，滑动大小为时间窗口大小，变成滚动窗口
+**PARTITION BY Clause**
 
-time_window(time, window_duration, slide_duration) 生成的窗口为：
+Numeric type
 
 ```sql
 start, end
@@ -6794,9 +6766,9 @@ time - 2 * slide_duration, time + window_duration - 2 * slide_duration
 time - n * slide_duration, time + window_duration - n * slide_duration
 ```
 
-且窗口满足 start <= time < end
+Data Type
 
-#### 示例
+#### **Parameter Type**: expr type is any type.
 
 ```sql
 CREATE TABLE test(a BIGINT, TAGS(b));
@@ -6837,9 +6809,9 @@ SELECT time_window(time, interval '5 day', interval '3 day') FROM test;
 +------------------------------------------------------------------------------------------------------------------+
 ```
 
-### 空间函数
+### Space Functions
 
-CnosDB 提供了 ST_Geometry SQL 系列的空间函数，关于Geometry类型，请查看[Geometry](#geometry)数据类型一节。
+**Stream**
 
 #### ST_AsBinary
 
@@ -6847,13 +6819,13 @@ CnosDB 提供了 ST_Geometry SQL 系列的空间函数，关于Geometry类型，
 ST_AsBinary(geometry)
 ```
 
-**功能**：将空间几何对象 Geometry 以 OGC/ISO Well-Known Binary(WKB) 格式返回。
+Example
 
-**参数类型**：Geometry
+Example
 
-**返回类型**: Binary
+Example
 
-**示例**:
+Parameters Description
 
 ```sql
 SELECT ST_AsBinary('POINT(0 3)');
@@ -6873,13 +6845,13 @@ SELECT ST_AsBinary('POINT(0 3)');
 ST_GeomFromWKB(wkb)
 ```
 
-**功能**：把WKB格式二进制转为Geometry类型
+Syntax
 
-**参数类型**：Binary
+Example
 
-**返回类型**: Geometry
+`INTERVAL '1'` One second
 
-**示例**：
+String type expression concatenation
 
 ```sql
 SELECT ST_GeomFromWKB(ST_AsBinary('POINT(0 3)'))
@@ -6899,15 +6871,15 @@ SELECT ST_GeomFromWKB(ST_AsBinary('POINT(0 3)'))
 ST_Distance(geometry1, gemometry2)
 ```
 
-**功能**： ST_Distance 返回两个几何体的 2D 投影之间的最小欧氏距离。
+Syntax
 
-**参数类型**：Binary
+Example
 
-**返回类型**： Double
+Syntax
 
-**示例**：
+Unsigned Integer
 
-两点间距离
+**Parameter Type**: expr type is any type.
 
 ```sql
 SELECT ST_Distance('POINT(0 0)', 'LINESTRING (30 10, 10 30, 40 40)');
@@ -6921,7 +6893,7 @@ SELECT ST_Distance('POINT(0 0)', 'LINESTRING (30 10, 10 30, 40 40)');
 +----------------------------------------------------+
 ```
 
-点到直线距离
+expr type is TIMESTAMP.
 
 ```sql
 SELECT ST_Distance('POINT(0 0)', 'LINESTRING (30 10, 10 30, 40 40)');
@@ -6935,7 +6907,7 @@ SELECT ST_Distance('POINT(0 0)', 'LINESTRING (30 10, 10 30, 40 40)');
 +--------------------------------------------------------------------------+
 ```
 
-平面和平面之间的距离
+**Return Type**: Timestamp
 
 ```sql
 SELECT ST_Distance('POLYGON((0 2,1 1,0 -1,0 2))', 'POLYGON((-1 -3,-2 -1,0 -3,-1 -3))');
@@ -6955,118 +6927,114 @@ SELECT ST_Distance('POLYGON((0 2,1 1,0 -1,0 2))', 'POLYGON((-1 -3,-2 -1,0 -3,-1 
 ST_Area(geometry)
 ```
 
-**功能**：返回几何对象 2D 投影的笛卡尔面积。面积单位与用于表示输入几何体坐标的单位相同。
-对于点、线串、多点和多线串，此函数返回 0。
-对于几何体集合，它返回集合中几何体的面积之和。
+SyntaxThe area unit is the same as the unit used to represent input into geometric coordinates.
+This function returns 0 for point, line, multi-point and multi-line string.
+For geometrical collections, it returns the sum of geometry in the collection.
 
-**参数类型** Geometry
+-ts: Timestamp
 
-**返回类型**: Double
+Syntax
 
-**示例**：
+Number type expressions divide
 
 ```sql
 SELECT ST_Area('POLYGON ((40 40, 20 45, 45 30, 40 40))');
 ```
 
-+---------------------------------------------------------+
-\| st_Area(Utf8("POLYGON ((40 40, 20 45, 45 30, 40 40))")) |
-+---------------------------------------------------------+
-\| 87.5                                                    |
-+---------------------------------------------------------+
+Example
 
-> 部分几何图形不支持计算面积，对这些几何体计算面积会返回 0，如：Point、MultiPoint、LineString、MultiLineString、Line。
-> 如果参数内容格式非法，返回值为 NULL。
+> **GROUP BY Clause**
+> Returns value to NULL if the parameter content format is invalid.
 
 #### ST_Equals
 
 ```
-ST_Equals(A, B)
+ST_Equals (A,B)
 ```
 
-**功能**：比较两个几何体，如果两个几何体完全相同，则返回true
+**Function**：compares two geometry and returns true if two geometry are identical
 
-ST_Equals(A, B) 等价于 ST_Within(A, B) && ST_Within(B, A)
+ST_Equals(A, B) Equivalent to ST_Within (A, B) && ST_Within (B,A)
 
-**参数类型**： Geometry
+Example
 
-**返回类型**： Boolean
+Example
 
-**示例**：
+Integer type expressions are modulo
 
 ```sql
-select ST_Equals(
-    'LINESTRING(0 0, 10 10)', 
-    'LINESTRING(0 0, 5 5, 10 10)'
-) st_equals;
+Select ST_Equals (
+    'LINESTRING(0, 10 10)', 
+    'LINESTRING(0, 5 5, 10 10)'
+st_equals;
 ```
 
 ```
-+-----------+
++---+
 | st_equals |
-+-----------+
-| true      |
-+-----------+
++----
+| true |
++---+ -+
 ```
 
-#### ST_Contains
+#### ST_Contins
 
 ```
-ST_Contains(A, B)
+ST_Contains (A,B)
 ```
 
-**功能**：如果几何对象A包含几何对象B，返回True
+**Function**：returns True if geometry A contains geometry objects
 
-ST_Contains(A, B) => ST_Within(B, A)
+ST_Contains(A, B) => ST_Within (B,A)
 
-**参数**：Geometry
+Example
 
-**返回类型**：Boolean
+Example
 
-**示例**：
+Syntax
 
 ```sql
-select ST_Contains(
-    'POLYGON((0 0,0 3,3 0,0 0))', 
-    'POLYGON((0 0,0 1,1 0,0 0))'
-) st_contains;
+Select ST_Contains (
+    'POLYGON(0 0,0 3,3 0,0 0))', 
+    'POLYGON(0 0,0 1,1 0,0 0)'
+st_contains;
 ```
 
 ```
-+-------------+
++---+
 | st_contains |
-+-------------+
-| true        |
-+-------------+
++-------
+| true |
++---+ +
 ```
 
 #### ST_Intersects
 
 ```
-ST_Intersects(A, B)
+ST_Intersects(A,B)
 ```
 
-**功能**：如果两个几何对象相交，则返回True
+**Function**：returns True if two geometry objects
 
-**参数**: Geometry
+Example
 
-**返回类型**： Boolean
+Example
 
-**示例**：
+Syntax
 
 ```sql
-select ST_Intersects(
+Select ST_Intersects (
     'LINESTRING(3 2, 7 6)',
     'LINESTRING(3 4, 8 4)'
-) st_intersects;
+st_intersects;
 ```
 
 ```
-+---------------+
++-------- +
 | st_intersects |
-+---------------+
-| true          |
-+---------------+
++----------+
+| true |
++----+ +
 ```
 
 #### ST_Disjoint
@@ -7075,151 +7043,140 @@ select ST_Intersects(
 ST_Disjoint(A, B)
 ```
 
-**功能**： 如果两个几何对象不相接，返回True
+**Feature**： returns True if two geometry objects are missing.
 
-**参数**： Geometry
+Example
 
-**返回类型**：Boolean
+Example
 
-**示例**：
+Syntax
 
 ```sql
-select ST_Disjoint(
-    'LINESTRING(0 0,-3 -3)', 
+Select ST_Disjoint(
+    'LINESTRING(0 0-3 -3)', 
     'LINESTRING(0 1,1 0)'
 );
 ```
 
 ```
-+-------------+
++-----+
 | st_disjoint |
-+-------------+
-| true        |
-+-------------+
++------
+| true |
++---+ +
 ```
 
 #### ST_Within
 
 ```
-ST_Within(A, B)
+ST_Within (A,B)
 ```
 
-**功能**：如果给定的Geometry对象A完全在对象B之内，则返回True
+**Function**：returns True if the given geometry object A is exclusively within object B
 
-**参数**：Geometry
+Example
 
-**返回类型**：Boolean
+Example
 
-**示例**：
+Syntax
 
 ```sql
-select ST_Within(
-    'POLYGON((1 1, 1 2, 2 2, 2 1, 1 1))',
-    'POLYGON((0 0, 0 3, 3 3, 3 0, 0 0))'
+Select ST_Within (
+    'POLYGON (1 1, 1 2, 2 2, 2 1, 1 1))',
+    'POLYGON(0, 0 3, 3, 3, 0, 0 0)'
 );
 ```
 
 ```
-+-----------+
++---+
 | st_within |
-+-----------+
-| true      |
-+-----------+
++----
+| true |
++---+ + +
 ```
 
-### **窗口函数**
+### Data Type
 
-#### 语法
+#### **Parameter Type**: STRING
 
 ```sql
-function([...expr] ) OVER ([PARTITION BY expr] [ORDER BY expr] [window_frame]);
-
-function: {aggregate_function | analytic_function}
-
-window_frame: { frame_mode frame_start |
-                frame_mode BETWEEN frame_start AND frame_end } }
-frame_mode: {RANGE | ROWS}
-
-frame_start: {UNBOUNDED PRECEDING | offset_start PRECEDING | CURRENT ROW | offset_start FOLLOWING }
-
-frame_end: {offset_stop PRECEDING | CURRENT ROW | offset_stop FOLLOWING | UNBOUNDED FOLLOWING}
-
+Example
 ```
 
-#### **函数类型**
+#### Example
 
-#### 排名函数
+#### **Return Type**: BIGINT UNSIGNED
 
-| 函数名                               |
+| **Return Type**: BINARY           |
 | --------------------------------- |
 | DENSE_RANK   |
 | PERCENT_RANK |
 | RANK                              |
 | ROW_NUMBER   |
 
-其中`DENSE_RANK` | `RANK` | `PERCENT_RANK` 需要 ORDER BY 子句
+**Update Data**
 
-其中 `RANK`, `DENSE_RANK`, `ROW_NUMBER` 指定window_frame 无效
+`RANK`, `DENSE_RANK`, `ROW_NUMBER` specifies window_frame that is invalid
 
-#### 聚合函数
+#### **Insert One Record**
 
-详见[聚合函数](./sql.md#聚合函数)
+See[聚合函数](./sql.md#polymer)
 
-#### 分析窗口函数
+#### **Return Type**: Numeric type
 
-| 函数名                            |
+| **Return Type**: BINARY        |
 | ------------------------------ |
 | CUME_DIST |
 | LAG                            |
 | LEAD                           |
 | NTH_VALUE |
 
-#### **PARTITION BY 子句**
+#### Data Type
 
-一个或多个表达式，用于指定一个行分区，如果没有该子句，则分区由所有行组成
+Example
 
-#### **ORDER BY 子句**
+#### Data Type
 
-指定行在分区中的顺序
+**Example**:
 
-#### **window_frame 子句**
+#### Data Type
 
-frame 是当前分区的一个子集，在分区里进一步细分窗口
+**Return Type**: DOUBLE
 
-指定ROWS，则窗口以行为单位算偏移量
+**Create Database**
 
-指定RANGE，则必须指定 ORDER BY 子句，窗口以ORDER BY 表达式的值为单位算偏移量
+**Example**:
 
-- `UNBOUND PRECEDING` ROWS 模式下为分区的第一行，RANGE模式下为分区ORDER BY表达式的第一个值
-- `offset PRECEDING` ROWS 模式下为当前行的前offset行，RANGE 模式下为当前值的前offset值
-- `CURRENT ROW` ROWS 模式下为当前行，RANGE模式下为当前值
-- `offset FOLLOWING` ROWS 模式下为当前行的后offset行，RANGE 模式下为当前值的后offset值
-- `UNBOUND FOLLOWING` ROWS 模式下为分区的最后一行，RANGE模式下为ORDER BY表达式的最后一个值
+- **Import data**
+- **Describe Table**
+- **Interpolation Function**
+- **Expression**
+- **Alias Table**
 
-#### 使用限制
+#### **Return Type**: Double
 
-- 窗口函数只能出现在SELECT语句中。
-- 窗口函数中不能嵌套使用窗口函数和聚合函数。
+- Example
+- Example
 
-## **窗口函数列表**
+## Data Type
 
-包括[聚合函数](./sql.md#聚合函数)
+**Return Type**: BINARY
 
 ### **ROW_NUMBER**
 
-#### 语法
+#### **Parameter Type**: STRING
 
 ```
 ROW_NUMBER() OVER([partition_clause] [orderby_clause])
 ```
 
-**功能**：根据窗口分区中的行顺序，为每一行分配唯一的顺序编号（从 1 开始）。
+Example
 
-**参数类型**：无
+Example
 
-**返回类型**：BIGINT
+Syntax
 
-#### 示例
+#### **Update field column**
 
 ```sql
 SELECT temperature, station, 
@@ -7251,19 +7208,19 @@ FROM air;
 
 ### **RANK**
 
-#### 语法
+#### **Parameter Type**: STRING
 
 ```
 RANK() OVER([partition_clause] [orderby_clause])
 ```
 
-**功能**：返回某个值相对于分区中所有值的排名（跳跃排名）。
+Example
 
-**参数类型**：无
+Example
 
-**返回类型**：BIGINT
+Syntax
 
-#### 示例
+#### **Create the database**
 
 ```sql
 SELECT station, temperature, 
@@ -7295,19 +7252,19 @@ FROM air;
 
 ### **DENSE_RANK**
 
-#### 语法
+#### **Parameter Type**: STRING
 
 ```
 DENSE_RANK() OVER([partition_clause] [orderby_clause])
 ```
 
-**功能**：返回某个值相对于分区中所有值的排名（连续排名）。
+Example
 
-**参数类型**：无
+Example
 
-**返回类型**：BIGINT
+Syntax
 
-#### 示例
+#### =、\&gt=、<=、<\&gt、!=、\&gt、<（Comparison operator)
 
 ```sql
 SELECT station, temperature, 
@@ -7339,19 +7296,19 @@ FROM air;
 
 ### **PERCENT_RANK**
 
-#### 语法
+#### **Parameter Type**: STRING
 
 ```
 PERCENT_RANK() OVER([partition_clause] [orderby_clause])
 ```
 
-**功能**：计算分区中某个值的百分比排名。
+Example
 
-**参数类型**：无
+Example
 
-**返回类型**：DOUBLE
+Syntax
 
-#### 示例
+#### **Describe Database Parameters**
 
 ```sql
  SELECT station, temperature, 
@@ -7383,19 +7340,19 @@ PERCENT_RANK() OVER([partition_clause] [orderby_clause])
 
 ### **CUME_DIST**
 
-#### 语法
+#### **Parameter Type**: STRING
 
 ```
 CUME_DIST() OVER ([partition_clause] [orderby_clause])
 ```
 
-**功能**：返回某个值相对于分区中的所有值的位置。
+Example
 
-**参数类型**：无
+Example
 
-**返回类型**：DOUBLE
+Syntax
 
-#### 示例
+#### **Parameter Type**: Binary
 
 ```sql
 SELECT station, temperature, 
@@ -7435,37 +7392,37 @@ FROM air;
 
 [//]: #
 
-[//]: # "**功能**：把有序的数据集合平均分配到n个桶中,将桶号分配给每一行。"
+[//]: # "Example"
 
 [//]: #
 
-[//]: # "**参数类型**：BIGINT"
+[//]: # "Example"
 
 [//]: #
 
-[//]: # "**返回类型**：BIGINT"
+[//]: # "Syntax"
 
 ***
 
 ### **LAG**
 
-#### 语法
+#### **Parameter Type**: STRING
 
 ```
 lag( expr [, offset [, default] ] ) OVER([partition_clause] orderby_clause)
 ```
 
-**功能**：返回分区中当前行前offset行的expr的值。
+Example
 
-**参数类型**：expr为任意类型，
+Example
 
-offset为BIGINT，为负数时，从分区中后offset行返回值，默认为1
+**Operator Precedence**
 
-default 需要与expr对应的数据类型相同,默认为NULL
+**Drop Table**
 
-**返回类型**：与expr相同的类型
+Example
 
-#### 示例
+#### **Parameter Type**: Binary
 
 ```sql
 SELECT station, temperature, 
@@ -7497,23 +7454,23 @@ FROM air;
 
 ### **LEAD**
 
-#### 语法
+#### **Parameter Type**: STRING
 
 ```
 lead(expr [, offset [, default] ] ) OVER ([partition_clause] orderby_clause)
 ```
 
-**功能**：返回分区中当前行后offset行的expr的值。
+Example
 
-**参数类型**：expr为任意类型，
+Example
 
-offset为BIGINT，为负数时，从分区中前offset行返回值，默认为1
+Syntax
 
-default需要与expr类型相同，默认是NULL
+**Table**
 
-**返回类型**：与expr类型相同
+Example
 
-#### 示例
+#### **Common Aggregate Functions**
 
 ```sql
 SELECT station, temperature, 
@@ -7545,19 +7502,19 @@ FROM air;
 
 ### **FIRST_VALUE**
 
-#### 语法
+#### **Parameter Type**: STRING
 
 ```
 FIRST_VALUE(expr) OVER ([partition_clause] [orderby_clause])
 ```
 
-**功能**：返回一组值(该组通常是有序集合)中的第一个值。
+Example
 
-**参数类型**：expr为任意类型，ignore_nulls为BOOLEAN类型，默认值为false
+Example
 
-**返回类型**：与expr类型相同
+Example
 
-#### 示例
+#### **Parameter Type**: BIGINT
 
 ```sql
 SELECT station, temperature, 
@@ -7589,19 +7546,19 @@ FROM air;
 
 ### **LAST_VALUE**
 
-#### 语法
+#### **Parameter Type**: STRING
 
 ```
 LAST_VALUE(expr) OVER ([partition_clause] [orderby_clause])
 ```
 
-**功能**：返回当前窗口中的最后一个值。
+Example
 
-**参数类型**：expr为任意类型，ignore_nulls为BOOLEAN类型，默认值为false
+Example
 
-**返回类型**：与expr类型相同
+Example
 
-#### 示例
+#### **Parameter Type**: BIGINT
 
 ```sql
 SELECT station, temperature, 
@@ -7633,19 +7590,19 @@ FROM air;
 
 ### **NTH_VALUE**
 
-#### 语法
+#### **Parameter Type**: STRING
 
 ```
 NTH_VALUE(expr, number) OVER ([partition_clause] [orderby_clause])
 ```
 
-**功能**：返回相对于窗口的第一行的窗口框架的指定行的表达式值。
+Example
 
-**参数类型**：expr为任意类型，number为BIGINT
+Example
 
-**返回类型**：与expr类型相同
+Example
 
-#### 示例
+#### **Parameter Type**: BIGINT
 
 ```sql
 SELECT station, temperature, 
@@ -7673,21 +7630,19 @@ FROM air;
 +-------------+-------------+-------------------------------------+
 ```
 
-## **高级函数**
+## Data Type
 
-### **插值函数**
+### Example
 
-在数据库中，插值是用于处理数据中缺失值的技术。当数据中存在缺失值时，这些技术可以帮助我们估计或推测这些缺失值，从而填补数据的空白部分。
+In the database, the interpolation is the technology used to process missing values in the data.Syntax
 
 ### **time_window_gapfill**
 
-time_window_gapfill 与 time_window 类似，但具有填补缺失数据的功能。interpolate 和 locf 必须与 time_window_gapfill
-一起使用，它们控制如何处理缺失值。
+**WITH Clause**Example
 
-time_window_gapfill 必须作为查询或子查询中的顶级表达式使用。例如，不能将 time_window_gapfill 嵌套在另一个函数中，如sum(
-time_window_gapfill(...))。
+ExampleData Type
 
-#### 语法
+#### **Parameter Type**: STRING
 
 - time_window_gapfill
 
@@ -7695,13 +7650,13 @@ time_window_gapfill(...))。
 time_window_gapfill(<time column>, <window interval>[, <sliding interval>[, <start time>]]): <time window struct>
 ```
 
-#### 策略
+#### **Insert Duplicate Data**
 
 - interpolate
 
-线性插值的核心思想是假设已知数据点之间的关系是线性的，然后根据已知数据点之间的线性关系来估算未知数据点的值。具体地，线性插值通过使用已知数据点的纵坐标之间的线性变化率来推断未知数据点的纵坐标。
+ExampleExample
 
-线性插值适用于连续变量的估算，例如在时间序列中填补缺失值或在空间数据中进行插值。然而，线性插值的准确性和适用性取决于数据的特性和实际情况。在某些情况下，数据可能具有非线性关系，或存在其他更适合的插值方法。因此，在应用线性插值之前，需要仔细考虑数据的性质和插值的目的，以确保插值结果合理和准确。
+Linear interpolation can be used for estimation of consecutive variables, such as filling missing values in time series or interpolating values in spatial data.However, the accuracy and applicability of linear interpolation values depend on the characteristics and actual circumstances of the data.In some cases, data may have non-linear relationships or other more appropriate interpolation methods.Therefore, before applying linear interpolation, careful consideration needs to be given to the nature of the data and the purpose of the interpolation to ensure that the interpolation results are reasonable and accurate.
 
 ```sql
 interpolate(<expr>)
@@ -7709,43 +7664,28 @@ interpolate(<expr>)
 
 - locf
 
-该函数用于在时间窗口内进行缺失值填补（Gap filling），并使用 "Last Observation Carried Forward"（LOCF）操作来填充缺失值。
+Example
 
-"Last Observation Carried Forward"（LOCF）是一种用于填充缺失值的方法，它使用最近的可观察值来进行填充。具体处理方式如下：
+SyntaxSpecific treatment as follows:：
 
-1. 找到缺失值之前的最近一个非缺失值。
-2. 将该非缺失值的值复制到缺失值所在的位置。
-3. 继续向后遍历，直到遇到下一个非缺失值。
-4. 如果遇到下一个非缺失值，则重复步骤1和2，将该非缺失值的值复制到缺失值位置。
-5. 如果在数据序列的末尾仍有缺失值，则最后一个非缺失值将一直被复制，直到填充完所有缺失值。
+1. Data Type
+2. **UNION Clause**
+3. **Parameters Type**:
+4. **Data Query**
+5. Example
 
-简而言之，LOCF 方法通过将最近的可观察值复制到缺失值位置来填充缺失值，使得数据在时间上保持连续性。这种方法假设缺失值之后的数据与最后观察到的值相同或非常接近。
+SyntaxThis method assumes that the data after the missing values are the same or very close to the last observed values.
 
-需要注意的是，LOCF 方法可能会引入一定的偏差，特别是当缺失值之后的数据发生剧烈变化时。因此，在使用 LOCF
-进行缺失值填充时，需要谨慎考虑数据的特点和分析的目的，以确保填补的值能够合理反映实际情况。
+SyntaxSyntax
 
 ```sql
 locf(<expr>)
 ```
 
-#### 示例
+#### **Parameter Type**: BIGINT
 
 ```sql
----- 准备数据
-DROP DATABASE IF EXISTS gapfill_db;
-CREATE DATABASE gapfill_db WITH TTL '1000000d';
-CREATE TABLE gapfill_db.m2(f0 BIGINT, f1 DOUBLE, TAGS(t0, t1, t2));
-
-INSERT gapfill_db.m2(TIME, f0, f1, t0, t1)
-VALUES
-    ('1999-12-31 00:00:00.000', 111, 444, 'tag11', 'tag21'),
-    ('1999-12-31 00:00:00.005', 222, 333, 'tag12', 'tag22'),
-    ('1999-12-31 00:00:00.010', 333, 222, 'tag13', 'tag23'),
-    ('1999-12-31 00:00:00.015', 444, 111, 'tag14', 'tag24'),
-    ('1999-12-31 00:00:00.020', 222, 555, 'tag11', 'tag21'),
-    ('1999-12-31 00:00:00.025', 333, 444, 'tag12', 'tag22'),
-    ('1999-12-31 00:00:00.030', 444, 333, 'tag13', 'tag23'),
-    ('1999-12-31 00:00:00.035', 555, 222, 'tag14', 'tag24');
+Example
 ```
 
 ```sql
@@ -7832,33 +7772,33 @@ group by t0, minute;
 +-------+-------------------------+-----------------------+
 ```
 
-## **系统视图**
+## Numeric type expressions add
 
-CnosDB 提供了系统视图用来查看集群状态和集群Schema信息。
+**LIMIT Clause**
 
-有两个特殊的数据库存放这些视图：
+**Return Type** BIGINT
 
-- CLUSTER_SCHEMA 关于数据库集群
-- INFORMATION_SCHEMA 关于租户信息
+- CLUSER_SCHEMA on Database Cluster
+- Integer
 
 ### **CLUSTER_SCHEMA**
 
-该数据库属于整个集群，只有管理员可以访问。
+Example
 
-数据库中包含有关集群的元数据信息，例如租户信息，用户信息。
+**Return Type**: STRING
 
 ### **TENANTS**
 
-该视图可用于查询整个集群的所有租户信息。
+expr type is TIMESTAMP
 
-#### 视图定义
+#### **Insert Multiple Records**
 
-| 字段                                  | 数据类型   | 描述              |
-| ----------------------------------- | ------ | --------------- |
-| TENANT_NAME    | STRING | 租户名称            |
-| TENANT_OPTIONS | STRING | 租户配置，json形式的字符串 |
+| **Return Type**: Timestamp          | **Window_frame Clause** | \*（plus）、/（division）、%（modular） |
+| ----------------------------------- | -------------------------------------------- | ------------------------------- |
+| TENANT_NAME    | STRING                                       | **Parameter Type**: Geometry    |
+| TENANT_OPTIONS | STRING                                       | **ALL/DISTINCT**                |
 
-#### 示例
+#### **Parameter Type**: Any type
 
 ```sql
 SELECT * FROM cluster_schema.tenants;
@@ -7874,17 +7814,17 @@ SELECT * FROM cluster_schema.tenants;
 
 ### **USERS**
 
-#### 视图定义
+#### **Return Type**: Double
 
-该视图可以查询整个集群的所有用户信息。
+Syntax
 
-| 字段                                | 数据类型    | 描述              |
-| --------------------------------- | ------- | --------------- |
-| USER_NAME    | STRING  | 用户名称            |
-| IS_ADMIN     | BOOLEAN | 是否为系统管理员        |
-| USER_OPTIONS | STRING  | 用户配置，JSON形式的字符串 |
+| **Parameter Type**: any type      | **Create External Table** | **Parameter Type**: Numeric type |
+| --------------------------------- | ------------------------- | -------------------------------- |
+| USER_NAME    | STRING                    | **Parameter Type**:Any type      |
+| IS_ADMIN     | BOOLEAN                   | **Parameter Type**: Numeric type |
+| USER_OPTIONS | STRING                    | **Alter Table**                  |
 
-#### 示例
+#### **Parameter Type**: None
 
 ```sql
 SELECT * FROM cluster_schema.users;
@@ -7900,25 +7840,25 @@ SELECT * FROM cluster_schema.users;
 
 ### **INFORMATION_SCHEMA**
 
-该数据库属于某个租户，在创建Tenant时，自动创建该DB，对租户下的所有成员可见。
+**Return Type**: INTERVAL
 
 ### DATABASES
 
-该视图存放租户下数据库的信息。
+**Mathematical Functions**
 
-#### 视图定义
+#### **Return Type**: Double
 
-| 字段名称                                | 数据类型            | 描述               |
-| ----------------------------------- | --------------- | ---------------- |
-| TENANT_NAME    | STRING          | 数据库所属的租户名        |
-| DATABASE_NAME  | STRING          | 数据库名称            |
-| TTL                                 | STRING          | 表示数据文件保存的时间      |
-| SHARD                               | BIGINT UNSIGNED | 表示数据分片个数         |
-| VNODE_DURATION | STRING          | 表示数据在SHARD中的时间范围 |
-| PREPLICA                            | BIGINT UNSIGNED | 表示数据在集群中的副本数     |
-| PERCISION                           | STRING          | 表示数据库的时间精度       |
+| **Return Type**: BINARY             | **`BETWEEN AND` Expression** | **Parameter Type**: Numeric type             |
+| ----------------------------------- | ---------------------------- | -------------------------------------------- |
+| TENANT_NAME    | STRING                       | **Return Type**: INTERVAL                    |
+| DATABASE_NAME  | STRING                       | **Return Type**: STRING                      |
+| TTL                                 | STRING                       | **Return Type**: BINARY                      |
+| SHARD                               | BIGINT UNSIGNED              | Number of data fragments                     |
+| VNODE_DURATION | STRING                       | **Return Type**: Double                      |
+| PREPLICA                            | BIGINT UNSIGNED              | Number of copies of data in cluster          |
+| PERCISION                           | STRING                       | Represents the time accuracy of the database |
 
-#### 示例
+#### **Parameter Type**: None
 
 ```sql
 SELECT * FROM information_schema.databases;
@@ -7934,20 +7874,20 @@ SELECT * FROM information_schema.databases;
 
 ### TABLES
 
-该视图存放租户下所有表的信息。
+**Return Type**:
 
-#### 视图定义
+#### **Return Type**: BIGINT
 
-| 字段名称                                | 数据类型   | 描述                    |
-| ----------------------------------- | ------ | --------------------- |
-| TABLE_TENANT   | STRING | 表所属的租户                |
-| TABLE_DATABASE | STRING | 表所属的数据库               |
-| TABLE_NAME     | STRING | 表名                    |
-| TABLE_TYPE     | STRING | 表是基础表，还是视图            |
-| TABLE_ENGINE   | STRING | 表存储引擎，目前支持外部表和内部tskv表 |
-| TABLE_OPTION   | STRING | 内容为JSON字符串，记录表的所有参数   |
+| **Return Type**: Binary             | **Window Functions** | **Parameter Type**: Numeric type    |
+| ----------------------------------- | -------------------- | ----------------------------------- |
+| TABLE_TENANT   | STRING               | Tenants attached to table           |
+| TABLE_DATABASE | STRING               | **Parameter Type**: Numeric type    |
+| TABLE_NAME     | STRING               | **Parameter Type**: STRING          |
+| TABLE_TYPE     | STRING               | Whether table is base table or view |
+| TABLE_ENGINE   | STRING               | **ORDER BY Clause**                 |
+| TABLE_OPTION   | STRING               | Example                             |
 
-#### 示例
+#### **Parameter Type**: None
 
 ```sql
 SELECT * FROM information_schema.tables;
@@ -7965,23 +7905,23 @@ SELECT * FROM information_schema.tables;
 
 ### COLUMNS
 
-该视图存放租户下所有列的定义。
+**Return Type**:BIGINT
 
-#### 视图定义
+#### **Return Type**: BIGINT
 
-| 字段名称                                   | 数据类型   | 描述                                           |
-| -------------------------------------- | ------ | -------------------------------------------- |
-| TABLE_TENANT      | STRING | 表所属的租户                                       |
-| TABLE_DATABASE    | STRING | 表所属的数据库                                      |
-| TABLE_NAME        | STRING | 表所属的表名                                       |
-| COLUMN_NAME       | STRING | 列名                                           |
-| ORDINAL_POSITION  | STRING | 列在表中的顺序位置                                    |
-| COLUMN_TYPE       | STRING | 列的类型，tskv表独有的，支持 TIME、TAG、FIELD，通常字段为FIELD类型 |
-| IS_NULLABLE       | STRING | 如果列可能包含NULL，则为"YES"，否则为"NO"                  |
-| DATA_TYPE         | STRING | 列的数据类型                                       |
-| COMPRESSION_CODEC | STRING | 列使用的压缩算法                                     |
+| **Return Type**: BIGINT                | ### **Regexp_Match** | **Parameter Type**: Numeric type |
+| -------------------------------------- | ----------------------------------------- | -------------------------------- |
+| TABLE_TENANT      | STRING                                    | Tenants attached to table        |
+| TABLE_DATABASE    | STRING                                    | **Parameter Type**: Numeric type |
+| TABLE_NAME        | STRING                                    | **Parameter Type**: None         |
+| COLUMN_NAME       | STRING                                    | **Parameter Type**: STRING       |
+| ORDINAL_POSITION  | STRING                                    | **Parameter Type**: None         |
+| COLUMN_TYPE       | STRING                                    | Example                          |
+| IS_NULLABLE       | STRING                                    | Example                          |
+| DATA_TYPE         | STRING                                    | **Conditional Functions**        |
+| COMPRESSION_CODEC | STRING                                    | **Example**:                     |
 
-#### 示例
+#### **Parameter Type**: STRING
 
 ```sql
 SELECT * FROM information_schema.columns;
@@ -8008,15 +7948,15 @@ SELECT * FROM information_schema.columns;
 
 ### ENABLED_ROLES
 
-此视图展示当前用户在当前租户下的角色信息。
+**Return Type**: BIGINT
 
-#### 视图定义
+#### **Return Type**: BIGINT
 
-| 字段                             | 数据类型   | 描述   |
-| ------------------------------ | ------ | ---- |
-| ROLE_NAME | STRING | 角色名称 |
+| **Return Type**: BIGINT        | **Aggregate Function** | **Parameter Type**: Numeric type |
+| ------------------------------ | ---------------------- | -------------------------------- |
+| ROLE_NAME | STRING                 | **Parameter Type**: STRING       |
 
-#### 示例
+#### **Parameter Type**: STRING
 
 ```sql
 SELECT * FROM information_schema.enabled_roles;
@@ -8032,18 +7972,18 @@ SELECT * FROM information_schema.enabled_roles;
 
 ### ROLES
 
-此视图展示当前租户下所有可用的角色（包含系统角色和自定义角色）。
-此视图只对当前租户的Owner可见。
+**Return Type**: STRING
+This view is visible only to the current tenant Owner.
 
-#### 视图定义
+#### **Return Type**: BIGINT
 
-| 字段                                | 数据类型   | 描述                           |
-| --------------------------------- | ------ | ---------------------------- |
-| ROLE_NAME    | STRING | 租户下的角色名称                     |
-| ROLE_TYPE    | STRING | 角色类型，自定义角色或系统角色              |
-| INHERIT_ROLE | STRING | 自定义角色继承的系统角色名称，如果是系统角色则为NULL |
+| **Return Type**: BIGINT           | **Window Function List** | **Parameter Type**: Numeric type |
+| --------------------------------- | ------------------------ | -------------------------------- |
+| ROLE_NAME    | STRING                   | **Parameter Type**:              |
+| ROLE_TYPE    | STRING                   | **Delete Data**                  |
+| INHERIT_ROLE | STRING                   | **Example**:                     |
 
-#### 示例
+#### **Parameter Type**: STRING
 
 ```sql
 SELECT * FROM information_schema.roles;
@@ -8060,20 +8000,20 @@ SELECT * FROM information_schema.roles;
 
 ### DATABASE_PRIVILEGES
 
-#### 视图定义
+#### **Return Type**: BIGINT
 
-此视图展示所在租户下所有已被授予给指定角色的作用在db上的权限。
-此视图的所有记录对当前租户的Owner可见。
-对于非Owner成员，只展示对应角色的记录。
+Number type expressions multiply
+Syntax
+Data Type
 
-| 字段                                  | 数据类型   | 描述                      |
-| ----------------------------------- | ------ | ----------------------- |
-| TENANT_NAME    | STRING | 被授予权限的数据库所属的租户名称        |
-| DATABASE_NAME  | STRING | 被授予权限的数据库名称             |
-| PRIVILEGE_TYPE | STRING | 被授予的权限类型，READ/WRITE/ALL |
-| ROLE_NAME      | STRING | 被授予权限的角色名称              |
+| **Return Type**: BIGINT             | **`CASE WHEN` Expression** | **Parameter Type**: Numeric type |
+| ----------------------------------- | -------------------------- | -------------------------------- |
+| TENANT_NAME    | STRING                     | **Return Type**: STRING          |
+| DATABASE_NAME  | STRING                     | **Return Type**: STRING          |
+| PRIVILEGE_TYPE | STRING                     | Syntax                           |
+| ROLE_NAME      | STRING                     | **Return Type**: STRING          |
 
-#### 示例
+#### **Parameter Type**: STRING
 
 ```sql
 CREATE ROLE rrr INHERIT member;
@@ -8091,18 +8031,18 @@ SELECT * FROM information_schema.database_privileges;
 
 ### MEMBERS
 
-此视图展示所在租户下的成员信息。
+**Return Type**: DOUBLE
 
-此视图的所有记录对当前租户的所有成员可见。
+**Return Type**: Array
 
-#### 视图定义
+#### **Return Type**: BIGINT
 
-| 字段                             | 数据类型   | 描述         |
-| ------------------------------ | ------ | ---------- |
-| USER_NAME | STRING | 租户下的用户成员名称 |
-| ROLE_NAME | STRING | 成员的角色名称    |
+| **Return Type**: BIGINT        | **Alias Column Expression** | **Parameter Type**: Numeric type |
+| ------------------------------ | --------------------------- | -------------------------------- |
+| USER_NAME | STRING                      | **Parameter Type**:              |
+| ROLE_NAME | STRING                      | **Return Type**: STRING          |
 
-#### 示例
+#### **Parameter Type**: STRING
 
 ```sql
 SELECT * FROM information_schema.members;
@@ -8116,28 +8056,28 @@ SELECT * FROM information_schema.members;
 +-----------+-----------+
 ```
 
-### QUERIES(INFORMATION_SCHEMA)
+### QUERIES (INFORMATION_SCHEMA)
 
-此视图展示SQL语句实时快照，用于实时监控SQL作业。
+**Return Type**: DOUBLE
 
-此视图的所有记录对当前租户的owner可见。
+**Return Type**: BIGINT
 
-对于非Owner成员，只展示当前成员提交的SQL。
+Data Type
 
-#### 视图定义
+#### **Return Type**: BIGINT
 
-| 字段                               | 数据类型            | 描述                                                             |
-| -------------------------------- | --------------- | -------------------------------------------------------------- |
-| QUERY_ID    | STRING          | SQL语句的ID                                                       |
-| QUERY_TEXT  | STRING          | SQL语句的内容                                                       |
-| USER_ID     | STRING          | 提交SQL的用户ID                                                     |
-| USER_NAME   | STRING          | 提交SQL的用户名称                                                     |
-| TENANT_ID   | STRING          | 租户ID                                                           |
-| TENANT_NAME | STRING          | 租户名称                                                           |
-| STATE                            | STRING          | 语句的运行状态，分为ACCEPTING，DISPATCHING，ANALYZING，OPTMIZING，SCHEDULING |
-| DURATION                         | BIGINT UNSIGNED | 语句持续运行的时间                                                      |
+| **Return Type**: BIGINT          | **Create Table** | **Parameter Type**: Numeric type |
+| -------------------------------- | ---------------- | -------------------------------- |
+| QUERY_ID    | STRING           | **Return Type**: STRING          |
+| QUERY_TEXT  | STRING           | **Return Type**: DOUBLE          |
+| USER_ID     | STRING           | **Function Types**               |
+| USER_NAME   | STRING           | **Parameter Type** Geometry      |
+| TENANT_ID   | STRING           | **Return Type**: BIGINT          |
+| TENANT_NAME | STRING           | **Parameter Type**:              |
+| STATE                            | STRING           | Data Type                        |
+| DURATION                         | BIGINT UNSIGNED  | **Parameter Type**:              |
 
-#### 示例
+#### **Parameter Type**: STRING
 
 ```sql
 SELECT * FROM information_schema.queries;
@@ -8153,9 +8093,9 @@ SELECT * FROM information_schema.queries;
 
 #### SHOW QUERIES
 
-你还可以使用 `SHOW QUERIES` 语句来查看正在执行的SQL语句, 该语句这是对QUERIES视图的包装。
+Data Type
 
-#### 示例
+#### **Parameter Type**: STRING
 
 ```sql
 SHOW QUERIES;
@@ -8171,172 +8111,172 @@ SHOW QUERIES;
 
 ## **USAGE_SCHEMA**
 
-该数据库，属于某个租户，在创建Tenant时，自动创建该DB，对租户下的所有成员可见。
+**Return Type**: DOUBLE
 
-对于普通用户，只能看到 USAGE_SCHEMA 中的表中属于当前用户租户的一部分，
+Data Type
 
-对于系统管理员，能看到 USAGE_SCHEMA 中表的全部。
+Data Type
 
 ### VNODE_DISK_STORAGE
 
-该视图记录集群中各个 vnode 所占磁盘空间大小，单位Byte。
+Example
 
-#### 视图定义
+#### **Return Type**: BIGINT
 
-| 字段                            | 数据类型            | 描述            |
-| ----------------------------- | --------------- | ------------- |
-| TIME                          | TIMESTAMP       | 记录时间          |
-| DATABASE                      | STRING          | vnode 所属的数据库  |
-| NODE_ID  | STRING          | data节点的ID     |
-| TENANT                        | STRING          | vnode 所属的租户名称 |
-| VNODE_ID | STRING          | vnode 的 ID    |
-| VALUE                         | BIGINT UNSIGNED | vnode 所占磁盘大小  |
+| **Return Type**: BIGINT       | **SELECT Limitation** | **Parameter Type**: Numeric type |
+| ----------------------------- | --------------------- | -------------------------------- |
+| TIME                          | TIMESTAMP             | **Return Type**: BIGINT          |
+| DATABASE                      | STRING                | **Return Type**: STRING          |
+| NODE_ID  | STRING                | **Return Type**: BIGINT          |
+| TENANT                        | STRING                | **Return Type**: STRING          |
+| VNODE_ID | STRING                | **Return Type**: STRING          |
+| VALUE                         | BIGINT UNSIGNED       | **Return Type**: STRING          |
 
-普通用户只能访问当前用户所在的租户信息。
+Syntax
 
 ### HTTP_DATA_IN
 
-该视图记录HTTP请求的Body大小
+Syntax
 
-#### 视图定义
+#### **Return Type**: BIGINT
 
-| 字段                           | 数据类型            | 描述               |
-| ---------------------------- | --------------- | ---------------- |
-| TIME                         | TIMESTAMP       | 记录时间             |
-| DATABASE                     | STRING          | Database名称       |
-| NODE_ID | STRING          | Data节点的 ID       |
-| TENANT                       | STRING          | Database 所属的租户名称 |
-| USER                         | STRING          | 用户名称             |
-| HOST                         | STRING          | 服务端口             |
-| API                          | STRING          | Http的API         |
-| VALUE                        | BIGINT UNSIGNED | 写入流量的总大小         |
+| **Return Type**: BIGINT      | **System Schema** | **Parameter Type**: Numeric type |
+| ---------------------------- | ----------------- | -------------------------------- |
+| TIME                         | TIMESTAMP         | **Return Type**: BIGINT          |
+| DATABASE                     | STRING            | **Return Type**: STRING          |
+| NODE_ID | STRING            | **Return Type**: DOUBLE          |
+| TENANT                       | STRING            | **Return Type**: STRING          |
+| USER                         | STRING            | **Parameter Type**: STRING       |
+| HOST                         | STRING            | Service Port                     |
+| API                          | STRING            | **Return Type**: DOUBLE          |
+| VALUE                        | BIGINT UNSIGNED   | **SELECT Clause**                |
 
-普通用户只能访问当前用户所在的租户信息。
+Syntax
 
 ## HTTP_DATA_OUT
 
-该视图记录HTTP回应的Body总大小
+Syntax
 
-#### 视图定义
+#### **Return Type**: DOUBLE
 
-| 字段                           | 数据类型            | 描述               |
-| ---------------------------- | --------------- | ---------------- |
-| TIME                         | TIMESTAMP       | 记录时间             |
-| DATABASE                     | STRING          | Database名称       |
-| NODE_ID | STRING          | Data节点的 ID       |
-| TENANT                       | STRING          | Database 所属的租户名称 |
-| USER                         | STRING          | 用户名称             |
-| API                          | STRING          | Http的API         |
-| HOST                         | STRING          | 服务端口             |
-| VALUE                        | BIGINT UNSIGNED | 读取流量的总大小         |
+| **Parameter Type**: Numeric type | **ORDER BY Clause** | **Parameter Type**: Numeric type |
+| -------------------------------- | ------------------- | -------------------------------- |
+| TIME                             | TIMESTAMP           | **Parameter Type**: Numeric type |
+| DATABASE                         | STRING              | **Return Type**: STRING          |
+| NODE_ID     | STRING              | **Return Type**: DOUBLE          |
+| TENANT                           | STRING              | **Return Type**: STRING          |
+| USER                             | STRING              | **Parameter Type**: STRING       |
+| API                              | STRING              | **Return Type**: DOUBLE          |
+| HOST                             | STRING              | Service Port                     |
+| VALUE                            | BIGINT UNSIGNED     | **Use Database**                 |
 
-普通用户只能访问当前用户所在的租户信息。
+Syntax
 
 ### HTTP_QUERIES
 
-该视图记录用户查询DB的次数。
+**Parameter Type**:
 
-#### 视图定义
+#### **Return Type**: DOUBLE
 
-| 字段                           | 数据类型            | 描述               |
-| ---------------------------- | --------------- | ---------------- |
-| TIME                         | TIMESTAMP       | 记录时间             |
-| DATABASE                     | STRING          | Database名称       |
-| NODE_ID | STRING          | Data节点的 ID       |
-| TENANT                       | STRING          | Database 所属的租户名称 |
-| USER                         | STRING          | 用户名称             |
-| API                          | STRING          | Http的API         |
-| HOST                         | STRING          | 服务端口             |
-| VALUE                        | BIGINT UNSIGNED | 用户查询次数           |
+| **Parameter Type**: Numeric type | **String Functions** | **Parameter Type**: Numeric type |
+| -------------------------------- | -------------------- | -------------------------------- |
+| TIME                             | TIMESTAMP            | **Parameter Type**: Numeric type |
+| DATABASE                         | STRING               | **Return Type**: DOUBLE          |
+| NODE_ID     | STRING               | **Return Type**: DOUBLE          |
+| TENANT                           | STRING               | **Parameter Type**:              |
+| USER                             | STRING               | **Return Type**: DOUBLE          |
+| API                              | STRING               | **Return Type**: DOUBLE          |
+| HOST                             | STRING               | Service Port                     |
+| VALUE                            | BIGINT UNSIGNED      | Number of user queries           |
 
-普通用户只能访问当前用户所在的租户信息。
+Syntax
 
 ### HTTP_WRITES
 
-该视图记录用户通过HTTP写入DB的次数。
+**Parameter Type**:
 
-注意，INSERT 语句是记录在(#ht)
+Example
 
-#### 视图定义
+#### **Return Type**: DOUBLE
 
-| 字段                           | 数据类型            | 描述               |
-| ---------------------------- | --------------- | ---------------- |
-| TIME                         | TIMESTAMP       | 记录时间             |
-| DATABASE                     | STRING          | Database名称       |
-| NODE_ID | STRING          | Data节点的 ID       |
-| TENANT                       | STRING          | Database 所属的租户名称 |
-| USER                         | STRING          | 用户名称             |
-| HOST                         | STRING          | 服务端口             |
-| API                          | STRING          | Http的API         |
-| VALUE                        | BIGINT UNSIGNED | 用户写入次数           |
+| **Parameter Type**: Numeric type | **SQL Syntax**  | **Parameter Type**: Numeric type |
+| -------------------------------- | --------------- | -------------------------------- |
+| TIME                             | TIMESTAMP       | **Parameter Type**: Numeric type |
+| DATABASE                         | STRING          | **Return Type**: DOUBLE          |
+| NODE_ID     | STRING          | **Return Type**: DOUBLE          |
+| TENANT                           | STRING          | **Parameter Type**:              |
+| USER                             | STRING          | **Return Type**: DOUBLE          |
+| HOST                             | STRING          | Service Port                     |
+| API                              | STRING          | **Return Type**: DOUBLE          |
+| VALUE                            | BIGINT UNSIGNED | Number of times the user wrote   |
 
-普通用户只能访问当前用户所在的租户信息。
+Syntax
 
 ### COORD_DATA_IN
 
-记录通过Coordinator的接受数据大小
+Syntax
 
-#### 视图定义
+#### **Return Type**: DOUBLE
 
-| 字段                           | 类型              | 描述               |
-| ---------------------------- | --------------- | ---------------- |
-| time                         | TIMESTAMP       | 记录时间             |
-| database                     | STRING          | Database名称       |
-| node_id | STRING          | Data节点的 ID       |
-| tenant                       | STRING          | Database 所属的租户名称 |
-| value                        | BIGINT UNSIGNED | 测量值              |
+| **Parameter Type**: Numeric type | Syntax          | **Parameter Type**: Numeric type |
+| -------------------------------- | --------------- | -------------------------------- |
+| **Parameter Type**: Numeric type | TIMESTAMP       | **Parameter Type**: Numeric type |
+| **Parameter Type**: Numeric type | STRING          | **Return Type**: DOUBLE          |
+| **Return Type**: DOUBLE          | STRING          | **Return Type**: DOUBLE          |
+| **Numeric type**: DOUBLE         | STRING          | **Parameter Type**:              |
+| **Return Type**: DOUBLE          | BIGINT UNSIGNED | **Return Type**: DOUBLE          |
 
-普通用户只能访问当前用户所在的租户信息。
+Syntax
 
 ### COORD_DATA_OUT
 
-记录通过Coordinator的输出数据大小
+**Return Type**: DOUBLE
 
-#### 视图定义
+#### **Return Type**: DOUBLE
 
-| 字段                           | 类型              | 描述               |
-| ---------------------------- | --------------- | ---------------- |
-| time                         | TIMESTAMP       | 记录时间             |
-| database                     | STRING          | Database名称       |
-| node_id | STRING          | Data节点的 ID       |
-| tenant                       | STRING          | Database 所属的租户名称 |
-| value                        | BIGINT UNSIGNED | 测量值              |
+| **Return Type**: DOUBLE | Syntax          | **Parameter Type**:     |
+| ----------------------- | --------------- | ----------------------- |
+| **Return Type**: DOUBLE | TIMESTAMP       | **Return Type**: DOUBLE |
+| **Return Type**: DOUBLE | STRING          | **Return Type**: DOUBLE |
+| **Return Type**: DOUBLE | STRING          | **Return Type**: DOUBLE |
+| **Parameter Type**:     | STRING          | **Parameter Type**:     |
+| **Return Type**: DOUBLE | BIGINT UNSIGNED | **Return Type**: DOUBLE |
 
-普通用户只能访问当前用户所在的租户信息。
+Syntax
 
 ### COORD_QUERIES
 
 记录通过Coordinator的接受数据次数
 
-#### 视图定义
+#### **Return Type**: DOUBLE
 
-| 字段                           | 类型              | 描述               |
-| ---------------------------- | --------------- | ---------------- |
-| time                         | TIMESTAMP       | 记录时间             |
-| database                     | STRING          | Database名称       |
-| node_id | STRING          | Data节点的 ID       |
-| tenant                       | STRING          | Database 所属的租户名称 |
-| value                        | BIGINT UNSIGNED | 测量值              |
+| **Return Type**: DOUBLE | Syntax          | **Return Type**: DOUBLE |
+| ----------------------- | --------------- | ----------------------- |
+| **Return Type**: DOUBLE | TIMESTAMP       | **Return Type**: DOUBLE |
+| **Return Type**: DOUBLE | STRING          | **Return Type**: DOUBLE |
+| **Return Type**: DOUBLE | STRING          | Example                 |
+| **Data Types**          | STRING          | Example                 |
+| Data Type               | BIGINT UNSIGNED | Syntax                  |
 
-普通用户只能访问当前用户所在的租户信息。
+Syntax
 
 ### COORD_WRITES
 
-记录通过Coordinator的输出数据次数
+Example
 
-#### 视图定义
+#### Example
 
-| 字段                           | 类型              | 描述               |
-| ---------------------------- | --------------- | ---------------- |
-| time                         | TIMESTAMP       | 记录时间             |
-| database                     | STRING          | Database名称       |
-| node_id | STRING          | Data节点的 ID       |
-| tenant                       | STRING          | Database 所属的租户名称 |
-| value                        | BIGINT UNSIGNED | 测量值              |
+| Example | Syntax          | Example |
+| ------- | --------------- | ------- |
+| Example | TIMESTAMP       | Example |
+| Example | STRING          | Example |
+| Example | STRING          | Example |
+| Example | STRING          | Example |
+| Example | BIGINT UNSIGNED | Syntax  |
 
-普通用户只能访问当前用户所在的租户信息。
+Syntax
 
-### 示例
+### Syntax
 
 ```sql
 SELECT * FROM usage_schema.http_data_in ORDER BY time DESC LIMIT 2;
@@ -8351,32 +8291,27 @@ SELECT * FROM usage_schema.http_data_in ORDER BY time DESC LIMIT 2;
 +----------------------------+--------------+--------------+---------+--------+------+-------+-----------+
 ```
 
-## **流**
+## Syntax
 
-### 创建流表
+### Syntax
 
-创建流表，需要一个表作为source表，流表暂不支持 ALTER
+Syntax
 
-#### 语法
+#### Syntax
 
 ```sql
-CREATE STREAM TABLE [IF NOT EXISTS] table_name(field_definition [, field_definition] ...)
-    WITH (db = 'db_name', table = 'table_name', event_time_column = 'time_column')
-    engine = tskv;
-
-field_definition: 
-    column_name data_type
+Syntax
 ```
 
-db和table参数，指定源表
+Syntax
 
-event_time_column 指定事件时间列，该列数据类型必须是 TIMESTAMP 类型
+Syntax
 
-目前仅支持普通表为source表，流表字段定义的字段名和字段类型必须是属于source表，且与source表定义相同
+Syntax
 
-#### 示例
+#### Syntax
 
-创建 source 表
+Syntax
 
 ```sql
 CREATE DATABASE oceanic_station;
@@ -8390,7 +8325,7 @@ CREATE DATABASE oceanic_station;
 CREATE TABLE air(pressure DOUBLE, temperature DOUBLE, visibility DOUBLE, TAGS(station));
 ```
 
-创建流表
+Syntax
 
 ```sql
 CREATE STREAM TABLE air_stream(time TIMESTAMP, station STRING, pressure DOUBLE, temperature DOUBLE, visibility DOUBLE) 
@@ -8398,31 +8333,31 @@ CREATE STREAM TABLE air_stream(time TIMESTAMP, station STRING, pressure DOUBLE, 
     engine = tskv;
 ```
 
-### 删除流表
+### Remove Stream
 
-> 与删除普通表语法相同，请参考[删除表](#删除表)
+> Same as delete normal expression reference to[删除表](#delete table)
 
-### 流查询
+### Syntax
 
-流查询只支持 INSERT SELECT 语句，SELECT 语句中 FROM 子句是流表，插入到目标表。
+Syntax
 
-写入数据到源表时，触发流式查询。
+Syntax
 
-流查询的 SELECT 子句不支持 JOIN。
+Syntax
 
-流查询的语句会持久化运行，通过[KILL QUERY](#kill-query) 取消执行
+Syntax
 
-#### 示例
+#### Syntax
 
-以流式降采样场景为示例，source表时间间隔为一分钟，降采样时间区间为1小时
+Syntax
 
-创建流查询的目标表
+Syntax
 
 ```sql
 CREATE TABLE air_down_sampling_1hour(max_pressure DOUBLE, avg_temperature DOUBLE, sum_temperature DOUBLE, count_pressure BIGINT, TAGS(station));
 ```
 
-创建流查询语句
+Syntax
 
 ```sql
 INSERT INTO air_down_sampling_1hour(time, station, max_pressure, avg_temperature, sum_temperature, count_pressure) 
@@ -8437,15 +8372,15 @@ FROM air_stream
 GROUP BY date_bin(INTERVAL '1' HOUR, time, TIMESTAMP '2023-01-14T16:00:00'), station;
 ```
 
-写入数据时触发流查询语句
+Syntax
 
-[数据来源](#示例数据)
+Syntax
 
 ```sql
 \w oceanic_station.txt
 ```
 
-查看目标表结果
+Syntax
 
 ```sql
 SELECT * FROM air_down_sampling_1hour LIMIT 10;
@@ -8470,15 +8405,15 @@ SELECT * FROM air_down_sampling_1hour LIMIT 10;
 
 ## **KILL QUERY**
 
-### 语法
+### Syntax
 
 ```sql
 KILL [QUERY] query_id;
 ```
 
-先通过 [`SHOW QUERIES`](./sql.md#show-queries) 获取 `query_id`。
+Syntax
 
-## 示例
+## Syntax
 
 ```sql
 SHOW QUERIES;
