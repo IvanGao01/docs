@@ -6,6 +6,7 @@ slug: /jaeger
 ## Enable Jaeger support in CnosDB
 
 Uncomment the [trace] configuration to enable Jaeger tracing.
+
 > Tip: You need to restart the server for the configuration to take effect.
 
 ```toml
@@ -48,8 +49,6 @@ uber-trace-id: 3a3a43:432e345:0:1
 
 Example:
 
-> The data source in the example: https://docs.cnosdb.com/zh/latest/start/quick_start.html 
-
 > Query the `air` table in the database `oceanic_station` and sort the data in reverse order, returning the first 5 data.
 
 ```bash
@@ -58,11 +57,11 @@ curl -i -u "root:" -H "Accept: application/json" -H "uber-trace-id: 3a3a43:432e3
 
 ## Use the Dashboard for Analysis
 
-![jaeger_dashboard](/img/jaeger_dashboard.png)
+![jaeger\_dashboard](/img/jaeger_dashboard.png)
 
 1. Record Span:
 
-When a client application sends a query or write request to the CnosDB database, CnosDB sends the resulting Span record to Jaeger. Each span represents a phase of the request and includes the processing time, operation name, and other relevant information.
+When a client application sends a query or write request to the CnosDB database, CnosDB sends the resulting Span record to Jaeger. Each span represents a phase of the request and includes the processing time, operation name, and other relevant information.每个 span 表示了请求的一个阶段，包括了处理时间、操作名称和其他相关信息。
 
 2. Select Service:
 
@@ -70,14 +69,14 @@ In the Service drop-down box of the Jaeger user interface, select the service re
 
 3. Find Traces:
 
-On the interface, click the "Find Traces" button and the system will retrieve all traces associated with the selected service. This will display a list of requests and corresponding spans.
+On the interface, click the "Find Traces" button and the system will retrieve all traces associated with the selected service. This will display a list of requests and corresponding spans.这将显示一系列的请求和对应的 spans。
 
 4. Analyze Trace details:
 
-Click the trace of interest to enter the detailed view. In this view, you'll see the flow of the request and the time each span takes to execute. This timing information will help you understand how long each step of the query takes to process.
+点击所感兴趣的 trace，进入详细视图。Click the trace of interest to enter the detailed view. In this view, you'll see the flow of the request and the time each span takes to execute. This timing information will help you understand how long each step of the query takes to process.The data source in the example: https\://docs.cnosdb.com/zh/latest/start/quick_start.html
 
 5. Optimize queries and systems:
 
-With detailed timing logs, you can accurately analyze the performance of your query. In a production environment, this can be a valuable tool for optimizing queries and improving system performance. By analyzing the execution time of each span, you can find the steps that may be causing delays, so you can take targeted optimization actions.
+利用详细的时间记录，你可以精确地分析查询语句的性能。在正式的生产环境中，这将成为优化查询语句和改进系统性能的宝贵工具。With detailed timing logs, you can accurately analyze the performance of your query. In a production environment, this can be a valuable tool for optimizing queries and improving system performance. By analyzing the execution time of each span, you can find the steps that may be causing delays, so you can take targeted optimization actions.
 
 In addition to this, Jaeger can track other events for CnosDB, check out: [ISSUE 1272](https://github.com/cnosdb/cnosdb/issues/1272)
