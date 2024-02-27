@@ -1,11 +1,11 @@
 ---
-sidebar_position: 10
+sidebar_position: 11
 ---
 
 # 告警管理
 
 :::tip
-仅企业版支持，获取告警组件请联系 [CC](../enterprise/README.md)
+仅企业版支持，获取告警组件请联系 [CC](../enterprise)
 :::
 
 ## 介绍
