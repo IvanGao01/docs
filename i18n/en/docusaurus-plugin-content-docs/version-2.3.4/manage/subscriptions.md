@@ -1,50 +1,46 @@
 ---
-sidebar_position: 5
+sidebar_position: 9
 ---
 
-# 订阅管理
+# Subscription Distribution Through Telegraf
 
 :::tip
-仅企业版支持
+Only Enterprise Edition supports
 :::
 
-CnosDB 订阅可以将本地端点的数据写入到远程端点，可以和另一个 CnosDB 实例 或 Telegraf 一起使用。CnosDB 订阅使用流量复制的方式进行分发。
+CnosDB subscription can write local endpoint data to remote endpoints and can be used with another CnosDB instance or Telegraf.CnosDB Subscription for distribution using data copiing.
 
-支持分发的流量：
+Traffic Support for Distribution：
 
 - `/api/v1/write`
 
-- `/api/v1/sql` 中的 `INSERT` 写入语句
+- `INSERT` in `/api/v1/sql`
 
-> 将数据分发至 CnosDB 实例前，请提前创建表，否则将导致数据丢失
+> Please create tables in advance before distributing data to the CnosDB instance or cause data loss
 
-## 创建订阅
+## Create Subscription
 
-使用 `CREATE SUBSCRIPTION` 创建订阅。
+We can use `CREATE SUBSCRIPTION` to create a subscription.
 
-### 语法
+### Syntax
 
 ```sql
-CREATE SUBSCRIPTION <subscription_name> 
-ON <database_name> 
-DESTINATIONS <ALL|ANY> "<end_point>" ["<end_point>"]
-[ON <table_name>(time, <tag_name>,[tag_name, ...], <field_name>, [field_name, ..]) 
-[FILTER_BY <Expr>]];
+CREATE SUBSCRIPTION <subscription_name> ON <database_name> DESTINATIONS ALL "<host_nmae>" ["<host_name>"]
 ```
 
 :::note
 
-`DESTINATIONS`：定义数据写入的目标位置，`ALL` 表示将数据写入所有的端点，`ANY` 表示轮询写入到多个端点，`end_point`表示写入的目标端点（CnosDB 实例的 `host` 以及配置文件中的`grpc_listen_port`，示例：`127.0.0.1:8903`）。
+`DESTINATIONS`：defines the destination of the data written, `ALL` to write the data to all endpoints, `ANY` to write to multiple endpoints, `end_point` to write to the destination point (`host` for CnosDB instance and `grpc_listen_port`, example：`127.0.0.1:8903`).
 
-`ON`：设置被订阅列表以及表中的列。
+`ON`：settings are subscribed to lists and columns.
 
-`FILTER_BY`：使用条件过滤需要分发的记录，示例：`FILTER_BY WHERE station = 'XiaoMaiDao'`。
+`FILTER_BY`：uses conditions to filter records for distribution, example：\`FILTER_BY WHERE station = 'XiaoMaiDao'.
 
 :::
 
-### 示例
+### Example
 
-若接受分发数据的 CnosDB 节点的部分配置如下：
+For example, the partial configuration of the CnosDB node that accepts the distributed data is as follows:
 
 ```sql
 [cluster]
@@ -53,113 +49,114 @@ meta_service_addr = ["127.0.0.1:8901"]
 grpc_listen_port = 8903
 ```
 
-则在当前 CnosDB 创建订阅的 SQL 如下：
+The SQL for creating the subscription in the current CnosDB is as follows:
 
 ```sql
-CREATE SUBSCRIPTION test ON public DESTINATIONS ALL "127.0.0.1:8903";
+CREATE SUBSCRIPTION test ON public DESTINATIONS ALL "127.0.0.1:8903"
 ```
 
-此时若有数据写入当前 CnosDB 节点，则数据将同步复制转发到`127.0.0.1:8903`。
+At this time, if any data is written to the current CnosDB node, the data will be synchronized copied and forwarded to `127.0.0.1:8903`.
 
-如果需要对数据进行过滤，可以增加关键字 `FILTER_BY`：
+If filtering data is required, add the keyword `FILTER_BY`：
 
 ```sql
-create subscription test 
-on public
-DESTINATIONS ALL "127.0.0.1:8903"
-on air(time,station,pressure) 
-FILTER_BY where station = 'XiaoMaiDao';
+[[outputs.http]]
+url = "http://127.0.0.1:8912/api/v1/write?db=destination"
+timeout = "5s"
+method = "POST"
+username = "admin"
+password = "admin"
+data_format = "influx"
+use_batch_format = true
+content_encoding = "identity"
+idle_conn_timeout = 10
 ```
 
-## 更新订阅
+## Alter Subscription
 
-可以使用 `ALTER SUBSCRIPTION` 更新订阅。
+We can use `ALTER SUBSCRIPTION` to alter the subscription.
 
-### 语法
+### Syntax
 
 ```sql
-ALTER SUBSCRIPTION <subscription_name> 
-ON <database_name> 
-DESTINATIONS <ALL|ANY> "<end_point>" ["<end_point>"]
-[ON <table_name>(time, <tag_name>,[tag_name, ...], <field_name>, [field_name, ..]) 
-[FILTER_BY <Expr>]];
+ALTER SUBSCRIPTION <subscription_name> ON <database_name> DESTINATIONS ALL "<host_name>" ["<host_name>"]。
 ```
 
-### 示例
+### Example
 
 ```sql
-ALTER SUBSCRIPTION test ON public DESTINATIONS ALL "127.0.0.1:8903" "127.0.0.1:8913";
+ALTER SUBSCRIPTION test ON public DESTINATIONS ALL "127.0.0.1:8903" "127.0.0.1:8913"
 ```
 
-可以通过这种方法来修改 `end_point`，需要注意的是，通过 `ALTER SUBSCRIPTION` 进行修改是直接覆盖，如果不希望删除之前的 `end_point`，`DESTINATIONS ALL` 后需要添加之前的所有 `end_point`。
+You can modify host_name in this way, and note that modifying by `ALTER SUBSCRIPTION` overwrites it directly. If you do not want to delete host_name, ALL previous host_name needs to be added after `DESTINATIONS ALL`.
 
-## 显示订阅
+## Show Subscription
 
-可以使用 `SHOW SUBSCRIPTION` 查看订阅信息。
+We can use `SHOW SUBSCRIPTION` to show the subscription information.
 
-### 语法
+### Syntax
 
 ```sql
 SHOW SUBSCRIPTION ON <database_name>
 ```
 
-### 示例
+### Example
 
 ```sql
-SHOW SUBSCRIPTION ON public;
+SHOW SUBSCRIPTION ON public
 ```
 
-输出结果：
+Output Result：
 
 ```sql
 SUBSCRIPTION,DESTINATIONS,MODE
 test,"127.0.0.1:8902,127.0.0.1:8903",ALL
 ```
 
-## 删除订阅
+## Drop Subscription
 
-可以使用 `DROP SUBSCRIPTION` 删除订阅。
+We can use `DROP SUBSCRIPTION` to drop the subscription.
 
-### 语法
+### Syntax
 
 ```sql
 DROP SUBSCRIPTION <subscription_name> ON <database_name>
 ```
 
-### 示例
+### Example
 
 ```sql
-DROP SUBSCRIPTION test ON public;
+DROP SUBSCRIPTION test ON public
 ```
 
-## 将数据发送到 telegraf
+## Send data to telegraf
 
-> 关于 Telegraf 的使用方法，以及如何安装 Telegraf，见 [Telegraf 章节](/eco-integration/index/telegraf#cnos-telegraf)。
+> You can refer to [Telegraf](/eco-integration/index/telegraf.md#cnos-telegraf) to know how to use Telegraf and how to install Telegraf.
 
-修改 `telegraf` 配置文件，增加如下配置，监听 `8803`端口
+Change the `telegraf` configuration to add the following configuration to listen on the `8803` port
 
 ```toml
 [[inputs.cnosdb]]
 service_address = ":8803"
 ```
 
-在 CnosDB 创建订阅
+The data can be replicated to another CnosDB cluster by subscription, and the data replication will help to improve the fault tolerance and reliability of the whole system. CnosDB supports managing subscriptions through SQL, and CnosDB supports subscribing through Telegraf or another CnosDB cluster.
 
-> 假设 telegraf 位置在 `127.0.0.1` 上。
+> Assume that the telegraf position is on `127.0.0.1`.
 
 ```sql
-CREATE SUBSCRIPTION sub_test ON public DESTINATIONS ALL "127.0.0.1:8803";
+Supposing that we've started CnosDB and created a subscription, set `DESTINATIONS` to `127.0.0.1:8803` :
 ```
 
-查询订阅
+Subscriptions
 
 ```sh
 > SHOW SUBSCRIPTION ON public;
-+--------------+----------------+------+
-| SUBSCRIPTION | DESTINATIONS   | MODE |
-+--------------+----------------+------+
-| sub_test     | 127.0.0.1:8803 | ALL  |
-+--------------+----------------+------+
++--------------+----------------+-------------+
+| Subscription | DESTINATIONS   | Concurrency |
++--------------+----------------+-------------+
+| sub_tr_1003  | 127.0.0.1:8803 | ALL         |
++--------------+----------------+-------------+
 ```
 
-现在，你可以使用 `telegraf` 将数据发送至任何位置。
+You can now send data to any location using `telegram`.
