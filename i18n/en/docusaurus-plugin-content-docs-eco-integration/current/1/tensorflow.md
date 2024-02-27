@@ -3,32 +3,32 @@ title: TensorFlow
 slug: /tensorflow
 ---
 
-## TensorFlow
+> Introduction
 
-### Use CnosDB and TensorFlow for time series prediction
+### Introduction
 
 ### From three-body motion to Sunspot Change prediction
 
-#### Introduction
+### 前言
 
-Sunspots are solar activity that occurs in the photosphere of the sun and usually appear in groups. Predicting sunspot changes is one of the most active areas of space weather research.
+太阳黑子是太阳光球层上发生的太阳活动现象，通常成群出现。 Sunspots are solar activity that occurs in the photosphere of the sun and usually appear in groups. Predicting sunspot changes is one of the most active areas of space weather research.
 
-Sunspot observations last for a long time. Long-term data accumulation is conducive to mining the law of sunspot variation. The long-term observation shows that the sunspot number and area change show obvious periodicity, and the period is irregular, roughly ranging from 9 to 13 years, the average period is about 11 years, and the peak value of the sunspot number and area change is not constant.
+太阳黑子观测持续时间很长。 长时间的数据积累有利于挖掘太阳黑子变化的规律。 Sunspot observations last for a long time. Long-term data accumulation is conducive to mining the law of sunspot variation. The long-term observation shows that the sunspot number and area change show obvious periodicity, and the period is irregular, roughly ranging from 9 to 13 years, the average period is about 11 years, and the peak value of the sunspot number and area change is not constant.
 
 The latest data show that the number and area of sunspots have declined significantly in recent years.
 
 ![](/img/Hathaway_Cycle_24_Prediction.png)
 
-Since the intensity of sunspot activity has a profound impact on Earth, it is particularly important to detect sunspot activity. Physics-based models, such as dynamical models, and statistical models, such as autoregressive moving averages, have been widely used to detect sunspot activity.
-In order to capture the nonlinear relationship in sunspot time series more efficiently, machine learning methods are introduced.
+鉴于太阳黑子活动强烈程度对地球有着深刻的影响，因此探测太阳黑子活动就显得尤为重要。基于物理学模型(如动力模型)和统计学模型(如自回归滑动平均)已被广泛应用于探测太阳黑子活动。
+为了更高效地捕捉太阳黑子时间序列中存在的非线性关系,机器学习方法被引入。
 
 It is worth mentioning that neural networks in machine learning are better at mining nonlinear relationships in data.
 
-** Therefore, this article will introduce how to use the time series database 'CnosDB' to store the sunspot change data and further use TensorFlow to implement the '1DConv+LSTM' network to predict the sunspot number change. **
+\*\* Therefore, this article will introduce how to use the time series database 'CnosDB' to store the sunspot change data and further use TensorFlow to implement the '1DConv+LSTM' network to predict the sunspot number change. \*\*\*\*
 
 #### Introduction to the Sunspot Change Observation dataset
 
-The sunspot dataset used in this paper was released by the SILSO website version 2.0. (WDC-SILSO, Royal Observatory of Belgium, Brussels,http://sidc.be/silso/datafiles)
+The sunspot dataset used in this paper was released by the SILSO website version 2.0. (WDC-SILSO, Royal Observatory of Belgium, Brussels,http\://sidc.be/silso/datafiles)
 
 ![](/img/sunspot_dataset.png)
 
@@ -36,7 +36,7 @@ We mainly analyze and explore the changes of the monthly mean sunspot number (MS
 
 ### Import Data to CnosDB
 
-Download MSSN data `SN_m_tot_V2.0.csv`（https://www.sidc.be/SILSO/INFO/snmtotcsv.php）.
+Download MSSN data `SN_m_tot_V2.0.csv`（https\://www\.sidc.be/SILSO/INFO/snmtotcsv.php）.
 
 Here is the official description of the CSV file:
 
@@ -76,7 +76,6 @@ df.head()
 
 ![](/img/pandas_dataframe.png)
 
-
 ```python
 import matplotlib.pyplot as plt
 
@@ -90,14 +89,14 @@ plt.show()
 
 ![](/img/plt_show.png)
 
-#### Use TSDB CnosDB to store MSSN data
+### Use TSDB CnosDB to store MSSN data
 
 CnosDB（An Open Source Distributed Time Series Database with high performance, high compression ratio and high usability.）
 
-- Official Website: http://www.cnosdb.com
-- Github Repo: https://github.com/cnosdb/cnosdb
+- Official Website: http\://www\.cnosdb.com
+- Github Repo: https\://github.com/cnosdb/cnosdb
 
-Notice: We suppose the you have the ability to deploy and use CnosDB. You can get more information through https://docs.cnosdb.com/）
+Notice: We suppose the you have the ability to deploy and use CnosDB. You can get more information through https\://docs.cnosdb.com/）
 
 Use Docker to start CnosDB service in command line, enter the container and use the [CnosDB CLI](/docs/reference/tools) to use CnosDB:
 
@@ -110,10 +109,10 @@ CnosDB CLI v2.3.0
 Input arguments: Args { host: "localhost", port: 8902, user: "cnosdb", password: None, database: "public", target_partitions: None, data_path: None, file: [], rc: None, format: Table, quiet: false }
 ```
 
-To simplify the analysis, we only need to store the observation time and the number of sunspots in the dataset. Therefore, we concatenate the year (Col 0) and month (Col 1) as the observation time (date, string type), and the monthly mean sunspot number (Col 3) can be stored directly without processing.
+Since the intensity of sunspot activity has a profound impact on Earth, it is particularly important to detect sunspot activity. Physics-based models, such as dynamical models, and statistical models, such as autoregressive moving averages, have been widely used to detect sunspot activity.
+In order to capture the nonlinear relationship in sunspot time series more efficiently, machine learning methods are introduced.To simplify the analysis, we only need to store the observation time and the number of sunspots in the dataset. Therefore, we concatenate the year (Col 0) and month (Col 1) as the observation time (date, string type), and the monthly mean sunspot number (Col 3) can be stored directly without processing.
 
 We can create a 'sunspot' table in CnosDB CLI using SQL to store the MSSN dataset.
-
 
 ```SQL
 public ❯ CREATE TABLE sunspot (
@@ -140,7 +139,7 @@ Query took 0.002 seconds.
 
 #### Use CnosDB Python Connector to Connect and Use CnosDB Database
 
-Github Repo: https://github.com/cnosdb/cnosdb-client-python
+Github Repo: https\://github.com/cnosdb/cnosdb-client-python
 
 ```python
 # install Python Connector
@@ -185,8 +184,8 @@ conn.write_dataframe(df, "sunspot", ['date', 'mssn'])
 
 ### CnoDB reads the data and uses TensorFlow to reproduce the 1DConv+LSTM network to predict sunspot changes
 
-References: [程术, 石耀霖, and 张怀. "基于神经网络预测太阳黑子变化." (2022).
-](http://journal.ucas.ac.cn/CN/10.7523/j.ucas.2021.0068)
+References: 程术, 石耀霖, and 张怀. "基于神经网络预测太阳黑子变化." (2022).
+
 
 ![](/img/MSSN.png)
 
@@ -268,6 +267,7 @@ tf.keras.layers.Dense(1)])
 
 
 ```
+
 ```python
 ## compile neural network model
 optimizer = tf.keras.optimizers.Adam(learning_rate=1e-3)
@@ -310,6 +310,7 @@ rnn_forecast = rnn_forecast[split_index - WINDOW_SIZE:-1, -1, 0]
 error = tf.keras.metrics.mean_absolute_error(test_data, rnn_forecast).numpy()
 print(error)
 ```
+
 ```python
 101/101 [==============================] - 2s 18ms/step
 24.676455
