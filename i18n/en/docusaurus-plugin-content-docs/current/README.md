@@ -2,67 +2,67 @@
 sidebar_position: 1
 ---
 
-# 介绍
+# Introduction
 
-CnosDB 是一款高性能、高压缩率、高易用性的开源分布式时序数据库。主要应用场景为物联网，工业互联网，车联网，IT运维。所有代码均已在 [GitHub](https://github.com/cnosdb/cnosdb) 开源。
+CnosDB is an open source distributed time series database with high performance, high compression rate and high ease of use. The main application scenarios are IoT, Industrial Internet, Telematics, IT operations and maintenance. All the code has been open-sourced in GitHub.The main application scenes are the Internet of Things, the Industrial Internet, the CarLog and IT.All code is open in [GitHub](https://github.com/cnosdb/cnosdb).
 
-我们在设计上充分利用了时序数据特点，包括结构化数据、无事务、较少的删除更新、写多读少等等，因此相比其它时序数据库，CnosDB 有以下特点：
+We design to take full advantage of the characteristics of temporal data, including structured data, no transactions, less delete updates, write more read less, etc. Therefore, compared with other temporal databases, CnosDB has the following characteristics:
 
-- **高性能**：CnosDB 解决了时间序列膨胀，理论上支持时间序列无上限，支持沿时间线的聚合查询，包括按等间隔划分窗口的查询、按某列枚举值划分窗口的查询、按相邻时序记录的时间间隔长度划分窗口。具备对最新数据的缓存能力，并且可以配置缓存空间，能够高速获取最新数据。
-- **简单易用**：CnosDB 提供清晰明了的接口，简单的配置项目，支持标准SQL，轻松上手，与第三方工具生态无缝集成，拥有便捷的数据访问功能。支持 schemaless （"无模式"）的写入方式，支持历史数据补录（含乱序写入）
-- **云原生**：CnosDB 有原生的分布式设计、数据分片和分区、存算分离、Quorum 机制、Kubernetes 部署和完整的可观测性，具有最终一致性，能够部署在公有云、私有云和混合云上。提供多租户的功能，有基于角色管理的权限分配。支持计算层无状态增减节点，储存层水平扩展提高系统存储容量。
+- **High performance**: CnosDB solves time series inflation, theoretically supports time series without upper limit, and supports aggregation query along the time line, including query by equal interval window, query by a column enumeration value window, and window by the length of time interval of adjacent time series records. It has the ability to cache the latest data, and the cache space can be configured to get the latest data at high speed.Cache capability for the latest data and can be configured to access the latest data at a fast pace.
+- **Easy to use**: CnosDB provides a clear interface, easy to configure items, supports standard SQL, easy to start, seamlessly integrated with third-party tools, and has convenient data access functions. It supports schemaless ("schemaless") writing method and historical data replenishment (including chaotic writing).Support schemaless ("No Mode"), history data patch (written inactively)
+- **Cloud-native**: CnosDB has a native distributed design, data sharding and partitioning, store-and-counter separation, Quorum mechanism, Kubernetes deployment and full observability with ultimate consistency, and can be deployed on public, private and hybrid clouds. Provides multi-tenant capabilities with role-based management for privilege assignment. It supports stateless node addition and deletion in the compute layer and horizontal scaling in the storage layer to increase system storage capacity.Provides multi-tenant functionality, with distribution of competencies based on role management.Supporting compute layer inactivity nodes and storage level extension increases system storage capacity.
 
-本章着重介绍目前 CnosDB 的基础知识，快速上手，实现原理，生态集成以及云原生计划等等，让大家对 CnosDB 有一个充分的认识。
+This chapter focuses on the current basics of CnosDB, quick start, implementation principles, ecological integration and cloud-native plans, etc., to give you a full understanding of CnosDB.
 
-## 开始
+## Get Started
 
-本章节介绍了 CnosDB 的基本操作，包含写入数据，查询数据等。
+This chapter introduces the basic operations of CnosDB, including writing data, querying data, etc.
 
-- [开始](./start)
-  - [安装](./start/install.md)
-  - [快速开始](./start/quick_start.md)
+- [Get Started](./start)
+  - [Install](./start/install.md)
+  - [Quick Start](./start/quick_start.md)
 
-## 开发
+## Develop
 
-本章节介绍了 CnosDB 的开发指南，包含如何使用 CnosDB 的各种API，如何连接 CnosDB 进行数据的写入与查询。
+This section describes how to integrate CnosDB into your application.
 
-- [开发](./develop)
+- [Develop](./develop)
   - [Connect to CnosDB](./develop/api.md)
-  - [数据写入](./develop/write.md)
-  - [数据查询](./develop/query.md)
-  - [降采样](./develop/downsampling.md)
+  - [Write Data](./develop/write.md)
+  - [Query Data](./develop/query.md)
+  - [Downsampling](./develop/downsampling.md)
 
-## 部署
+## Deploy
 
-本章节介绍了如何使用以下其中之一安装和运行单机版或集群版 CnosDB，以及 CnosDB 的计算存储分离架构。
+This section describes how to install and run the single or cluster CnosDB, as well as the compute storage separation architecture for CnosDB.
 
-- [部署](./deploy)
+- [Deploy](./deploy)
 
-## 管理
+## Manage
 
-本章节介绍了 CnosDB 单机版与集群版的管理与监控。
+This chapter describes the management and monitoring of CnosDB standalone edition and cluster edition.
 
-- [管理](./manage)
-  - [备份与还原](./manage/backup_restore.md)
-  - [租户资源限制](./manage/resource_limit.md)
-  - [分级存储](./manage/tiered_storage.md)
-  - [告警管理](./manage/alarm_manage.md)
-  - [监控指标](./manage/monitor.md)
-  - [租户和权限](./manage/tenant.md)
-  - [订阅管理](./manage/subscriptions.md)
-  - [数据迁移](./manage/datax.md)
-  - [节点管理](./manage/node_manage.md)
-  - [V2.3到2.4升级](./manage/upgrade_v2.3_to_v2.4.md)
+- [Manage](./manage)
+  - [Backup and Restore](./manage/backup.md)
+  - [Tenant Resource Limit](./manage/resource_limit.md)
+  - [Tiered Storage](./manage/tiered_storage.md)
+  - [Alarm Management](./manage/alarm_manage.md)
+  - [Monitor](./manage/monitor.md)
+  - [Tenant and Permission](./manage/tenant.md)
+  - [Subscriptions](./manage/subscriptions.md)
+  - [Data Migration](./manage/datax.md)
+  - [Node Management](./manage/node_manage.md)
+  - [Upgrade V2.3 to V2.4](./manage/upgrade_v2.3_to_v2.4.md)
 
-# 指南
+# Reference
 
-本章节介绍了 CnosDB 的实现原理，以及 CnosDB 的生态集成。
+This chapter introduces the implementation principles of CnosDB, including storage engine, query engine, compression algorithm, etc. This chapter also introduces how to use CnosQL.
 
-- [指南](./reference)
-  - [设计](./reference/concept_design)
+- [Reference](./reference)
+  - [Design](./reference/concept_design)
   - [REST API](./reference/rest_api.md)
-  - [连接器](./reference/README.md)
+  - [Connector](reference/connector/README.md)
   - [SQL](./reference/sql.md)
-  - [配置文件](./reference/config.md)
-  - [工具](./reference/tools.md)
-  - [性能测试](./reference/performance.md)
+  - [Configure](./reference/config.md)
+  - [Tools](./reference/tools.md)
+  - [Benchmark](./reference/performance.md)
