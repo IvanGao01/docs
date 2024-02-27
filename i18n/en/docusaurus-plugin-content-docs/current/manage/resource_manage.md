@@ -1,12 +1,12 @@
 ---
-sidebar_position: 9
+sidebar_position: 12
 ---
 
-# 资源管理
+# Resource Management
 
-CnosDB新增了资源管理功能，会对一些比较复杂、多步执行的资源操作进行监控，并且当操作失败时会进行重试，直到成功。
+CnosDB has added resource management function, which will monitor some complex and multistep resource operations, and will retry when the operation fails until it succeeds.
 
-目前支持的资源操作：
+Resource operations currently supported:
 
 ```
 DropTenant,
@@ -19,7 +19,7 @@ RenameTagName,
 UpdateTagValue
 ```
 
-可以通过查看RESOURCE_STATUS系统表来查看资源执行信息
+You can view the resource execution information by viewing the RESOURCE_STATUS system table:
 
 ```sql
 SELECT * FROM information_schema.resource_status;
@@ -30,4 +30,4 @@ SELECT * FROM information_schema.resource_status;
 +---------------------+------------+--------------+-----------+----------+---------+
 ```
 
-其中comment会保存执行信息。
+Comment will save the execution information.
