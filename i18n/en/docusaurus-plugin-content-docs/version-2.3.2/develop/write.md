@@ -1,19 +1,19 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 ---
 
-import Tabs from '@theme/Tabs';
+Import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# 写入数据
+# Wirte Data
 
-CnosDB 支持多种写入方式，以下提供一些示例。包含 Java，Python，Rust，Golang，C++ 等常用的编程语言。
+CnosDB supports a variety of write modes, and some examples are provided below. Contains common programming languages such as Java, Python, Rust, Golang, C++.Contains common programming languages such as Java,Python,Rust,Golang, C++
 
-### 单条数据写入
+### Insert One Record
 
-#### 语法
+#### Syntax
 
-- **使用 `/api/v1/sql` 接口**
+- **use api `/api/v1/sql`**
 
   ```shell
   curl -i -u "<username>:<password>" -H "Accept: application/json" \
@@ -21,7 +21,7 @@ CnosDB 支持多种写入方式，以下提供一些示例。包含 Java，Pytho
   -d "<your SQL statement>"
   ```
 
-- **使用 `/api/v1/write` 接口**
+- **use api `/api/v1/write`**
 
   ```shell
   curl -i -u "<username>:<password>" -H "Accept: application/json" \
@@ -29,11 +29,11 @@ CnosDB 支持多种写入方式，以下提供一些示例。包含 Java，Pytho
   -d "<your data>"
   ```
 
-  注意，插入的数据应该是符合[Line Protocol](https://docs.influxdata.com/influxdb/v2.3/reference/syntax/line-protocol/) 的格式。
+  Notice that the data to be inserted should be in the format of [Line Protocol](https://docs.influxdata.com/influxdb/v2.3/reference/syntax/line-protocol/).
 
-#### 示例
+#### Example
 
-- **使用 `/api/v1/sql` 接口**
+- **use api `/api/v1/sql`**
 
   ```shell
   curl -i -u "cnosdb:" -H "Accept: application/json" \
@@ -41,7 +41,7 @@ CnosDB 支持多种写入方式，以下提供一些示例。包含 Java，Pytho
   -d "INSERT INTO air (TIME, station, visibility, temperature, pressure)
   VALUES (1666165200290401000, 'XiaoMaiDao', 56, 69, 77);"
   ```
-- **使用 `/api/v1/write` 接口**
+- **use api `/api/v1/write`**
 
   ```shell
   curl -i -u "cnosdb:" -H "Accept: application/json" \
@@ -49,11 +49,11 @@ CnosDB 支持多种写入方式，以下提供一些示例。包含 Java，Pytho
   -d "air,station=XiaoMaiDao visibility=50,temperature=63,pressure=52 1642176000000000000"
   ```
 
-### 多条数据写入
+### Insert Multiple Records
 
-#### 语法
+#### Syntax
 
-- **使用 `/api/v1/sql` 接口**
+- **use api `/api/v1/sql`**
 
   ```shell
   curl -i -u "<username>:<password>" -H "Accept: application/json" \
@@ -61,7 +61,7 @@ CnosDB 支持多种写入方式，以下提供一些示例。包含 Java，Pytho
   -d "<your SQL statement>"
   ```
 
-- **使用 `/api/v1/write` 接口**
+- **use api `/api/v1/write`**
 
   ```shell
   curl -i -u "<username>:<password>" -H "Accept: application/json" \
@@ -70,11 +70,11 @@ CnosDB 支持多种写入方式，以下提供一些示例。包含 Java，Pytho
       <your data>"
   ```
 
-  注意，插入的数据应该是符合[Line Protocol](https://docs.influxdata.com/influxdb/v2.3/reference/syntax/line-protocol/) 的格式。
+  Notice that the data to be inserted should be in the format of [Line Protocol](https://docs.influxdata.com/influxdb/v2.3/reference/syntax/line-protocol/).
 
-#### 示例
+#### Example
 
-- **使用 `/api/v1/sql` 接口**
+- **use api `/api/v1/sql`**
 
   ```shell
   curl -i -u "cnosdb:" -H "Accept: application/json" \
@@ -82,7 +82,7 @@ CnosDB 支持多种写入方式，以下提供一些示例。包含 Java，Pytho
   -d "INSERT INTO air (TIME, station, visibility, temperature, pressure)
   VALUES ('2022-10-19 05:40:00', 'XiaoMaiDao', 55, 68, 76), ('2022-10-19 04:40:00', 'XiaoMaiDao', 55, 68, 76);"
   ```
-- **使用 `/api/v1/write` 接口**
+- **use api `/api/v1/write`**
 
   ```shell
   curl -i -u "cnosdb:" -H "Accept: application/json" \
@@ -91,9 +91,9 @@ CnosDB 支持多种写入方式，以下提供一些示例。包含 Java，Pytho
       air,station=XiaoMaiDao visibility=50,temperature=63,pressure=52 1642176000000000000"
   ```
 
-### 批量数据写入
+### Write Data
 
-#### 语法
+#### Syntax
 
 ```shell
 curl -i -u "<username>:<password>" -H "Accept: application/json" \
@@ -101,7 +101,7 @@ curl -i -u "<username>:<password>" -H "Accept: application/json" \
 --data-binary @<data_file_path>
 ```
 
-#### 示例
+#### Example
 
 ```shell
 curl -o oceanic_station.txt https://dl.cnosdb.com/sample/oceanic_station.txt &&
@@ -110,7 +110,7 @@ curl -i -u "cnosdb:" -H "Accept: application/json" \
 --data-binary @./oceanic_station.txt
 ```
 
-### 使用编程语言写入
+### Use Programming Language
 
 <Tabs>
 <TabItem value="go" label="Golang">
@@ -137,12 +137,12 @@ func main() {
         panic(err)
     }
 
-    // 添加 Authorization 头部
+    // add Authorization header
     authStr := username + ":" + password
     encodedAuth := base64.StdEncoding.EncodeToString([]byte(authStr))
     req.Header.Set("Authorization", "Basic "+encodedAuth)
 
-    // 添加 Accept 头部
+    // add Accept header
     req.Header.Set("Accept", "application/json")
 
     resp, err := client.Do(req)
@@ -151,7 +151,7 @@ func main() {
     }
     defer resp.Body.Close()
 
-    // 输出响应的状态码和响应体
+    // print response
     fmt.Println("Status Code:", resp.StatusCode)
     fmt.Println("Response Body:")
     buf := new(bytes.Buffer)
@@ -180,12 +180,12 @@ public class CurlToJava {
         String cnosdbPort = "<cnosdb_port>";
         String dbName = "<database_name>";
         String sqlStatement = "<your SQL statement>";
-
+        
         String apiUrl = "http://" + cnosdbUrl + ":" + cnosdbPort + "/api/v1/sql?db=" + dbName + "&pretty=true";
         String auth = username + ":" + password;
         byte[] encodedAuth = Base64.getEncoder().encode(auth.getBytes());
         String authHeaderValue = "Basic " + new String(encodedAuth);
-
+        
         URL url = new URL(apiUrl);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("POST");
@@ -250,7 +250,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
         "http://{}:{}/api/v1/sql?db={}&pretty=true",
         cdb_url, cdb_port, database_name
     );
-
+    
     let client = reqwest::Client::new();
     let res = client
         .post(&url)
@@ -314,4 +314,4 @@ int main() {
 
 
 
-当使用 `/api/v1/write` 接口时，只需要替换接口地址，并将 `<your SQL statement>` 替换为 `<your data>` 。
+When using the api `/api/v1/write`, just replace the api address wth `/api/v1/write` and replace `<your SQL statement>` with `<your data>`.
