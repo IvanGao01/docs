@@ -1,25 +1,29 @@
 ---
-sidebar_position: 7
+title: 企业版功能
+order: -3
+index: false
 ---
 
-# Enterprise
+# Manage
 
-Enterprise features:
+企业版功能：
 
-::: tip
-To try out the Enterprise features, please contact <a class="color-fg-default" itemprop="email" href="mailto:contact@cnosdb.com">contact@cnosdb.com</a>
+:::tip
+试用企业版功能，请[联系我们](https://jinshuju.net/f/qrj9lq)。
 :::
 
-- [Tiered Storage](../manage/tiered_storage.md)
+- [分级存储](../manage/tiered_storage.md)
 
-- [Subscription](../manage/subscriptions.md)
+- [订阅管理](../manage/subscriptions.md)
 
-- [Node Manage](../manage/node_manage.md)
+- [节点管理](../manage/node_manage.md)
 
-- [Alarm Manage](../manage/alarm_manage.md)
+- [告警管理](../manage/alarm_manage.md)
 
-- Advanced SQL
-    * [candlestick_agg](../reference/sql.md#candlestick-agg)
-    * [gauge_agg](../reference/sql.md#gauge-agg)
-    * [asap_smooth](../reference/sql.md#asap-smooth)
-    * [stats_agg](../reference/sql.md#stats-agg)
+- [数据分布策略](../manage/placement_policy.md)
+
+- 高阶函数
+  - [candlestick_agg](../reference/sql.md#candlestick-agg)
+  * [gauge_agg](../reference/sql.md#gauge-agg)
+  * [asap_smooth](../reference/sql.md#asap-smooth)
+  * [stats_agg](../reference/sql.md#stats-agg)
