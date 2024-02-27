@@ -5,23 +5,23 @@ order: 1
 
 # Python
 
-随着分布式新版本的发布，细心的小伙伴们想必已经发现CnosDB 2.0已经全面支持了Python。通过调用连接器cnos-connector， 实现了CnosDB 2.0与Python 的连接。cnos-connector 封装了对 CnosDB 的请求，使在Python环境下使用CnosDB更加简洁、易用。同时，cnos-connector提供了符合 [PEP 249](https://peps.python.org/pep-0249/) 的编程接口，更易与 SQLAlchemy 以及 pandas 进行交互。
+With the release of a new version of the distributed version, meticulous small partners must have found that CnosDB 2.0 is fully supportive.CnosDB 2.0 connection to Python was implemented by calling the connector cnos-connector.With the release of the new version of the distribution, attentive friends will have noticed that CnosDB 2.0 has fully supported Python. cnos-connector enables the connection between CnosDB 2.0 and Python by calling the connector cnos-connector. cnos-connector encapsulates the requests to CnosDB, making it simpler and easier to use CnosDB in Python. It makes using CnosDB in Python environment more concise and easy to use. At the same time, cnos-connector provides a [PEP 249](https://peps.python.org/pep-0249/) compliant programming interface, which makes it easier to interact with SQLAlchemy and pandas.At the same time, cnos-connector provides programming interfaces that meet [PEP 249](https://peps.python.org/pep-0249/) and interact more easily with SQLAlchemy and pandas.
 
-cnos-connector 已全部开源，源码位于 [GitHub](https://github.com/cnosdb/cnosdb-client-python)
+cnos-connector is fully open source and the source code is located on [GitHub](https://github.com/cnosdb/cnosdb-client-python).
 
-### 安装
+### Installation
 
-使用 pip 下载安装 cnos-connector，需要 Python 版本大于等于 3.6
+Download and install cnos-connector using pip, which requires Python version greater than or equal to 3.6
 
 ```
 pip install cnos-connector
 ```
 
-### 使用示例
+### Usage Examples
 
-#### 查询示例
+#### Query example
 
-- #### 通过SQL进行查询
+- #### Query by SQL
 
   ```python
   from cnosdb_connector import connect
@@ -31,7 +31,7 @@ pip install cnos-connector
   print(resp)
   ```
 
-- #### 通过接口定义的函数查询
+- #### Query by function defined by the interface
 
   ```python
   from cnosdb_connector import connect
@@ -42,7 +42,7 @@ pip install cnos-connector
   print(resp)
   ```
 
-- #### 通过PEP-249进行查询，详细信息请参考 [PEP-249](https://peps.python.org/pep-0249/)。
+- #### Search through PEP-249, for more information, please refer to [PEP-249](https://peps.python.org/pep-0249/).
 
   ```python
   from cnosdb_connector import connect
@@ -55,7 +55,7 @@ pip install cnos-connector
   print(resp)
   ```
 
-- #### 通过pandas进行查询，pandas支持PEP-249的规范
+- #### Querying via pandas, which supports the PEP-249 specification
 
   ```python
   import pandas as pd
@@ -67,9 +67,9 @@ pip install cnos-connector
   print(resp)
   ```
 
-#### 写入示例
+#### Writing example
 
-- #### 支持Line Protocol的方式进行数据的写入
+- #### supports the Line Protocol method for writing data.
 
   ```python
   from cnosdb_connector import connect
@@ -80,7 +80,7 @@ pip install cnos-connector
 
   conn = connect(url="http://127.0.0.1:8902/", user="root", password="")
 
-  conn.create_database_with_ttl("ocean", "100000d")
+  conn.create_database_with_ttl("ocean")
   conn.switch_database("ocean")
 
   conn.write_lines([line0, line1, line2])
@@ -89,7 +89,7 @@ pip install cnos-connector
   print(resp)
   ```
 
-- #### 支持SQL的方式进行写入
+- #### Support SQL for writing
 
   ```python
   from cnosdb_connector import connect
@@ -105,7 +105,7 @@ pip install cnos-connector
   print(resp)
   ```
 
-- #### 支持CSV的方式进行写入
+- #### Support for writing in CSV format
 
   ```python
   from cnosdb_connector import connect
@@ -128,9 +128,9 @@ pip install cnos-connector
   print(resp)
   ```
 
-### 接口文档
+### Interface Documentation
 
-为了便于用户更加方便地连接使用 CnosDB，cnosdb_connector 对于一些常用的 SQL 进行了简单的封装。
+In order to make it easier for users to connect to CnosDB, cnosdb_connector provides a simple wrapper for some common SQL.
 
 ```python
 # CREATE DATABASE database_name;
@@ -144,7 +144,7 @@ def create_user(self, user, password)
 
 # DROP DATABASE database_name;
 def drop_database(self, database_name)
-
+    
 # DROP TABLE table_name;
 def drop_table(self, table_name)
 
@@ -158,4 +158,4 @@ def list_database(self)
 def list_table(self)
 ```
 
-如果您对接口封装有更好的想法，欢迎向我们 Python 连接器的[源码仓库](https://github.com/cnosdb/cnosdb-client-python)提交PR。
+If you have a better idea for an interface wrapper, feel free to submit a PR to our Python Connector [source code repository](https://github.com/cnosdb/cnosdb-client-python).
