@@ -3,9 +3,9 @@ title: Telegraf
 slug: /telegraf
 ---
 
-[Telegraf](https://github.com/influxdata/telegraf) is an open source server agent program used to collect metrics from stacks, sensors, and systems to database intensively, with a minimal memory footprint and support for extensions via plug-ins.Telegraf is simple to configure, easy to get started with, and greatly reducing the difficulty of data acquisition compared to collecting data via handwritten scripts.
+[Telegraf](https://github.com/influxdata/telegraf) is an open source server agent program used to collect metrics from stacks, sensors, and systems to database intensively, with a minimal memory footprint and support for extensions via plug-ins.Telegraf is simple to configure, easy to get started with, and greatly reducing the difficulty of data acquisition compared to collecting data via handwritten scripts.Telegraf 配置简单，易于上手，相较于通过手写脚本采集数据，大大降低了数据获取的难度。
 
-#### User scenarios
+**Description**
 
 - **IoT sensor data:** Data transferred based on protocols such as MQTT, ModBus, OPC-UA, and Kafka.
 - **DevOps framework data:** Operational metrics from platforms or frameworks such as GitHub, Kubernetes, CloudWatch, Prometheus, etc.
@@ -20,10 +20,9 @@ slug: /telegraf
 
 In the following, we will describe how to install and configure Telegraf for collecting system metrics data and storing it in CnosDB.
 
-### **Telegraf Deployment**
+### Telegraf 部署
 
-
-- #### Download
+- **Build**
 
 [Official Download Link](https://portal.influxdata.com/downloads/)
 
@@ -35,20 +34,21 @@ In the following, we will describe how to install and configure Telegraf for col
 
 [Offical Basic Tutorisl(v1.23)](https://docs.influxdata.com/telegraf/v1.23/get_started/)
 
-### **Telegraf Configuration**
+### Telegraf 配置
 
-- #### Generate configuration files manually
+- Generate configuration files manually
 
 ```sh
 telegraf --sample-config > telegraf.conf
 ```
 
-- #### Default configuration file path
+- Default configuration file path
 
 - macOS **Homebrew**: `/usr/local/etc/telegraf.conf`
+
 - Linux debian and RPM packages: `/etc/telegraf/telegraf.conf`
 
-- #### Use a text editor such as `vim` to modify the configuration file.
+- Use a text editor such as `vim` to modify the configuration file.
 
 In order to output the metrics data to CnosDB, we need to configure Telegraf's output plug-in `http` to output line protocol data to the write interface of CnosDB.
 
@@ -156,7 +156,6 @@ Under correct configuration, you will obtain the following results:
 ]
 ```
 
-
 ## Cnos-Telegraf
 
 CnosDB-Telegraf is based on Telegraf (re1.25, commit 86cd0c0c2), with some added features and plugins.
@@ -203,12 +202,12 @@ database = "telegraf"
 
 - **Configuration introduction**
 
-| **Parameters** | **Description**             |
-|----------------|-----------------------------|
-| url            | CnosDB GRpc service address |
-| user           | User Name                   |
-| password       | Password                    |
-| database       | CnosDB database             |
+| Parameters | 说明                          |
+| ---------- | --------------------------- |
+| url        | CnosDB GRpc service address |
+| user       | User Name                   |
+| password   | Password                    |
+| database   | CnosDB database             |
 
 #### Input Plugin
 
@@ -227,7 +226,7 @@ high_priority_io = true
 
 The above configuration adds the `high_priority_io = true` configuration compared to the configuration in the [Output Plugin](#output-plugin) section.
 
-### **Build**
+### 构建
 
 - #### [Install Go](https://golang.org/doc/install) >=1.18 (1.18.0 version recommended)
 - #### Clone the repository from Github:
@@ -243,7 +242,7 @@ cd cnos-telegraf
 make build
 ```
 
-### **Start**
+### Start
 
 - #### Execute the following command to view the use case:
 
