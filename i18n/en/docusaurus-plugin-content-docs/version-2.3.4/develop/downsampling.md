@@ -1,22 +1,22 @@
 ---
-title: Downsampling
-order: 4
+sidebar_position: 4
 ---
-## Downsampling
 
-The data write cycle is generally based on the actual table write frequency, which is usually related to the device that collects the data, sometimes it may need to process a large number of data points per second, and processing so much data for a long time may cause storage problems. A more natural solution is to reduce the data sample.
- 
-Downsampling refers to the frequency reduction of timeseries data in the time-series databases, and coarse-grained data is obtained after the frequency reduction of originally fine-grained data, so as to save storage costs. The data after downsampling only retains some statistical features of the original data. This chapter describes how to automate data sampling with CnosDB.
+# 降采样
 
-### Definition
+数据的写入周期一般以实际表的写入频率为主，这通常和采集数据的设备相关，有时可能每秒就需要处理大量的数据点，长时间处理如此多的数据就可能会产生存储问题。一个比较自然的解决方案即降低数据样本。
 
-Stream Query:is a special query in CnosDB for processing stream data calculation, the stream query requires that the SELECT function must contain the GROUP BY time() phrase.
+降采样在时序数据库中指对时序数据进行降频，将原本细粒度的数据降频后得到较粗粒度的数据，以此节约存储成本，降采样后的数据只会保留原始数据的一些统计特征。本章将描述如何使用CnosDB实现自动化数据采样。
 
->Note: This article does not describe the syntax of how to create a stream query in detail, for more details, please click [Stream](../reference/sql.md#stream) query to jump to the corresponding interface. 
+### 定义
 
-### Data Samples
+流查询：是CnosDB中一种用于处理流式数据计算的特殊查询，流查询要求`SELECT`函数中必须包含`GROUP BY time()`字句。
 
-Let's take the air table in the oceanic station library as an example:
+> 注：本篇文章不会描述详细如何创建流查询的语法，了解更多细节，请点击[流查询](../reference/sql#流查询)跳转至对应的界面。
+
+### 数据样例
+
+我们以oceanic_station库中的air表为例：
 
 ```sql
 select * from air limit 5;
@@ -32,9 +32,9 @@ select * from air limit 5;
 Query took 0.028 seconds.
 ```
 
-### Goal
+### 目标
 
-Assume that the data write frequency of the air table is 1min, but we only want to know the changes of various indicators every 1h, such as the maximum pressure, the average temperature, the sum of temperatures, and the number of data rows in the specified time window. The corresponding sql is created as follows:
+假设air表数据写入频率为1min，但我们只想知道每1h的各项指标变化，如压力的最大值、温度的平均值、温度的总和、指定时间窗口内的数据行数。则创建对应的sql如下：
 
 ```sql
 INSERT INTO air_down_sampling_1hour(time, station, max_pressure, avg_temperature, sum_temperature, count_pressure) 
@@ -49,7 +49,7 @@ FROM air_stream
 GROUP BY date_bin(INTERVAL '1' HOUR, time, TIMESTAMP '2023-01-14T16:00:00'), station;
 ```
 
-### Results
+### 结果
 
 ```sql
 SELECT * FROM air_down_sampling_1hour LIMIT 10;
