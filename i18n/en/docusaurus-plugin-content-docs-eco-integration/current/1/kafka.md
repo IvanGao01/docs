@@ -4,17 +4,18 @@ index: true
 slug: /kafka
 ---
 
-As more and more application architectures move to microservice or serverless architectures, the number of applications and services is increasing every day. Users can process an increasing amount of time series data either through real-time aggregation or through computations whose outputs are measurements or metrics. Faced with the massive data generated, users can capture and observe the changes of the data in the system in a variety of ways. In the cloud-native environment, the most popular one is to use events.
+As more and more application architectures move to microservice or serverless architectures, the number of applications and services is increasing every day. Users can process an increasing amount of time series data either through real-time aggregation or through computations whose outputs are measurements or metrics. Faced with the massive data generated, users can capture and observe the changes of the data in the system in a variety of ways. In the cloud-native environment, the most popular one is to use events.用户既可以通过实时聚合，也可以通过输出为测量或指标的计算，来处理数量不断增加的时间序列数据。面对产生的海量数据，用户可以通过多种方式来捕获和观察系统中数据的变化，在云原生环境中，最流行的一种是使用事件。
 
-Apache Kafka is a durable, high-performance messaging system that is also considered a distributed stream processing platform. It can be applied to many use cases including messaging, data integration, log aggregation, and metrics. As far as metrics are concerned, message trunks or proxies are not enough. While Apache Kafka is durable, it is not designed for running metrics and monitoring queries. This is precisely the strength of CnosDB.
+Apache Kafka is a durable, high-performance messaging system that is also considered a distributed stream processing platform. It can be applied to many use cases including messaging, data integration, log aggregation, and metrics. As far as metrics are concerned, message trunks or proxies are not enough. While Apache Kafka is durable, it is not designed for running metrics and monitoring queries. This is precisely the strength of CnosDB.它可应用于许多用例，包括消息传递、数据集成、日志聚合和指标。而就指标而言，仅有消息主干或代理是不够的。Run the code这恰恰正是 CnosDB 的长处。
 
-In this article, we will mainly introduce how to implement a Kafka+Telegraf+CnosDB synchronous real-time streaming data acquisition and storage scheme in Ubuntu 22.04.2 LTS environment. In this operation, the CnosDB version is 2.3.0, the Kafka version is 2.5.1, and the Telegraf version is 1.27.1.
+In this article, we will mainly introduce how to implement a Kafka+Telegraf+CnosDB synchronous real-time streaming data acquisition and storage scheme in Ubuntu 22.04.2 LTS environment. In this operation, the CnosDB version is 2.3.0, the Kafka version is 2.5.1, and the Telegraf version is 1.27.1.Modify the configuration file `telegraf.conf` (you can modify the configuration information as needed).
 
 ## Architecture Solution
 
 By combining Kafka, Telegraf and CnosDB, a complete flow of data can be achieved:
-1. Data Generation: Generate data using sensors, devices, or other data sources and send it to Kafka topics. 
-2. Kafka Message Queue: Kafka receives and stores data streams to ensure data security and reliability. 
+
+1. Data Generation: Generate data using sensors, devices, or other data sources and send it to Kafka topics.
+2. Kafka Message Queue: Kafka receives and stores data streams to ensure data security and reliability.
 3. Telegraf Consumer: Telegraf, as a consumer of Kafka, subscribs to Kafka topics and fetches data streams.
 4. CnosDB Data Storage: The preprocessed data is sent to CnosDB by Telegraf for time series data storage.
 
@@ -24,26 +25,28 @@ The overall application architecture looks like this:
 
 ## Kafka
 
-Apache Kafka is an open source distributed stream processing platform. It is designed for processing real-time data streams with high reliability, high throughput and low latency, and has been used by most companies. It can be used in a variety of ways, including:
+Apache Kafka is an open source distributed stream processing platform. It is designed for processing real-time data streams with high reliability, high throughput and low latency, and has been used by most companies. It can be used in a variety of ways, including:它的使用方式非常多样化，包括：
+
 - Stream Processing: It provides the event backbone by storing real-time events for aggregation, enrichment and processing.
-- Metrics:  Apache Kafka becomes a centralized aggregation point for many distributed components or applications, such as microservices. These applications can send real-time metrics for use by other platforms, including CnosDB.
+- Metrics:  Apache Kafka becomes a centralized aggregation point for many distributed components or applications, such as microservices. These applications can send real-time metrics for use by other platforms, including CnosDB.这些应用程序可以发送实时指标以供其他平台使用，包括 CnosDB。
 - Data Integration: Data and event changes can be captured and sent to Apache Kafka, which can be used by any application that needs to act on these changes.
 - Log Aggregation:  Apache Kafka can act as the message backbone of a log-streaming platform to transform log blocks into data streams.
 
 ### Several Core Concepts
 
 1. Broker: A Broker in Kafka is a server node in a Kafka cluster that stores and forwards messages, providing high availability, fault tolerance, and reliability.
-2. Topics: A topic in Apache Kafka is a logical unit of storage, much like a table in a relational database. Topics are distributed through agents through partitions, providing scalability and elasticity.
-3. Producers: A Producer publishes messages to a specific topic in Kafka. The producer can choose to send messages to a specific partition or let Kafka automatically determine the allocation policy.
-4. Consumers: Consumers read messages from one or more partitions of a given topic. Consumers can be organized in different ways, such as unicast, multicast, consumer groups, etc.
+2. Topics: A topic in Apache Kafka is a logical unit of storage, much like a table in a relational database. Topics are distributed through agents through partitions, providing scalability and elasticity.主题通过分区通过代理进行分发，提供可扩展性和弹性。
+3. 生产者（Producer）：生产者将消息发布到Kafka的指定主题。Producers: A Producer publishes messages to a specific topic in Kafka. The producer can choose to send messages to a specific partition or let Kafka automatically determine the allocation policy.
+4. Parameters:Consumers: Consumers read messages from one or more partitions of a given topic. Consumers can be organized in different ways, such as unicast, multicast, consumer groups, etc.
 5. Publish/Subscribe Pattern: A producer publishes messages to one or more topics, and a consumer can subscribe to one or more topics to receive and process messages from.
 
 In simple words, when a client sends data to an Apache Kafka cluster instance, it has to send it to a certain topic.
 In addition, when a client reads from the Apache Kafka cluster, it must read from the topic. The clients that send data to Apache Kafka become producers, and the clients that read data from the Kafka cluster become consumers. The data flow diagram is as follows:
+此外，当客户端从 Apache Kafka 集群读取数据时，它必须从主题中读取。Switch to the public database.数据流向示意图如下：
 
 ![topic](/img/kafka_topic.png)
 
-##  Deploy Kafka
+## Deploy Kafka
 
 ### Download and Install
 
@@ -69,19 +72,20 @@ cd  kafka_2.12-2.5.1
 
 4. Modify the configuration file `$KAFKA_HOME/config/server.properties` (you can modify the port, log path and other configuration information as needed).
 
-
-5. Save and close the editor. Run the following command to start Kafka:
+5. 保存并关闭编辑器。Save and close the editor. Run the following command to start Kafka:
 
 > Kafka will run in the background and listen for connections through the default port 9092.
+
 ```shell
 bin/kafka-server-start.sh config/server.properties
 ```
 
 ## Telegraf
 
-Telegraf is an open source server agent for collecting, processing, and transmitting metric data for systems and applications. Telegraf supports a variety of input plug-ins and output plug-ins, and is able to integrate with a variety of different types of systems and services. It can collect metrics data from multiple sources such as system statistics, log files, API interfaces, message queues, and send it to various targets such as CnosDB, Elasticsearch, Kafka, Prometheus, etc. This makes Telegraf very flexible and adaptable to different monitoring and data processing scenarios.
+Telegraf is an open source server agent for collecting, processing, and transmitting metric data for systems and applications. Telegraf supports a variety of input plug-ins and output plug-ins, and is able to integrate with a variety of different types of systems and services. It can collect metrics data from multiple sources such as system statistics, log files, API interfaces, message queues, and send it to various targets such as CnosDB, Elasticsearch, Kafka, Prometheus, etc. This makes Telegraf very flexible and adaptable to different monitoring and data processing scenarios.Plug-in driver: Telegraf uses plug-ins to support various input and output functions. It provides a rich plugin ecosystem that covers a wide range of systems and services. Users can choose appropriate plug-ins to collect and transmit indicator data according to their own needs.它可以从系统统计、日志文件、API 接口、消息队列等多个来源采集指标数据，并将其发送到各种目标，如 CnosDB 、Elasticsearch、Kafka、Prometheus 等。这使得 Telegraf 非常灵活，可适应不同的监控和数据处理场景。
+
 - Lightweight: Telegraf is designed as a lightweight agent program with a relatively small footprint on system resources and can run efficiently in a variety of environments.
-- Plug-in driver: Telegraf uses plug-ins to support various input and output functions. It provides a rich plugin ecosystem that covers a wide range of systems and services. Users can choose appropriate plug-ins to collect and transmit indicator data according to their own needs.
+- 插件驱动：Telegraf使用插件来支持各种输入和输出功能。它提供了丰富的插件生态系统，涵盖了众多的系统和服务。用户可以根据自己的需求选择合适的插件来进行指标数据的采集和传输。
 - Data processing and transformation: Telegraf has flexible data processing and transformation capabilities, which can filter, process, transform and aggregate the collected metrics data through a Plugin Chain to provide more accurate and advanced data analysis.
 
 ### Deploy Telegraf
@@ -94,7 +98,7 @@ sudo apt-get update && sudo apt-get install telegraf
 
 2. Switch to the directory where the default configuration file of Telegraf is located `/etc/telegraf`
 
-3. Modify the configuration file `telegraf.conf` (you can modify the configuration information as needed).
+3. 在配置文件 telegraf.config 中添加目标 OUTPUT PLUGIN
 
 ```toml
 [[outputs.http]]
@@ -109,8 +113,10 @@ sudo apt-get update && sudo apt-get install telegraf
   idle_conn_timeout = 10
 ```
 
-Parameters:
+按需修改的参数：
+
 > Note: Other parameters can be kept consistent with the configuration example above.
+
 ```
 url: CnosDB address and port
 username: username for connecting to CnosDB
@@ -119,7 +125,7 @@ password: password for connecting to CnosDB
 
 4. Uncomment the following configuration in the configuration file and modify it as needed
 
-```toml
+```
 [[inputs.kafka_consumer]]
 brokers = ["127.0.0.1:9092"]
 topics = ["oceanic"]
@@ -127,6 +133,7 @@ data_format = "json"
 ```
 
 Parameters:
+
 > Note: Other parameters can be kept consistent with the configuration example above.
 
 ```shell
@@ -201,7 +208,7 @@ if __name__ == "__main__":
     main()
 ```
 
-2. Run the code
+2. 运行 Python 脚本
 
 ```shell
 python3 test.py
@@ -224,7 +231,8 @@ python3 test.py
 ```shell
 cnosdb-cli
 ```
-2. Switch to the public database.
+
+2. 切换到指定库
 
 ```shell
 \c public
@@ -236,4 +244,4 @@ cnosdb-cli
 select * from kafka_consumer;
 ```
 
-![cnosdb_result](/img/userlmn_9ced0c8b3b1b7caea323148f994d16ee.png)
+![cnosdb\_result](/img/userlmn_9ced0c8b3b1b7caea323148f994d16ee.png)
