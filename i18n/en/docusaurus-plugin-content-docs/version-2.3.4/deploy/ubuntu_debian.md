@@ -2,44 +2,44 @@
 sidebar_position: 4
 ---
 
-import Tabs from '@theme/Tabs';
+Import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # Ubuntu & Debian
 
-Ubuntu 和 Debian 用户可以使用包管理器 `apt-get` 安装最新稳定版本的 CnosDB。
+Ubuntu and Debian users can install the latest stable version of CnosDB using package manager `apt-get`.
 
-## 下载
+## Download
 
 <Tabs groupId="editions">
 <TabItem value="Community" label="社区版">
 
-对于 Ubuntu 或 Debian 用户，使用以下命令添加 CnosDB 存储库：
+Add CnosDB repository： with the following command for Ubuntu or Debian users
 
 ```shell
-curl -fsSL https://cnosdb-package-repository.s3.us-west-2.amazonaws.com/cnosdb.gpg-key.asc | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/cnosdb.gpg > /dev/null
-echo "deb [signed-by=/etc/apt/trusted.gpg.d/cnosdb.gpg] https://cnosdb-package-repository.s3.us-west-2.amazonaws.com/deb stable main" | sudo tee /etc/apt/sources.list.d/cnosdb.list > /dev/null
+curl -fsSL https://cnosdb-package-repository.s3.us-west-2.amazonass.com/cnosdb.gpg-key.asc | gpg --dearmor | sudo tee/etc/apt/trusted.gpg.d/cnosdb.gpg > /dev/null
+echo "deb [signed-by=/etc/apt/trust/trusted.gpg.d/cnosdb.gpg] https://cnosdb-package-repository y.s3.us-west-2.amazonass.com/deb stable main" | sudo tee /etc/apt/sources.list.d/cnosdb.list > /null >
 ```
 
-更新并下载软件：
+Update and download software：
 
 ```shell
-sudo apt-get update & apt-get -y install cnosdb cnosdb-meta
+sudo apt-get update & apt-get -y install cosdb cnosdb-meta
 ```
 
 
 <TabItem value="Enterprise" label="企业版">
 
 :::tip
-如需获取企业版的安装包，请联系我们。
+Please contact us if you want to get an installation package for the enterprise version.
 :::
 
 
 
 
-## 启动单机实例
+## Start Solo Instance
 
-#### 1. 修改配置
+#### 1. Modify configuration
 
 <Tabs groupId="editions">
 <TabItem value="Community" label="社区版">
@@ -47,9 +47,9 @@ sudo apt-get update & apt-get -y install cnosdb cnosdb-meta
 
 <TabItem value="Enterprise" label="企业版">
 
-修改 `license_file` 指定正确的文件位置
+Change `license_file` to specify the correct file location
 
-> 获取 License 文件，请联系我们
+> Get License file, please contact us
 
 ```shell
 license_file = '/etc/cnosdb/license.json'
@@ -58,135 +58,135 @@ license_file = '/etc/cnosdb/license.json'
 
 
 
-修改 `[deployment].mode` 为 `singleton`
+Modify `[deployment].mode` to `singleton`
 
 ```toml
 [deployment]
 mode = "query_tskv"
 ```
 
-#### 2. 启动
+#### Initiation
 
 ```shell
 systemctl start cnosdb
 ```
 
-如果是 Ubuntu 14.04 以及之前的版本 和 Debina 9 之前的版本，使用以下命令启动：
+Use the command below to start： if Ubuntu 14.04 and previous versions and Debina 9
 
 ```shell
-service cnosdb start
+Service cnosdb start
 ```
 
-## 启动集群
+## Start cluster
 
 :::note
 请将以下记录添加到您的 DNS 解析服务器中，以便于 CnosDB 集群中的实例之间进行通信。必要时需要联系您的网络管理员。
 
-| 记录类型 | 主机名                      | 主机IP                                                        |
-| ---- | ------------------------ | ----------------------------------------------------------- |
-| A    | `meta1.cnosdb.com`       | \<meta1_ip>                            |
-| A    | `meta2.cnosdb.com`       | \<meta2_ip>                            |
-| A    | `meta3.cnosdb.com`       | \<meta3_ip>                            |
-| A    | `query_tskv1.cnosdb.com` | \<query_tskv1_ip> |
-| A    | `query_tskv2.cnosdb.com` | \<query_tskv2_ip> |
-| :::  |                          |                                                             |
+| Record type | Hostname                 | Host IP                                                     |
+| ----------- | ------------------------ | ----------------------------------------------------------- |
+| A           | `meta1.cnosdb.com`       | \<meta1_ip>                            |
+| A           | `meta2.cnosdb.com`       | \<meta2_ip>                            |
+| A           | `meta3.cnosdb.com`       | \<meta3_ip>                            |
+| A           | `query_tskv1.cnosdb.com` | \<query_tskv1_ip> |
+| A           | `query_tskv2.cnosdb.com` | \<query_tskv2_ip> |
+| :::         |                          |                                                             |
 
-### 启动 `meta` 服务
+### Launch the `meta` service
 
-#### 1. 修改配置
+#### 1. Modify configuration
 
-默认配置文件位置：`/etc/cnosdb/cnosdb-meta.conf`
+Default profile position：`/etc/cnosdb/cnosdb-meta.conf`
 
-将添加在 DNS 服务器中的记录添加到配置文件中，将不同记录分配个不同的 `meta` 服务。
+Add entries added to the DNS server to the configuration file and assign different entries to a different `meta` service.
 
 ```toml
 host = meta<n>.cnosdb.com
 ```
 
-分配 node_id 给每个 `meta` 服务，id 不能重复。
+Assign node_id to each `meta` service, id cannot be repeated.
 
 ```toml
 id = n
 ```
 
-配置完成后的配置文件示例如下：
+The following configuration file example after configuration completes the following：
 
 ```toml
 id = n
 host = "meta<n>.cnosdb.com"
 port = 8901
-... ...
+...
 ```
 
-#### 启动服务
+#### Start service
 
 ```shell
 systemctl start cnosdb-meta
 ```
 
-如果是 Ubuntu 14.04 以及之前的版本 和 Debina 9 之前的版本，使用以下命令启动：
+Use the command below to start： if Ubuntu 14.04 and previous versions and Debina 9
 
 ```shell
-service cnosdb-meta start
+Service nosdb-meta start
 ```
 
-#### 初始化 `meta` 服务
+#### Initialize the `meta` service
 
-> 如果您的集群中有多个 `meta` 服务，只需要在其中一个 `meta` 服务上执行初始化命令即可。
+> If you have multiple `meta` services in your cluster, only the initialization command needs to be executed on one of the `meta` services.
 
 ```shell
 curl http://meta1.cnosdb.com:8901/init -d '{}'
 ```
 
-#### 添加其他 `meta` 服务实例
+#### Add another `meta` service instance
 
 ```shell
-curl http://meta1.cnosdb.com:8901/add-learner -H "Content-Type: application/json" -d '[2, "meta2.cnosdb.com:8901"]' | jq
-curl http://meta1.cnosdb.com:8901/add-learner -H "Content-Type: application/json" -d '[3, "meta3.cnosdb.com:8901"]' | jq
+curl http://meta1.cnosdb.com:8901/add-learner-H "Content-Type: application/json" -d [2, "meta2.cnosdb.com:8901"]' | jq
+curl http://meta 1.cnosdb.com:8901/add-learner-H "Content-Type: application/json" -d [3, "meta3.cosdb.com:8901"]' | jq
 ```
 
-#### 重置集群成员以使集群生效
+#### Reset cluster members to take effect
 
-> 执行以下命令可以修改集群成员，如果您的集群中有多个 `meta` 服务，使用最初执行初始化的节点执行此命令。
+> Execute the following commands to modify cluster members if there are multiple `meta` services in your cluster, use the original initialized node to perform this command.
 
 ```shell
 curl http://meta1.cnosdb.com:8901/change-membership -H "Content-Type: application/json" -d '[1,2,3]' | jq
 ```
 
-#### 查看集群状态
+#### View cluster status
 
-分别指定不同的节点，执行以下命令，查看集群状态。
+Specify different nodes separately, perform the following commands to view cluster status.
 
-> 替换命令中的 `<n>` 以指定不通的 `meta` 服务实例。
+> Replace `<n>` in the command to specify an invalid `meta` service instance.
 
 ```shell
 curl http://meta<n>.cnosdb.com:8901/metrics | jq
 ```
 
-如果集群安装成功，则应该返回以下内容：
+If the cluster is installed successfully, return the following：
 
-> `state` 还有可能是 `Follower`。
+> The `state` may also be `Follower`.
 
 ```json
-{
-  "Ok": {
-  "running_state": {
+LO
+  "Ok": LO
+  "running_state": LO
     "Ok": null
   },
   "id": 1,
-  ... ...
+  . ...
   "state": "Leader",
-  ... ...
+  ...
 }
 ```
 
-### 启动 `cnosdb` 服务
+### Launch the `cnosdb` service
 
-#### 修改配置文件
+#### Edit profile
 
-`cnosdb` 服务的配置文件位于 `/etc/cnosdb/cnosdb.conf`。
+The configuration file for the `cnosdb` service is located at `/etc/cnosdb/cnosdb.conf`.
 
-将添加在 DNS 服务器中的记录添加到配置文件中，将不同记录分配个不同的 `cnosdb` 服务。
+Add entries to the DNS server to the configuration file and assign different `cnosdb` services to different records.
 
 ```toml
 host = "query_tskv<n>.cnosdb.com"
@@ -198,9 +198,9 @@ host = "query_tskv<n>.cnosdb.com"
 
 <TabItem value="Enterprise" label="企业版">
 
-修改 `license_file` 指定正确的文件位置
+Change `license_file` to specify the correct file location
 
-> 获取 License 文件，请联系我们
+> Get License file, please contact us
 
 ```shell
 license_file = '/etc/cnosdb/license.json'
@@ -209,53 +209,53 @@ license_file = '/etc/cnosdb/license.json'
 
 
 
-修改 `[deployment].mode` 为 `query_tskv` 。
+Modify `[deployment].mode` to `query_tskv`
 
 ```toml
 [deployment]
 mode = "query_tskv"
 ```
 
-修改 `node_id`，`node_id` 不能重复。
+Modify `node_id`, `node_id` cannot be repeated.
 
 ```toml
 [node_basic]
  node_id = <n>
 ```
 
-修改 `meta` 服务地址。
-`[cluster].name` 需要与 `cnosdb-meta` 配置中的`[meta_init].cluster_name` 相同。
+Modify the `meta` service address.
+`[cluster].name` needs to be the same as `[meta_init].cluster_name` in the `cnosdb-meta` configuration.
 
 ```toml
  [cluster]
  name = "cluster_xxx"
- meta_service_addr = ['meta1.cnosdb.com:8901', 'meta2.cnosdb.com:8901', 'meta3.cnosdb.com:8901']
+ meta_service_addr = ['meta1.cnosdb.com:8901', 'meta2.cnosdb.com:8901', 'mesta3.cnosdb.com:8901']
 ```
 
-配置完成后的配置文件示例如下：
+The following configuration file example after configuration completes the following：
 
 ```toml
- ... ...
+ ...
  host = "query_tskv<n>.cnosdb.com"
  [deployment]
  mode = 'query_tskv'
- ... ...
+ . .
  [cluster]
- name = 'cluster_xxx'
- meta_service_addr = ['meta1.cnosdb.com:8901', 'meta2.cnosdb.com:8901', 'meta3.cnosdb.com:8901']
+ name = 'cluster_xxxx'
+ meta_service_addr = ['meta1. nosdb.com:8901', 'meta2.cnosdb.com:8901', 'meta3.cnosdb.com:8901']
  [node_basic]
  node_id = <n>
- ... ...
+...
 ```
 
-#### 启动服务
+#### Start service
 
 ```shell
 systemctl start cnosdb
 ```
 
-如果是 Ubuntu 14.04 以及之前的版本 和 Debina 9 之前的版本，使用以下命令启动。
+In the case of Ubuntu 14.04 and previous versions and Debina 9 before, use the following commands to start.
 
 ```shell
-service cnosdb start
+Service cnosdb start
 ```
