@@ -35,7 +35,7 @@ Release date：Sep 28,2023
 
 - 重构 e2e_test 中的实用程序和不相关内容。[#1882](https://github.com/cnosdb/cnosdb/pull/1882)
 
-### Bug Fixes
+### 问题修复
 
 - 修复有关合并的错误。[#1889](https://github.com/cnosdb/cnosdb/pull/1889)
 
@@ -49,7 +49,7 @@ Release date：Sep 28,2023
 - 在 `meta` 服务中添加 `setkv` 和 `delete` 的 http 接口。[#1835](https://github.com/cnosdb/cnosdb/pull/1835)
 - 客户端启动时隐藏密码。[#1881](https://github.com/cnosdb/cnosdb/pull/1881)
 
-### Bug Fixes
+### 问题修复
 
 - 修复`dedup_by_front` 删除了错误元素的错误。 [#1815](https://github.com/cnosdb/cnosdb/pull/1815)
 - 修复异步 LruCache 导致的错误。 [#1820](https://github.com/cnosdb/cnosdb/pull/1820)
@@ -73,7 +73,7 @@ Release date: Nov 24, 2023
 - implement desc tables/databases by reading system tables and fix some word error [#1692](https://github.com/cnosdb/cnosdb/pull/1692)
 - Added database deferred deletion. [#1510](https://github.com/cnosdb/cnosdb/pull/1510)
 
-### Bug Fixes
+### 问题修复
 
 - Fix drop tenant not drop members bug. [#1626](https://github.com/cnosdb/cnosdb/pull/1626)
 - Fixed a BUG where the number of arguments of scalar functions is not checked. [#1597](https://github.com/cnosdb/cnosdb/pull/1597)
@@ -90,42 +90,42 @@ Release date: Nov 24, 2023
 
 ## v2.3.4 Apus
 
-Release date: Nov 24, 2023
+发布日期：2023年11月24日
 
-### New Features:
+### 新增特性
 
-- Adapt vector. [#1380](https://github.com/cnosdb/cnosdb/pull/1380)
-- Fix http metrics field order error. [#1506](https://github.com/cnosdb/cnosdb/pull/1506)
+- 适配 [Vector](https://vector.dev/) [#1628](https://github.com/cnosdb/cnosdb/pull/1628)
+- 添加 increase 函数，http_limiter 和 metrics [#1629](https://github.com/cnosdb/cnosdb/pull/1629)
 - 将写请求和SQL请求都路由到查询服务器 [#1760](https://github.com/cnosdb/cnosdb/pull/1760)
 - 支持HTTP压缩 [#1762](https://github.com/cnosdb/cnosdb/pull/1762)
-- Add histogram Line Protocol export. [#1472](https://github.com/cnosdb/cnosdb/pull/1472)
+- 支持导出DDL [#1782](https://github.com/cnosdb/cnosdb/pull/1782)
 - 通过配置启动服务 [#1789](https://github.com/cnosdb/cnosdb/pull/1789)
 
 ### 功能优化
 
-- implement desc tables/databases by reading system tables and fix some word error [#1692](https://github.com/cnosdb/cnosdb/pull/1692)
-- Added database deferred deletion. [#1510](https://github.com/cnosdb/cnosdb/pull/1510)
+- 通过读取系统表实现 desc table/database，并修复一些单词错误 [#1692](https://github.com/cnosdb/cnosdb/pull/1692)
+- 移除调试日志 [#1793](https://github.com/cnosdb/cnosdb/pull/1793)
 
-### Bug Fixes
+### 问题修复
 
-- Fix drop tenant not drop members bug. [#1626](https://github.com/cnosdb/cnosdb/pull/1626)
-- Fixed a BUG where the number of arguments of scalar functions is not checked. [#1597](https://github.com/cnosdb/cnosdb/pull/1597)
+- 删除租户不删除成员的错误 [#1632](https://github.com/cnosdb/cnosdb/pull/1632)
+- 生成带别名的插值函数计划失败的问题 [#1777](https://github.com/cnosdb/cnosdb/pull/1777)
 - 添加对 `stream table` 的参数 `event_time_column` 的检查 [#1744](https://github.com/cnosdb/cnosdb/pull/1744)
-- stream job lost database info when restart [#1734](https://github.com/cnosdb/cnosdb/pull/1734)
+- 在重新启动时流作业丢失数据库信息的问题 [#1734](https://github.com/cnosdb/cnosdb/pull/1734)
 - 禁止创建具有相同名称列的流表 [#1733](https://github.com/cnosdb/cnosdb/pull/1733)
 - 优化直接选择流表的错误消息 [#1732](https://github.com/cnosdb/cnosdb/pull/1732)
-- get_sys_mem unit error [#1739](https://github.com/cnosdb/cnosdb/pull/1739)
-- Fix line protocol parser '\n' error. [#1426](https://github.com/cnosdb/cnosdb/pull/1426)
-- fix when drop user don't drop tenant member [#1739](https://github.com/cnosdb/cnosdb/pull/1739)
+- 获取系统内存单位错误 [#1739](https://github.com/cnosdb/cnosdb/pull/1739)
+- CLI 写入行协议时没有显示错误消息 [#1739](https://github.com/cnosdb/cnosdb/pull/1739)
+- 删除用户时不删除租户成员的问题 [#1739](https://github.com/cnosdb/cnosdb/pull/1739)
 - 未找到租户返回HTTP状态码500 [#1739](https://github.com/cnosdb/cnosdb/pull/1739)
 - 修复 gRPC 大小限制 [#1739](https://github.com/cnosdb/cnosdb/pull/1739)
-- Fix errors in execution of DELETE FROM TABLE. [#1643](https://github.com/cnosdb/cnosdb/pull/1643)
+- 创建外部表时的表名错误 [#1739](https://github.com/cnosdb/cnosdb/pull/1739)
 
 ## v2.4.0 Milky Way
 
 Release date: Oct 24, 2023
 
-### New Features:
+### 新增特性
 
 📈 No more monotone data summarization, new aggregation functions!
 
@@ -224,7 +224,7 @@ The memory usage is effectively reduced, TSKV is optimized to be more efficient,
 - Add testcases about function, DDL, DML. [#1588](https://github.com/cnosdb/cnosdb/pull/1588)Add scalar args check. [#1615](https://github.com/cnosdb/cnosdb/pull/1615)
 - Refactor the way to scan data in the update tag plan. [#1634](https://github.com/cnosdb/cnosdb/pull/1634)
 
-### Bug Fixes
+### 问题修复
 
 - 修复 check_writes 错误。 The password is encrypted and stored to enhance security. [#1419](https://github.com/cnosdb/cnosdb/pull/1419)
 - 修复行协议解析器 '\n' 错误。[#1426](https://github.com/cnosdb/cnosdb/pull/1426)
@@ -283,7 +283,7 @@ The memory usage is effectively reduced, TSKV is optimized to be more efficient,
 
 Release date: Aug 02,2023
 
-### New Features:
+### 新增特性
 
 - Add monitoring metric 'http_data_out' [#1304](https://github.com/cnosdb/cnosdb/issues/1304)
 - Added chunked mode in the client [#1357](https://github.com/cnosdb/cnosdb/issues/1357)
@@ -296,7 +296,7 @@ Release date: Aug 02,2023
 - Upgraded datafusion version to 27.0.0 [#1323](https://github.com/cnosdb/cnosdb/issues/1323)
 - Added additional methods to the flatbuffers model [#1361](https://github.com/cnosdb/cnosdb/issues/1361)
 
-### Bug Fixes
+### 问题修复
 
 - Fixed the issue of generating duplicate series IDs [#1301](https://github.com/cnosdb/cnosdb/issues/1301)
 - Fixed the problem with the sample function returning errors [#1296](https://github.com/cnosdb/cnosdb/issues/1296)
@@ -321,7 +321,7 @@ Release date: Aug 02,2023
 
 Release date: June 21,2023
 
-### New Features:
+### 新增特性
 
 - Added trace [#1272](https://github.com/cnosdb/cnosdb/issues/1272)
 - Support sliding window gap fill [#1171](https://github.com/cnosdb/cnosdb/pull/1171)
@@ -347,7 +347,7 @@ Release date: June 21,2023
 - Check for expired WALs and delete them when the cache is flushed to disk [#1175](https://github.com/cnosdb/cnosdb/pull/1175)
 - Optimization of some methods in FileManager [#1268](https://github.com/cnosdb/cnosdb/pull/1268)
 
-### Bug Fixes
+### 问题修复
 
 - Data loss caused by copying the target Vnode during Vnode migration [#1151](https://github.com/cnosdb/cnosdb/issues/1151)
 - Failed to write data due to metadata verification failure [#1184](https://github.com/cnosdb/cnosdb/issues/1184)
@@ -371,7 +371,7 @@ Release date: June 21,2023
 - SQL execution error "Not a field name"  [#1033](https://github.com/cnosdb/cnosdb/issues/1033)
 - External table data import overrides original table data [#1131](https://github.com/cnosdb/cnosdb/issues/1131)
 
-### Behavior Change:
+### 行为变更
 
 - Change the "Table" displayed in the result of show tables to "table_name" [#1212](https://github.com/cnosdb/cnosdb/pull/1212)
 
