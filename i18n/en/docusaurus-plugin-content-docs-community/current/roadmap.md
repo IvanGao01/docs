@@ -23,7 +23,7 @@ Design and develop a high performance, high compression ratio, high availability
 
 1. Supports cloud native, leveraging the convenience brought by cloud infrastructure and integrating into the cloud native ecosystem.
 2. High availability: Sub-second fault recovery, supports multi-cloud, cross-region disaster recovery.
-3. 原生支持多租户，按量付费。
+3. Native support for multi-tenancy, pay-as-you-go.
 4. CDC (Change Data Capture): Logs can be subscribed to and distributed to other nodes.
 5. Provides more configurable options to meet the complex needs of public cloud users.
 6. Cloud-edge collaboration: Provides the ability to integrate edge devices with public clouds.
